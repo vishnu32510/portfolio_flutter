@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_enums.dart';
@@ -56,13 +58,14 @@ class VerticalHeaders extends StatelessWidget {
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: AppColors.white),
                     ),
-                    Flexible(
-                      child: Image.asset(
-                        AppAssets.resumeGif,
-                        gaplessPlayback: true,
-                        repeat: ImageRepeat.repeat,
-                      ),
-                    ),
+                    Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: Lottie.asset(AppAssets.resumeLottie,
+                            repeat: true,
+                            fit: BoxFit.contain,
+                            width: context.width < DeviceType.ipad.getMaxWidth()
+                                ? 60
+                                : 120)),
                   ],
                 ),
               ),

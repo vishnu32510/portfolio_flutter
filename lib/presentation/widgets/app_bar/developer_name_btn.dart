@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:universal_html/html.dart' as html;
-
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_enums.dart';
 import '../../../core/utils/app_extensions.dart';
@@ -45,6 +44,12 @@ class DeveloperNameBtn extends StatelessWidget {
                 ),
               ),
               Expanded(
+                  // child: Lottie.asset('assets/lottie/dartfirebase.json',
+                  //     repeat: true,
+                  //     fit: BoxFit.contain,
+                  //     width: context.width < DeviceType.ipad.getMaxWidth()
+                  //         ? 60
+                  //         : 120),
                   child: Image.asset(
                 AppAssets.firebaseFlutterLogo,
                 scale: 5,

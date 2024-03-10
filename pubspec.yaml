@@ -47,6 +47,7 @@ dependencies:
   permission_handler: ^11.3.0
   open_file: ^3.2.1
   url_launcher: ^6.2.5
+  lottie: ^3.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -96,6 +97,7 @@ flutter:
   assets:
     - assets/images/
     - assets/previews/
+    - assets/lottie/
 
   fonts:
     - family: Poppins

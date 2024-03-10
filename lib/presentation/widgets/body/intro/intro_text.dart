@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/app_assets.dart';
+import 'package:lottie/lottie.dart';
+import 'package:portfolio_flutter/core/utils/app_assets.dart';
 import '../../../../core/utils/app_enums.dart';
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_strings.dart';
@@ -30,14 +31,20 @@ class IntroText extends StatelessWidget {
               softWrap: true,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset(
-                AppAssets.flutterDev,
-                scale: 5,
-                gaplessPlayback: true,
-                repeat: ImageRepeat.repeat,
-              ),
-            )
+                padding: const EdgeInsets.all(8.0),
+                child: Lottie.asset(AppAssets.flutterDevLottie,
+                    repeat: true,
+                    fit: BoxFit.contain,
+                    width: context.width < DeviceType.ipad.getMaxWidth()
+                        ? 60
+                        : 120)
+                // child: Image.asset(
+                //   AppAssets.flutterDev,
+                //   scale: 5,
+                //   gaplessPlayback: true,
+                //   repeat: ImageRepeat.repeat,
+                // ),
+                )
           ],
         ),
         const SizedBox(height: 6),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'package:portfolio_flutter/core/utils/app_extensions.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_colors.dart';
@@ -55,11 +56,15 @@ class HorizontalHeaders extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               color: AppColors.white),
                         ),
-                        Image.asset(
-                          AppAssets.resumeGif,
-                          gaplessPlayback: true,
-                          repeat: ImageRepeat.repeat,
-                          scale: 0.5,
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Lottie.asset(AppAssets.resumeLottie,
+                              repeat: true,
+                              fit: BoxFit.contain,
+                              width:
+                                  context.width < DeviceType.ipad.getMaxWidth()
+                                      ? 30
+                                      : 60),
                         ),
                       ],
                     ),
