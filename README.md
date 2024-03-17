@@ -1,16 +1,31 @@
-# portfolio_flutter
+<br/>
+<p align="center">
+  <a href="https://github.com/vishnu32510/portfolio_flutter">
+    <img src="assets/images/portfolio_icon.png" alt="Logo" width="80" height="80">
+  </a>
 
-A new Flutter project.
+  <h3 align="center">My Portfolio</h3>
 
-## Getting Started
+  <p align="center">
+    Responsive Portfolio designed for Android, IOS, Web, MacOS with Flutter SDK using Bloc State management
+    <br/>
+    <br/>
+    <a href="https://vishnupriyan-ss.firebaseapp.com/">View Demo</a>
+  </p>
+</p>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## About The Project
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="1512" alt="Screenshot 2024-03-17 at 6 04 42 PM" src="https://github.com/vishnu32510/portfolio_flutter/assets/76788079/b3d8bafe-b36b-4221-a284-878001e8f75c">
+
+## Built With
+
+* Flutter SDK
+* Bloc Architecture
+
+## Authors
+
+* **Vishnu Priyan** - *Mobile Application Developer* - [Vishnu Priyan](https://github.com/vishnu32510)
+
