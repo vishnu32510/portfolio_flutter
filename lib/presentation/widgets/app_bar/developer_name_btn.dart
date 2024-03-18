@@ -18,46 +18,43 @@ class DeveloperNameBtn extends StatelessWidget {
       onTap: () {
         kIsWeb ? html.window.location.reload() : null;
       },
-      child: Padding(
+      child: Container(
         padding: const EdgeInsets.symmetric(vertical: 13),
-        child: SizedBox(
-          width: context.width < DeviceType.ipad.getMaxWidth()
-              ? context.width * .4
-              : context.width * .15,
-          child: Row(
-            children: [
-              FittedBox(
-                alignment: Alignment.topLeft,
-                child: Column(
-                  children: [
-                    Text(
-                      AppStrings.developerNameStyle,
-                      textScaler: const TextScaler.linear(1.2),
-                      style: AppStyles.italic,
-                    ),
-                    Text(
-                      AppStrings.developerFlutterGeek,
-                      textScaler: const TextScaler.linear(0.8),
-                      style: AppStyles.italic,
-                    ),
-                  ],
-                ),
+        width: context.width < DeviceType.ipad.getMaxWidth()
+            ? context.width * .4
+            : context.width * .15,
+        child: Row(
+          children: [
+            Image.asset(
+              AppAssets.appIcon,
+              gaplessPlayback: true,
+              repeat: ImageRepeat.repeat,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            FittedBox(
+              alignment: Alignment.topLeft,
+              child: Column(
+                children: [
+                  Text(
+                    AppStrings.developerNameStyle,
+                    textScaler: const TextScaler.linear(1.2),
+                    style: AppStyles.italic,
+                  ),
+                  Text(
+                    AppStrings.developerFlutterGeek,
+                    textScaler: const TextScaler.linear(0.8),
+                    style: AppStyles.italic,
+                  ),
+                ],
               ),
-              Expanded(
-                  // child: Lottie.asset('assets/lottie/dartfirebase.json',
-                  //     repeat: true,
-                  //     fit: BoxFit.contain,
-                  //     width: context.width < DeviceType.ipad.getMaxWidth()
-                  //         ? 60
-                  //         : 120),
-                  child: Image.asset(
-                AppAssets.firebaseFlutterLogo,
-                scale: 5,
-                gaplessPlayback: true,
-                repeat: ImageRepeat.repeat,
-              ))
-            ],
-          ),
+            ),
+            // Lottie.asset(
+            //   AppAssets.firebaseFlutterLogoLottie,
+            //   repeat: true,
+            // )
+          ],
         ),
       ),
     );

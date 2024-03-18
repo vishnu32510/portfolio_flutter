@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/vishnu32510/portfolio_flutter">
-    <img src="assets/images/portfolio_icon.png" alt="Logo" width="80" height="80">
+    <img src="assets/images/appIcon.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">My Portfolio</h3>
