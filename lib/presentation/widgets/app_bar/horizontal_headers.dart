@@ -24,8 +24,7 @@ class HorizontalHeaders extends StatelessWidget {
               },
             ),
             Visibility(
-              visible:
-                  (context.width > DeviceType.smallScreenLaptop.getMaxWidth()),
+              visible: (context.width > DeviceType.ipad.getMaxWidth()),
               replacement: Container(),
               child: InkWell(
                 hoverColor: Colors.transparent,
