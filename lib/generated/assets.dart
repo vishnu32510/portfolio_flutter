@@ -8,7 +8,7 @@ class Assets {
       'assets/fonts/Poppins-SemiBold.ttf';
   static const String imagesAndroid = 'assets/images/android.svg';
   static const String imagesDevImg = 'assets/images/dev_img.png';
-  static const String imagesPortfolioIcon = 'assets/images/portfolio_icon.png';
+  static const String imagesPortfolioIcon = 'assets/images/appIcon.png';
   static const String imagesRuler = 'assets/images/ruler.svg';
   static const String imagesSlider = 'assets/images/slider.svg';
 }

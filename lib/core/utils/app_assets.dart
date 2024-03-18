@@ -2,6 +2,7 @@ const _basePath = 'assets/images';
 const _baseLottiePath = 'assets/lottie';
 
 abstract class AppAssets {
+  static const appIcon = '$_basePath/appIcon.png';
   static const devImg = 'https://avatars.githubusercontent.com/u/76788079?v=4';
   static const androidLogo = '$_basePath/android.svg';
   static const firebaseFlutterLogo = '$_basePath/dev_ff.gif';
@@ -13,4 +14,5 @@ abstract class AppAssets {
   static const uiDesignLogo = '$_basePath/ruler.svg';
   static const flutterDevLottie = '$_baseLottiePath/developer.json';
   static const resumeLottie = '$_baseLottiePath/resume.json';
+  static const firebaseFlutterLogoLottie = '$_baseLottiePath/dev_ff.json';
 }
