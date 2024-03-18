@@ -18,7 +18,8 @@
 
 ## About The Project
 
-<img width="1512" alt="Screenshot 2024-03-17 at 6 04 42 PM" src="https://github.com/vishnu32510/portfolio_flutter/assets/76788079/b3d8bafe-b36b-4221-a284-878001e8f75c">
+<img width="1512" alt="Screenshot 2024-03-18 at 2 11 28 PM" src="https://github.com/vishnu32510/portfolio_flutter/assets/76788079/5a47d7eb-0cc9-491c-83b1-208f0bf1fecd">
+
 
 ## Built With
 
