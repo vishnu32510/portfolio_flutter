@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:universal_html/html.dart' as html;
+import '../../../../core/services/services.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../data/models/project.dart';
@@ -33,7 +34,7 @@ class ProjectActions extends StatelessWidget {
                 label: 'Github',
                 borderColor: AppColors.primaryColor,
                 onPressed: () {
-                  html.window.open(project.githubRepoLink!, '_blank');
+                  OpenLinkService().openUrl(link: project.githubRepoLink??"");
                 },
               ),
             ),

@@ -41,3 +41,11 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Don't check in the keystore files or equivalent
+
+key
+key*.properties
+
+# FVM Version Cache
+.fvm/
