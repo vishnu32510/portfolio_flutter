@@ -12,6 +12,12 @@ if (localPropertiesFile.exists()) {
     }
 }
 
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
     flutterVersionCode = '1'
@@ -23,7 +29,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.example.portfolio_flutter"
+    namespace "com.vishnu.portfolio_flutter"
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -42,7 +48,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.portfolio_flutter"
+        applicationId "com.vishnu.portfolio_flutter"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion flutter.minSdkVersion
@@ -51,11 +57,44 @@ android {
         versionName flutterVersionName
     }
 
+    signingConfigs {
+    file(rootProject.file('key.properties')).with { propFile ->
+        if (propFile.canRead()) {
+            release {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            }
+        }
+        else {
+            print('not signed')
+        }
+    }
+}
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            // signingConfig signingConfigs.debug
+
+            file(rootProject.file('key.properties')).with { propFile ->
+            if (propFile.canRead()) {
+                // because we can read the keystore
+                // we are building locally
+                // so sign locally
+                // otherwise build an unsigned apk for later signing by the CI/CD provider
+                signingConfig signingConfigs.release
+            }
+        }
+
+        applicationVariants.all { variant ->
+            variant.outputs.all { output ->
+                output.outputFileName = "app-release.apk"
+            }
+        }
+        
         }
     }
 }

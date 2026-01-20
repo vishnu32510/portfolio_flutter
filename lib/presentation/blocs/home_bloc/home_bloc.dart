@@ -52,6 +52,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) async {
     DownloadService downloadService =
         kIsWeb ? WebDownloadService() : MobileDownloadService();
-    await downloadService.download(url: AppStrings.developerResume);
+    await downloadService.downloadResume(url: AppStrings.developerResume);
   }
 }
