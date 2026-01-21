@@ -123,7 +123,7 @@ class AboutMeSection extends StatelessWidget {
                         SizedBox(
                           width: context.width * 0.9,
                           child: GradientText(
-                            text: 'Engineering *Philosophy*',
+                            text: 'Engineering *Methodology*',
                             textStyle: AppStyles.extraLargeTextBold(
                               textColor: colors.onSurface,
                             ),
@@ -141,6 +141,13 @@ class AboutMeSection extends StatelessWidget {
                             runSpacing: AppSizes.spacingLarge,
                             spacing: AppSizes.spacingLarge,
                             children: [
+                              _buildPhilosophyCard(
+                                context,
+                                icon: Icons.smart_toy,
+                                title: 'AI Driven Development',
+                                description: 'Agentic workflows, RAG, LLM pipelines, and more. Using LangChain/AutoGen, MCP, RAG, OCR+LLM extraction, Vector embeddings.',
+                                color: Colors.green,
+                              ),
                               _buildPhilosophyCard(
                                 context,
                                 icon: Icons.code,

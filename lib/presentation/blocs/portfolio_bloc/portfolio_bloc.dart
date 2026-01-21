@@ -68,9 +68,9 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
     // Fallback data if Firebase is unavailable - using actual resume and GitHub data
     return PortfolioData(
       developerName: 'Vishnu Priyan Sellam Shanmugavel',
-      developerTitle: 'Full-stack Mobile Engineer',
+      developerTitle: 'Software Engineer - Full-stack',
       introMessage:
-          'Full-stack Mobile Engineer specializing in building high-performance, cross-platform apps with Flutter, Dart, and Firebase, plus native Android (Kotlin) & iOS (Swift) SDKs. Backend & web experience with Flask, Next.js, and cloud deployments (Google Cloud, AWS) to power mobile and web experiences. Founder of Floxi – an eco-reward platform gamifying sustainable actions. Hackathon winner, open-source contributor, and cloud-native solutions builder.',
+          'Software Engineer - Full-stack specializing in building high-performance, cross-platform apps with Flutter, Dart, and Firebase, plus native Android (Kotlin) & iOS (Swift) SDKs. Backend & web experience with Flask, Next.js, and cloud deployments (Google Cloud, AWS) to power mobile and web experiences. Founder of Floxi – an eco-reward platform gamifying sustainable actions. Hackathon winner, open-source contributor, and cloud-native solutions builder.',
       resumeLink:
           'https://drive.google.com/file/d/1WDLPye0JSXinnxGaFskq1mqi42cVCjKy/view?usp=sharing',
              socialLinks: const {

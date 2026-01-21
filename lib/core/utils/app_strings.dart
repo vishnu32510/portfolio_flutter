@@ -12,12 +12,12 @@ abstract class AppStrings {
 
   static const String helloIM = "Hello, I'm";
   static const String introMsg =
-      "Software Engineer with 3+ years of experience building scalable mobile applications and full-stack systems. Specialized in mobile development, backend APIs, and clean architecture. Delivered production systems serving users with measurable improvements in performance, reliability, and user engagement.";
+      "Software Engineer - Full-stack with 4+ years of experience building high-performance, cross-platform apps with Flutter, Dart, and Firebase, plus native Android (Kotlin) & iOS (Swift) SDKs. Backend & web experience with Flask, Next.js, and cloud deployments (GCP, AWS, Azure) to power mobile and web experiences. Founder of Floxi – an eco-reward platform gamifying sustainable actions. Hackathon winner, open-source contributor, and AI enthusiast focused on shipping production-grade LLM & RAG systems.";
   static String aboutMeMsg =
-      "I'm a Flutter Developer specialized in Flutter Mobile/Web development, with a good understanding of the Flutter framework, I have experience in UI design, API integration, clean code writing and knowledge of solid principles and clean architecture. I have completed many projects that prove my ability to provide creative and high-quality solutions and finish them in an almost complete way with a great user experience without any problems facing users";
-  static const String numOfExperience = '3';
+      "I'm a Software Engineer - Full-stack and AI enthusiast with 4+ years of experience designing and building scalable apps across mobile, web, and backend. I specialize in Flutter, native Android (Kotlin), iOS (SwiftUI), and cloud-native backends (Flask, FastAPI, Node.js) deployed on GCP, AWS, and Firebase. My work focuses on clean architecture, performance, and great UX—combining Bloc, TDD, and SOLID practices with modern GenAI stacks (RAG, LangChain/AutoGen, MCP) to ship reliable, intelligent products that people actually use.";
+  static const String numOfExperience = '4';
   static const String experienceMsg =
-      'Years of experience, Specialized in building apps, while ensuring a seamless web experience for end users.';
+      'Years of hands-on experience across mobile, web, backend, and applied AI—specializing in Flutter, cloud-native systems, and production-ready LLM/RAG workflows.';
   static const String servicesIOffer = 'The services I offer:';
   static const String featuredProjects = 'Featured projects';
   static const String projectsMsg =
