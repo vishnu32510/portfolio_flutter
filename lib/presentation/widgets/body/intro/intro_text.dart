@@ -43,7 +43,7 @@ class IntroText extends StatelessWidget {
             const SizedBox(height: 8),
             // Animated typewriter text for multiple roles
             SizedBox(
-              height: context.width < DeviceType.ipad.getMaxWidth() ? 24 : 28,
+              height: context.width < DeviceType.ipad.getMaxWidth() ? 32 : 40,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -54,8 +54,8 @@ class IntroText extends StatelessWidget {
                       return TypewriterAnimatedText(
                         role,
                         textStyle: context.width < DeviceType.ipad.getMaxWidth()
-                            ? AppStyles.s16
-                            : AppStyles.s18,
+                            ? AppStyles.s18
+                            : AppStyles.s28,
                         textAlign: _getTextAlign(context.width),
                         speed: const Duration(milliseconds: 50),
                       );

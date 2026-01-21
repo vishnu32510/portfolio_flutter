@@ -28,11 +28,8 @@ class SkillItem extends StatelessWidget {
     final icon = _getIconForCategory(skillGroup.category);
 
     return Container(
-      height: 250,
-      width: context.isMobile ? context.width : context.width / 5,
-      constraints: const BoxConstraints(
-        minWidth: 250,
-      ),
+      width: context.isMobile ? context.width : context.width / 4,
+      constraints: const BoxConstraints(minWidth: 250),
       decoration: BoxDecoration(
         color: colors.surface,
         borderRadius: AppSizes.borderRadiusRegular,
@@ -84,25 +81,13 @@ class SkillItem extends StatelessWidget {
                   scale: Tween<double>(begin: 0, end: 1).animate(animation),
                   child: child,
                 ),
-                builder: (children) {
-                  final spacedChildren = <Widget>[];
-                  for (int i = 0; i < children.length; i++) {
-                    spacedChildren.add(children[i]);
-                    if (i < children.length - 1) {
-                      spacedChildren.add(SizedBox(
-                        width: AppSizes.spacingMediumSmall,
-                        height: AppSizes.spacingMediumSmall,
-                      ));
-                    }
-                  }
-                  return Wrap(
-                    alignment: WrapAlignment.start,
-                    runAlignment: WrapAlignment.start,
-                    spacing: AppSizes.spacingMediumSmall,
-                    runSpacing: AppSizes.spacingMediumSmall,
-                    children: spacedChildren,
-                  );
-                },
+                builder: (children) => Wrap(
+                  alignment: WrapAlignment.start,
+                  runAlignment: WrapAlignment.start,
+                  spacing: AppSizes.spacingMediumSmall,
+                  runSpacing: AppSizes.spacingMediumSmall,
+                  children: children,
+                ),
                 children: skillGroup.skills
                     .map((skill) => SkillChip(skillName: skill))
                     .toList(),

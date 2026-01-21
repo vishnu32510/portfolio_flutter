@@ -31,15 +31,15 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
 
+  <!-- Canonical (match reference structure) -->
+  <link rel="canonical" href="https://vishnupriyan.dev" />
+
   <title>Vishnu Priyan | Software Engineer (Full-Stack & Mobile)</title>
   <link rel="manifest" href="manifest.json" />
 
   <style>
     body {
       background-color: #F4F5F6;
-      margin: 0;
-      height: 100vh;
-      width: 100vw;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -48,39 +48,36 @@
       }
     }
 
-    .container {
-      margin: 0;
+    /* Hide SEO content from users, keep it for search engine bots */
+    #seo-content {
       position: absolute;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .loader {
-      height: 30vh;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
     }
   </style>
 </head>
 
-<body>
-  <div class="container" id="loader">
-    <img class="loader" src="assets/loading.gif" alt="Loading..." />
-  </div>
+<body style="height: 100vh;width: 100vw;margin: 0;">
+
+  <!-- Hidden SEO Content for Search Engines (reference-style) -->
+  <section id="seo-content">
+    <h1>Vishnu Priyan - Full-stack Mobile Engineer</h1>
+    <p>
+      Full-stack Mobile Engineer specializing in building high-performance, cross-platform apps with Flutter, Dart, and Firebase,
+      plus native Android (Kotlin) & iOS (Swift) SDKs. Backend & web experience with Flask, Next.js, and cloud deployments (GCP, AWS, Azure).
+    </p>
+
+    <h2>Technical Skills</h2>
+    <p>Languages: Python, JavaScript, TypeScript, Dart, Kotlin, Swift, Go, C, C++, Java, Rust, HTML, CSS</p>
+    <p>Gen AI & LLM: LangChain/AutoGen, MCP, RAG, OCR+LLM extraction, Vector embeddings</p>
+    <p>Cloud & DevOps: GCP, Azure, AWS, Firebase, Docker, CI/CD, Pub/Sub, Jenkins, Git</p>
+    <p>Data & Integrations: REST/gRPC, GraphQL, Kafka, RabbitMQ, ETL, Data Pipelines</p>
+  </section>
+
   <script async src="flutter_bootstrap.js"></script>
-  <script>
-    window.addEventListener('flutter-first-frame', function () {
-      var el = document.getElementById('loader');
-      if (el) {
-        el.style.transition = 'opacity 0.4s ease-out';
-        el.style.opacity = '0';
-        setTimeout(function() {
-          el.remove();
-        }, 400);
-      }
-    });
-  </script>
 </body>
 
 </html>

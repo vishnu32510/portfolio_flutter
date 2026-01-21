@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -71,10 +72,23 @@ class GlobalFooter extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(
-                            Icons.flutter_dash,
-                            size: AppSizes.iconSmall,
-                            color: const Color(0xFF42A5F5), // Flutter blue color
+                          SvgPicture.asset(
+                            'assets/logo/flutter.svg',
+                            height: AppSizes.iconSmall,
+                            width: AppSizes.iconSmall,
+                          ),
+                          SizedBox(width: AppSizes.spacingSmall),
+                          SelectableText(
+                            'Built with Flutter',
+                            style: AppStyles.smallText(
+                              textColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),
+                            ),
+                          ),
+                          SizedBox(width: AppSizes.spacingLarge),
+                          SvgPicture.asset(
+                            'assets/logo/firebase.svg',
+                            height: AppSizes.iconSmall,
+                            width: AppSizes.iconSmall,
                           ),
                           SizedBox(width: AppSizes.spacingSmall),
                           SelectableText(
