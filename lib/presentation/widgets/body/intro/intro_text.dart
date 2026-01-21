@@ -30,16 +30,14 @@ class IntroText extends StatelessWidget {
         ];
 
         return Column(
-          crossAxisAlignment: context.width < DeviceType.mobile.getMaxWidth()
-              ? CrossAxisAlignment.center
-              : CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SelectableText(
               data.developerName,
               style: context.width < DeviceType.ipad.getMaxWidth()
                   ? AppStyles.s28
                   : AppStyles.s52,
-              textAlign: _getTextAlign(context.width),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
             // Animated typewriter text for multiple roles
@@ -57,7 +55,7 @@ class IntroText extends StatelessWidget {
                         textStyle: context.width < DeviceType.ipad.getMaxWidth()
                             ? AppStyles.s18
                             : AppStyles.s28,
-                        textAlign: _getTextAlign(context.width),
+                        textAlign: TextAlign.center,
                         speed: const Duration(milliseconds: 50),
                       );
                     }).toList(),
@@ -66,18 +64,6 @@ class IntroText extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            SizedBox(
-              width: context.width < DeviceType.mobile.getMaxWidth()
-                  ? context.width - 20
-                  : context.width / 1.5,
-              child: SelectableText(
-                data.introMessage,
-                style: context.width < DeviceType.ipad.getMaxWidth()
-                    ? AppStyles.s14
-                    : AppStyles.s16,
-                textAlign: _getTextAlign(context.width),
-              ),
-            ),
             const SizedBox(height: 24),
             Wrap(
               spacing: 12,
@@ -116,11 +102,6 @@ class IntroText extends StatelessWidget {
     );
   }
 
-  TextAlign _getTextAlign(double screenWidth) {
-    return screenWidth < DeviceType.mobile.getMaxWidth()
-        ? TextAlign.center
-        : TextAlign.start;
-  }
 }
 
 class _HighlightBadge extends StatelessWidget {
@@ -169,7 +150,7 @@ class _HighlightBadge extends StatelessWidget {
                 color: Theme.of(context).colorScheme.primary,
               ),
               const SizedBox(width: 8),
-              SelectableText(
+              Text(
                 label,
                 style: AppStyles.smallText(
                   textColor: Theme.of(context)

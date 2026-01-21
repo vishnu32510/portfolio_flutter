@@ -157,7 +157,7 @@ class SkillChip extends StatelessWidget {
               color: iconEntry.value ?? colors.primary,
             ),
           SizedBox(width: AppSizes.spacingSmall),
-          SelectableText(
+          Text(
             skillName,
             style: compact
                 ? AppStyles.extraSmallTextThin(
