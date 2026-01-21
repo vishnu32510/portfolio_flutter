@@ -57,10 +57,52 @@
       height: 1px;
       overflow: hidden;
     }
+
+    /* Simple centered loader with app icon */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* Keep loader cream even if the user's browser is in dark mode */
+      background-color: #F4F5F6;
+      z-index: 9999;
+    }
+
+    #loader img {
+      width: 96px;
+      height: 96px;
+      border-radius: 24px;
+      animation: loader-pulse 1.2s ease-in-out infinite;
+    }
+
+    @keyframes loader-pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.08);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 
 <body style="height: 100vh;width: 100vw;margin: 0;">
+
+  <!-- Initial loader with app icon -->
+  <div id="loader">
+    <img src="assets/images/appIcon.png" alt="Vishnu Priyan Portfolio Loader" />
+  </div>
 
   <!-- Hidden SEO Content for Search Engines (reference-style) -->
   <section id="seo-content">
@@ -76,6 +118,22 @@
     <p>Cloud & DevOps: GCP, Azure, AWS, Firebase, Docker, CI/CD, Pub/Sub, Jenkins, Git</p>
     <p>Data & Integrations: REST/gRPC, GraphQL, Kafka, RabbitMQ, ETL, Data Pipelines</p>
   </section>
+
+  <script>
+    // Hide loader once Flutter renders the first frame
+    window.addEventListener('flutter-first-frame', function () {
+      var loader = document.getElementById('loader');
+      if (loader) {
+        loader.style.opacity = '0';
+        loader.style.transition = 'opacity 0.25s ease-out';
+        setTimeout(function () {
+          if (loader && loader.parentNode) {
+            loader.parentNode.removeChild(loader);
+          }
+        }, 300);
+      }
+    });
+  </script>
 
   <script async src="flutter_bootstrap.js"></script>
 </body>

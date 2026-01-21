@@ -58,7 +58,7 @@ class ProjectTagSelector extends StatelessWidget {
                   horizontal: AppSizes.spacingRegular,
                   vertical: AppSizes.spacingSmall,
                 ),
-                child: SelectableText(
+                child: Text(
                   tag.value,
                   style: selectedTag == tag
                       ? AppStyles.smallTextBold(textColor: colors.onPrimary)

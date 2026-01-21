@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/utils/app_enums.dart';
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -70,27 +71,27 @@ class IntroText extends StatelessWidget {
               runSpacing: 12,
               children: const [
                 _HighlightBadge(
-                  icon: Icons.emoji_events,
+                  icon: FontAwesomeIcons.trophy,
                   label: 'Floxi · Scarlet Hacks 2025 Winner',
                   url: 'https://floxi.co',
                 ),
                 _HighlightBadge(
-                  icon: Icons.emoji_events,
+                  icon: FontAwesomeIcons.trophy,
                   label: 'Chi Planner · Scarlet Hacks 2024 Winner',
                   url: 'https://devpost.com/software/chi-town-places-event-planner',
                 ),
                 _HighlightBadge(
-                  icon: Icons.auto_awesome,
+                  icon: FontAwesomeIcons.wandMagicSparkles,
                   label: 'Fact Dynamics · Perplexity API Showcase',
                   url: 'https://devpost.com/software/fact-dynamics',
                 ),
                 _HighlightBadge(
-                  icon: Icons.widgets,
+                  icon: FontAwesomeIcons.box,
                   label: 'perplexity_flutter · pub.dev',
                   url: 'https://pub.dev/packages/perplexity_flutter',
                 ),
                 _HighlightBadge(
-                  icon: Icons.widgets_outlined,
+                  icon: FontAwesomeIcons.box,
                   label: 'perplexity_dart · pub.dev',
                   url: 'https://pub.dev/packages/perplexity_dart',
                 ),

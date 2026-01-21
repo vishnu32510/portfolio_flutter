@@ -14,7 +14,11 @@ part 'portfolio_state.dart';
 class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
   final FirebasePortfolioService _firebaseService = FirebasePortfolioService();
 
-  PortfolioBloc() : super(const PortfolioState(isLoading: true)) {
+  PortfolioBloc()
+      : super(PortfolioState(
+          data: _getDefaultData(),
+          isLoading: false,
+        )) {
     on<LoadPortfolioData>(_onLoadPortfolioData);
     on<PortfolioDataUpdated>(_onPortfolioDataUpdated);
 
@@ -64,7 +68,7 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
     emit(state.copyWith(data: event.data, isLoading: false, error: null));
   }
 
-  PortfolioData _getDefaultData() {
+  static PortfolioData _getDefaultData() {
     // Fallback data if Firebase is unavailable - using actual resume and GitHub data
     return PortfolioData(
       developerName: 'Vishnu Priyan Sellam Shanmugavel',
