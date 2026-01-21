@@ -49,3 +49,6 @@ key*.properties
 
 # FVM Version Cache
 .fvm/
+
+# Service account keys (never commit)
+firebase-service-account.json
