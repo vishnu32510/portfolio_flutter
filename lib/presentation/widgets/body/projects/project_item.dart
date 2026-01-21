@@ -102,8 +102,8 @@ class ProjectItem extends StatelessWidget {
                 // Tech stack tags
                 if (project.techStack.isNotEmpty)
                   Wrap(
-                    spacing: AppSizes.spacingSmallRegular,
-                    runSpacing: AppSizes.spacingSmallRegular,
+                    spacing: AppSizes.spacingSmall,
+                    runSpacing: AppSizes.spacingSmall,
                     children: project.techStack.take(3).map((tech) {
                       return Container(
                         padding: const EdgeInsets.symmetric(
@@ -213,7 +213,7 @@ class ProjectItem extends StatelessWidget {
               color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),
             ),
             const SizedBox(width: AppSizes.spacingXS),
-            SelectableText(
+            Text(
               label,
               style: AppStyles.smallText(
                 textColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),

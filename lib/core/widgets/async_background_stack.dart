@@ -11,9 +11,9 @@ class AsyncBackgroundStack extends StatefulWidget {
     super.key,
     this.showParticleNetwork = true,
     this.showGrid = true,
-    this.particleCount = 40,
+    this.particleCount = 50,
     this.particleMaxSpeed = 0.3,
-    this.particleLineDistance = 200,
+    this.particleLineDistance = 150,
   });
 
   final bool showParticleNetwork;
@@ -36,7 +36,7 @@ class _AsyncBackgroundStackState extends State<AsyncBackgroundStack> {
     // Delay background loading to allow UI to render first
     // Grid loads first (lighter)
     _gridLoadFuture = Future.delayed(
-      const Duration(milliseconds: 50),
+      const Duration(milliseconds: 100),
       () {
         // Allow first frame to render
         SchedulerBinding.instance.addPostFrameCallback((_) {});
@@ -45,7 +45,7 @@ class _AsyncBackgroundStackState extends State<AsyncBackgroundStack> {
 
     // Particle network loads after grid (heavier)
     _particleLoadFuture = Future.delayed(
-      const Duration(milliseconds: 300),
+      const Duration(milliseconds: 500),
       () {
         // Load particle network after grid is ready
         SchedulerBinding.instance.addPostFrameCallback((_) {});
@@ -102,7 +102,7 @@ class _AsyncBackgroundStackState extends State<AsyncBackgroundStack> {
                     maxSize: 1.5,
                     lineWidth: 0.5,
                     lineDistance: widget.particleLineDistance,
-                    touchActivation: true,
+                    touchActivation: false,
                     drawNetwork: true,
                     fill: false,
                     isComplex: false,

@@ -149,16 +149,16 @@ class ProjectItemNew extends StatelessWidget {
                           spacedChildren.add(children[i]);
                           if (i < children.length - 1) {
                             spacedChildren.add(SizedBox(
-                              width: AppSizes.spacingMediumSmall,
-                              height: AppSizes.spacingMediumSmall,
+                              width: AppSizes.spacingSmall,
+                              height: AppSizes.spacingSmall,
                             ));
                           }
                         }
                         return Wrap(
                           alignment: WrapAlignment.start,
                           runAlignment: WrapAlignment.start,
-                          spacing: AppSizes.spacingMediumSmall,
-                          runSpacing: AppSizes.spacingMediumSmall,
+                          spacing: AppSizes.spacingSmall,
+                          runSpacing: AppSizes.spacingSmall,
                           children: spacedChildren,
                         );
                       },
@@ -219,7 +219,7 @@ class ProjectItemNew extends StatelessWidget {
               color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
             ),
             SizedBox(width: AppSizes.spacingSmallRegular),
-            SelectableText(
+            Text(
               label,
               style: AppStyles.smallText(
                 textColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),

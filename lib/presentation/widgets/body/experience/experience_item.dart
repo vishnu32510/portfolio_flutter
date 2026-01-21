@@ -131,11 +131,11 @@ class _ExperienceItemState extends State<ExperienceItem> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              SelectableText(
+                              Text(
                                 widget.experience.title,
                                 style: AppStyles.mediumTextBold(),
                               ),
-                              SelectableText(
+                              Text(
                                 widget.experience.company,
                                 style: AppStyles.smallTextBold(
                                   textColor: _collapsed
@@ -154,7 +154,7 @@ class _ExperienceItemState extends State<ExperienceItem> {
                                     color: typeColor,
                                   ),
                                 ),
-                                child: SelectableText(
+                                child: Text(
                                   experienceType,
                                   style: AppStyles.extraSmallText(
                                     textColor: typeColor,
@@ -176,7 +176,7 @@ class _ExperienceItemState extends State<ExperienceItem> {
                         vertical: AppSizes.spacingSmall,
                         horizontal: AppSizes.spacingRegular,
                       ),
-                      child: SelectableText(
+                      child: Text(
                         ExperienceUtils.convertToTimeline(widget.experience.period),
                         style: AppStyles.extraSmallText(),
                       ),
@@ -227,7 +227,7 @@ class _ExperienceItemState extends State<ExperienceItem> {
                           ),
                           SizedBox(width: AppSizes.spacingMedium),
                           Expanded(
-                            child: SelectableText(
+                            child: Text(
                               achievement,
                               style: AppStyles.regularText(),
                             ),
@@ -259,7 +259,7 @@ class _ExperienceItemState extends State<ExperienceItem> {
                               size: AppSizes.iconSmall,
                               color: colors.onSurface.withValues(alpha: 0.5),
                             ),
-                            SelectableText(
+                            Text(
                               'Collapse',
                               style: AppStyles.smallText(
                                 textColor: colors.onSurface.withValues(alpha: 0.5),
