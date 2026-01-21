@@ -23,7 +23,7 @@ class _SplashPageState extends State<SplashPage>
     _controller = AnimationController(
       vsync: this,
       // Keep splash snappy (target total: ~800–1200ms)
-      duration: const Duration(milliseconds: 900),
+      duration: const Duration(milliseconds: 500),
     );
 
     _fadeAnimation = Tween<double>(
