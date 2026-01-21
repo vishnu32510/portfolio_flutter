@@ -98,7 +98,6 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/previews/
     - assets/lottie/
     - assets/logo/
 
