@@ -18,8 +18,9 @@ class DeveloperNameBtn extends StatelessWidget {
       child: GestureDetector(
         onTap: () => AppNavigator.goHome(),
         child: Container(
-          height: AppSizes.iconXL,
-          width: AppSizes.iconXL,
+          // Slightly bigger app icon in the app bar
+          height: AppSizes.iconXL + 6,
+          width: AppSizes.iconXL + 6,
           alignment: Alignment.center,
           clipBehavior: Clip.hardEdge,
           decoration: const BoxDecoration(

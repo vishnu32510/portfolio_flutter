@@ -73,7 +73,7 @@ class IntroText extends StatelessWidget {
                 _HighlightBadge(
                   icon: FontAwesomeIcons.trophy,
                   label: 'Floxi · Scarlet Hacks 2025 Winner',
-                  urls: ['https://floxi.co'],
+                  urls: ['https://floxi.co', 'https://devpost.com/software/floxi', "https://apps.apple.com/us/app/floxi/id6749322113", ],
                 ),
                 _HighlightBadge(
                   icon: FontAwesomeIcons.trophy,
@@ -83,17 +83,17 @@ class IntroText extends StatelessWidget {
                 _HighlightBadge(
                   icon: FontAwesomeIcons.wandMagicSparkles,
                   label: 'Fact Dynamics · Perplexity API Showcase',
-                  urls: ['https://docs.perplexity.ai/cookbook/showcase/fact-dynamics'],
+                  urls: ['https://docs.perplexity.ai/cookbook/showcase/fact-dynamics', 'https://devpost.com/software/fact-dynamics'],
                 ),
                 _HighlightBadge(
                   icon: FontAwesomeIcons.box,
                   label: 'perplexity_flutter · pub.dev',
-                  urls: ['https://pub.dev/packages/perplexity_flutter'],
+                  urls: ['https://pub.dev/packages/perplexity_flutter', 'https://docs.perplexity.ai/cookbook/showcase/perplexity-flutter'],
                 ),
                 _HighlightBadge(
                   icon: FontAwesomeIcons.box,
                   label: 'perplexity_dart · pub.dev',
-                  urls: ['https://pub.dev/packages/perplexity_dart'],
+                  urls: ['https://pub.dev/packages/perplexity_dart', 'https://docs.perplexity.ai/cookbook/showcase/perplexity-flutter'],
                 ),
               ],
             ),
