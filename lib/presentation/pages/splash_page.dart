@@ -16,14 +16,15 @@ class _SplashPageState extends State<SplashPage>
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
+  Timer? _navigationTimer;
 
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      // Keep splash snappy (target total: ~800–1200ms)
-      duration: const Duration(milliseconds: 200),
+      // Keep splash snappy but smooth (target total: ~800–1200ms)
+      duration: const Duration(milliseconds: 700),
     );
 
     _fadeAnimation = Tween<double>(
@@ -32,36 +33,43 @@ class _SplashPageState extends State<SplashPage>
     ).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: const Interval(0.0, 0.6, curve: Curves.easeIn),
+        curve: const Interval(0.0, 0.6, curve: Curves.easeOut),
       ),
     );
 
     _scaleAnimation = Tween<double>(
-      begin: 0.5,
+      begin: 0.9,
       end: 1.0,
     ).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: const Interval(0.0, 0.8, curve: Curves.elasticOut),
+        curve: const Interval(0.0, 0.8, curve: Curves.easeOutCubic),
       ),
     );
 
     _controller.forward();
 
-    // Navigate to home shortly after animation completes
-    Timer(const Duration(milliseconds: 1100), () {
-      if (mounted) {
+    _controller.addStatusListener((status) {
+      if (status != AnimationStatus.completed) {
+        return;
+      }
+      // Navigate to home shortly after animation completes
+      _navigationTimer = Timer(const Duration(milliseconds: 150), () {
+        if (!mounted) {
+          return;
+        }
         // Use pushReplacementNamed to replace splash with home
         // This ensures the route is properly replaced
         Navigator.of(context).pushReplacementNamed(
           Routes.home.route,
         );
-      }
+      });
     });
   }
 
   @override
   void dispose() {
+    _navigationTimer?.cancel();
     _controller.dispose();
     super.dispose();
   }
