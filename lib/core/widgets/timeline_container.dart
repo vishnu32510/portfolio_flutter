@@ -56,6 +56,14 @@ class TimelineContainer extends StatelessWidget {
                       borderRadius: AppSizes.borderRadiusRegular,
                       border: Border.all(color: colors.outline),
                       color: colors.surface,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.05),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                          spreadRadius: 0,
+                        ),
+                      ],
                     )
                   : null,
               child: child,

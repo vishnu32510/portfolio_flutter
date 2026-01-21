@@ -34,8 +34,8 @@ class ParticleNetworkBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final defaultParticleColor = theme.colorScheme.onSurface.withValues(alpha: 0.6);
-    final defaultLineColor = theme.colorScheme.primary.withValues(alpha: 0.4);
+    final defaultParticleColor = theme.colorScheme.onSurface.withValues(alpha: 0.4);
+    final defaultLineColor = theme.colorScheme.primary.withValues(alpha: 0.2);
     final defaultTouchColor = theme.colorScheme.primary;
 
     return Listener(

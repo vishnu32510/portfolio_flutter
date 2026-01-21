@@ -42,6 +42,14 @@ class ProjectItemNew extends StatelessWidget {
         color: colors.surface,
         borderRadius: AppSizes.borderRadiusRegular,
         border: Border.all(color: colors.outline),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+            spreadRadius: 0,
+          ),
+        ],
       ),
       child: ClipRRect(
         borderRadius: AppSizes.borderRadiusRegular,
