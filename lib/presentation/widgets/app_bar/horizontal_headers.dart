@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 import 'package:portfolio_flutter/core/utils/app_extensions.dart';
-import '../../../core/utils/app_assets.dart';
-import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_enums.dart';
-import '../../../core/utils/app_sizes.dart';
 import '../../blocs/home_bloc/home_bloc.dart';
 import 'custom_header_btn.dart';
-import 'theme_header_btn.dart';
 
 class HorizontalHeaders extends StatelessWidget {
   const HorizontalHeaders({super.key});

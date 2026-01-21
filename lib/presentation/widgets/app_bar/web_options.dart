@@ -5,22 +5,11 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../core/utils/app_extensions.dart';
 import '../../../core/utils/app_sizes.dart';
 import '../../../core/utils/app_styles.dart';
-import '../../../core/widgets/hover_glow_text.dart';
-import '../../../navigation/navigation.dart';
 import '../../blocs/portfolio_bloc/portfolio_bloc.dart';
-import '../../blocs/theme_bloc/theme_bloc.dart';
-import '../../../core/utils/theme_enums.dart';
 import 'theme_header_btn.dart';
 
-class WebOptions extends StatefulWidget {
+class WebOptions extends StatelessWidget {
   const WebOptions({super.key});
-
-  @override
-  State<WebOptions> createState() => _WebOptionsState();
-}
-
-class _WebOptionsState extends State<WebOptions> {
-  bool _menuOpen = false;
 
   @override
   Widget build(BuildContext context) {

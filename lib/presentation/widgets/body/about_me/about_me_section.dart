@@ -5,7 +5,6 @@ import '../../../../core/utils/app_sizes.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/gradient_text.dart';
 import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';
-import 'about_me_intro.dart';
 import 'experience_info.dart';
 
 class AboutMeSection extends StatelessWidget {
