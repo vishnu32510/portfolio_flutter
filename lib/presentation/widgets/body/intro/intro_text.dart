@@ -73,27 +73,27 @@ class IntroText extends StatelessWidget {
                 _HighlightBadge(
                   icon: FontAwesomeIcons.trophy,
                   label: 'Floxi · Scarlet Hacks 2025 Winner',
-                  url: 'https://floxi.co',
+                  urls: ['https://floxi.co'],
                 ),
                 _HighlightBadge(
                   icon: FontAwesomeIcons.trophy,
                   label: 'Chi Planner · Scarlet Hacks 2024 Winner',
-                  url: 'https://devpost.com/software/chi-town-places-event-planner',
+                  urls: ['https://devpost.com/software/chi-town-places-event-planner'],
                 ),
                 _HighlightBadge(
                   icon: FontAwesomeIcons.wandMagicSparkles,
                   label: 'Fact Dynamics · Perplexity API Showcase',
-                  url: 'https://devpost.com/software/fact-dynamics',
+                  urls: ['https://docs.perplexity.ai/cookbook/showcase/fact-dynamics'],
                 ),
                 _HighlightBadge(
                   icon: FontAwesomeIcons.box,
                   label: 'perplexity_flutter · pub.dev',
-                  url: 'https://pub.dev/packages/perplexity_flutter',
+                  urls: ['https://pub.dev/packages/perplexity_flutter'],
                 ),
                 _HighlightBadge(
                   icon: FontAwesomeIcons.box,
                   label: 'perplexity_dart · pub.dev',
-                  url: 'https://pub.dev/packages/perplexity_dart',
+                  urls: ['https://pub.dev/packages/perplexity_dart'],
                 ),
               ],
             ),
@@ -109,26 +109,37 @@ class _HighlightBadge extends StatelessWidget {
   const _HighlightBadge({
     required this.icon,
     required this.label,
-    required this.url,
+    required this.urls,
   });
 
   final IconData icon;
   final String label;
-  final String url;
+  final List<String> urls;
 
   @override
   Widget build(BuildContext context) {
-    Future<void> _onTap() async {
+    Future<void> _onTap(String url) async {
       final uri = Uri.parse(url);
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.externalApplication);
       }
     }
 
+    String _chipLabel(String url) {
+      try {
+        final host = Uri.parse(url).host.replaceFirst(RegExp(r'^www\.'), '');
+        return host.isEmpty ? url : host;
+      } catch (_) {
+        return url;
+      }
+    }
+
+    final isSingle = urls.length == 1;
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: _onTap,
+        onTap: isSingle ? () => _onTap(urls.first) : null,
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
@@ -160,6 +171,46 @@ class _HighlightBadge extends StatelessWidget {
                       .withValues(alpha: 0.85),
                 ),
               ),
+              if (!isSingle) ...[
+                const SizedBox(width: 8),
+                Wrap(
+                  spacing: 6,
+                  runSpacing: 6,
+                  children: urls
+                      .map(
+                        (u) => GestureDetector(
+                          onTap: () => _onTap(u),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 6,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .primary
+                                  .withValues(alpha: 0.12),
+                              borderRadius: BorderRadius.circular(999),
+                              border: Border.all(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .primary
+                                    .withValues(alpha: 0.35),
+                              ),
+                            ),
+                            child: Text(
+                              _chipLabel(u),
+                              style: AppStyles.extraSmallTextThin(
+                                textColor:
+                                    Theme.of(context).colorScheme.primary,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+              ],
             ],
           ),
         ),
