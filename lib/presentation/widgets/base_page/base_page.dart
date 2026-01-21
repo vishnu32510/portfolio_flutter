@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/utils/app_extensions.dart';
 import '../../../core/utils/app_constants.dart';
 import '../../../core/utils/app_sizes.dart';
-import '../../../core/widgets/particle_network_background.dart';
+import '../../../core/widgets/async_background_stack.dart';
 import 'global_footer.dart';
 import '../app_bar/home_app_bar.dart';
 
@@ -29,20 +29,14 @@ class BasePage extends StatelessWidget {
         width: context.width,
         child: Stack(
           children: [
-            // Use RepaintBoundary to isolate background rendering and improve performance
+            // Async background stack with both backgrounds in separate RepaintBoundaries
             Positioned.fill(
-              child: RepaintBoundary(
-                child: ParticleNetworkBackground(
-                  particleCount: 40, // Reduced for better performance
-                  maxSpeed: 0.3, // Slightly faster for smoother animation
-                  maxSize: 1.5,
-                  lineWidth: 0.5,
-                  lineDistance: 200, // Increased distance = fewer connections = better performance
-                  touchActivation: true,
-                  drawNetwork: true,
-                  fill: false,
-                  isComplex: false, // Set to false for better performance
-                ),
+              child: AsyncBackgroundStack(
+                showParticleNetwork: true,
+                showGrid: true,
+                particleCount: 40,
+                particleMaxSpeed: 0.3,
+                particleLineDistance: 200,
               ),
             ),
             if (additionalBackground != null) additionalBackground!,
