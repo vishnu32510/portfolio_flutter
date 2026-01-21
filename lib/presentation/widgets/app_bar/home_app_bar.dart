@@ -1,4 +1,3 @@
-import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/utils/app_constants.dart';
@@ -40,29 +39,21 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
             ),
-            // Center: Navigation Headers (desktop only) - with delay
+            // Center: Navigation Headers (desktop only)
             if (!context.isMobile && context.width >= 800)
               Align(
                 alignment: Alignment.center,
                 child: SizedBox(
                   width: context.width * 0.8,
-                  child: DelayedDisplay(
-                    slidingCurve: Curves.fastEaseInToSlowEaseOut,
-                    delay: const Duration(milliseconds: 350),
-                    child: const HorizontalHeaders(),
-                  ),
+                  child: const HorizontalHeaders(),
                 ),
               ),
-            // Right: Web Options (Resume + Theme) or Mobile Menu - with delay
+            // Right: Web Options (Resume + Theme) or Mobile Menu
             Align(
               alignment: Alignment.centerRight,
-              child: DelayedDisplay(
-                slidingCurve: Curves.fastEaseInToSlowEaseOut,
-                delay: const Duration(milliseconds: 350),
-                child: context.isMobile || context.width < 800
-                    ? const CustomMenuBtn()
-                    : const WebOptions(),
-              ),
+              child: context.isMobile || context.width < 800
+                  ? const CustomMenuBtn()
+                  : const WebOptions(),
             ),
           ],
         ),

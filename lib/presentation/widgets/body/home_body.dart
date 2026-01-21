@@ -1,4 +1,3 @@
-import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,10 +33,7 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
     // WelcomeToasts(context);
-    return DelayedDisplay(
-      slidingCurve: Curves.fastEaseInToSlowEaseOut,
-      delay: const Duration(milliseconds: 350),
-      child: BlocListener<HomeBloc, HomeState>(
+    return BlocListener<HomeBloc, HomeState>(
         listener: (context, state) {
           if (state is AppBarHeadersIndexChanged) {
             Navigator.of(context).maybePop();
@@ -90,10 +86,7 @@ class _HomeBodyState extends State<HomeBody> {
               ),
               child: Column(
                 children: [
-                  DelayedDisplay(
-                      slidingCurve: Curves.ease,
-                      delay: const Duration(milliseconds: 1200),
-                      child: IntroSection(key: introKey)),
+                  IntroSection(key: introKey),
                   TechnicalSkillsSection(key: skillsKey),
                   ExperienceSection(key: experienceKey),
                   ProjectsSection(key: projectKey),
@@ -102,10 +95,7 @@ class _HomeBodyState extends State<HomeBody> {
                 ],
               ),
             ),
-            const DelayedDisplay(
-                slidingCurve: Curves.ease,
-                delay: Duration(milliseconds: 1000),
-                child: VerticalHeadersBuilder()),
+            const VerticalHeadersBuilder(),
             Padding(
               padding: const EdgeInsets.all(AppSizes.spacingLarge),
               child: const Align(
@@ -115,7 +105,6 @@ class _HomeBodyState extends State<HomeBody> {
             ),
           ],
         ),
-      ),
     );
   }
 }

@@ -3,6 +3,7 @@ import '../../../core/widgets/grid_background.dart';
 import '../../../core/utils/app_extensions.dart';
 import '../../../core/utils/app_constants.dart';
 import '../../../core/utils/app_sizes.dart';
+import '../../../core/widgets/particle_network_background.dart';
 import 'global_footer.dart';
 import '../app_bar/home_app_bar.dart';
 
@@ -30,13 +31,24 @@ class BasePage extends StatelessWidget {
         child: Stack(
           children: [
             Positioned.fill(
-              child: GridBackground(
-                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
-                strokeWidth: 0.5,
-                horizontalSpacing: 45,
-                verticalSpacing: 45,
-                runnerColor: Theme.of(context).colorScheme.primary,
-              ),
+              child: ParticleNetworkBackground(
+                  particleCount: 80,
+                  maxSpeed: 0.2,
+                  maxSize: 1.5,
+                  lineWidth: 0.5,
+                  lineDistance: 150,
+                  touchActivation: true,
+                  drawNetwork: true,
+                  fill: false,
+                  isComplex: true,
+                ),
+              // child: GridBackground(
+              //   color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
+              //   strokeWidth: 0.5,
+              //   horizontalSpacing: 45,
+              //   verticalSpacing: 45,
+              //   runnerColor: Theme.of(context).colorScheme.primary,
+              // ),
             ),
             if (additionalBackground != null) additionalBackground!,
             CustomScrollView(
