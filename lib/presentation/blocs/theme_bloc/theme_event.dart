@@ -1,14 +1,17 @@
-import 'package:flutter/material.dart';
+part of 'theme_bloc.dart';
 
 @immutable
-abstract class ThemeEvent {}
+abstract class ThemeEvent extends Equatable {
+  const ThemeEvent();
 
-class ThemeEventChange extends ThemeEvent {
-  final ThemeEventType currentTheme;
-  ThemeEventChange(this.currentTheme);
+  @override
+  List<Object?> get props => [];
 }
 
-enum ThemeEventType {
-  toggleDark, // Event for toggling to dark theme
-  toggleLight, // Event for toggling to light theme
+class ThemeEventChange extends ThemeEvent {
+  final ThemeType currentTheme;
+  const ThemeEventChange(this.currentTheme);
+
+  @override
+  List<Object?> get props => [currentTheme];
 }

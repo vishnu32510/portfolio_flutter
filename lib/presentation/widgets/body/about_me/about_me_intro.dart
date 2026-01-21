@@ -14,18 +14,17 @@ class AboutMeIntro extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         FittedBox(
-          child: Text(
-            AppBarHeaders.aboutMe.getString(),
+          child: SelectableText(
+            'About Me',
             style: AppStyles.s32,
           ),
         ),
         const SizedBox(height: 8),
-        Text(
+        SelectableText(
           AppStrings.aboutMeMsg,
           style: context.width < DeviceType.mobile.getMaxWidth()
               ? AppStyles.s14
               : AppStyles.s18,
-          softWrap: true,
         ),
       ],
     );

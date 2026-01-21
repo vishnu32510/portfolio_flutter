@@ -12,16 +12,15 @@ class ProjectsIntro extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         FittedBox(
-          child: Text(
+          child: SelectableText(
             AppStrings.featuredProjects,
             style: AppStyles.s32,
           ),
         ),
         const SizedBox(height: 8),
-        Text(
+        SelectableText(
           AppStrings.projectsMsg,
           style: AppStyles.s18,
-          softWrap: true,
         ),
       ],
     );

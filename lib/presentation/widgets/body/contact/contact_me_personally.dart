@@ -62,7 +62,7 @@ class ContactMePersonally extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
-                const Text("Email Me")
+                const SelectableText("Email Me")
               ],
             ),
           ),

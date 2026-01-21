@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/utils/app_assets.dart';
+import '../../../core/utils/theme_enums.dart';
 import '../../blocs/theme_bloc/theme_bloc.dart';
-import '../../blocs/theme_bloc/theme_event.dart';
 
 class ThemeHeader extends StatefulWidget {
   const ThemeHeader({super.key});
@@ -19,15 +19,14 @@ class _ThemeHeaderState extends State<ThemeHeader> {
         return Stack(
           children: [
             Visibility(
-                visible: BlocProvider.of<ThemeBloc>(context).state.themeData ==
-                    ThemeState.darkTheme.themeData,
+                visible: state.themeEventType == ThemeType.darkMode,
                 replacement: InkWell(
                     highlightColor: Colors.transparent,
                     splashColor: Colors.transparent,
                     hoverColor: Colors.transparent,
                     onTap: () {
                       BlocProvider.of<ThemeBloc>(context)
-                          .add(ThemeEventChange(ThemeEventType.toggleDark));
+                          .add(ThemeEventChange(ThemeType.darkMode));
                     },
                     child: const CircleAvatar(
                       radius: 32, // Image radius
@@ -41,7 +40,7 @@ class _ThemeHeaderState extends State<ThemeHeader> {
                     hoverColor: Colors.transparent,
                     onTap: () {
                       BlocProvider.of<ThemeBloc>(context)
-                          .add(ThemeEventChange(ThemeEventType.toggleLight));
+                          .add(ThemeEventChange(ThemeType.lightMode));
                     },
                     child: const CircleAvatar(
                       radius: 32, // Image radius

@@ -39,10 +39,9 @@ class _BasicServiceItemState extends State<BasicServiceItem> {
             const SizedBox(height: 16),
             if (context.width > DeviceType.mobile.getMinWidth())
               FittedBox(
-                child: Text(
+                child: SelectableText(
                   widget.service.service,
                   style: AppStyles.s24,
-                  // minFontSize: 8,
                   textAlign: TextAlign.center,
                 ),
               ),

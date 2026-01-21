@@ -12,7 +12,7 @@ class ExperienceInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(
+        SelectableText(
           AppStrings.numOfExperience,
           style: context.width < DeviceType.mobile.getMaxWidth()
               ? AppStyles.s32.copyWith(fontSize: 48)
@@ -20,10 +20,9 @@ class ExperienceInfo extends StatelessWidget {
         ),
         const SizedBox(width: 20),
         Flexible(
-          child: Text(
+          child: SelectableText(
             AppStrings.experienceMsg,
             style: _getExpMsgStyle(context.width),
-            softWrap: true,
           ),
         ),
       ],

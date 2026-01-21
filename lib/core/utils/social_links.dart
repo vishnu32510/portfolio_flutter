@@ -1,6 +1,7 @@
 abstract class SocialLinks {
   static const String github = "https://github.com/vishnu32510";
   static const String linkedin = "https://www.linkedin.com/in/vishnu32510/";
+  static const String email = "mailto:vishnu32510@gmail.com";
   static const String devTo = "https://dev.to/vishnu32510";
   static const String twitter = "https://twitter.com/vishnu32510";
   static const String stackOverflow =

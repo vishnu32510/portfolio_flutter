@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="$FLUTTER_BASE_HREF" />
 
   <meta charset="UTF-8" />
   <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
-  <meta name="description" content="Vishnu Priyan's Portfolio" />
+  <meta name="author" content="Vishnu Priyan" />
+  <meta name="description" content="Vishnu Priyan - Software Engineer (Full-Stack & Mobile) building scalable applications and mobile solutions." />
+  <meta name="keywords" content="Vishnu Priyan, Software Engineer, Full-Stack, Mobile Development, Flutter, Dart, Android, iOS" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Vishnu Priyan | Software Engineer (Full-Stack & Mobile)" />
+  <meta property="og:description" content="Software Engineer (Full-Stack & Mobile) building scalable applications and mobile solutions." />
+  <meta property="og:url" content="https://vishnupriyan.dev" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vishnu Priyan | Software Engineer (Full-Stack & Mobile)" />
+  <meta name="twitter:description" content="Software Engineer (Full-Stack & Mobile) building scalable applications and mobile solutions." />
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -30,16 +31,23 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
 
-  <title>Vishnu Priyan</title>
+  <title>Vishnu Priyan | Software Engineer (Full-Stack & Mobile)</title>
   <link rel="manifest" href="manifest.json" />
 
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = null;
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
   <style>
+    body {
+      background-color: #F4F5F6;
+      margin: 0;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #0C0C0C;
+      }
+    }
+
     .container {
       margin: 0;
       position: absolute;
@@ -56,31 +64,21 @@
   </style>
 </head>
 
-<body style="overflow: hidden">
-  <div class="container">
-    <img class="loader" src="assets/loading.gif" />
+<body>
+  <div class="container" id="loader">
+    <img class="loader" src="assets/loading.gif" alt="Loading..." />
   </div>
-  <script>
-    window.addEventListener('load', function (ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function (engineInitializer) {
-          engineInitializer
-            .initializeEngine()
-            .then(function (appRunner) {
-              appRunner.runApp();
-            });
-        },
-      });
-    });
-  </script>
+  <script async src="flutter_bootstrap.js"></script>
   <script>
     window.addEventListener('flutter-first-frame', function () {
-      var el = document.getElementsByClassName('container')[0];
-      el.remove();
+      var el = document.getElementById('loader');
+      if (el) {
+        el.style.transition = 'opacity 0.4s ease-out';
+        el.style.opacity = '0';
+        setTimeout(function() {
+          el.remove();
+        }, 400);
+      }
     });
   </script>
 </body>

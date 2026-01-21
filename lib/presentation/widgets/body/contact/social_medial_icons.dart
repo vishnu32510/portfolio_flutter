@@ -3,55 +3,37 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/services/services.dart';
-import '../../../../core/utils/social_links.dart';
 
 class SocialMediaIcons extends StatelessWidget {
-  const SocialMediaIcons({super.key});
+  final Map<String, String> socialLinks;
+  
+  const SocialMediaIcons({super.key, required this.socialLinks});
+
+  IconData _getIconForLink(String link) {
+    if (link.contains('dev.to')) return FontAwesomeIcons.dev;
+    if (link.contains('github.com')) return FontAwesomeIcons.github;
+    if (link.contains('devpost.com')) return FontAwesomeIcons.dev;
+    if (link.contains('stackoverflow.com')) return FontAwesomeIcons.stackOverflow;
+    if (link.contains('instagram.com')) return FontAwesomeIcons.instagram;
+    if (link.contains('linkedin.com')) return FontAwesomeIcons.linkedinIn;
+    if (link.contains('twitter.com')) return FontAwesomeIcons.twitter;
+    if (link.contains('mailto:')) return FontAwesomeIcons.envelope;
+    if (link.contains('floxi.co') || link.contains('portfolio')) return FontAwesomeIcons.globe;
+    return FontAwesomeIcons.link;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const DelayedDisplay(
+    final links = socialLinks.entries.toList();
+    
+    return DelayedDisplay(
       slidingCurve: Curves.bounceIn,
-      delay: Duration(milliseconds: 350),
+      delay: const Duration(milliseconds: 350),
       child: Wrap(
-        children: [
-          SocialMediaIconBtn(
-            icon: FontAwesomeIcons.dev,
-            link: SocialLinks.devTo,
-          ),
-          SocialMediaIconBtn(
-            icon: FontAwesomeIcons.github,
-            link: SocialLinks.github,
-          ),
-          SocialMediaIconBtn(
-            icon: FontAwesomeIcons.stackOverflow,
-            link: SocialLinks.stackOverflow,
-          ),
-          // SocialMediaIconBtn(
-          //   icon: FontAwesomeIcons.dribbble,
-          //   link: SocialLinks.dribbble,
-          // ),
-          // SocialMediaIconBtn(
-          //   icon: FontAwesomeIcons.hashnode,
-          //   link: SocialLinks.hashnode,
-          // ),
-          // SocialMediaIconBtn(
-          //   icon: FontAwesomeIcons.userGear,
-          //   link: SocialLinks.geeksForGeeks,
-          // ),
-          SocialMediaIconBtn(
-            icon: FontAwesomeIcons.instagram,
-            link: SocialLinks.instagram,
-          ),
-          SocialMediaIconBtn(
-            icon: FontAwesomeIcons.linkedinIn,
-            link: SocialLinks.linkedin,
-          ),
-          SocialMediaIconBtn(
-            icon: FontAwesomeIcons.twitter,
-            link: SocialLinks.twitter,
-          ),
-        ],
+        children: links.map((entry) => SocialMediaIconBtn(
+          icon: _getIconForLink(entry.value),
+          link: entry.value,
+        )).toList(),
       ),
     );
   }
