@@ -3,14 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/utils/app_extensions.dart';
+import '../../../core/utils/app_enums.dart';
+import '../../../core/utils/app_sizes.dart';
 import '../../blocs/home_bloc/home_bloc.dart';
 import '../app_bar/theme_header_btn.dart';
 import '../app_bar/vertical_headers_builder.dart';
 // import 'Toasts/toasts.dart';
-import 'about_me/about_me_section.dart';
 import 'contact/contact_section.dart';
 import 'intro/intro_section.dart';
 import 'projects/projects_section.dart';
+import 'technical_skills/technical_skills_section.dart';
+import 'experience/experience_section.dart';
+import 'education/education_section.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
@@ -20,48 +24,12 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
-  final ScrollController _controller = ScrollController();
   final introKey = GlobalKey();
-  final aboutKey = GlobalKey();
+  final skillsKey = GlobalKey();
+  final experienceKey = GlobalKey();
   final projectKey = GlobalKey();
+  final educationKey = GlobalKey();
   final contactKey = GlobalKey();
-
-  @override
-  void initState() {
-    super.initState();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _initListenerForInteractWithHeaderIndex();
-    });
-  }
-
-  void _initListenerForInteractWithHeaderIndex() {
-    double introHeight = introKey.currentContext!.size!.height;
-    double aboutHeight = aboutKey.currentContext!.size!.height;
-    double projectHeight = projectKey.currentContext!.size!.height;
-    // double contactHeight = contactKey.currentContext!.size!.height;
-    _controller.addListener(() {
-      double controllerHeight = _controller.offset;
-      if (_controller.position.extentAfter == 0.0) {
-        context.read<HomeBloc>().add(ChangeAppBarHeadersColorByColor(3));
-      } else if (controllerHeight < introHeight) {
-        context.read<HomeBloc>().add(ChangeAppBarHeadersColorByColor(0));
-      } else if (controllerHeight < (introHeight + aboutHeight)) {
-        context.read<HomeBloc>().add(ChangeAppBarHeadersColorByColor(1));
-      } else if (controllerHeight <
-          (introHeight + aboutHeight + projectHeight)) {
-        context.read<HomeBloc>().add(ChangeAppBarHeadersColorByColor(2));
-      } else {
-        context.read<HomeBloc>().add(ChangeAppBarHeadersColorByColor(3));
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,17 +50,29 @@ class _HomeBodyState extends State<HomeBody> {
             }
             if (state.index == 1) {
               Scrollable.ensureVisible(
-                aboutKey.currentContext!,
+                skillsKey.currentContext!,
                 duration: duration,
               );
             }
             if (state.index == 2) {
               Scrollable.ensureVisible(
-                projectKey.currentContext!,
+                experienceKey.currentContext!,
                 duration: duration,
               );
             }
             if (state.index == 3) {
+              Scrollable.ensureVisible(
+                projectKey.currentContext!,
+                duration: duration,
+              );
+            }
+            if (state.index == 4) {
+              Scrollable.ensureVisible(
+                educationKey.currentContext!,
+                duration: duration,
+              );
+            }
+            if (state.index == 5) {
               Scrollable.ensureVisible(
                 contactKey.currentContext!,
                 duration: duration,
@@ -103,29 +83,32 @@ class _HomeBodyState extends State<HomeBody> {
         child: Stack(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: context.width * .08),
-              child: SingleChildScrollView(
-                controller: _controller,
-                child: Column(
-                  children: [
-                    DelayedDisplay(
-                        slidingCurve: Curves.ease,
-                        delay: const Duration(milliseconds: 1200),
-                        child: IntroSection(key: introKey)),
-                    AboutMeSection(key: aboutKey),
-                    ProjectsSection(key: projectKey),
-                    ContactSection(key: contactKey),
-                  ],
-                ),
+              padding: EdgeInsets.symmetric(
+                horizontal: context.width < DeviceType.ipad.getMaxWidth()
+                    ? AppSizes.spacingRegular
+                    : AppSizes.spacingXXL,
+              ),
+              child: Column(
+                children: [
+                  DelayedDisplay(
+                      slidingCurve: Curves.ease,
+                      delay: const Duration(milliseconds: 1200),
+                      child: IntroSection(key: introKey)),
+                  TechnicalSkillsSection(key: skillsKey),
+                  ExperienceSection(key: experienceKey),
+                  ProjectsSection(key: projectKey),
+                  EducationSection(key: educationKey),
+                  ContactSection(key: contactKey),
+                ],
               ),
             ),
             const DelayedDisplay(
                 slidingCurve: Curves.ease,
                 delay: Duration(milliseconds: 1000),
                 child: VerticalHeadersBuilder()),
-            const Padding(
-              padding: EdgeInsets.all(20.0),
-              child: Align(
+            Padding(
+              padding: const EdgeInsets.all(AppSizes.spacingLarge),
+              child: const Align(
                 alignment: Alignment.bottomRight,
                 child: ThemeHeader(),
               ),

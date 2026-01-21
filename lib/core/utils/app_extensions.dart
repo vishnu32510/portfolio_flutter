@@ -7,10 +7,16 @@ extension AppBarHeaderExtension on AppBarHeaders {
     switch (this) {
       case AppBarHeaders.home:
         return 'Home';
-      case AppBarHeaders.aboutMe:
-        return 'About me';
+      case AppBarHeaders.about:
+        return 'About';
+      case AppBarHeaders.skills:
+        return 'Skills';
+      case AppBarHeaders.experience:
+        return 'Experience';
       case AppBarHeaders.projects:
         return 'Projects';
+      case AppBarHeaders.education:
+        return 'Education';
       case AppBarHeaders.contact:
         return 'Contact';
     }
@@ -21,6 +27,8 @@ extension MediaQueryExtension on BuildContext {
   Size get _size => MediaQuery.of(this).size;
   double get width => _size.width;
   double get height => _size.height;
+  
+  bool get isMobile => width < 600;
 }
 
 extension DeviceTypeExtension on DeviceType {

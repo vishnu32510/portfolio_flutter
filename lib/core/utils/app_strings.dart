@@ -2,6 +2,7 @@ abstract class AppStrings {
   static const String developerNameStyle = "Vishnu Priyan";
   static const String developerFlutterGeek = "Mobile Developer";
   static const String developerName = "Vishnu Priyan";
+  static const String developerTitle = "Software Engineer (Full-Stack & Mobile)";
 
   static const String developerResume =
       "https://drive.google.com/file/d/1WDLPye0JSXinnxGaFskq1mqi42cVCjKy/view?usp=sharing";
@@ -9,9 +10,9 @@ abstract class AppStrings {
   static const String developerWhatsapp = "https://wa.me/+13127154060";
   static const String developerTelegram = "https://t.me/";
 
-  static const String helloIM = 'Hello, I’m';
+  static const String helloIM = "Hello, I'm";
   static const String introMsg =
-      "A Mobile Application Developer with 3+ years of experience. I have completed many projects that prove my ability to provide creative and high-quality solutions.";
+      "Software Engineer with 3+ years of experience building scalable mobile applications and full-stack systems. Specialized in mobile development, backend APIs, and clean architecture. Delivered production systems serving users with measurable improvements in performance, reliability, and user engagement.";
   static String aboutMeMsg =
       "I'm a Flutter Developer specialized in Flutter Mobile/Web development, with a good understanding of the Flutter framework, I have experience in UI design, API integration, clean code writing and knowledge of solid principles and clean architecture. I have completed many projects that prove my ability to provide creative and high-quality solutions and finish them in an almost complete way with a great user experience without any problems facing users";
   static const String numOfExperience = '3';
@@ -24,4 +25,9 @@ abstract class AppStrings {
   static const String contactMsg =
       "For any service and work you can contact with me by send an email or by our social media accounts.";
   static const String contactWithMe = 'Connect with me';
+  
+  // New sections
+  static const String technicalSkills = 'Technical Skills';
+  static const String professionalExperience = 'Professional Experience';
+  static const String education = 'Education';
 }

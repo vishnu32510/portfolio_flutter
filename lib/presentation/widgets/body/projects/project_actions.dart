@@ -17,30 +17,30 @@ class ProjectActions extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          if (project.previewLink != null)
+          if (project.demoLink != null)
             Expanded(
               child: CustomButton(
                 label: 'Preview',
                 backgroundColor: AppColors.primaryColor.withOpacity(0.5),
                 onPressed: () {
-                  html.window.open(project.previewLink!, '_blank');
+                  html.window.open(project.demoLink!, '_blank');
                 },
               ),
             ),
           if (project.githubRepoLink != null) ...[
-            if (project.previewLink != null) const SizedBox(width: 18),
+            if (project.demoLink != null) const SizedBox(width: 18),
             Expanded(
               child: CustomButton(
                 label: 'Github',
                 borderColor: AppColors.primaryColor,
                 onPressed: () {
-                  OpenLinkService().openUrl(link: project.githubRepoLink??"");
+                  OpenLinkService().openUrl(link: project.githubRepoLink ?? "");
                 },
               ),
             ),
           ],
           if (project.googlePlay != null) ...[
-            if (project.previewLink != null || project.githubRepoLink != null)
+            if (project.demoLink != null || project.githubRepoLink != null)
               const SizedBox(width: 18),
             Expanded(
               child: CustomButton(
@@ -54,7 +54,7 @@ class ProjectActions extends StatelessWidget {
               ),
             ),
           ],
-          if (project.previewLink == null &&
+          if (project.demoLink == null &&
               project.githubRepoLink == null &&
               project.googlePlay == null)
             Expanded(

@@ -47,7 +47,7 @@ class _DetailedServiceItemState extends State<DetailedServiceItem> {
             ),
             const SizedBox(height: 16),
             FittedBox(
-              child: Text(
+              child: SelectableText(
                 widget.service.service,
                 style: AppStyles.s24.copyWith(color: itemColor),
                 textAlign: TextAlign.center,
@@ -56,10 +56,9 @@ class _DetailedServiceItemState extends State<DetailedServiceItem> {
             if (context.width > DeviceType.mobile.getMinWidth()) ...[
               const SizedBox(height: 16),
               Flexible(
-                child: AutoSizeText(
+                child: SelectableText(
                   widget.service.description,
                   style: AppStyles.s17,
-                  minFontSize: 8,
                   textAlign: TextAlign.center,
                 ),
               ),

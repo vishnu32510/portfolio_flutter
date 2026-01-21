@@ -1,88 +1,89 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:portfolio_flutter/core/utils/app_assets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/app_enums.dart';
 import '../../../../core/utils/app_extensions.dart';
-import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_styles.dart';
-import '../contact/social_medial_icons.dart';
-import 'intro_actions.dart';
+import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';
 
 class IntroText extends StatelessWidget {
   const IntroText({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: context.width < DeviceType.mobile.getMaxWidth()
-          ? CrossAxisAlignment.center
-          : CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+    return BlocBuilder<PortfolioBloc, PortfolioState>(
+      builder: (context, portfolioState) {
+        final data = portfolioState.data;
+        if (data == null) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        // Multiple roles to cycle through
+        final List<String> roles = [
+          data.developerTitle,
+          'Full-stack Mobile Engineer',
+          'Flutter Developer',
+          'Cross-platform Expert',
+          'Mobile & Web Developer',
+          'Software Engineer',
+        ];
+
+        return Column(
+          crossAxisAlignment: context.width < DeviceType.mobile.getMaxWidth()
+              ? CrossAxisAlignment.center
+              : CrossAxisAlignment.start,
           children: [
-            Text(
-              AppStrings.helloIM,
+            SelectableText(
+              data.developerName,
               style: context.width < DeviceType.ipad.getMaxWidth()
-                  ? AppStyles.s16
-                  : AppStyles.s32,
+                  ? AppStyles.s28
+                  : AppStyles.s52,
               textAlign: _getTextAlign(context.width),
-              softWrap: true,
             ),
-            Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Lottie.asset(AppAssets.flutterDevLottie,
-                    repeat: true,
-                    fit: BoxFit.contain,
-                    width: context.width < DeviceType.ipad.getMaxWidth()
-                        ? 60
-                        : 120)
-                // child: Image.asset(
-                //   AppAssets.flutterDev,
-                //   scale: 5,
-                //   gaplessPlayback: true,
-                //   repeat: ImageRepeat.repeat,
-                // ),
-                )
+            const SizedBox(height: 8),
+            // Animated typewriter text for multiple roles
+            SizedBox(
+              height: context.width < DeviceType.ipad.getMaxWidth() ? 24 : 28,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  AnimatedTextKit(
+                    repeatForever: true,
+                    pause: const Duration(milliseconds: 1500),
+                    animatedTexts: roles.map((role) {
+                      return TypewriterAnimatedText(
+                        role,
+                        textStyle: context.width < DeviceType.ipad.getMaxWidth()
+                            ? AppStyles.s16
+                            : AppStyles.s18,
+                        textAlign: _getTextAlign(context.width),
+                        speed: const Duration(milliseconds: 50),
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
+            SizedBox(
+              width: context.width < DeviceType.mobile.getMaxWidth()
+                  ? context.width - 20
+                  : context.width / 1.5,
+              child: SelectableText(
+                data.introMessage,
+                style: context.width < DeviceType.ipad.getMaxWidth()
+                    ? AppStyles.s14
+                    : AppStyles.s16,
+                textAlign: _getTextAlign(context.width),
+              ),
+            ),
           ],
-        ),
-        const SizedBox(height: 6),
-        Text(
-          AppStrings.developerName,
-          style: context.width < DeviceType.ipad.getMaxWidth()
-              ? AppStyles.s24
-              : AppStyles.s52,
-          textAlign: _getTextAlign(context.width),
-          softWrap: true,
-        ),
-        const SizedBox(height: 12),
-        SizedBox(
-          width: context.width < DeviceType.mobile.getMaxWidth()
-              ? context.width - 20
-              : context.width / 2.5,
-          child: Text(
-            AppStrings.introMsg,
-            style: context.width < DeviceType.ipad.getMaxWidth()
-                ? AppStyles.s14
-                : AppStyles.s18,
-            textAlign: _getTextAlign(context.width),
-            softWrap: true,
-          ),
-        ),
-        const SizedBox(height: 30),
-        const IntoActions(),
-        const SizedBox(height: 30),
-        SizedBox(
-            width: context.width < DeviceType.mobile.getMaxWidth()
-                ? context.width - 20
-                : context.width / 2.5,
-            child: const SocialMediaIcons()),
-      ],
+        );
+      },
     );
   }
 
-  _getTextAlign(double screenWidth) {
+  TextAlign _getTextAlign(double screenWidth) {
     return screenWidth < DeviceType.mobile.getMaxWidth()
         ? TextAlign.center
         : TextAlign.start;
