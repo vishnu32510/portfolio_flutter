@@ -22,7 +22,8 @@ class _SplashPageState extends State<SplashPage>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1500),
+      // Keep splash snappy (target total: ~800–1200ms)
+      duration: const Duration(milliseconds: 900),
     );
 
     _fadeAnimation = Tween<double>(
@@ -47,8 +48,8 @@ class _SplashPageState extends State<SplashPage>
 
     _controller.forward();
 
-    // Navigate to home after animation completes
-    Timer(const Duration(milliseconds: 2000), () {
+    // Navigate to home shortly after animation completes
+    Timer(const Duration(milliseconds: 1100), () {
       if (mounted) {
         // Use pushReplacementNamed to replace splash with home
         // This ensures the route is properly replaced

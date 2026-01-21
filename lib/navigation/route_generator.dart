@@ -17,7 +17,7 @@ Route<dynamic>? routeGenerator(RouteSettings settings) {
         opacity: animation,
         child: child,
       ),  
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 200),
     );
   }
 
@@ -31,7 +31,7 @@ Route<dynamic>? routeGenerator(RouteSettings settings) {
         opacity: animation,
         child: child,
       ),
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 200),
     );
   }
 
@@ -44,7 +44,7 @@ Route<dynamic>? routeGenerator(RouteSettings settings) {
         opacity: animation,
         child: child,
       ),
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 200),
     );
   }
 
@@ -91,7 +91,7 @@ Route<dynamic>? routeGenerator(RouteSettings settings) {
       ),
       child: child,
     ),
-    transitionDuration: const Duration(milliseconds: 300),
-    reverseTransitionDuration: const Duration(milliseconds: 300),
+    transitionDuration: const Duration(milliseconds: 200),
+    reverseTransitionDuration: const Duration(milliseconds: 200),
   );
 }
