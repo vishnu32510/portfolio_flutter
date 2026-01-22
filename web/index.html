@@ -99,9 +99,8 @@
 
 <body style="height: 100vh;width: 100vw;margin: 0;">
 
-  <!-- Initial loader with app icon -->
-  <div id="loader">
-    <!-- Use a real static file from /web so it loads before Flutter initializes -->
+  <script async src="flutter_bootstrap.js"></script>
+  <div class="main-content" id="loader"
     <img src="icons/Icon-192.png" alt="Vishnu Priyan Portfolio Loader" />
   </div>
 
@@ -120,23 +119,6 @@
     <p>Data & Integrations: REST/gRPC, GraphQL, Kafka, RabbitMQ, ETL, Data Pipelines</p>
   </section>
 
-  <script>
-    // Hide loader once Flutter renders the first frame
-    window.addEventListener('flutter-first-frame', function () {
-      var loader = document.getElementById('loader');
-      if (loader) {
-        loader.style.opacity = '0';
-        loader.style.transition = 'opacity 0.25s ease-out';
-        setTimeout(function () {
-          if (loader && loader.parentNode) {
-            loader.parentNode.removeChild(loader);
-          }
-        }, 300);
-      }
-    });
-  </script>
-
-  <script async src="flutter_bootstrap.js"></script>
 </body>
 
 </html>

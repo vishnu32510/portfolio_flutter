@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'app_enums.dart';
 
+extension NumUtils on num {
+  Duration get milliseconds => Duration(microseconds: (this * 1000).round());
+  Duration get seconds => Duration(milliseconds: (this * 1000).round());
+}
+
 extension AppBarHeaderExtension on AppBarHeaders {
   String getString() {
     switch (this) {

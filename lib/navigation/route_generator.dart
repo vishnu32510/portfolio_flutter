@@ -1,54 +1,7 @@
 part of 'navigation.dart';
 
-// Track if splash has been shown in this session
-bool _splashShown = false;
-
 Route<dynamic>? routeGenerator(RouteSettings settings) {
-  final routeName = settings.name ?? '/';
-  
-  // Handle splash screen ONLY for the very first initial route
-  // Check if this is the initial route and splash hasn't been shown
-  if (routeName == '/' && !_splashShown) {
-    _splashShown = true;
-    return PageRouteBuilder(
-      settings: const RouteSettings(name: '/splash'),
-      pageBuilder: (_, __, ___) => const SplashPage(),
-      transitionsBuilder: (_, animation, __, child) => FadeTransition(
-        opacity: animation,
-        child: child,
-      ),  
-      transitionDuration: const Duration(milliseconds: 200),
-    );
-  }
-
-  // If '/' route is accessed again after splash was shown, go directly to home
-  // This prevents double splash on browser refresh
-  if (routeName == '/' && _splashShown) {
-    return PageRouteBuilder(
-      settings: RouteSettings(name: Routes.home.route),
-      pageBuilder: (_, __, ___) => const HomePage(),
-      transitionsBuilder: (_, animation, __, child) => FadeTransition(
-        opacity: animation,
-        child: child,
-      ),
-      transitionDuration: const Duration(milliseconds: 200),
-    );
-  }
-
-  // Handle splash route - should only be reached from initial '/'
-  if (routeName == '/splash') {
-    return PageRouteBuilder(
-      settings: settings,
-      pageBuilder: (_, __, ___) => const SplashPage(),
-      transitionsBuilder: (_, animation, __, child) => FadeTransition(
-        opacity: animation,
-        child: child,
-      ),
-      transitionDuration: const Duration(milliseconds: 200),
-    );
-  }
-
-  final route = Routes.fromPath(routeName);
+  final route = Routes.fromPath(settings.name ?? '/');
 
   final Widget page;
 
@@ -91,7 +44,7 @@ Route<dynamic>? routeGenerator(RouteSettings settings) {
       ),
       child: child,
     ),
-    transitionDuration: const Duration(milliseconds: 200),
-    reverseTransitionDuration: const Duration(milliseconds: 200),
+    transitionDuration: 600.milliseconds,
+    reverseTransitionDuration: 600.milliseconds,
   );
 }
