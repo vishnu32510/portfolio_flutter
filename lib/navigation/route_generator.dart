@@ -31,20 +31,32 @@ Route<dynamic>? routeGenerator(RouteSettings settings) {
       page = const NotFoundPage();
   }
 
+  // Calculate slide direction based on route order
+  final targetIndex = route != null ? Routes.mainRoutes.indexOf(route) : -1;
+  final currentRoute = AppNavigator.currentRoute;
+  final currentIndex = currentRoute != null
+      ? Routes.mainRoutes.indexOf(currentRoute)
+      : -1;
+  final slideFromRight = targetIndex > currentIndex;
+
   return PageRouteBuilder(
     settings: settings,
     pageBuilder: (_, __, ___) => page,
-    transitionsBuilder: (_, animation, __, child) => FadeTransition(
-      opacity: animation.drive(
-        Tween<double>(begin: 0, end: 1).chain(
-          CurveTween(
-            curve: Curves.easeInOut,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return SlideTransition(
+        position: Tween<Offset>(
+          begin: Offset(slideFromRight ? 1.0 : -1.0, 0),
+          end: Offset.zero,
+        ).animate(
+          CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeInOutCubic,
           ),
         ),
-      ),
-      child: child,
-    ),
-    transitionDuration: 600.milliseconds,
-    reverseTransitionDuration: 600.milliseconds,
+        child: child,
+      );
+    },
+    transitionDuration: const Duration(milliseconds: 300),
+    reverseTransitionDuration: const Duration(milliseconds: 300),
   );
 }
