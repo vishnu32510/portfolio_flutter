@@ -41,7 +41,7 @@ Route<dynamic>? routeGenerator(RouteSettings settings) {
 
   return PageRouteBuilder(
     settings: settings,
-    pageBuilder: (_, __, ___) => page,
+    pageBuilder: (_, _, _) => page,
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       return SlideTransition(
         position: Tween<Offset>(

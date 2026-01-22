@@ -67,7 +67,7 @@ class ProjectItemNew extends StatelessWidget {
                   ? Image.network(
                       project.imageUrl,
                       fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) => Center(
+                      errorBuilder: (_, _, _) => Center(
                         child: Icon(
                           FontAwesomeIcons.image,
                           size: AppSizes.iconHuge,
