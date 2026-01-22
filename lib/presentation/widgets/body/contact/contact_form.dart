@@ -164,7 +164,7 @@ class _ContactFormState extends State<ContactForm> {
     );
   }
 
-  sendEmail() async {
+  Future<void> sendEmail() async {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text("Redirecting to Gmail!"),

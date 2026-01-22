@@ -17,7 +17,7 @@ class BasicServiceItem extends StatefulWidget {
 }
 
 class _BasicServiceItemState extends State<BasicServiceItem> {
-  Color itemColor = AppColors.secondaryColor.withOpacity(0.1);
+  Color itemColor = AppColors.secondaryColor.withValues(alpha: 0.1);
 
   @override
   Widget build(BuildContext context) {
@@ -51,11 +51,11 @@ class _BasicServiceItemState extends State<BasicServiceItem> {
     );
   }
 
-  void _onExit(event) {
-    setState(() => itemColor = AppColors.secondaryColor.withOpacity(0.1));
+  void _onExit(PointerEvent event) {
+    setState(() => itemColor = AppColors.secondaryColor.withValues(alpha: 0.1));
   }
 
-  void _onEnter(event) {
+  void _onEnter(PointerEvent event) {
     setState(() => itemColor = AppColors.primaryColor);
   }
 }

@@ -118,14 +118,14 @@ class _HighlightBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<void> _onTap(String url) async {
+    Future<void> onTap(String url) async {
       final uri = Uri.parse(url);
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.externalApplication);
       }
     }
 
-    String _chipLabel(String url) {
+    String chipLabel(String url) {
       try {
         final host = Uri.parse(url).host.replaceFirst(RegExp(r'^www\.'), '');
         return host.isEmpty ? url : host;
@@ -139,7 +139,7 @@ class _HighlightBadge extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: isSingle ? () => _onTap(urls.first) : null,
+        onTap: isSingle ? () => onTap(urls.first) : null,
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
@@ -179,7 +179,7 @@ class _HighlightBadge extends StatelessWidget {
                   children: urls
                       .map(
                         (u) => GestureDetector(
-                          onTap: () => _onTap(u),
+                          onTap: () => onTap(u),
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 10,
@@ -199,7 +199,7 @@ class _HighlightBadge extends StatelessWidget {
                               ),
                             ),
                             child: Text(
-                              _chipLabel(u),
+                              chipLabel(u),
                               style: AppStyles.extraSmallTextThin(
                                 textColor:
                                     Theme.of(context).colorScheme.primary,

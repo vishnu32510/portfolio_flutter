@@ -68,11 +68,11 @@ class _DetailedServiceItemState extends State<DetailedServiceItem> {
     );
   }
 
-  void _onExit(event) {
+  void _onExit(PointerEvent event) {
     setState(() => itemColor = AppColors.lowPriority);
   }
 
-  void _onEnter(event) {
+  void _onEnter(PointerEvent event) {
     setState(() => itemColor = AppColors.primaryColor);
   }
 }

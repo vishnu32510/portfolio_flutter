@@ -4,7 +4,7 @@ import 'package:toastification/toastification.dart';
 import '../../../../core/utils/app_colors.dart';
 
 class WelcomeToasts {
-  WelcomeToasts(context) {
+  WelcomeToasts(BuildContext context) {
     showToast(
         time: 5,
         title: "Welcome to Vishnu's Portfolio!",

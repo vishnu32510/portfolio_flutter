@@ -29,7 +29,7 @@ class ExperienceInfo extends StatelessWidget {
     );
   }
 
-  _getExpMsgStyle(double deviceWidth) {
+  TextStyle _getExpMsgStyle(double deviceWidth) {
     if (deviceWidth < DeviceType.mobile.getMaxWidth()) {
       return AppStyles.s16.copyWith(fontWeight: FontWeight.w500);
     } else if (deviceWidth < DeviceType.ipad.getMaxWidth()) {
