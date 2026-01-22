@@ -1,7 +1,5 @@
-import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../../core/services/firebase_portfolio_service.dart';
 import '../../../data/models/portfolio_data.dart';
 import '../../../data/models/technical_skill.dart';
 import '../../../data/models/experience.dart';
@@ -12,8 +10,6 @@ part 'portfolio_event.dart';
 part 'portfolio_state.dart';
 
 class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
-  final FirebasePortfolioService _firebaseService = FirebasePortfolioService();
-
   PortfolioBloc()
       : super(PortfolioState(
           data: _getDefaultData(),
@@ -24,21 +20,6 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
 
     // Load initial data immediately
     add(const LoadPortfolioData());
-
-    // Listen to Firestore stream for real-time updates (only if data exists)
-    // Use a delayed subscription to avoid blocking initial load
-    Future.delayed(const Duration(milliseconds: 100), () {
-      _firebaseService.getPortfolioDataStream().listen(
-        (data) {
-          add(PortfolioDataUpdated(data));
-        },
-        onError: (error) {
-          // If stream fails, ignore - we already have default data from initial load
-          // Stream errors are non-critical as we fall back to default data
-        },
-        cancelOnError: false,
-      );
-    });
   }
 
   Future<void> _onLoadPortfolioData(
@@ -46,19 +27,13 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
     Emitter<PortfolioState> emit,
   ) async {
     emit(state.copyWith(isLoading: true, error: null));
-
-    try {
-      final data = await _firebaseService.getPortfolioData();
-      emit(state.copyWith(data: data, isLoading: false));
-    } catch (e) {
-      // Fallback to default data if Firebase fails
-      // This happens if Firestore document doesn't exist yet
-      emit(state.copyWith(
-        data: _getDefaultData(),
-        isLoading: false,
-        error: null, // Don't show error, just use default data
-      ));
-    }
+    
+    // Use default data directly
+    emit(state.copyWith(
+      data: _getDefaultData(),
+      isLoading: false,
+      error: null,
+    ));
   }
 
   void _onPortfolioDataUpdated(
