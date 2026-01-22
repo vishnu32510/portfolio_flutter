@@ -19,6 +19,17 @@ class ProjectsSection extends StatefulWidget {
 class _ProjectsSectionState extends State<ProjectsSection> {
   ProjectTag _selectedTag = ProjectTag.all;
 
+  @override
+  void initState() {
+    super.initState();
+    // Trigger lazy loading when section is first rendered
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        context.read<PortfolioBloc>().add(const LoadProjects());
+      }
+    });
+  }
+
   List<dynamic> _filterProjects(List<dynamic> projects) {
     if (_selectedTag == ProjectTag.all) return projects;
     

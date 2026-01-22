@@ -8,8 +8,24 @@ import '../../../../core/widgets/subtext.dart';
 import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';
 import 'education_item.dart';
 
-class EducationSection extends StatelessWidget {
+class EducationSection extends StatefulWidget {
   const EducationSection({super.key});
+
+  @override
+  State<EducationSection> createState() => _EducationSectionState();
+}
+
+class _EducationSectionState extends State<EducationSection> {
+  @override
+  void initState() {
+    super.initState();
+    // Trigger lazy loading when section is first rendered
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        context.read<PortfolioBloc>().add(const LoadEducation());
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

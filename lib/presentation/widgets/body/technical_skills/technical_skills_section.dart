@@ -10,8 +10,24 @@ import '../../../../core/widgets/window_container.dart';
 import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';
 import 'skill_item.dart';
 
-class TechnicalSkillsSection extends StatelessWidget {
+class TechnicalSkillsSection extends StatefulWidget {
   const TechnicalSkillsSection({super.key});
+
+  @override
+  State<TechnicalSkillsSection> createState() => _TechnicalSkillsSectionState();
+}
+
+class _TechnicalSkillsSectionState extends State<TechnicalSkillsSection> {
+  @override
+  void initState() {
+    super.initState();
+    // Trigger lazy loading when section is first rendered
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        context.read<PortfolioBloc>().add(const LoadTechnicalSkills());
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

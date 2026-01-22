@@ -53,6 +53,30 @@ class PortfolioData extends Equatable {
     );
   }
 
+  PortfolioData copyWith({
+    String? developerName,
+    String? developerTitle,
+    String? introMessage,
+    String? resumeLink,
+    Map<String, String>? socialLinks,
+    List<TechnicalSkill>? technicalSkills,
+    List<Experience>? experiences,
+    List<Project>? projects,
+    List<Education>? education,
+  }) {
+    return PortfolioData(
+      developerName: developerName ?? this.developerName,
+      developerTitle: developerTitle ?? this.developerTitle,
+      introMessage: introMessage ?? this.introMessage,
+      resumeLink: resumeLink ?? this.resumeLink,
+      socialLinks: socialLinks ?? this.socialLinks,
+      technicalSkills: technicalSkills ?? this.technicalSkills,
+      experiences: experiences ?? this.experiences,
+      projects: projects ?? this.projects,
+      education: education ?? this.education,
+    );
+  }
+
   @override
   List<Object?> get props => [
         developerName,

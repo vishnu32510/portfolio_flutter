@@ -7,8 +7,28 @@ abstract class PortfolioEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class LoadPortfolioData extends PortfolioEvent {
-  const LoadPortfolioData();
+class LoadBasicInfo extends PortfolioEvent {
+  const LoadBasicInfo();
+}
+
+class LoadTechnicalSkills extends PortfolioEvent {
+  const LoadTechnicalSkills();
+}
+
+class LoadProjects extends PortfolioEvent {
+  const LoadProjects();
+}
+
+class LoadExperiences extends PortfolioEvent {
+  const LoadExperiences();
+}
+
+class LoadEducation extends PortfolioEvent {
+  const LoadEducation();
+}
+
+class LoadAllData extends PortfolioEvent {
+  const LoadAllData();
 }
 
 class PortfolioDataUpdated extends PortfolioEvent {

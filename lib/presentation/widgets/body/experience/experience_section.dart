@@ -9,10 +9,26 @@ import '../../../../core/widgets/timeline_container.dart';
 import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';
 import 'experience_item.dart';
 
-class ExperienceSection extends StatelessWidget {
+class ExperienceSection extends StatefulWidget {
   const ExperienceSection({super.key});
 
+  @override
+  State<ExperienceSection> createState() => _ExperienceSectionState();
+}
+
+class _ExperienceSectionState extends State<ExperienceSection> {
   static const int topK = 3;
+
+  @override
+  void initState() {
+    super.initState();
+    // Trigger lazy loading when section is first rendered
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        context.read<PortfolioBloc>().add(const LoadExperiences());
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
