@@ -7,7 +7,7 @@ function delay(time) {
 
 window.addEventListener('load', (_) => {
     const loader = document.getElementById("loader");
-    const MIN_SPLASH_DURATION = 200; 
+    const MIN_SPLASH_DURATION = 400; 
     let splashStartTime = Date.now();
     let firstFrameRendered = false;
     let minDurationElapsed = false;
@@ -48,7 +48,7 @@ window.addEventListener('load', (_) => {
             loader.classList.add("transitioning");
             
             // Start Flutter app during transition
-            await delay(0.4);
+            await delay(200);
             await appRunner.runApp();
         }
     });
