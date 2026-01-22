@@ -50,7 +50,7 @@ dependencies:
   open_file: ^3.3.2
   package_info_plus: ^9.0.0
   path_provider: ^2.1.2
-  universal_html: ^2.2.4
+  web: ^1.1.1
   url_launcher: ^6.2.5
   lava_lamp_effect: ^1.0.3
   animated_text_kit: ^4.3.0
