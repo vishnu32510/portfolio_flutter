@@ -6,14 +6,22 @@ function delay(time) {
 }
 
 window.addEventListener('load', (_) => {
-    var loader = document.getElementById("loader");
+    const loader = document.getElementById("loader");
     _flutter.loader.load({
         onEntrypointLoaded: async function (engineInitializer) {
             const appRunner = await engineInitializer.initializeEngine({
                 useColorEmoji: true,
             });
-            loader.style.scale = "0";
-            await delay(0.4);
+            // Start transition to top-left corner (where Hero widget appears)
+            loader.classList.add("transitioning");
+            // Register event listener BEFORE runApp() to catch the first frame event
+            window.addEventListener('flutter-first-frame', function() {
+                if (loader && loader.parentNode) {
+                    loader.parentNode.removeChild(loader);
+                }
+            }, { once: true });
+            // Start Flutter app during transition
+            await delay(0.7);
             await appRunner.runApp();
         }
     });

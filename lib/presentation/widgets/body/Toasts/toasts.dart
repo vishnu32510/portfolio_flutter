@@ -29,7 +29,7 @@ class WelcomeToasts {
         context: context);
   }
 
-  static showToast({
+  static Future<ToastificationItem> showToast({
     required int time,
     required String title,
     required String description,
