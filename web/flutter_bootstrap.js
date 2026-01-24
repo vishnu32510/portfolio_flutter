@@ -44,12 +44,12 @@ window.addEventListener('load', (_) => {
 
             // Start transition to top-left corner (where Hero widget appears)
             // Wait a bit before starting transition to ensure splash is visible
+            await appRunner.runApp();
             await delay(200);
             loader.classList.add("transitioning");
             
             // Start Flutter app during transition
-            await delay(200);
-            await appRunner.runApp();
+            // await delay(200);
         }
     });
 });
