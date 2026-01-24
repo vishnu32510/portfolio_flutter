@@ -30,21 +30,25 @@ class DarkThemeState extends ThemeState {
     required super.themeEventType,
   });
 
-  static ThemeState get darkTheme => ThemeState(
-        themeData: ThemeData.dark(useMaterial3: true).copyWith(
-          colorScheme: ColorScheme.dark(
-            primary: ThemeState.creamPrimaryDark,
-            onPrimary: const Color(0xFF1A1A1A),
-            secondary: ThemeState.creamDark,
-            onSecondary: const Color(0xFF1A1A1A),
-            surface: const Color(0xFF0C0C0C),
-            onSurface: const Color(0xFFFFFFFF),
-          ),
-          scaffoldBackgroundColor: const Color(0xFF0C0C0C),
+  static ThemeState get darkTheme {
+    final baseTheme = ThemeData.dark(useMaterial3: true);
+    return ThemeState(
+      themeData: baseTheme.copyWith(
+        textTheme: GoogleFonts.outfitTextTheme(baseTheme.textTheme),
+        colorScheme: ColorScheme.dark(
+          primary: ThemeState.creamPrimaryDark,
+          onPrimary: const Color(0xFF1A1A1A),
+          secondary: ThemeState.creamDark,
+          onSecondary: const Color(0xFF1A1A1A),
+          surface: const Color(0xFF0C0C0C),
+          onSurface: const Color(0xFFFFFFFF),
         ),
-        themeMode: ThemeMode.dark,
-        themeEventType: ThemeType.darkMode,
-      );
+        scaffoldBackgroundColor: const Color(0xFF0C0C0C),
+      ),
+      themeMode: ThemeMode.dark,
+      themeEventType: ThemeType.darkMode,
+    );
+  }
 }
 
 class LightThemeState extends ThemeState {
@@ -54,21 +58,25 @@ class LightThemeState extends ThemeState {
     required super.themeEventType,
   });
 
-  static ThemeState get lightTheme => ThemeState(
-        themeData: ThemeData.light(useMaterial3: true).copyWith(
-          colorScheme: ColorScheme.light(
-            primary: ThemeState.creamPrimaryLight, // Dark cream for better visibility in light mode
-            onPrimary: const Color(0xFFFFFFFF),
-            secondary: ThemeState.creamPrimaryDark,
-            onSecondary: const Color(0xFF1A1A1A),
-            surface: const Color(0xFFF4F5F6),
-            onSurface: const Color(0xFF0E121D),
-          ),
-          scaffoldBackgroundColor: const Color(0xFFF4F5F6),
+  static ThemeState get lightTheme {
+    final baseTheme = ThemeData.light(useMaterial3: true);
+    return ThemeState(
+      themeData: baseTheme.copyWith(
+        textTheme: GoogleFonts.outfitTextTheme(baseTheme.textTheme),
+        colorScheme: ColorScheme.light(
+          primary: ThemeState.creamPrimaryLight, // Dark cream for better visibility in light mode
+          onPrimary: const Color(0xFFFFFFFF),
+          secondary: ThemeState.creamPrimaryDark,
+          onSecondary: const Color(0xFF1A1A1A),
+          surface: const Color(0xFFF4F5F6),
+          onSurface: const Color(0xFF0E121D),
         ),
-        themeMode: ThemeMode.light,
-        themeEventType: ThemeType.lightMode,
-      );
+        scaffoldBackgroundColor: const Color(0xFFF4F5F6),
+      ),
+      themeMode: ThemeMode.light,
+      themeEventType: ThemeType.lightMode,
+    );
+  }
 }
 
 class SystemThemeState extends ThemeState {
@@ -78,19 +86,23 @@ class SystemThemeState extends ThemeState {
     required super.themeEventType,
   });
 
-  static ThemeState get systemTheme => ThemeState(
-        themeData: ThemeData.light(useMaterial3: true).copyWith(
-          colorScheme: ColorScheme.light(
-            primary: ThemeState.creamPrimaryLight, // Dark cream for better visibility in light mode
-            onPrimary: const Color(0xFFFFFFFF),
-            secondary: ThemeState.creamPrimaryDark,
-            onSecondary: const Color(0xFF1A1A1A),
-            surface: const Color(0xFFF4F5F6),
-            onSurface: const Color(0xFF0E121D),
-          ),
-          scaffoldBackgroundColor: const Color(0xFFF4F5F6),
+  static ThemeState get systemTheme {
+    final baseTheme = ThemeData.light(useMaterial3: true);
+    return ThemeState(
+      themeData: baseTheme.copyWith(
+        textTheme: GoogleFonts.outfitTextTheme(baseTheme.textTheme),
+        colorScheme: ColorScheme.light(
+          primary: ThemeState.creamPrimaryLight, // Dark cream for better visibility in light mode
+          onPrimary: const Color(0xFFFFFFFF),
+          secondary: ThemeState.creamPrimaryDark,
+          onSecondary: const Color(0xFF1A1A1A),
+          surface: const Color(0xFFF4F5F6),
+          onSurface: const Color(0xFF0E121D),
         ),
-        themeMode: ThemeMode.system,
-        themeEventType: ThemeType.system,
-      );
+        scaffoldBackgroundColor: const Color(0xFFF4F5F6),
+      ),
+      themeMode: ThemeMode.system,
+      themeEventType: ThemeType.system,
+    );
+  }
 }
