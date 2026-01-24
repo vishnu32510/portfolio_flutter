@@ -7,7 +7,7 @@ function delay(time) {
 
 window.addEventListener('load', (_) => {
     const loader = document.getElementById("loader");
-    const MIN_SPLASH_DURATION = 400; 
+    const MIN_SPLASH_DURATION = 600; 
     let splashStartTime = Date.now();
     let firstFrameRendered = false;
     let minDurationElapsed = false;
