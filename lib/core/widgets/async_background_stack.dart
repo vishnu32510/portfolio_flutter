@@ -14,6 +14,7 @@ class AsyncBackgroundStack extends StatefulWidget {
     this.particleCount = 50,
     this.particleMaxSpeed = 0.3,
     this.particleLineDistance = 150,
+    this.touchActivation = false,
   });
 
   final bool showParticleNetwork;
@@ -21,6 +22,7 @@ class AsyncBackgroundStack extends StatefulWidget {
   final int particleCount;
   final double particleMaxSpeed;
   final double particleLineDistance;
+  final bool touchActivation;
 
   @override
   State<AsyncBackgroundStack> createState() => _AsyncBackgroundStackState();
@@ -102,7 +104,7 @@ class _AsyncBackgroundStackState extends State<AsyncBackgroundStack> {
                     maxSize: 1.5,
                     lineWidth: 0.5,
                     lineDistance: widget.particleLineDistance,
-                    touchActivation: false,
+                    touchActivation: widget.touchActivation,
                     drawNetwork: true,
                     fill: false,
                     isComplex: false,

@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/utils/app_extensions.dart';
 import '../../../core/utils/app_constants.dart';
 import '../../../core/utils/app_sizes.dart';
-import '../../../core/widgets/async_background_stack.dart';
 import 'global_footer.dart';
-import '../app_bar/home_app_bar.dart';
 
 class BasePage extends StatelessWidget {
   const BasePage({
@@ -18,56 +16,36 @@ class BasePage extends StatelessWidget {
   final bool singlePageContent;
   final Widget? additionalBackground;
 
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      resizeToAvoidBottomInset: true,
-      appBar: const HomeAppBar(),
-      body: SizedBox(
-        height: context.height,
-        width: context.width,
-        child: Stack(
-          children: [
-            // Async background stack with both backgrounds in separate RepaintBoundaries
-            Positioned.fill(
-              child: AsyncBackgroundStack(
-                showParticleNetwork: true,
-                showGrid: true,
-                particleCount: 60,
-                particleMaxSpeed: 0.5,
-                particleLineDistance: 150,
+    // Scaffold and Background are now handled by MainWrapper
+    return SizedBox(
+      height: context.height,
+      width: context.width,
+      child: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          SliverToBoxAdapter(
+            child: Container(
+              alignment: singlePageContent ? Alignment.center : Alignment.topCenter,
+              padding: EdgeInsets.only(
+                top: AppConstants.appBarHeight,
               ),
+              constraints: BoxConstraints(
+                minHeight: context.height,
+              ),
+              child: content,
             ),
-            if (additionalBackground != null) additionalBackground!,
-            CustomScrollView(
-              physics: const BouncingScrollPhysics(),
-              slivers: [
-                SliverToBoxAdapter(
-                  child: Container(
-                    alignment: singlePageContent
-                        ? Alignment.center
-                        : Alignment.topCenter,
-                    padding: EdgeInsets.only(
-                      top: AppConstants.appBarHeight,
-                    ),
-                    constraints: BoxConstraints(
-                      minHeight: context.height,
-                    ),
-                    child: content,
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(height: AppSizes.spacingXXL),
-                ),
-                SliverFillRemaining(
-                  hasScrollBody: false,
-                  child: const GlobalFooter(),
-                ),
-              ],
-            ),
-          ],
-        ),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(height: AppSizes.spacingXXL),
+          ),
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: const GlobalFooter(),
+          ),
+        ],
       ),
     );
   }
