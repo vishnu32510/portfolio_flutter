@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_sizes.dart';
 import '../../../../core/utils/app_styles.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import '../../../../core/widgets/gradient_text.dart';
 import '../../../../core/widgets/subtext.dart';
 import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';
@@ -115,27 +116,25 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                   Container(
                     alignment: Alignment.center,
                     width: context.width * 0.9,
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 300),
-                      switchInCurve: Curves.easeOut,
-                      switchOutCurve: Curves.easeIn,
-                      layoutBuilder: (currentChild, previousChildren) {
-                        return Stack(
-                          children: [
-                            ...previousChildren,
-                            if (currentChild != null) currentChild,
-                          ],
-                        );
-                      },
+                    child: AnimationLimiter(
                       child: Wrap(
                         key: ValueKey(_selectedTag),
                         alignment: WrapAlignment.center,
                         runAlignment: WrapAlignment.start,
                         spacing: AppSizes.spacingLarge,
                         runSpacing: AppSizes.spacingLarge,
-                        children: projects
-                            .map((project) => AnimatedProjectItem(project: project))
-                            .toList(),
+                        children: AnimationConfiguration.toStaggeredList(
+                          duration: const Duration(milliseconds: 600),
+                          childAnimationBuilder: (widget) => SlideAnimation(
+                            verticalOffset: 50.0,
+                            child: FadeInAnimation(
+                              child: widget,
+                            ),
+                          ),
+                          children: projects
+                              .map((project) => ProjectItemNew(project: project))
+                              .toList(),
+                        ),
                       ),
                     ),
                   ),
