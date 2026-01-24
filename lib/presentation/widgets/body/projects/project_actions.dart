@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:universal_html/html.dart' as html;
+import 'package:web/web.dart' as web;
 import '../../../../core/services/services.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/custom_button.dart';
@@ -23,7 +23,7 @@ class ProjectActions extends StatelessWidget {
                 label: 'Preview',
                 backgroundColor: AppColors.primaryColor.withValues(alpha: 0.5),
                 onPressed: () {
-                  html.window.open(project.demoLink!, '_blank');
+                  web.window.open(project.demoLink!, '_blank');
                 },
               ),
             ),
@@ -49,7 +49,7 @@ class ProjectActions extends StatelessWidget {
                 backgroundColor: AppColors.blueColor,
                 borderColor: AppColors.primaryColor,
                 onPressed: () {
-                  html.window.open(project.googlePlay!, '_blank');
+                  web.window.open(project.googlePlay!, '_blank');
                 },
               ),
             ),

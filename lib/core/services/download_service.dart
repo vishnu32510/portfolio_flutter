@@ -1,5 +1,5 @@
 import 'package:portfolio_flutter/core/services/services.dart';
-import 'package:universal_html/html.dart' as html;
+import 'package:web/web.dart' as web;
 
 abstract class DownloadService extends Services {
   Future<void> downloadResume({required String url});
@@ -8,7 +8,7 @@ abstract class DownloadService extends Services {
 class WebDownloadService implements DownloadService {
   @override
   Future<void> downloadResume({required String url}) async {
-    html.window.open(url, "Resume");
+    web.window.open(url, "Resume");
   }
 }
 

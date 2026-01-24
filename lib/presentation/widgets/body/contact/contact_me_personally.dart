@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:universal_html/html.dart' as html;
+import 'package:web/web.dart' as web;
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
@@ -42,7 +42,7 @@ class ContactMePersonally extends StatelessWidget {
         // const SizedBox(height: 10),
         InkWell(
           onTap: () {
-            html.window.open(AppStrings.developerEmail, '_blank');
+            web.window.open(AppStrings.developerEmail, '_blank');
           },
           child: Container(
             padding: const EdgeInsets.all(20),

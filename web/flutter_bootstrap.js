@@ -7,7 +7,7 @@ function delay(time) {
 
 window.addEventListener('load', (_) => {
     const loader = document.getElementById("loader");
-    const MIN_SPLASH_DURATION = 200; 
+    const MIN_SPLASH_DURATION = 400; 
     let splashStartTime = Date.now();
     let firstFrameRendered = false;
     let minDurationElapsed = false;
@@ -44,12 +44,12 @@ window.addEventListener('load', (_) => {
 
             // Start transition to top-left corner (where Hero widget appears)
             // Wait a bit before starting transition to ensure splash is visible
+            await appRunner.runApp();
             await delay(200);
             loader.classList.add("transitioning");
             
             // Start Flutter app during transition
-            await delay(0.4);
-            await appRunner.runApp();
+            // await delay(200);
         }
     });
 });

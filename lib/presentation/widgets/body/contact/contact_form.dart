@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:universal_html/html.dart' as html;
+import 'package:web/web.dart' as web;
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_enums.dart';
 import '../../../../core/utils/app_extensions.dart';
@@ -170,9 +170,8 @@ class _ContactFormState extends State<ContactForm> {
         content: Text("Redirecting to Gmail!"),
       ),
     );
-    html.window.open(
-        "${AppStrings.developerEmail}?subject=$_subjectController&body=My Name is $_nameController with $_emailController and I would like to send you a message: $_messageController",
-        '_blank');
+    final emailUrl = "${AppStrings.developerEmail}?subject=${_subjectController.text}&body=My Name is ${_nameController.text} with ${_emailController.text} and I would like to send you a message: ${_messageController.text}";
+    web.window.open(emailUrl, '_blank');
   }
 
   double _getFormWidth(double deviceWidth) {

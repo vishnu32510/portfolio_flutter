@@ -34,8 +34,8 @@ class BasePage extends StatelessWidget {
               child: AsyncBackgroundStack(
                 showParticleNetwork: true,
                 showGrid: true,
-                particleCount: 50,
-                particleMaxSpeed: 0.3,
+                particleCount: 60,
+                particleMaxSpeed: 0.5,
                 particleLineDistance: 150,
               ),
             ),
