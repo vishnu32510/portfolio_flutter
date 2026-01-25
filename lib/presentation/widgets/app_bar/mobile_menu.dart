@@ -7,8 +7,6 @@ import '../../../core/utils/app_styles.dart';
 import '../../../core/widgets/hover_glow_text.dart';
 import '../../../navigation/navigation.dart';
 import '../../blocs/portfolio_bloc/portfolio_bloc.dart';
-import '../../blocs/theme_bloc/theme_bloc.dart';
-import '../../../core/utils/theme_enums.dart';
 import 'theme_header_btn.dart';
 
 class MobileMenu extends StatefulWidget {
@@ -109,24 +107,17 @@ class _MobileMenuState extends State<MobileMenu> {
           // Theme switcher
           PopupMenuItem<void>(
             enabled: false,
-            child: BlocBuilder<ThemeBloc, ThemeState>(
-              builder: (context, state) {
-                // We can fetch theme again here for the toggle text
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      state.themeEventType == ThemeType.darkMode
-                          ? 'Dark Mode'
-                          : 'Light Mode',
-                      style: AppStyles.smallText(textColor: popupColors.onSurface),
-                    ),
-                    ThemeHeader(),
-                  ],
-                );
-              },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Text(
+                  'Toggle Theme',
+                  style: AppStyles.smallText(textColor: popupColors.onSurface),
+                ),
+                ThemeHeader(),
+              ],
             ),
           ),
         ];

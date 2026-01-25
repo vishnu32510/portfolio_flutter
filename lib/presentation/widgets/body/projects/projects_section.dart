@@ -7,6 +7,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import '../../../../core/widgets/gradient_text.dart';
 import '../../../../core/widgets/subtext.dart';
 import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';
+import '../../../../data/models/project.dart';
 import 'project_item_new.dart';
 import 'project_tag_selector.dart';
 
@@ -35,39 +36,8 @@ class _ProjectsSectionState extends State<ProjectsSection> {
     if (_selectedTag == ProjectTag.all) return projects;
     
     return projects.where((project) {
-      final techStack = project.techStack as List<String>;
-      final tagLower = _selectedTag.value.toLowerCase();
-      
-      if (tagLower == 'mobile') {
-        return techStack.any((tech) => 
-          tech.toLowerCase().contains('flutter') ||
-          tech.toLowerCase().contains('android') ||
-          tech.toLowerCase().contains('ios') ||
-          tech.toLowerCase().contains('mobile')
-        );
-      } else if (tagLower == 'web') {
-        return techStack.any((tech) => 
-          tech.toLowerCase().contains('web') ||
-          tech.toLowerCase().contains('react') ||
-          tech.toLowerCase().contains('html') ||
-          tech.toLowerCase().contains('css')
-        );
-      } else if (tagLower == 'ai') {
-        return techStack.any((tech) => 
-          tech.toLowerCase().contains('ai') ||
-          tech.toLowerCase().contains('ml') ||
-          tech.toLowerCase().contains('tensorflow') ||
-          tech.toLowerCase().contains('opencv')
-        );
-      } else if (tagLower == 'backend') {
-        return techStack.any((tech) => 
-          tech.toLowerCase().contains('backend') ||
-          tech.toLowerCase().contains('node') ||
-          tech.toLowerCase().contains('api') ||
-          tech.toLowerCase().contains('server')
-        );
-      }
-      return true;
+      // project is now a Project object from the list
+      return (project.tags as List<ProjectTag>).contains(_selectedTag);
     }).toList();
   }
 

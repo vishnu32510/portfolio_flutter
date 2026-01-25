@@ -107,17 +107,31 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                     ),
                     padding: EdgeInsets.all(AppSizes.spacingMedium),
                     child: widget.project.imageUrl.isNotEmpty
-                        ? Image.network(
-                            widget.project.imageUrl,
-                            fit: BoxFit.contain,
-                            errorBuilder: (_, _, _) => Center(
-                              child: Icon(
-                                FontAwesomeIcons.image,
-                                size: AppSizes.iconHuge,
-                                color: colors.onSurface.withValues(alpha: 0.3),
-                              ),
-                            ),
-                          )
+                        ? (widget.project.isAsset
+                            ? Image.asset(
+                                widget.project.imageUrl,
+                                fit: BoxFit.contain,
+                                errorBuilder: (context, error, stackTrace) => Center(
+                                  child: Icon(
+                                    FontAwesomeIcons.image,
+                                    size: AppSizes.iconHuge,
+                                    color:
+                                        colors.onSurface.withValues(alpha: 0.3),
+                                  ),
+                                ),
+                              )
+                            : Image.network(
+                                widget.project.imageUrl,
+                                fit: BoxFit.contain,
+                                errorBuilder: (context, error, stackTrace) => Center(
+                                  child: Icon(
+                                    FontAwesomeIcons.image,
+                                    size: AppSizes.iconHuge,
+                                    color:
+                                        colors.onSurface.withValues(alpha: 0.3),
+                                  ),
+                                ),
+                              ))
                         : Center(
                             child: Icon(
                               FontAwesomeIcons.code,

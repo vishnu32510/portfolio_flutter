@@ -5,6 +5,7 @@ class ProjectsData {
     return const [
       Project(
         name: 'My Portfolio',
+        tags: [ProjectTag.web, ProjectTag.mobile],
         imageUrl: 'https://raw.githubusercontent.com/vishnu32510/portfolio_flutter/main/assets/images/appIcon.png',
         description: 'Responsive Portfolio designed for Android, IOS, Web, MacOS with Flutter SDK using Bloc State management',
         techStack: ['Flutter', 'Dart', 'Bloc', 'Firebase', 'Firestore', 'Web'],
@@ -14,7 +15,9 @@ class ProjectsData {
       ),
       Project(
         name: 'Floxi',
-        imageUrl: 'https://avatars.githubusercontent.com/u/226618007?v=4',
+        tags: [ProjectTag.mobile, ProjectTag.web],
+        isAsset: true,
+        imageUrl: 'assets/logo/floxi_icon.png',
         description: 'Eco-reward app to promote sustainable actions with AI-driven suggestions, receipt & barcode-based carbon tracking, and a B2B analytics dashboard.',
         techStack: ['Flutter', 'React.js', 'Next.js', 'Dart', 'Firebase', 'GCP', 'Node.js', 'Android', 'IOS', "Docker"],
         status: 'Completed',
@@ -23,6 +26,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Fact Dynamics',
+        tags: [ProjectTag.ai, ProjectTag.mobile],
         imageUrl: 'https://raw.githubusercontent.com/vishnu32510/fact_pulse/main/assets/icon/icon.png',
         description: 'Real-time fact-checking for speech & images. Showcased in the Perplexity API Cookbook with Dart and Flutter SDKs.',
         techStack: ['Flutter', 'Dart', 'Perplexity API', 'LangChain', 'FastAPI', 'Agentic', 'Real-time'],
@@ -32,6 +36,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Chi Planner',
+        tags: [ProjectTag.ai, ProjectTag.web],
         imageUrl: 'https://raw.githubusercontent.com/vishnu32510/chi-scartlet-hacks/main/assets/images/chicago.png',
         description: 'Live trip & event planner with LLM integration and real-time attraction data scraping. Scarlet Hacks 2024 winner.',
         techStack: ['Flutter', 'Dart', 'LLM', 'Google Cloud', 'APIs'],
@@ -41,6 +46,7 @@ class ProjectsData {
       ),
       Project(
         name: 'perplexity_dart',
+        tags: [ProjectTag.backend],
         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Dart-logo.png',
         description: 'Dart SDK for the Perplexity API with streaming support.',
         techStack: ['Dart', 'Perplexity API', 'SDK'],
@@ -50,6 +56,7 @@ class ProjectsData {
       ),
       Project(
         name: 'perplexity_flutter',
+        tags: [ProjectTag.mobile],
         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Dart-logo.png',
         description: 'Flutter UI SDK for building Perplexity-powered experiences.',
         techStack: ['Flutter', 'Dart', 'Perplexity API', 'SDK'],
@@ -59,6 +66,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Unsplash public photos',
+        tags: [ProjectTag.mobile],
         imageUrl: 'https://raw.githubusercontent.com/vishnu32510/Photos_using_unsplash_api/main/images/icon.png',
         description: 'Application to access Unsplash public photos (Unsplash Public API are used)',
         techStack: ['Flutter', 'Dart', 'REST API', 'Unsplash API'],
@@ -68,6 +76,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Appetizer IOS Application',
+        tags: [ProjectTag.mobile],
         imageUrl: 'https://raw.githubusercontent.com/vishnu32510/Appetizer/main/appetizers/Assets.xcassets/AppIcon.appiconset/AppIcon.png',
         description: 'Appetizer IOS Application with SwiftUI and Api interfaces.',
         techStack: ['Swift', 'SwiftUI', 'iOS', 'REST API'],
@@ -77,6 +86,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Apple Framework List',
+        tags: [ProjectTag.mobile],
         imageUrl: 'https://raw.githubusercontent.com/vishnu32510/Apple-Frameworks/main/Apple-Frameworks/Assets.xcassets/AppIcon.appiconset/AppIcon.png',
         description: 'Apple Frameworks List in Gridview and Listview with SwiftUI',
         techStack: ['Swift', 'SwiftUI', 'iOS'],
@@ -86,6 +96,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Whatsapp UI Clone',
+        tags: [ProjectTag.mobile],
         imageUrl: '',
         description: 'Whatsapp UI Clone with FLutter',
         techStack: ['Flutter', 'Dart', 'UI/UX'],
@@ -95,6 +106,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Facebook Responsive UI Clone',
+        tags: [ProjectTag.web],
         imageUrl: '',
         description: 'Flutter Facebook Responsive Responsive UI for Web and Mobile',
         techStack: ['Flutter', 'Dart', 'Web', 'Responsive UI'],
@@ -104,6 +116,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Weather App UI',
+        tags: [ProjectTag.mobile],
         imageUrl: 'https://raw.githubusercontent.com/vishnu32510/SwiftUI-Weather/main/SwiftUI-Weather/Assets.xcassets/AppIcon.appiconset/AppIcon.png',
         description: 'Swift Weather App UI in Dark and Light Mode',
         techStack: ['Swift', 'SwiftUI', 'iOS', 'Dark Mode'],
@@ -113,6 +126,7 @@ class ProjectsData {
       ),
       Project(
         name: 'My GitHub Profile Details',
+        tags: [ProjectTag.mobile],
         imageUrl: 'https://raw.githubusercontent.com/vishnu32510/GitHubSwift/main/GitHubSwift/Assets.xcassets/AppIcon.appiconset/AppIcon.png',
         description: 'Simple Swift IOS App to display my GitHub Details form the Github API',
         techStack: ['Swift', 'SwiftUI', 'iOS', 'GitHub API'],
