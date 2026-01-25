@@ -106,7 +106,7 @@ class _AsyncBackgroundStackState extends State<AsyncBackgroundStack> {
                     lineDistance: widget.particleLineDistance,
                     touchActivation: widget.touchActivation,
                     drawNetwork: true,
-                    fill: false,
+                    fill: true,
                     isComplex: false,
                   ),
                 ),

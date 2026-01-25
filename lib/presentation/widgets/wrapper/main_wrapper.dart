@@ -19,14 +19,14 @@ class MainWrapper extends StatelessWidget {
       body: Stack(
         children: [
           // Persistent background shared across all pages
-          const Positioned.fill(
+          Positioned.fill(
             child: AsyncBackgroundStack(
               showParticleNetwork: true,
               showGrid: true,
-              particleCount: 60,
+              particleCount: (MediaQuery.of(context).size.width / 20).clamp(30, 100).toInt(),
               particleMaxSpeed: 0.5,
               particleLineDistance: 150,
-              touchActivation: true, // Enable interactive particles
+              touchActivation: false,
             ),
           ),
           // Content changes here
