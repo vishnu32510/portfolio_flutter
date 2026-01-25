@@ -10,11 +10,11 @@ class ProjectsData {
         techStack: ['Flutter', 'Dart', 'Bloc', 'Firebase', 'Firestore', 'Web'],
         status: 'In Progress',
         githubRepoLink: 'https://github.com/vishnu32510/portfolio_flutter',
-        demoLink: null,
+        demoLink: 'https://avatars.githubusercontent.com/u/226618007',
       ),
       Project(
         name: 'Floxi',
-        imageUrl: 'https://avatars.githubusercontent.com/u/226618007',
+        imageUrl: 'https://avatars.githubusercontent.com/u/226618007?v=4',
         description: 'Eco-reward app to promote sustainable actions with AI-driven suggestions, receipt & barcode-based carbon tracking, and a B2B analytics dashboard.',
         techStack: ['Flutter', 'React.js', 'Next.js', 'Dart', 'Firebase', 'GCP', 'Node.js', 'Android', 'IOS', "Docker"],
         status: 'Completed',

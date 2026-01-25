@@ -23,11 +23,15 @@ class IntroText extends StatelessWidget {
         // Multiple roles to cycle through
         final List<String> roles = [
           data.developerTitle,
-          'Software Engineer - Full-stack',
-          'Flutter Developer',
-          'Cross-platform Expert',
-          'Mobile & Web Developer',
           'Software Engineer',
+          'Applied AI Engineer',
+          'Full-stack Engineer',
+          'Backend Engineer',
+          'Frontend Engineer',
+          'Mobile & Web Developer',
+          'Flutter Developer',
+          'AI Engineer',
+          'Cross-platform Expert',
         ];
 
         return Column(
@@ -41,32 +45,31 @@ class IntroText extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
-            // Animated typewriter text for multiple roles
+            // Animated scale text for multiple roles
             SizedBox(
-              height: context.width < DeviceType.ipad.getMaxWidth() ? 32 : 40,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  AnimatedTextKit(
-                    repeatForever: true,
-                    pause: const Duration(milliseconds: 1500),
-                    animatedTexts: roles.map((role) {
-                      return TypewriterAnimatedText(
-                        role,
-                        textStyle: context.width < DeviceType.ipad.getMaxWidth()
+              height: context.width < DeviceType.ipad.getMaxWidth() ? 48 : 80,
+              child: AnimatedTextKit(
+                repeatForever: true,
+                pause: const Duration(milliseconds: 1500),
+                animatedTexts: roles.map((role) {
+                  return ScaleAnimatedText(
+                    role,
+                    textStyle: (context.width < DeviceType.ipad.getMaxWidth()
                             ? AppStyles.s18
-                            : AppStyles.s28,
-                        textAlign: TextAlign.center,
-                        speed: const Duration(milliseconds: 50),
-                      );
-                    }).toList(),
-                  ),
-                ],
+                            : AppStyles.s28)
+                        .copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  );
+                }).toList(),
               ),
             ),
             const SizedBox(height: 20),
             const SizedBox(height: 24),
             Wrap(
+              alignment: WrapAlignment.center,
               spacing: 12,
               runSpacing: 12,
               children: const [
