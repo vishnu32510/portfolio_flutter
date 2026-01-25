@@ -29,15 +29,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             // Left: Developer Name/Logo (no delay)
             Align(
               alignment: Alignment.centerLeft,
-              child: MouseRegion(
-                cursor: ModalRoute.of(context)?.settings.name == Routes.home.route
-                    ? SystemMouseCursors.basic
-                    : SystemMouseCursors.click,
-                child: GestureDetector(
-                  onTap: () => AppNavigator.goHome(),
-                  child: const DeveloperNameBtn(),
-                ),
-              ),
+              child: const DeveloperNameBtn(),
             ),
             // Center: Navigation Headers (desktop only)
             // if (!context.isMobile && context.width >= 800)
