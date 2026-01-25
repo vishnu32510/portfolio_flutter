@@ -9,13 +9,13 @@ class ProjectsData {
         imageUrl: 'https://raw.githubusercontent.com/vishnu32510/portfolio_flutter/main/assets/images/appIcon.png',
         description: 'Responsive Portfolio designed for Android, IOS, Web, MacOS with Flutter SDK using Bloc State management',
         techStack: ['Flutter', 'Dart', 'Bloc', 'Firebase', 'Firestore', 'Web'],
-        status: 'In Progress',
+        status: 'Completed',
         githubRepoLink: 'https://github.com/vishnu32510/portfolio_flutter',
         demoLink: 'https://avatars.githubusercontent.com/u/226618007',
       ),
       Project(
         name: 'Floxi',
-        tags: [ProjectTag.mobile, ProjectTag.web],
+        tags: [ProjectTag.mobile, ProjectTag.web, ProjectTag.ai],
         isAsset: true,
         imageUrl: 'assets/logo/floxi_icon.png',
         description: 'Eco-reward app to promote sustainable actions with AI-driven suggestions, receipt & barcode-based carbon tracking, and a B2B analytics dashboard.',
@@ -26,7 +26,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Fact Dynamics',
-        tags: [ProjectTag.ai, ProjectTag.mobile],
+        tags: [ProjectTag.ai, ProjectTag.mobile, ProjectTag.web],
         imageUrl: 'https://raw.githubusercontent.com/vishnu32510/fact_pulse/main/assets/icon/icon.png',
         description: 'Real-time fact-checking for speech & images. Showcased in the Perplexity API Cookbook with Dart and Flutter SDKs.',
         techStack: ['Flutter', 'Dart', 'Perplexity API', 'LangChain', 'FastAPI', 'Agentic', 'Real-time'],
@@ -36,7 +36,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Chi Planner',
-        tags: [ProjectTag.ai, ProjectTag.web],
+        tags: [ProjectTag.ai, ProjectTag.mobile],
         imageUrl: 'https://raw.githubusercontent.com/vishnu32510/chi-scartlet-hacks/main/assets/images/chicago.png',
         description: 'Live trip & event planner with LLM integration and real-time attraction data scraping. Scarlet Hacks 2024 winner.',
         techStack: ['Flutter', 'Dart', 'LLM', 'Google Cloud', 'APIs'],
@@ -46,7 +46,7 @@ class ProjectsData {
       ),
       Project(
         name: 'perplexity_dart',
-        tags: [ProjectTag.backend],
+        tags: [ProjectTag.ai, ProjectTag.mobile],
         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Dart-logo.png',
         description: 'Dart SDK for the Perplexity API with streaming support.',
         techStack: ['Dart', 'Perplexity API', 'SDK'],
@@ -56,7 +56,7 @@ class ProjectsData {
       ),
       Project(
         name: 'perplexity_flutter',
-        tags: [ProjectTag.mobile],
+        tags: [ProjectTag.mobile, ProjectTag.ai],
         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Dart-logo.png',
         description: 'Flutter UI SDK for building Perplexity-powered experiences.',
         techStack: ['Flutter', 'Dart', 'Perplexity API', 'SDK'],
@@ -106,7 +106,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Facebook Responsive UI Clone',
-        tags: [ProjectTag.web],
+        tags: [ProjectTag.web, ProjectTag.mobile],
         imageUrl: '',
         description: 'Flutter Facebook Responsive Responsive UI for Web and Mobile',
         techStack: ['Flutter', 'Dart', 'Web', 'Responsive UI'],

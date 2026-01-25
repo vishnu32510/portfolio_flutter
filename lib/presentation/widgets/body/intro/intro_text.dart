@@ -50,7 +50,7 @@ class IntroText extends StatelessWidget {
               height: context.width < DeviceType.ipad.getMaxWidth() ? 48 : 80,
               child: AnimatedTextKit(
                 repeatForever: true,
-                pause: const Duration(milliseconds: 1500),
+                pause: const Duration(milliseconds: 500),
                 animatedTexts: roles.map((role) {
                   return ScaleAnimatedText(
                     role,
@@ -66,8 +66,7 @@ class IntroText extends StatelessWidget {
                 }).toList(),
               ),
             ),
-            const SizedBox(height: 20),
-            const SizedBox(height: 24),
+            // const SizedBox(height: 24),
             Wrap(
               alignment: WrapAlignment.center,
               spacing: 12,
@@ -156,65 +155,68 @@ class _HighlightBadge extends StatelessWidget {
                   .withValues(alpha: 0.4),
             ),
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                icon,
-                size: 16,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              const SizedBox(width: 8),
-              Text(
-                label,
-                style: AppStyles.smallText(
-                  textColor: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withValues(alpha: 0.85),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  icon,
+                  size: 16,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
-              ),
-              if (!isSingle) ...[
                 const SizedBox(width: 8),
-                Wrap(
-                  spacing: 6,
-                  runSpacing: 6,
-                  children: urls
-                      .map(
-                        (u) => GestureDetector(
-                          onTap: () => onTap(u),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 6,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .primary
-                                  .withValues(alpha: 0.12),
-                              borderRadius: BorderRadius.circular(999),
-                              border: Border.all(
+                Text(
+                  label,
+                  style: AppStyles.smallText(
+                    textColor: Theme.of(context)
+                        .colorScheme
+                        .onSurface
+                        .withValues(alpha: 0.85),
+                  ),
+                ),
+                if (!isSingle) ...[
+                  const SizedBox(width: 8),
+                  Wrap(
+                    spacing: 6,
+                    runSpacing: 6,
+                    children: urls
+                        .map(
+                          (u) => GestureDetector(
+                            onTap: () => onTap(u),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 6,
+                              ),
+                              decoration: BoxDecoration(
                                 color: Theme.of(context)
                                     .colorScheme
                                     .primary
-                                    .withValues(alpha: 0.35),
+                                    .withValues(alpha: 0.12),
+                                borderRadius: BorderRadius.circular(999),
+                                border: Border.all(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .primary
+                                      .withValues(alpha: 0.35),
+                                ),
                               ),
-                            ),
-                            child: Text(
-                              chipLabel(u),
-                              style: AppStyles.extraSmallTextThin(
-                                textColor:
-                                    Theme.of(context).colorScheme.primary,
+                              child: Text(
+                                chipLabel(u),
+                                style: AppStyles.extraSmallTextThin(
+                                  textColor:
+                                      Theme.of(context).colorScheme.primary,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      )
-                      .toList(),
-                ),
+                        )
+                        .toList(),
+                  ),
+                ],
               ],
-            ],
+            ),
           ),
         ),
       ),
