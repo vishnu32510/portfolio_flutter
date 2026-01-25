@@ -12,16 +12,16 @@ class HorizontalHeaders extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        if (context.width < DeviceType.ipad.getMaxWidth()) {
-          return const SizedBox.shrink();
-        }
+        // if (context.width < DeviceType.ipad.getMaxWidth()) {
+        //   return const SizedBox.shrink();
+        // }
         
         return SizedBox(
           width: context.width * 0.8,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: Wrap(
+            alignment: WrapAlignment.center,
+            runAlignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               ...List.generate(
                 AppBarHeaders.values.length,
@@ -31,6 +31,19 @@ class HorizontalHeaders extends StatelessWidget {
               ),
             ],
           ),
+          // child: Row(
+          //   mainAxisSize: MainAxisSize.min,
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   crossAxisAlignment: CrossAxisAlignment.center,
+          //   children: [
+          //     ...List.generate(
+          //       AppBarHeaders.values.length,
+          //       (index) {
+          //         return CustomHeaderBtn(headerIndex: index);
+          //       },
+          //     ),
+          //   ],
+          // ),
         );
       },
     );

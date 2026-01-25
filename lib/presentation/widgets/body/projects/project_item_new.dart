@@ -96,9 +96,9 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                     height: minHeight / 2.5,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: isDark 
-                        ? Colors.black.withValues(alpha: 0.2) 
-                        : Colors.white.withValues(alpha: 0.5),
+                      color: isDark
+                          ? Colors.black.withValues(alpha: 0.2)
+                          : Colors.white.withValues(alpha: 0.5),
                       border: Border(
                         bottom: BorderSide(
                           color: colors.outline.withValues(alpha: 0.1),
@@ -107,17 +107,31 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                     ),
                     padding: EdgeInsets.all(AppSizes.spacingMedium),
                     child: widget.project.imageUrl.isNotEmpty
-                        ? Image.network(
-                            widget.project.imageUrl,
-                            fit: BoxFit.contain,
-                            errorBuilder: (_, _, _) => Center(
-                              child: Icon(
-                                FontAwesomeIcons.image,
-                                size: AppSizes.iconHuge,
-                                color: colors.onSurface.withValues(alpha: 0.3),
-                              ),
-                            ),
-                          )
+                        ? (widget.project.isAsset
+                            ? Image.asset(
+                                widget.project.imageUrl,
+                                fit: BoxFit.contain,
+                                errorBuilder: (context, error, stackTrace) => Center(
+                                  child: Icon(
+                                    FontAwesomeIcons.image,
+                                    size: AppSizes.iconHuge,
+                                    color:
+                                        colors.onSurface.withValues(alpha: 0.3),
+                                  ),
+                                ),
+                              )
+                            : Image.network(
+                                widget.project.imageUrl,
+                                fit: BoxFit.contain,
+                                errorBuilder: (context, error, stackTrace) => Center(
+                                  child: Icon(
+                                    FontAwesomeIcons.image,
+                                    size: AppSizes.iconHuge,
+                                    color:
+                                        colors.onSurface.withValues(alpha: 0.3),
+                                  ),
+                                ),
+                              ))
                         : Center(
                             child: Icon(
                               FontAwesomeIcons.code,

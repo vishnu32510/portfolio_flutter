@@ -40,7 +40,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
             // Center: Navigation Headers (desktop only)
-            if (!context.isMobile && context.width >= 800)
+            // if (!context.isMobile && context.width >= 800)
               Align(
                 alignment: Alignment.center,
                 child: SizedBox(
@@ -51,10 +51,14 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             // Right: Web Options (Resume + Theme) or Mobile Menu
             Align(
               alignment: Alignment.centerRight,
-              child: context.isMobile || context.width < 800
-                  ? const CustomMenuBtn()
-                  : const WebOptions(),
+              child:const WebOptions(),
             ),
+            // Align(
+            //   alignment: Alignment.centerRight,
+            //   child: context.isMobile || context.width < 800
+            //       ? const CustomMenuBtn()
+            //       : const WebOptions(),
+            // ),
           ],
         ),
       ),

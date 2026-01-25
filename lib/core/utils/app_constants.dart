@@ -32,6 +32,7 @@ abstract class AppConstants {
   static const List<Project> projects = [
     Project(
         name: "My Portfolio",
+        tags: [ProjectTag.web, ProjectTag.mobile],
         imageUrl:
             "https://raw.githubusercontent.com/vishnu32510/portfolio_flutter/main/assets/images/appIcon.png",
         description:
@@ -41,6 +42,7 @@ abstract class AppConstants {
         githubRepoLink: "https://github.com/vishnu32510/portfolio_flutter"),
     Project(
         name: "Unsplash public photos",
+        tags: [ProjectTag.mobile],
         imageUrl:
             "https://raw.githubusercontent.com/vishnu32510/Photos_using_unsplash_api/main/images/icon.png",
         description:
@@ -50,6 +52,7 @@ abstract class AppConstants {
             "https://github.com/vishnu32510/Photos_using_unsplash_api"),
     Project(
         name: "Appetizer IOS Application",
+        tags: [ProjectTag.mobile],
         imageUrl:
             "https://raw.githubusercontent.com/vishnu32510/Appetizer/main/appetizers/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
         description:
@@ -58,6 +61,7 @@ abstract class AppConstants {
         githubRepoLink: "https://github.com/vishnu32510/Appetizer"),
     Project(
         name: "Apple Framework List",
+        tags: [ProjectTag.mobile],
         imageUrl:
             "https://raw.githubusercontent.com/vishnu32510/Apple-Frameworks/main/Apple-Frameworks/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
         description:
@@ -66,12 +70,14 @@ abstract class AppConstants {
         githubRepoLink: "https://github.com/vishnu32510/Apple-Frameworks"),
     Project(
         name: "Whatsapp UI Clone",
+        tags: [ProjectTag.mobile],
         imageUrl: "",
         description: "Whatsapp UI Clone with FLutter",
         techStack: ["Flutter", "Dart", "UI/UX"],
         githubRepoLink: "https://github.com/vishnu32510/flutter_whatsapp"),
     Project(
         name: "Facebook Responsive UI Clone",
+        tags: [ProjectTag.web],
         imageUrl: "",
         description:
             "Flutter Facebook Responsive Responsive UI for Web and Mobile",
@@ -79,6 +85,7 @@ abstract class AppConstants {
         githubRepoLink: "https://github.com/vishnu32510/flutter_facebook"),
     Project(
         name: "Weather App UI",
+        tags: [ProjectTag.mobile],
         imageUrl:
             "https://raw.githubusercontent.com/vishnu32510/SwiftUI-Weather/main/SwiftUI-Weather/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
         description: "Swift Weather App UI in Dark and Light Mode",
@@ -86,6 +93,7 @@ abstract class AppConstants {
         githubRepoLink: "https://github.com/vishnu32510/SwiftUI-Weather"),
     Project(
         name: "My GitHub Profile Details",
+        tags: [ProjectTag.mobile],
         imageUrl:
             "https://raw.githubusercontent.com/vishnu32510/GitHubSwift/main/GitHubSwift/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
         description:
