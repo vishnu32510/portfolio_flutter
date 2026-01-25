@@ -41,51 +41,38 @@ class _MobileMenuState extends State<MobileMenu> {
         }
       },
       itemBuilder: (popupContext) {
+        final popupColors = Theme.of(popupContext).colorScheme;
         return [
           ...Routes.mainRoutes.map(
             (route) => PopupMenuItem<Routes>(
               value: route,
-              child: Builder(
-                builder: (context) {
-                  final colors = Theme.of(context).colorScheme;
-                  return Row(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(
-                        route.icon,
-                        size: AppSizes.iconSmall,
-                        color: colors.primary,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(
+                    route.icon,
+                    size: AppSizes.iconSmall,
+                    color: popupColors.primary,
+                  ),
+                  SizedBox(width: AppSizes.spacingRegular),
+                  HoverGlowText(
+                    text: Text(
+                      route.name,
+                      style: AppStyles.smallText(
+                        textColor: popupColors.onSurface,
                       ),
-                      SizedBox(width: AppSizes.spacingRegular),
-                      HoverGlowText(
-                        text: Text(
-                          route.name,
-                          style: AppStyles.smallText(
-                            textColor: colors.onSurface,
-                          ),
-                        ),
-                        glowColor: colors.primary,
-                        alwaysHighlight: _isCurrentRoute(route),
-                      ),
-                    ],
-                  );
-                },
+                    ),
+                    glowColor: popupColors.primary,
+                    alwaysHighlight: _isCurrentRoute(route),
+                  ),
+                ],
               ),
             ),
           ),
-          PopupMenuItem<void>(
-            enabled: false,
-            height: 1,
-            child: Builder(
-              builder: (context) => Divider(
-                thickness: 0.5,
-                color: Theme.of(context).colorScheme.outline,
-                indent: AppSizes.spacingRegular,
-                endIndent: AppSizes.spacingRegular,
-              ),
-            ),
+          PopupMenuDivider(
+            height: AppSizes.spacingMedium,
           ),
           // Resume option
           PopupMenuItem<void>(
@@ -98,47 +85,33 @@ class _MobileMenuState extends State<MobileMenu> {
                 await launchUrl(uri, mode: LaunchMode.externalApplication);
               }
             },
-            child: Builder(
-              builder: (context) {
-                final colors = Theme.of(context).colorScheme;
-                return Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      FontAwesomeIcons.arrowUpRightFromSquare,
-                      size: AppSizes.iconSmall,
-                      color: colors.primary,
-                    ),
-                    SizedBox(width: AppSizes.spacingRegular),
-                    Text(
-                      'Resume',
-                      style: AppStyles.smallText(
-                        textColor: colors.onSurface,
-                      ),
-                    ),
-                  ],
-                );
-              },
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  FontAwesomeIcons.arrowUpRightFromSquare,
+                  size: AppSizes.iconSmall,
+                  color: popupColors.primary,
+                ),
+                SizedBox(width: AppSizes.spacingRegular),
+                Text(
+                  'Resume',
+                  style: AppStyles.smallText(
+                    textColor: popupColors.onSurface,
+                  ),
+                ),
+              ],
             ),
           ),
-          PopupMenuItem<void>(
-            enabled: false,
-            height: 1,
-            child: Builder(
-              builder: (context) => Divider(
-                thickness: 0.5,
-                color: Theme.of(context).colorScheme.outline,
-                indent: AppSizes.spacingRegular,
-                endIndent: AppSizes.spacingRegular,
-              ),
-            ),
+          PopupMenuDivider(
+            height: AppSizes.spacingMedium,
           ),
           // Theme switcher
           PopupMenuItem<void>(
             enabled: false,
             child: BlocBuilder<ThemeBloc, ThemeState>(
               builder: (context, state) {
-                final colors = Theme.of(context).colorScheme;
+                // We can fetch theme again here for the toggle text
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -148,7 +121,7 @@ class _MobileMenuState extends State<MobileMenu> {
                       state.themeEventType == ThemeType.darkMode
                           ? 'Dark Mode'
                           : 'Light Mode',
-                      style: AppStyles.smallText(textColor: colors.onSurface),
+                      style: AppStyles.smallText(textColor: popupColors.onSurface),
                     ),
                     ThemeHeader(),
                   ],

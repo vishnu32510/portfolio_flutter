@@ -14,7 +14,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Floxi',
-        imageUrl: 'https://avatars.githubusercontent.com/u/226618007?s=96&v=4',
+        imageUrl: 'https://avatars.githubusercontent.com/u/226618007',
         description: 'Eco-reward app to promote sustainable actions with AI-driven suggestions, receipt & barcode-based carbon tracking, and a B2B analytics dashboard.',
         techStack: ['Flutter', 'React.js', 'Next.js', 'Dart', 'Firebase', 'GCP', 'Node.js', 'Android', 'IOS', "Docker"],
         status: 'Completed',
