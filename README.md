@@ -14,13 +14,6 @@
   </p>
 </p>
 
-
-
-## About The Project
-
-<img width="1512" alt="Screenshot 2024-03-18 at 2 11 28 PM" src="https://github.com/vishnu32510/portfolio_flutter/assets/76788079/5a47d7eb-0cc9-491c-83b1-208f0bf1fecd">
-
-
 ## Built With
 
 * Flutter SDK
