@@ -96,17 +96,20 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                     height: minHeight / 2.5,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: colors.surface.withValues(alpha: 0.5),
+                      color: isDark 
+                        ? Colors.black.withValues(alpha: 0.2) 
+                        : Colors.white.withValues(alpha: 0.5),
                       border: Border(
                         bottom: BorderSide(
                           color: colors.outline.withValues(alpha: 0.1),
                         ),
                       ),
                     ),
+                    padding: EdgeInsets.all(AppSizes.spacingMedium),
                     child: widget.project.imageUrl.isNotEmpty
                         ? Image.network(
                             widget.project.imageUrl,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.contain,
                             errorBuilder: (_, _, _) => Center(
                               child: Icon(
                                 FontAwesomeIcons.image,
