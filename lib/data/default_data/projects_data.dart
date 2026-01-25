@@ -23,7 +23,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Fact Dynamics',
-        imageUrl: 'https://github.com/vishnu32510/fact_pulse/blob/main/assets/icon/icon.png',
+        imageUrl: 'https://raw.githubusercontent.com/vishnu32510/fact_pulse/main/assets/icon/icon.png',
         description: 'Real-time fact-checking for speech & images. Showcased in the Perplexity API Cookbook with Dart and Flutter SDKs.',
         techStack: ['Flutter', 'Dart', 'Perplexity API', 'LangChain', 'FastAPI', 'Agentic', 'Real-time'],
         status: 'Completed',
@@ -32,7 +32,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Chi Planner',
-        imageUrl: 'https://github.com/vishnu32510/chi-scartlet-hacks/blob/main/assets/images/chicago.png',
+        imageUrl: 'https://raw.githubusercontent.com/vishnu32510/chi-scartlet-hacks/main/assets/images/chicago.png',
         description: 'Live trip & event planner with LLM integration and real-time attraction data scraping. Scarlet Hacks 2024 winner.',
         techStack: ['Flutter', 'Dart', 'LLM', 'Google Cloud', 'APIs'],
         status: 'Completed',
@@ -41,7 +41,7 @@ class ProjectsData {
       ),
       Project(
         name: 'perplexity_dart',
-        imageUrl: 'https://pub.dev/static/hash-a6jh3avn/img/pub-dev-logo.svg',
+        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Dart-logo.png',
         description: 'Dart SDK for the Perplexity API with streaming support.',
         techStack: ['Dart', 'Perplexity API', 'SDK'],
         status: 'Published',
@@ -50,7 +50,7 @@ class ProjectsData {
       ),
       Project(
         name: 'perplexity_flutter',
-        imageUrl: 'https://pub.dev/static/hash-a6jh3avn/img/pub-dev-logo.svg',
+        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Dart-logo.png',
         description: 'Flutter UI SDK for building Perplexity-powered experiences.',
         techStack: ['Flutter', 'Dart', 'Perplexity API', 'SDK'],
         status: 'Published',

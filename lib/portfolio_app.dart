@@ -7,6 +7,7 @@ import 'package:portfolio_flutter/navigation/navigation.dart';
 import 'package:portfolio_flutter/presentation/blocs/portfolio_bloc/portfolio_bloc.dart';
 import 'package:portfolio_flutter/presentation/blocs/theme_bloc/theme_bloc.dart';
 
+import 'presentation/widgets/wrapper/main_wrapper.dart';
 import 'presentation/blocs/home_bloc/home_bloc.dart';
 
 class PortfolioApp extends StatelessWidget {
@@ -49,6 +50,7 @@ class PortfolioApp extends StatelessWidget {
             themeMode: state.themeMode,
             onGenerateRoute: routeGenerator,
             initialRoute: '/',
+            builder: (context, child) => MainWrapper(child: child!),
           );
         },
       ),

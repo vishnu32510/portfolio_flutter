@@ -37,26 +37,50 @@ Route<dynamic>? routeGenerator(RouteSettings settings) {
   final currentIndex = currentRoute != null
       ? Routes.mainRoutes.indexOf(currentRoute)
       : -1;
-  final slideFromRight = targetIndex > currentIndex;
+  
+  // Update direction in AppNavigator for consistent Primary/Secondary animations
+  if (currentIndex != -1 && targetIndex != -1) {
+    AppNavigator.isSlideFromRight = targetIndex > currentIndex;
+  }
 
   return PageRouteBuilder(
     settings: settings,
     pageBuilder: (_, _, _) => page,
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      return SlideTransition(
-        position: Tween<Offset>(
-          begin: Offset(slideFromRight ? 1.0 : -1.0, 0),
-          end: Offset.zero,
-        ).animate(
-          CurvedAnimation(
-            parent: animation,
-            curve: Curves.easeInOutCubic,
-          ),
+      final slideFromRight = AppNavigator.isSlideFromRight;
+      
+      // Primary Animation (Incoming Page)
+      final primaryOffset = Tween<Offset>(
+        begin: Offset(slideFromRight ? 1.0 : -1.0, 0),
+        end: Offset.zero,
+      ).animate(
+        CurvedAnimation(
+          parent: animation,
+          curve: Curves.easeInOutCubic,
         ),
-        child: child,
+      );
+
+      // Secondary Animation (Outgoing Page) - This mimics the "Slide Left" behavior
+      // when a new page covers it (Forward) or "Slide Right" (Backward)
+      final secondaryOffset = Tween<Offset>(
+        begin: Offset.zero,
+        end: Offset(slideFromRight ? -1.0 : 1.0, 0),
+      ).animate(
+        CurvedAnimation(
+          parent: secondaryAnimation,
+          curve: Curves.easeInOutCubic,
+        ),
+      );
+
+      return SlideTransition(
+        position: primaryOffset,
+        child: SlideTransition(
+          position: secondaryOffset,
+          child: child,
+        ),
       );
     },
-    transitionDuration: const Duration(milliseconds: 300),
-    reverseTransitionDuration: const Duration(milliseconds: 300),
+    transitionDuration: const Duration(milliseconds: 500),
+    reverseTransitionDuration: const Duration(milliseconds: 500),
   );
 }

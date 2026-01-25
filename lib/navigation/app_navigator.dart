@@ -10,6 +10,8 @@ class AppNavigator {
 
   static BuildContext? get context => navigatorKey.currentContext;
 
+  static bool isSlideFromRight = true;
+
   static Routes? get currentRoute {
     String? currentPath;
     _navigator?.popUntil((route) {
