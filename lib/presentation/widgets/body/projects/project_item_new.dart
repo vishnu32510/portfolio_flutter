@@ -96,7 +96,9 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                     height: minHeight / 2.5,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: isDark
+                          ? Colors.black.withValues(alpha: 0.2)
+                          : Colors.white.withValues(alpha: 0.5),
                       border: Border(
                         bottom: BorderSide(
                           color: colors.outline.withValues(alpha: 0.1),

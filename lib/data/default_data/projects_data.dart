@@ -14,11 +14,10 @@ class ProjectsData {
       ),
       Project(
         name: 'Floxi',
-        imageUrl: 'https://floxi.co/floxi-leaf-icon.png',
+        imageUrl: 'https://raw.githubusercontent.com/vishnu32510/portfolio_flutter/main/assets/images/floxi.png',
         description: 'Eco-reward app to promote sustainable actions with AI-driven suggestions, receipt & barcode-based carbon tracking, and a B2B analytics dashboard.',
-        techStack: ['Flutter', 'React.js', 'Next.js', 'Dart', 'Firebase', 'GCP', 'Node.js', 'Android', 'IOS', "Docker"],
         status: 'In Progress',
-        githubRepoLink: 'https://github.com/floxi-co',
+        githubRepoLink: null,
         demoLink: 'https://floxi.co',
       ),
       Project(
@@ -28,7 +27,7 @@ class ProjectsData {
         techStack: ['Flutter', 'Dart', 'Perplexity API', 'LangChain', 'FastAPI', 'Agentic', 'Real-time'],
         status: 'Completed',
         githubRepoLink: 'https://github.com/vishnu32510/fact_pulse',
-        demoLink: 'https://devpost.com/software/fact-dynamics',
+        demoLink: 'https://fact-pulse.web.app/',
       ),
       Project(
         name: 'Chi Planner',
