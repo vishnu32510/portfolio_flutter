@@ -12,9 +12,9 @@ class HorizontalHeaders extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        // if (context.width < DeviceType.ipad.getMaxWidth()) {
-        //   return const SizedBox.shrink();
-        // }
+        if (context.width < DeviceType.ipad.getMaxWidth()) {
+          return const SizedBox.shrink();
+        }
         
         return SizedBox(
           width: context.width * 0.8,

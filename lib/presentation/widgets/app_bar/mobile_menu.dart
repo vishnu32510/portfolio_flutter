@@ -69,57 +69,57 @@ class _MobileMenuState extends State<MobileMenu> {
               ),
             ),
           ),
-          PopupMenuDivider(
-            height: AppSizes.spacingMedium,
-          ),
-          // Resume option
-          PopupMenuItem<void>(
-            onTap: () async {
-              final portfolioState = context.read<PortfolioBloc>().state;
-              final resumeLink = portfolioState.data?.resumeLink ??
-                  'https://drive.google.com/file/d/1WDLPye0JSXinnxGaFskq1mqi42cVCjKy/view?usp=sharing';
-              final uri = Uri.parse(resumeLink);
-              if (await canLaunchUrl(uri)) {
-                await launchUrl(uri, mode: LaunchMode.externalApplication);
-              }
-            },
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  FontAwesomeIcons.arrowUpRightFromSquare,
-                  size: AppSizes.iconSmall,
-                  color: popupColors.primary,
-                ),
-                SizedBox(width: AppSizes.spacingRegular),
-                Text(
-                  'Resume',
-                  style: AppStyles.smallText(
-                    textColor: popupColors.onSurface,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          PopupMenuDivider(
-            height: AppSizes.spacingMedium,
-          ),
-          // Theme switcher
-          PopupMenuItem<void>(
-            enabled: false,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Text(
-                  'Toggle Theme',
-                  style: AppStyles.smallText(textColor: popupColors.onSurface),
-                ),
-                ThemeHeader(),
-              ],
-            ),
-          ),
+          // PopupMenuDivider(
+          //   height: AppSizes.spacingMedium,
+          // ),
+          // // Resume option
+          // PopupMenuItem<void>(
+          //   onTap: () async {
+          //     final portfolioState = context.read<PortfolioBloc>().state;
+          //     final resumeLink = portfolioState.data?.resumeLink ??
+          //         'https://drive.google.com/file/d/1WDLPye0JSXinnxGaFskq1mqi42cVCjKy/view?usp=sharing';
+          //     final uri = Uri.parse(resumeLink);
+          //     if (await canLaunchUrl(uri)) {
+          //       await launchUrl(uri, mode: LaunchMode.externalApplication);
+          //     }
+          //   },
+          //   child: Row(
+          //     mainAxisSize: MainAxisSize.min,
+          //     children: [
+          //       Icon(
+          //         FontAwesomeIcons.arrowUpRightFromSquare,
+          //         size: AppSizes.iconSmall,
+          //         color: popupColors.primary,
+          //       ),
+          //       SizedBox(width: AppSizes.spacingRegular),
+          //       Text(
+          //         'Resume',
+          //         style: AppStyles.smallText(
+          //           textColor: popupColors.onSurface,
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // PopupMenuDivider(
+          //   height: AppSizes.spacingMedium,
+          // ),
+          // // Theme switcher
+          // PopupMenuItem<void>(
+          //   enabled: false,
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     crossAxisAlignment: CrossAxisAlignment.center,
+          //     mainAxisSize: MainAxisSize.max,
+          //     children: [
+          //       Text(
+          //         'Toggle Theme',
+          //         style: AppStyles.smallText(textColor: popupColors.onSurface),
+          //       ),
+          //       ThemeHeader(),
+          //     ],
+          //   ),
+          // ),
         ];
       },
       child: AnimatedSwitcher(

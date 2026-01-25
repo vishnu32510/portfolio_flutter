@@ -12,11 +12,11 @@ class DeveloperNameBtn extends StatelessWidget {
     final isCurrentRoute = ModalRoute.of(context)?.settings.name == Routes.home.route;
     
     return MouseRegion(
-      cursor: !isCurrentRoute
+      cursor: isCurrentRoute
           ? SystemMouseCursors.basic
           : SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: () => !isCurrentRoute ? null : AppNavigator.goHome(),
+        onTap: () => isCurrentRoute ? null : AppNavigator.goHome(),
         child: Container(
           // Slightly bigger app icon in the app bar
           height: AppSizes.iconXL + 6,
