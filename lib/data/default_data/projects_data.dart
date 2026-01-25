@@ -15,11 +15,11 @@ class ProjectsData {
       ),
       Project(
         name: 'Floxi',
-        tags: [ProjectTag.mobile, ProjectTag.web, ProjectTag.ai],
+        tags: [ProjectTag.mobile, ProjectTag.web, ProjectTag.ai, ProjectTag.backend],
         isAsset: true,
         imageUrl: 'assets/logo/floxi_icon.png',
         description: 'Eco-reward app to promote sustainable actions with AI-driven suggestions, receipt & barcode-based carbon tracking, and a B2B analytics dashboard.',
-        techStack: ['Flutter', 'React.js', 'Next.js', 'Dart', 'Firebase', 'GCP', 'Node.js', 'Android', 'IOS', "Docker"],
+        techStack: ['AI / ML', 'Agentic', 'Python', 'Flutter', 'Flask', 'React.js', 'Next.js', 'Dart', 'Firebase', 'GCP', 'Node.js', 'Android', 'IOS', "Docker"],
         status: 'Completed',
         githubRepoLink: 'https://github.com/floxi-co',
         demoLink: 'https://floxi.co',
