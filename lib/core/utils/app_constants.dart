@@ -51,6 +51,118 @@ abstract class AppConstants {
         status: "Completed",
         githubRepoLink: "https://github.com/vishnu32510/portfolio_flutter"),
     Project(
+        name: "Reports Node.js Backend",
+        tags: [ProjectTag.backend, ProjectTag.web],
+        imageUrl: "",
+        description:
+            "Backend service built with Node.js and TypeScript for generating and managing reports",
+        techStack: ["TypeScript", "Node.js", "REST API"],
+        githubRepoLink: "https://github.com/vishnu32510/reports_nodejs"),
+    // Project(
+    //     name: "MVP Builder",
+    //     tags: [ProjectTag.mobile],
+    //     imageUrl: "",
+    //     description:
+    //         "Flutter-based MVP builder tool for rapid prototyping and development",
+    //     techStack: ["Flutter", "Dart"],
+    //     githubRepoLink: "https://github.com/vishnu32510/mvp_builder"),
+    Project(
+        name: "Aurora Mobile Challenge",
+        tags: [ProjectTag.mobile],
+        imageUrl: "https://raw.githubusercontent.com/vishnu32510/aurora_mobile_challenge/refs/heads/main/assets/icons/icon.png",
+        description:
+            "Mobile application challenge project showcasing Flutter development skills",
+        techStack: ["Flutter", "Dart"],
+        githubRepoLink: "https://github.com/vishnu32510/aurora_mobile_challenge"),
+    // Project(
+    //     name: "Stock Dashboard",
+    //     tags: [ProjectTag.web],
+    //     imageUrl: "",
+    //     description:
+    //         "Real-time stock market dashboard with data visualization and analytics",
+    //     techStack: ["TypeScript", "React", "REST API"],
+    //     githubRepoLink: "https://github.com/vishnu32510/stock-dashboard-"),
+    Project(
+        name: "Nova AI Assistant",
+        tags: [ProjectTag.ai, ProjectTag.backend],
+        imageUrl: "",
+        description:
+            "AI-powered assistant built with Python for intelligent automation and task management",
+        techStack: ["Python", "AI/ML"],
+        githubRepoLink: "https://github.com/vishnu32510/nova"),
+    Project(
+        name: "Fact Dynamics",
+        tags: [ProjectTag.web, ProjectTag.ai],
+        imageUrl: "",
+        description:
+            "Real-time fact-checking application powered by AI to verify information accuracy",
+        techStack: ["JavaScript", "AI/ML", "REST API"],
+        githubRepoLink: "https://github.com/vishnu32510/fact_pulse"),
+    Project(
+        name: "Swift Weather App",
+        tags: [ProjectTag.mobile],
+        imageUrl: "",
+        description:
+            "iOS weather application using Open Meteo API with SwiftUI for real-time weather data",
+        techStack: ["Swift", "SwiftUI", "iOS", "REST API"],
+        githubRepoLink: "https://github.com/vishnu32510/swift-weather-app"),
+    Project(
+        name: "Perplexity Flutter SDK",
+        tags: [ProjectTag.mobile, ProjectTag.ai],
+        imageUrl: "",
+        description:
+            "A lightweight Flutter SDK to interact with Perplexity.ai's chat completion API",
+        techStack: ["Flutter", "Dart", "AI/ML", "REST API"],
+        githubRepoLink: "https://github.com/vishnu32510/perplexity_flutter"),
+    Project(
+        name: "Perplexity Dart SDK",
+        tags: [ProjectTag.backend, ProjectTag.ai],
+        imageUrl: "",
+        description:
+            "A lightweight Dart SDK to interact with Perplexity.ai's chat completion API",
+        techStack: ["Dart", "AI/ML", "REST API"],
+        githubRepoLink: "https://github.com/vishnu32510/perplexity_dart"),
+    Project(
+        name: "WhosThatDog",
+        tags: [ProjectTag.mobile, ProjectTag.ai],
+        imageUrl: "",
+        description:
+            "Fun game app to identify dog breeds and learn about different breeds and sub-breeds using AI",
+        techStack: ["Kotlin", "Android", "AI/ML", "REST API"],
+        githubRepoLink: "https://github.com/vishnu32510/WhosThatDog"),
+    Project(
+        name: "Theater App UI",
+        tags: [ProjectTag.mobile],
+        imageUrl: "",
+        description:
+            "Modern theater booking app UI built with Kotlin Jetpack Compose",
+        techStack: ["Kotlin", "Jetpack Compose", "Android"],
+        githubRepoLink: "https://github.com/vishnu32510/TheaterApp_Kotlin"),
+    Project(
+        name: "Mars Visitation App",
+        tags: [ProjectTag.mobile, ProjectTag.web],
+        imageUrl: "",
+        description:
+            "Interactive Mars visitation application built with Flutter for exploring Mars missions",
+        techStack: ["Flutter", "Dart", "JavaScript"],
+        githubRepoLink: "https://github.com/vishnu32510/mars_visitation_flutter"),
+    Project(
+        name: "Sign Language Detection",
+        tags: [ProjectTag.ai],
+        imageUrl: "",
+        description:
+            "Machine learning model for real-time sign language detection and translation",
+        techStack: ["Python", "Jupyter Notebook", "AI/ML", "Computer Vision"],
+        githubRepoLink: "https://github.com/vishnu32510/sign_language"),
+    Project(
+        name: "Anomaly-Driven Video Summarization",
+        tags: [ProjectTag.ai],
+        imageUrl: "",
+        description:
+            "AI-powered video summarization system for real-time surveillance using anomaly detection",
+        techStack: ["Python", "Jupyter Notebook", "AI/ML", "Computer Vision"],
+        githubRepoLink: "https://github.com/vishnu32510/anomaly-driven-video-summarization"),
+    Project(
         name: "Unsplash public photos",
         tags: [ProjectTag.mobile],
         imageUrl:
