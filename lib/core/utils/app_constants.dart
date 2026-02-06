@@ -93,12 +93,11 @@ abstract class AppConstants {
     Project(
         name: "Fact Dynamics",
         tags: [ProjectTag.web, ProjectTag.ai],
-        imageUrl: "https://raw.githubusercontent.com/vishnu32510/fact_pulse/refs/heads/main/assets/icon/icon.png",
+        imageUrl: "",
         description:
             "Real-time fact-checking application powered by AI to verify information accuracy",
         techStack: ["JavaScript", "AI/ML", "REST API"],
         githubRepoLink: "https://github.com/vishnu32510/fact_pulse"),
-        demoLink: "https://factdynamics.vercel.app/",
     Project(
         name: "Swift Weather App",
         tags: [ProjectTag.mobile],
