@@ -31,6 +31,16 @@ abstract class AppConstants {
   ];
   static const List<Project> projects = [
     Project(
+        name: "LinkedIn AI Assistant",
+        tags: [ProjectTag.ai, ProjectTag.web, ProjectTag.backend],
+        imageUrl:
+            "https://raw.githubusercontent.com/vishnu32510/linkedin-ai-asistant/main/icon500.png",
+        description:
+            "AI-powered Chrome extension for generating personalized LinkedIn connection notes and messages using OpenAI GPT-4o-mini with Google Sheets logging integration",
+        techStack: ["JavaScript", "Chrome Extension API", "OpenAI API", "Google Apps Script", "REST API"],
+        status: "Completed",
+        githubRepoLink: "https://github.com/vishnu32510/linkedin-ai-asistant"),
+    Project(
         name: "My Portfolio",
         tags: [ProjectTag.web, ProjectTag.mobile],
         imageUrl:
@@ -38,7 +48,7 @@ abstract class AppConstants {
         description:
             "Responsive Portfolio designed for Android, IOS, Web, MacOS with Flutter SDK using Bloc State management",
         techStack: ["Flutter", "Dart", "Bloc", "Firebase", "Firestore", "Web"],
-        status: "In Progress",
+        status: "Completed",
         githubRepoLink: "https://github.com/vishnu32510/portfolio_flutter"),
     Project(
         name: "Unsplash public photos",
