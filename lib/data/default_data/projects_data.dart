@@ -12,7 +12,8 @@ class ProjectsData {
             "AI-powered Chrome extension for generating personalized LinkedIn connection notes and messages using OpenAI GPT-4o-mini with Google Sheets logging integration",
         techStack: ["JavaScript", "Chrome Extension API", "OpenAI API", "Google Apps Script", "REST API"],
         status: "Completed",
-        githubRepoLink: "https://github.com/vishnu32510/linkedin-ai-asistant"),
+        githubRepoLink: "https://github.com/vishnu32510/linkedin-ai-asistant",
+        gifUrl: "https://raw.githubusercontent.com/vishnu32510/linkedin-ai-asistant/main/LinkedInNote.gif"),
       Project(
         name: 'My Portfolio',
         tags: [ProjectTag.web, ProjectTag.mobile],

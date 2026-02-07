@@ -35,6 +35,105 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
     return Colors.purple;
   }
 
+  Widget _buildMainProjectImage(ColorScheme colors, bool isDark) {
+    final hasGif = widget.project.gifUrl != null &&
+        widget.project.gifUrl!.isNotEmpty;
+
+    // When gifUrl is set: main area = GIF (big)
+    if (hasGif) {
+      return Image.network(
+        widget.project.gifUrl!,
+        fit: BoxFit.contain,
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 40,
+                  height: 40,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    value: loadingProgress.expectedTotalBytes != null
+                        ? loadingProgress.cumulativeBytesLoaded /
+                            loadingProgress.expectedTotalBytes!
+                        : null,
+                  ),
+                ),
+                if (loadingProgress.expectedTotalBytes != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Text(
+                      'Loading…',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: colors.onSurface.withValues(alpha: 0.6),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          );
+        },
+        errorBuilder: (context, error, stackTrace) => Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                FontAwesomeIcons.image,
+                size: AppSizes.iconHuge,
+                color: colors.onSurface.withValues(alpha: 0.3),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'GIF unavailable',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: colors.onSurface.withValues(alpha: 0.5),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    // No gifUrl: main area = logo/image as before
+    if (widget.project.imageUrl.isNotEmpty) {
+      return widget.project.isAsset
+          ? Image.asset(
+              widget.project.imageUrl,
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) => Center(
+                child: Icon(
+                  FontAwesomeIcons.image,
+                  size: AppSizes.iconHuge,
+                  color: colors.onSurface.withValues(alpha: 0.3),
+                ),
+              ),
+            )
+          : Image.network(
+              widget.project.imageUrl,
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) => Center(
+                child: Icon(
+                  FontAwesomeIcons.image,
+                  size: AppSizes.iconHuge,
+                  color: colors.onSurface.withValues(alpha: 0.3),
+                ),
+              ),
+            );
+    }
+    return Center(
+      child: Icon(
+        FontAwesomeIcons.code,
+        size: AppSizes.iconHuge,
+        color: colors.onSurface.withValues(alpha: 0.3),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
@@ -91,7 +190,6 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Project image
                   Container(
                     height: minHeight / 2.5,
                     width: double.infinity,
@@ -106,39 +204,74 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                       ),
                     ),
                     padding: EdgeInsets.all(AppSizes.spacingMedium),
-                    child: widget.project.imageUrl.isNotEmpty
-                        ? (widget.project.isAsset
-                            ? Image.asset(
-                                widget.project.imageUrl,
-                                fit: BoxFit.contain,
-                                errorBuilder: (context, error, stackTrace) => Center(
-                                  child: Icon(
-                                    FontAwesomeIcons.image,
-                                    size: AppSizes.iconHuge,
-                                    color:
-                                        colors.onSurface.withValues(alpha: 0.3),
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        // Main area: when gifUrl is set show GIF (big), else show logo/image
+                        Positioned.fill(
+                          child: _buildMainProjectImage(colors, isDark),
+                        ),
+                        // Top-right: logo only (when gifUrl is set, logo is on the side)
+                        if (widget.project.gifUrl != null &&
+                            widget.project.gifUrl!.isNotEmpty &&
+                            widget.project.imageUrl.isNotEmpty)
+                          Positioned(
+                            top: 0,
+                            right: 0,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Container(
+                                width: 48,
+                                height: 48,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Colors.black.withValues(alpha: 0.6)
+                                      : Colors.white.withValues(alpha: 0.9),
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(
+                                    color: colors.outline.withValues(alpha: 0.25),
                                   ),
                                 ),
-                              )
-                            : Image.network(
-                                widget.project.imageUrl,
-                                fit: BoxFit.contain,
-                                errorBuilder: (context, error, stackTrace) => Center(
-                                  child: Icon(
-                                    FontAwesomeIcons.image,
-                                    size: AppSizes.iconHuge,
-                                    color:
-                                        colors.onSurface.withValues(alpha: 0.3),
-                                  ),
-                                ),
-                              ))
-                        : Center(
-                            child: Icon(
-                              FontAwesomeIcons.code,
-                              size: AppSizes.iconHuge,
-                              color: colors.onSurface.withValues(alpha: 0.3),
+                                child: widget.project.isAsset
+                                    ? Image.asset(
+                                        widget.project.imageUrl,
+                                        fit: BoxFit.cover,
+                                        errorBuilder: (context, error, stackTrace) => Icon(
+                                          FontAwesomeIcons.image,
+                                          size: 22,
+                                          color: colors.onSurface.withValues(alpha: 0.4),
+                                        ),
+                                      )
+                                    : Image.network(
+                                        widget.project.imageUrl,
+                                        fit: BoxFit.cover,
+                                        loadingBuilder: (context, child, loadingProgress) {
+                                          if (loadingProgress == null) return child;
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 22,
+                                              height: 22,
+                                              child: CircularProgressIndicator(
+                                                strokeWidth: 2,
+                                                value: loadingProgress.expectedTotalBytes != null
+                                                    ? loadingProgress.cumulativeBytesLoaded /
+                                                        loadingProgress.expectedTotalBytes!
+                                                    : null,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        errorBuilder: (context, error, stackTrace) => Icon(
+                                          FontAwesomeIcons.image,
+                                          size: 22,
+                                          color: colors.onSurface.withValues(alpha: 0.4),
+                                        ),
+                                      ),
+                              ),
                             ),
                           ),
+                      ],
+                    ),
                   ),
                   Expanded(
                     child: Container(
