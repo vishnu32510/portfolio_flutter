@@ -16,10 +16,11 @@ class Project {
   final String imageUrl;
   final String description;
   final List<String> techStack;
-  final String? status; // e.g., "In Progress", "Completed", "On Hold"
+  final String? status; 
   final String? githubRepoLink;
-  final String? demoLink; // Renamed from previewLink for clarity
+  final String? demoLink;
   final String? googlePlay;
+  final String? gifUrl;
 
   const Project({
     required this.name,
@@ -32,6 +33,7 @@ class Project {
     this.githubRepoLink,
     this.demoLink,
     this.googlePlay,
+    this.gifUrl,
   });
 
   factory Project.fromFirestore(Map<String, dynamic> data) {
@@ -51,6 +53,7 @@ class Project {
       githubRepoLink: data['githubRepoLink'] ?? data['codeLink'], // Support both for backward compatibility
       demoLink: data['demoLink'] ?? data['previewLink'], // Support both for backward compatibility
       googlePlay: data['googlePlay'],
+      gifUrl: data['gifUrl'],
     );
   }
 
@@ -66,6 +69,7 @@ class Project {
       if (githubRepoLink != null) 'githubRepoLink': githubRepoLink,
       if (demoLink != null) 'demoLink': demoLink,
       if (googlePlay != null) 'googlePlay': googlePlay,
+      if (gifUrl != null) 'gifUrl': gifUrl,
     };
   }
 }
