@@ -115,8 +115,8 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
 
     emit(state.copyWith(isLoading: true, error: null));
 
-    // Simulate async loading delay for better UX
-    await Future.delayed(const Duration(milliseconds: 100));
+    // Longer delay so the experience skeleton is visible on first paint.
+    await Future.delayed(const Duration(milliseconds: 420));
 
     final currentData = state.data ?? _getBasicInfoOnly();
     final updatedData = currentData.copyWith(
