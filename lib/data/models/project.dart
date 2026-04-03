@@ -1,9 +1,9 @@
 enum ProjectTag {
   all('All'),
-  mobile('Mobile'),
-  web('Web'),
   ai('AI'),
-  backend('Backend');
+  backend('Backend'),
+  web('Web'),
+  mobile('Mobile');
 
   final String value;
   const ProjectTag(this.value);
