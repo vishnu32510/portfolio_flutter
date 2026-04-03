@@ -22,20 +22,12 @@ class TimelineContainer extends StatelessWidget {
       width: context.width * (context.isMobile ? 0.9 : 0.6),
       clipBehavior: Clip.none,
       decoration: BoxDecoration(
-        border: Border(
-          left: BorderSide(
-            color: colors.outline,
-            width: 1.5,
-          ),
-        ),
+        border: Border(left: BorderSide(color: colors.outline, width: 1.5)),
       ),
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          if (showContainer)
-            TimelineIndicator(
-              present: present,
-            ),
+          if (showContainer) TimelineIndicator(present: present),
           AnimatedSize(
             duration: const Duration(milliseconds: 400),
             curve: Curves.easeInOut,
@@ -43,13 +35,23 @@ class TimelineContainer extends StatelessWidget {
             child: Container(
               width: double.infinity,
               margin: EdgeInsets.only(
-                top: showContainer ? AppSizes.spacingRegular : AppSizes.spacingXL,
-                bottom: showContainer ? AppSizes.spacingRegular : AppSizes.spacingSmall,
-                left: context.isMobile ? AppSizes.spacingXL : AppSizes.spacingXXL,
+                top: showContainer
+                    ? AppSizes.spacingRegular
+                    : AppSizes.spacingXL,
+                bottom: showContainer
+                    ? AppSizes.spacingRegular
+                    : AppSizes.spacingSmall,
+                left: context.isMobile
+                    ? AppSizes.spacingXL
+                    : AppSizes.spacingXXL,
               ),
               padding: EdgeInsets.symmetric(
-                horizontal: showContainer ? AppSizes.spacingLarge : AppSizes.spacingSmall,
-                vertical: showContainer ? AppSizes.spacingLarge : AppSizes.spacingSmall,
+                horizontal: showContainer
+                    ? AppSizes.spacingLarge
+                    : AppSizes.spacingSmall,
+                vertical: showContainer
+                    ? AppSizes.spacingLarge
+                    : AppSizes.spacingSmall,
               ),
               decoration: showContainer
                   ? BoxDecoration(
@@ -98,7 +100,9 @@ class TimelineIndicator extends StatelessWidget {
         width: size,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: present ? colors.surface : colors.onSurface.withValues(alpha: 0.5),
+          color: present
+              ? colors.surface
+              : colors.onSurface.withValues(alpha: 0.5),
           boxShadow: present
               ? [
                   BoxShadow(

@@ -11,7 +11,7 @@ part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final PortfolioBloc portfolioBloc;
-  
+
   HomeBloc({required this.portfolioBloc}) : super(HomeInitial()) {
     on<ChangeAppBarHeadersIndex>(_changeAppBarHeadersIndex);
     on<ChangeAppBarHeadersAxis>(_changeAppBarHeadersAxis);
@@ -56,8 +56,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     if (resumeLink == null || resumeLink.isEmpty) {
       return;
     }
-    DownloadService downloadService =
-        kIsWeb ? WebDownloadService() : MobileDownloadService();
+    DownloadService downloadService = kIsWeb
+        ? WebDownloadService()
+        : MobileDownloadService();
     await downloadService.downloadResume(url: resumeLink);
   }
 }

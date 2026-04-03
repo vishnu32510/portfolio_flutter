@@ -14,9 +14,7 @@ class TechnicalSkillsItem extends StatelessWidget {
       children: [
         SelectableText(
           '${skill.category}:',
-          style: AppStyles.s18.copyWith(
-            fontWeight: FontWeight.w600,
-          ),
+          style: AppStyles.s18.copyWith(fontWeight: FontWeight.w600),
         ),
         const SizedBox(height: 8),
         Wrap(
@@ -26,10 +24,14 @@ class TechnicalSkillsItem extends StatelessWidget {
             return Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+                color: Theme.of(
+                  context,
+                ).colorScheme.primary.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(6),
                 border: Border.all(
-                  color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.primary.withValues(alpha: 0.3),
                   width: 1,
                 ),
               ),

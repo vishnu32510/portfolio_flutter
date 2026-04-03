@@ -16,16 +16,11 @@ class PortfolioApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => ThemeBloc()),
+        BlocProvider(create: (context) => PortfolioBloc()),
         BlocProvider(
-          create: (context) => ThemeBloc(),
-        ),
-        BlocProvider(
-          create: (context) => PortfolioBloc(),
-        ),
-        BlocProvider(
-          create: (context) => HomeBloc(
-            portfolioBloc: context.read<PortfolioBloc>(),
-          ),
+          create: (context) =>
+              HomeBloc(portfolioBloc: context.read<PortfolioBloc>()),
         ),
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(

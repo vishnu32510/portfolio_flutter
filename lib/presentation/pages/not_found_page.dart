@@ -15,15 +15,10 @@ class NotFoundPage extends StatelessWidget {
           children: [
             SelectableText(
               '404',
-              style: AppStyles.s52.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+              style: AppStyles.s52.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
-            SelectableText(
-              'Page Not Found',
-              style: AppStyles.s24,
-            ),
+            SelectableText('Page Not Found', style: AppStyles.s24),
             const SizedBox(height: 40),
             ElevatedButton(
               onPressed: () => AppNavigator.goHome(),

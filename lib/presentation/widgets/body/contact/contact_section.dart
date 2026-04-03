@@ -23,9 +23,7 @@ class ContactSection extends StatelessWidget {
               ? const Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: ContactIntro(),
-                    ),
+                    Expanded(child: ContactIntro()),
                     SizedBox(width: 32),
                     Expanded(child: ContactForm()),
                   ],

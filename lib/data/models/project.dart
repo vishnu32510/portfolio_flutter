@@ -16,7 +16,7 @@ class Project {
   final String imageUrl;
   final String description;
   final List<String> techStack;
-  final String? status; 
+  final String? status;
   final String? githubRepoLink;
   final String? demoLink;
   final String? googlePlay;
@@ -39,10 +39,14 @@ class Project {
   factory Project.fromFirestore(Map<String, dynamic> data) {
     return Project(
       name: data['name'] ?? '',
-      tags: (data['tags'] as List?)
-              ?.map((t) => ProjectTag.values.firstWhere(
+      tags:
+          (data['tags'] as List?)
+              ?.map(
+                (t) => ProjectTag.values.firstWhere(
                   (e) => e.value.toLowerCase() == t.toString().toLowerCase(),
-                  orElse: () => ProjectTag.mobile))
+                  orElse: () => ProjectTag.mobile,
+                ),
+              )
               .toList() ??
           [ProjectTag.mobile],
       isAsset: data['isAsset'] ?? false,
@@ -50,8 +54,12 @@ class Project {
       description: data['description'] ?? '',
       techStack: List<String>.from(data['techStack'] ?? []),
       status: data['status'],
-      githubRepoLink: data['githubRepoLink'] ?? data['codeLink'], // Support both for backward compatibility
-      demoLink: data['demoLink'] ?? data['previewLink'], // Support both for backward compatibility
+      githubRepoLink:
+          data['githubRepoLink'] ??
+          data['codeLink'], // Support both for backward compatibility
+      demoLink:
+          data['demoLink'] ??
+          data['previewLink'], // Support both for backward compatibility
       googlePlay: data['googlePlay'],
       gifUrl: data['gifUrl'],
     );

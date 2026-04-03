@@ -45,15 +45,10 @@ class _BounceAnimatorState extends State<BounceAnimator>
   @override
   Widget build(BuildContext context) {
     return SlideTransition(
-      position: Tween<Offset>(
-        begin: Offset.zero,
-        end: const Offset(0, -0.2),
-      ).animate(
-        CurvedAnimation(
-          parent: _animationController,
-          curve: Curves.easeIn,
-        ),
-      ),
+      position: Tween<Offset>(begin: Offset.zero, end: const Offset(0, -0.2))
+          .animate(
+            CurvedAnimation(parent: _animationController, curve: Curves.easeIn),
+          ),
       child: widget.child,
     );
   }

@@ -34,7 +34,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
 
   List<dynamic> _filterProjects(List<dynamic> projects) {
     if (_selectedTag == ProjectTag.all) return projects;
-    
+
     return projects.where((project) {
       // project is now a Project object from the list
       return (project.tags as List<ProjectTag>).contains(_selectedTag);
@@ -97,12 +97,12 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                           duration: const Duration(milliseconds: 600),
                           childAnimationBuilder: (widget) => SlideAnimation(
                             verticalOffset: 50.0,
-                            child: FadeInAnimation(
-                              child: widget,
-                            ),
+                            child: FadeInAnimation(child: widget),
                           ),
                           children: projects
-                              .map((project) => ProjectItemNew(project: project))
+                              .map(
+                                (project) => ProjectItemNew(project: project),
+                              )
                               .toList(),
                         ),
                       ),

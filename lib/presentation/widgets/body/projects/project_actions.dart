@@ -63,7 +63,7 @@ class ProjectActions extends StatelessWidget {
                 borderColor: AppColors.primaryColor,
                 onPressed: () {},
               ),
-            )
+            ),
         ],
       ),
     );

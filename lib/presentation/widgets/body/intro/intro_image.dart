@@ -21,9 +21,7 @@ class IntroImage extends StatelessWidget {
       // right: 8,
       child: CircleAvatar(
         radius: responsiveSize.getSize()! / 2.0,
-        backgroundImage: const NetworkImage(
-          AppAssets.devImg,
-        ),
+        backgroundImage: const NetworkImage(AppAssets.devImg),
       ),
     );
   }

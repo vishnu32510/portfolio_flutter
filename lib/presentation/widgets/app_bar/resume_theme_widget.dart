@@ -8,9 +8,7 @@ import '../../blocs/portfolio_bloc/portfolio_bloc.dart';
 import 'theme_header_btn.dart';
 
 class ResumeThemeWidget extends StatelessWidget {
-  const ResumeThemeWidget({
-    super.key,
-  });
+  const ResumeThemeWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +21,10 @@ class ResumeThemeWidget extends StatelessWidget {
         // Resume Button
         BlocBuilder<PortfolioBloc, PortfolioState>(
           builder: (context, portfolioState) {
-            final resumeLink = portfolioState.data?.resumeLink ??
+            final resumeLink =
+                portfolioState.data?.resumeLink ??
                 'https://drive.google.com/file/d/1WDLPye0JSXinnxGaFskq1mqi42cVCjKy/view?usp=sharing';
-            
+
             return MouseRegion(
               cursor: SystemMouseCursors.click,
               child: GestureDetector(

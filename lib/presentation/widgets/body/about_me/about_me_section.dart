@@ -44,7 +44,8 @@ class AboutMeSection extends StatelessWidget {
                         // Image placeholder - can be replaced with actual image
                         Container(
                           width: context.width * (context.isMobile ? 0.4 : 0.3),
-                          height: context.width * (context.isMobile ? 0.4 : 0.3),
+                          height:
+                              context.width * (context.isMobile ? 0.4 : 0.3),
                           constraints: const BoxConstraints(
                             minWidth: 200,
                             minHeight: 200,
@@ -64,9 +65,7 @@ class AboutMeSection extends StatelessWidget {
                         ),
                         Container(
                           width: context.width * (context.isMobile ? 0.9 : 0.3),
-                          constraints: const BoxConstraints(
-                            minWidth: 500,
-                          ),
+                          constraints: const BoxConstraints(minWidth: 500),
                           child: Column(
                             crossAxisAlignment: isMobileView
                                 ? CrossAxisAlignment.center
@@ -80,7 +79,9 @@ class AboutMeSection extends StatelessWidget {
                                   style: AppStyles.smallTextBold(
                                     textColor: colors.primary,
                                   ),
-                                  textAlign: isMobileView ? TextAlign.center : TextAlign.start,
+                                  textAlign: isMobileView
+                                      ? TextAlign.center
+                                      : TextAlign.start,
                                 ),
                                 SizedBox(height: AppSizes.spacingSmall),
                                 GradientText(
@@ -89,16 +90,22 @@ class AboutMeSection extends StatelessWidget {
                                     textColor: colors.onSurface,
                                     isMobile: context.isMobile,
                                   ),
-                                  textAlign: isMobileView ? TextAlign.center : TextAlign.start,
+                                  textAlign: isMobileView
+                                      ? TextAlign.center
+                                      : TextAlign.start,
                                 ),
                                 SizedBox(height: AppSizes.spacingSmall),
                                 SelectableText(
                                   data.introMessage,
                                   style: AppStyles.subText(
-                                    textColor: colors.onSurface.withValues(alpha: 0.7),
+                                    textColor: colors.onSurface.withValues(
+                                      alpha: 0.7,
+                                    ),
                                     isMobile: context.isMobile,
                                   ),
-                                  textAlign: isMobileView ? TextAlign.center : TextAlign.start,
+                                  textAlign: isMobileView
+                                      ? TextAlign.center
+                                      : TextAlign.start,
                                 ),
                               ],
                             ],
@@ -126,7 +133,9 @@ class AboutMeSection extends StatelessWidget {
                             textStyle: AppStyles.extraLargeTextBold(
                               textColor: colors.onSurface,
                             ),
-                            textAlign: isMobileView ? TextAlign.center : TextAlign.start,
+                            textAlign: isMobileView
+                                ? TextAlign.center
+                                : TextAlign.start,
                           ),
                         ),
                         SizedBox(height: AppSizes.spacingXL),
@@ -144,28 +153,32 @@ class AboutMeSection extends StatelessWidget {
                                 context,
                                 icon: Icons.smart_toy,
                                 title: 'AI Driven Development',
-                                description: 'Agentic workflows, RAG, LLM pipelines, and more. Using LangChain/AutoGen, MCP, RAG, OCR+LLM extraction, Vector embeddings.',
+                                description:
+                                    'Agentic workflows, RAG, LLM pipelines, and more. Using LangChain/AutoGen, MCP, RAG, OCR+LLM extraction, Vector embeddings.',
                                 color: Colors.green,
                               ),
                               _buildPhilosophyCard(
                                 context,
                                 icon: Icons.code,
                                 title: 'Clean Code',
-                                description: 'Writing maintainable, scalable code following SOLID principles and best practices.',
+                                description:
+                                    'Writing maintainable, scalable code following SOLID principles and best practices.',
                                 color: Colors.blue,
                               ),
                               _buildPhilosophyCard(
                                 context,
                                 icon: Icons.architecture,
                                 title: 'System Design',
-                                description: 'Designing robust architectures that scale with business needs and handle complexity gracefully.',
+                                description:
+                                    'Designing robust architectures that scale with business needs and handle complexity gracefully.',
                                 color: Colors.purple,
                               ),
                               _buildPhilosophyCard(
                                 context,
                                 icon: Icons.people,
                                 title: 'Collaboration',
-                                description: 'Working closely with teams, mentoring developers, and contributing to open-source projects.',
+                                description:
+                                    'Working closely with teams, mentoring developers, and contributing to open-source projects.',
                                 color: Colors.green,
                               ),
                             ],
@@ -198,10 +211,7 @@ class AboutMeSection extends StatelessWidget {
       child: Container(
         height: context.height / 3.5,
         width: isMobile ? context.width : context.width / 5,
-        constraints: const BoxConstraints(
-          minWidth: 250,
-          minHeight: 300,
-        ),
+        constraints: const BoxConstraints(minWidth: 250, minHeight: 300),
         decoration: BoxDecoration(
           color: colors.surface,
           borderRadius: AppSizes.borderRadiusRegular,
@@ -238,10 +248,7 @@ class AboutMeSection extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: AppSizes.spacingLarge),
-                  SelectableText(
-                    title,
-                    style: AppStyles.regularTextBold(),
-                  ),
+                  SelectableText(title, style: AppStyles.regularTextBold()),
                   SizedBox(height: AppSizes.spacingRegular),
                   Expanded(
                     child: SelectableText(

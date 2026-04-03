@@ -7,8 +7,6 @@ class ContactPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const BasePage(
-      content: ContactSection(),
-    );
+    return const BasePage(content: ContactSection());
   }
 }

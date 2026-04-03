@@ -16,9 +16,11 @@ class SkillItem extends StatelessWidget {
   IconData _getIconForCategory(String category) {
     final cat = category.toLowerCase();
     if (cat.contains('language')) return FontAwesomeIcons.code;
-    if (cat.contains('mobile') || cat.contains('frontend')) return FontAwesomeIcons.mobileScreenButton;
+    if (cat.contains('mobile') || cat.contains('frontend'))
+      return FontAwesomeIcons.mobileScreenButton;
     if (cat.contains('backend')) return FontAwesomeIcons.server;
-    if (cat.contains('tool') || cat.contains('devops')) return FontAwesomeIcons.screwdriverWrench;
+    if (cat.contains('tool') || cat.contains('devops'))
+      return FontAwesomeIcons.screwdriverWrench;
     return FontAwesomeIcons.gear;
   }
 
@@ -49,11 +51,7 @@ class SkillItem extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(
-                    icon,
-                    color: colors.primary,
-                    size: AppSizes.iconMedium,
-                  ),
+                  Icon(icon, color: colors.primary, size: AppSizes.iconMedium),
                   SizedBox(width: AppSizes.spacingMedium),
                   FittedBox(
                     fit: BoxFit.scaleDown,
@@ -68,9 +66,7 @@ class SkillItem extends StatelessWidget {
               Container(
                 width: double.infinity,
                 height: 1,
-                decoration: BoxDecoration(
-                  color: colors.outline,
-                ),
+                decoration: BoxDecoration(color: colors.outline),
               ),
               SizedBox(height: AppSizes.spacingLarge),
               SequentialAnimator(

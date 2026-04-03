@@ -67,7 +67,8 @@ class ProjectItem extends StatelessWidget {
                         ),
                       ),
                     ),
-                    if (project.status != null && project.status!.isNotEmpty) ...[
+                    if (project.status != null &&
+                        project.status!.isNotEmpty) ...[
                       const SizedBox(width: AppSizes.spacingRegular),
                       Container(
                         padding: const EdgeInsets.symmetric(
@@ -80,9 +81,7 @@ class ProjectItem extends StatelessWidget {
                         ),
                         child: SelectableText(
                           project.status!,
-                          style: AppStyles.smallText(
-                            textColor: Colors.black,
-                          ),
+                          style: AppStyles.smallText(textColor: Colors.black),
                         ),
                       ),
                     ],
@@ -93,9 +92,9 @@ class ProjectItem extends StatelessWidget {
                 SelectableText(
                   project.description,
                   style: AppStyles.smallText(
-                    textColor: Theme.of(context)
-                        .colorScheme.onSurface
-                        .withValues(alpha: 0.7),
+                    textColor: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
                 ),
                 const SizedBox(height: AppSizes.spacingLarge),
@@ -111,14 +110,14 @@ class ProjectItem extends StatelessWidget {
                           vertical: AppSizes.spacingXS,
                         ),
                         decoration: BoxDecoration(
-                          color: Theme.of(context)
-                              .colorScheme.primary
-                              .withValues(alpha: 0.1),
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.primary.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
-                            color: Theme.of(context)
-                                .colorScheme.primary
-                                .withValues(alpha: 0.3),
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.primary.withValues(alpha: 0.3),
                             width: 1,
                           ),
                         ),
@@ -130,7 +129,9 @@ class ProjectItem extends StatelessWidget {
                             SelectableText(
                               tech,
                               style: AppStyles.smallText(
-                                textColor: Theme.of(context).colorScheme.primary,
+                                textColor: Theme.of(
+                                  context,
+                                ).colorScheme.primary,
                               ),
                             ),
                           ],
@@ -151,12 +152,16 @@ class ProjectItem extends StatelessWidget {
                           onTap: () async {
                             final uri = Uri.parse(project.githubRepoLink!);
                             if (await canLaunchUrl(uri)) {
-                              await launchUrl(uri, mode: LaunchMode.externalApplication);
+                              await launchUrl(
+                                uri,
+                                mode: LaunchMode.externalApplication,
+                              );
                             }
                           },
                         ),
                       ),
-                    if (project.githubRepoLink != null && project.demoLink != null)
+                    if (project.githubRepoLink != null &&
+                        project.demoLink != null)
                       const SizedBox(width: AppSizes.spacingRegular),
                     if (project.demoLink != null)
                       Expanded(
@@ -167,7 +172,10 @@ class ProjectItem extends StatelessWidget {
                           onTap: () async {
                             final uri = Uri.parse(project.demoLink!);
                             if (await canLaunchUrl(uri)) {
-                              await launchUrl(uri, mode: LaunchMode.externalApplication);
+                              await launchUrl(
+                                uri,
+                                mode: LaunchMode.externalApplication,
+                              );
                             }
                           },
                         ),
@@ -198,9 +206,9 @@ class ProjectItem extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           border: Border.all(
-            color: Theme.of(context)
-                .colorScheme.onSurface
-                .withValues(alpha: 0.2),
+            color: Theme.of(
+              context,
+            ).colorScheme.onSurface.withValues(alpha: 0.2),
           ),
           borderRadius: BorderRadius.circular(8),
         ),
@@ -210,13 +218,17 @@ class ProjectItem extends StatelessWidget {
             Icon(
               icon,
               size: AppSizes.iconSmall,
-              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),
+              color: Theme.of(
+                context,
+              ).colorScheme.onSurface.withValues(alpha: 0.8),
             ),
             const SizedBox(width: AppSizes.spacingXS),
             Text(
               label,
               style: AppStyles.smallText(
-                textColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),
+                textColor: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.8),
               ),
             ),
           ],
@@ -229,7 +241,8 @@ class ProjectItem extends StatelessWidget {
     final lowerStatus = status.toLowerCase();
     if (lowerStatus.contains('progress')) {
       return const Color(0xFFFFF59D); // Light yellow
-    } else if (lowerStatus.contains('completed') || lowerStatus.contains('done')) {
+    } else if (lowerStatus.contains('completed') ||
+        lowerStatus.contains('done')) {
       return const Color(0xFFC8E6C9); // Light green
     } else if (lowerStatus.contains('hold') || lowerStatus.contains('paused')) {
       return const Color(0xFFFFCCBC); // Light orange
@@ -245,7 +258,8 @@ class ProjectItem extends StatelessWidget {
     if (lowerTech.contains('flutter')) {
       icon = FontAwesomeIcons.mobileScreen;
       color = const Color(0xFF42A5F5);
-    } else if (lowerTech.contains('tensorflow') || lowerTech.contains('tensor')) {
+    } else if (lowerTech.contains('tensorflow') ||
+        lowerTech.contains('tensor')) {
       icon = FontAwesomeIcons.brain;
       color = const Color(0xFFFF6F00);
     } else if (lowerTech.contains('opencv')) {

@@ -7,8 +7,6 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const BasePage(
-      content: HomeBody(),
-    );
+    return const BasePage(content: HomeBody());
   }
 }

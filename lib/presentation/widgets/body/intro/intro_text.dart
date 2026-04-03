@@ -54,13 +54,14 @@ class IntroText extends StatelessWidget {
                 animatedTexts: roles.map((role) {
                   return ScaleAnimatedText(
                     role,
-                    textStyle: (context.width < DeviceType.ipad.getMaxWidth()
-                            ? AppStyles.s18
-                            : AppStyles.s28)
-                        .copyWith(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    textStyle:
+                        (context.width < DeviceType.ipad.getMaxWidth()
+                                ? AppStyles.s18
+                                : AppStyles.s28)
+                            .copyWith(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                            ),
                     textAlign: TextAlign.center,
                   );
                 }).toList(),
@@ -75,27 +76,42 @@ class IntroText extends StatelessWidget {
                 _HighlightBadge(
                   icon: FontAwesomeIcons.trophy,
                   label: 'Floxi · Scarlet Hacks 2025 Winner',
-                  urls: ['https://floxi.co', 'https://devpost.com/software/floxi', "https://apps.apple.com/us/app/floxi/id6749322113", ],
+                  urls: [
+                    'https://floxi.co',
+                    'https://devpost.com/software/floxi',
+                    "https://apps.apple.com/us/app/floxi/id6749322113",
+                  ],
                 ),
                 _HighlightBadge(
                   icon: FontAwesomeIcons.trophy,
                   label: 'Chi Planner · Scarlet Hacks 2024 Winner',
-                  urls: ['https://devpost.com/software/chi-town-places-event-planner'],
+                  urls: [
+                    'https://devpost.com/software/chi-town-places-event-planner',
+                  ],
                 ),
                 _HighlightBadge(
                   icon: FontAwesomeIcons.wandMagicSparkles,
                   label: 'Fact Dynamics · Perplexity API Showcase',
-                  urls: ['https://docs.perplexity.ai/cookbook/showcase/fact-dynamics', 'https://devpost.com/software/fact-dynamics'],
+                  urls: [
+                    'https://docs.perplexity.ai/cookbook/showcase/fact-dynamics',
+                    'https://devpost.com/software/fact-dynamics',
+                  ],
                 ),
                 _HighlightBadge(
                   icon: FontAwesomeIcons.box,
                   label: 'perplexity_flutter · pub.dev',
-                  urls: ['https://pub.dev/packages/perplexity_flutter', 'https://docs.perplexity.ai/cookbook/showcase/perplexity-flutter'],
+                  urls: [
+                    'https://pub.dev/packages/perplexity_flutter',
+                    'https://docs.perplexity.ai/cookbook/showcase/perplexity-flutter',
+                  ],
                 ),
                 _HighlightBadge(
                   icon: FontAwesomeIcons.box,
                   label: 'perplexity_dart · pub.dev',
-                  urls: ['https://pub.dev/packages/perplexity_dart', 'https://docs.perplexity.ai/cookbook/showcase/perplexity-flutter'],
+                  urls: [
+                    'https://pub.dev/packages/perplexity_dart',
+                    'https://docs.perplexity.ai/cookbook/showcase/perplexity-flutter',
+                  ],
                 ),
               ],
             ),
@@ -104,7 +120,6 @@ class IntroText extends StatelessWidget {
       },
     );
   }
-
 }
 
 class _HighlightBadge extends StatelessWidget {
@@ -146,13 +161,11 @@ class _HighlightBadge extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(999),
-            color:
-                Theme.of(context).colorScheme.surface.withValues(alpha: 0.9),
+            color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.9),
             border: Border.all(
-              color: Theme.of(context)
-                  .colorScheme
-                  .primary
-                  .withValues(alpha: 0.4),
+              color: Theme.of(
+                context,
+              ).colorScheme.primary.withValues(alpha: 0.4),
             ),
           ),
           child: SingleChildScrollView(
@@ -169,10 +182,9 @@ class _HighlightBadge extends StatelessWidget {
                 Text(
                   label,
                   style: AppStyles.smallText(
-                    textColor: Theme.of(context)
-                        .colorScheme
-                        .onSurface
-                        .withValues(alpha: 0.85),
+                    textColor: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.85),
                   ),
                 ),
                 if (!isSingle) ...[
@@ -190,23 +202,22 @@ class _HighlightBadge extends StatelessWidget {
                                 vertical: 6,
                               ),
                               decoration: BoxDecoration(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .primary
-                                    .withValues(alpha: 0.12),
+                                color: Theme.of(
+                                  context,
+                                ).colorScheme.primary.withValues(alpha: 0.12),
                                 borderRadius: BorderRadius.circular(999),
                                 border: Border.all(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .primary
-                                      .withValues(alpha: 0.35),
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.primary.withValues(alpha: 0.35),
                                 ),
                               ),
                               child: Text(
                                 chipLabel(u),
                                 style: AppStyles.extraSmallTextThin(
-                                  textColor:
-                                      Theme.of(context).colorScheme.primary,
+                                  textColor: Theme.of(
+                                    context,
+                                  ).colorScheme.primary,
                                 ),
                               ),
                             ),

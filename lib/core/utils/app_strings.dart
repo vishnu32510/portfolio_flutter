@@ -2,7 +2,8 @@ abstract class AppStrings {
   static const String developerNameStyle = "Vishnu Priyan";
   static const String developerFlutterGeek = "Mobile Developer";
   static const String developerName = "Vishnu Priyan";
-  static const String developerTitle = "Software Engineer (Full-Stack & Mobile)";
+  static const String developerTitle =
+      "Software Engineer (Full-Stack & Mobile)";
 
   static const String developerResume =
       "https://drive.google.com/file/d/1WDLPye0JSXinnxGaFskq1mqi42cVCjKy/view?usp=sharing";
@@ -25,7 +26,7 @@ abstract class AppStrings {
   static const String contactMsg =
       "For any service and work you can contact with me by send an email or by our social media accounts.";
   static const String contactWithMe = 'Connect with me';
-  
+
   // New sections
   static const String technicalSkills = 'Technical Skills';
   static const String professionalExperience = 'Professional Experience';

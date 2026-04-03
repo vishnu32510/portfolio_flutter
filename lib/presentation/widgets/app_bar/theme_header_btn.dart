@@ -19,35 +19,36 @@ class _ThemeHeaderState extends State<ThemeHeader> {
         return Stack(
           children: [
             Visibility(
-                visible: state.themeEventType == ThemeType.darkMode,
-                replacement: InkWell(
-                    highlightColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    onTap: () {
-                      BlocProvider.of<ThemeBloc>(context)
-                          .add(ThemeEventChange(ThemeType.darkMode));
-                    },
-                    child: const CircleAvatar(
-                      radius: 32, // Image radius
-                      backgroundImage: AssetImage(
-                        AppAssets.sunGif,
-                      ),
-                    )),
-                child: InkWell(
-                    highlightColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    onTap: () {
-                      BlocProvider.of<ThemeBloc>(context)
-                          .add(ThemeEventChange(ThemeType.lightMode));
-                    },
-                    child: const CircleAvatar(
-                      radius: 32, // Image radius
-                      backgroundImage: AssetImage(
-                        AppAssets.moonGif,
-                      ),
-                    )))
+              visible: state.themeEventType == ThemeType.darkMode,
+              replacement: InkWell(
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                onTap: () {
+                  BlocProvider.of<ThemeBloc>(
+                    context,
+                  ).add(ThemeEventChange(ThemeType.darkMode));
+                },
+                child: const CircleAvatar(
+                  radius: 32, // Image radius
+                  backgroundImage: AssetImage(AppAssets.sunGif),
+                ),
+              ),
+              child: InkWell(
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                onTap: () {
+                  BlocProvider.of<ThemeBloc>(
+                    context,
+                  ).add(ThemeEventChange(ThemeType.lightMode));
+                },
+                child: const CircleAvatar(
+                  radius: 32, // Image radius
+                  backgroundImage: AssetImage(AppAssets.moonGif),
+                ),
+              ),
+            ),
           ],
         );
       },

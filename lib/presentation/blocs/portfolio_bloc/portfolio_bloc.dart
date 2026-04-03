@@ -12,11 +12,13 @@ part 'portfolio_state.dart';
 
 class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
   PortfolioBloc()
-      : super(PortfolioState(
+    : super(
+        PortfolioState(
           data: _getBasicInfoOnly(),
           isLoading: false,
           loadedSections: const {'basic'},
-        )) {
+        ),
+      ) {
     on<LoadBasicInfo>(_onLoadBasicInfo);
     on<LoadTechnicalSkills>(_onLoadTechnicalSkills);
     on<LoadProjects>(_onLoadProjects);
@@ -34,9 +36,9 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
     Emitter<PortfolioState> emit,
   ) async {
     if (state.isSectionLoaded('basic')) return;
-    
+
     emit(state.copyWith(isLoading: true, error: null));
-    
+
     final currentData = state.data ?? _getBasicInfoOnly();
     final updatedData = currentData.copyWith(
       developerName: BasicInfoData.developerName,
@@ -45,12 +47,14 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
       resumeLink: BasicInfoData.resumeLink,
       socialLinks: BasicInfoData.socialLinks,
     );
-    
-    emit(state.copyWith(
-      data: updatedData,
-      isLoading: false,
-      loadedSections: {...state.loadedSections, 'basic'},
-    ));
+
+    emit(
+      state.copyWith(
+        data: updatedData,
+        isLoading: false,
+        loadedSections: {...state.loadedSections, 'basic'},
+      ),
+    );
   }
 
   Future<void> _onLoadTechnicalSkills(
@@ -58,22 +62,24 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
     Emitter<PortfolioState> emit,
   ) async {
     if (state.isSectionLoaded('skills')) return;
-    
+
     emit(state.copyWith(isLoading: true, error: null));
-    
+
     // Simulate async loading delay for better UX
     await Future.delayed(const Duration(milliseconds: 100));
-    
+
     final currentData = state.data ?? _getBasicInfoOnly();
     final updatedData = currentData.copyWith(
       technicalSkills: TechnicalSkillsData.getSkills(),
     );
-    
-    emit(state.copyWith(
-      data: updatedData,
-      isLoading: false,
-      loadedSections: {...state.loadedSections, 'skills'},
-    ));
+
+    emit(
+      state.copyWith(
+        data: updatedData,
+        isLoading: false,
+        loadedSections: {...state.loadedSections, 'skills'},
+      ),
+    );
   }
 
   Future<void> _onLoadProjects(
@@ -81,22 +87,24 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
     Emitter<PortfolioState> emit,
   ) async {
     if (state.isSectionLoaded('projects')) return;
-    
+
     emit(state.copyWith(isLoading: true, error: null));
-    
+
     // Simulate async loading delay for better UX
     await Future.delayed(const Duration(milliseconds: 100));
-    
+
     final currentData = state.data ?? _getBasicInfoOnly();
     final updatedData = currentData.copyWith(
       projects: ProjectsData.getProjects(),
     );
-    
-    emit(state.copyWith(
-      data: updatedData,
-      isLoading: false,
-      loadedSections: {...state.loadedSections, 'projects'},
-    ));
+
+    emit(
+      state.copyWith(
+        data: updatedData,
+        isLoading: false,
+        loadedSections: {...state.loadedSections, 'projects'},
+      ),
+    );
   }
 
   Future<void> _onLoadExperiences(
@@ -104,22 +112,24 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
     Emitter<PortfolioState> emit,
   ) async {
     if (state.isSectionLoaded('experiences')) return;
-    
+
     emit(state.copyWith(isLoading: true, error: null));
-    
+
     // Simulate async loading delay for better UX
     await Future.delayed(const Duration(milliseconds: 100));
-    
+
     final currentData = state.data ?? _getBasicInfoOnly();
     final updatedData = currentData.copyWith(
       experiences: ExperiencesData.getExperiences(),
     );
-    
-    emit(state.copyWith(
-      data: updatedData,
-      isLoading: false,
-      loadedSections: {...state.loadedSections, 'experiences'},
-    ));
+
+    emit(
+      state.copyWith(
+        data: updatedData,
+        isLoading: false,
+        loadedSections: {...state.loadedSections, 'experiences'},
+      ),
+    );
   }
 
   Future<void> _onLoadEducation(
@@ -127,22 +137,24 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
     Emitter<PortfolioState> emit,
   ) async {
     if (state.isSectionLoaded('education')) return;
-    
+
     emit(state.copyWith(isLoading: true, error: null));
-    
+
     // Simulate async loading delay for better UX
     await Future.delayed(const Duration(milliseconds: 100));
-    
+
     final currentData = state.data ?? _getBasicInfoOnly();
     final updatedData = currentData.copyWith(
       education: EducationData.getEducation(),
     );
-    
-    emit(state.copyWith(
-      data: updatedData,
-      isLoading: false,
-      loadedSections: {...state.loadedSections, 'education'},
-    ));
+
+    emit(
+      state.copyWith(
+        data: updatedData,
+        isLoading: false,
+        loadedSections: {...state.loadedSections, 'education'},
+      ),
+    );
   }
 
   Future<void> _onLoadAllData(
@@ -150,14 +162,22 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
     Emitter<PortfolioState> emit,
   ) async {
     emit(state.copyWith(isLoading: true, error: null));
-    
+
     final allData = _getDefaultData();
-    
-    emit(state.copyWith(
-      data: allData,
-      isLoading: false,
-      loadedSections: const {'basic', 'skills', 'projects', 'experiences', 'education'},
-    ));
+
+    emit(
+      state.copyWith(
+        data: allData,
+        isLoading: false,
+        loadedSections: const {
+          'basic',
+          'skills',
+          'projects',
+          'experiences',
+          'education',
+        },
+      ),
+    );
   }
 
   void _onPortfolioDataUpdated(

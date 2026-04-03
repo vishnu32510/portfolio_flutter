@@ -13,7 +13,7 @@ class ProjectsGrid extends StatelessWidget {
     return BlocBuilder<PortfolioBloc, PortfolioState>(
       builder: (context, portfolioState) {
         final projects = portfolioState.data?.projects ?? [];
-        
+
         if (projects.isEmpty) {
           return const SizedBox.shrink();
         }
@@ -27,9 +27,7 @@ class ProjectsGrid extends StatelessWidget {
             mainAxisSpacing: 16,
           ),
           itemBuilder: (context, index) {
-            return ProjectItem(
-              project: projects[index],
-            );
+            return ProjectItem(project: projects[index]);
           },
           itemCount: projects.length,
         );

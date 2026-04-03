@@ -13,12 +13,7 @@ class DetailedServicesSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        FittedBox(
-          child: Text(
-            AppStrings.servicesIOffer,
-            style: AppStyles.s32,
-          ),
-        ),
+        FittedBox(child: Text(AppStrings.servicesIOffer, style: AppStyles.s32)),
         const SizedBox(height: 32),
         const DetailedServicesGrid(),
       ],

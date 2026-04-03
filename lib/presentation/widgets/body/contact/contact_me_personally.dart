@@ -47,22 +47,16 @@ class ContactMePersonally extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: AppColors.redColor,
-                )),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: AppColors.redColor),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(
-                  FontAwesomeIcons.google,
-                  color: AppColors.redColor,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                const Text("Email Me")
+                Icon(FontAwesomeIcons.google, color: AppColors.redColor),
+                const SizedBox(width: 10),
+                const Text("Email Me"),
               ],
             ),
           ),

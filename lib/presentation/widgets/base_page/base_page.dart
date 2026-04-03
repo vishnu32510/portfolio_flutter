@@ -22,7 +22,7 @@ class BasePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isCompactWidth = context.width < 800;
-    
+
     // Scaffold created per page (after route is established, so Overlay is available)
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -59,12 +59,8 @@ class BasePage extends StatelessWidget {
                       alignment: singlePageContent
                           ? Alignment.center
                           : Alignment.topCenter,
-                      padding: EdgeInsets.only(
-                        top: AppConstants.appBarHeight,
-                      ),
-                      constraints: BoxConstraints(
-                        minHeight: context.height,
-                      ),
+                      padding: EdgeInsets.only(top: AppConstants.appBarHeight),
+                      constraints: BoxConstraints(minHeight: context.height),
                       child: content,
                     ),
                   ),

@@ -33,16 +33,28 @@ class _ExperienceItemState extends State<ExperienceItem> {
 
   IconData _getIconForAchievement(String achievement, int index) {
     final ach = achievement.toLowerCase();
-    if (ach.contains('built') || ach.contains('develop')) return FontAwesomeIcons.code;
-    if (ach.contains('design') || ach.contains('architect')) return FontAwesomeIcons.penRuler;
-    if (ach.contains('optimiz') || ach.contains('improve') || ach.contains('reduce')) return FontAwesomeIcons.gaugeHigh;
-    if (ach.contains('integrat') || ach.contains('api')) return FontAwesomeIcons.plug;
-    if (ach.contains('test') || ach.contains('coverage')) return FontAwesomeIcons.vial;
-    if (ach.contains('deploy') || ach.contains('ci/cd')) return FontAwesomeIcons.rocket;
-    if (ach.contains('mentor') || ach.contains('team')) return FontAwesomeIcons.users;
-    if (ach.contains('security') || ach.contains('auth')) return FontAwesomeIcons.lock;
-    if (ach.contains('analytics') || ach.contains('track')) return FontAwesomeIcons.chartPie;
-    if (ach.contains('performance') || ach.contains('speed')) return FontAwesomeIcons.bolt;
+    if (ach.contains('built') || ach.contains('develop'))
+      return FontAwesomeIcons.code;
+    if (ach.contains('design') || ach.contains('architect'))
+      return FontAwesomeIcons.penRuler;
+    if (ach.contains('optimiz') ||
+        ach.contains('improve') ||
+        ach.contains('reduce'))
+      return FontAwesomeIcons.gaugeHigh;
+    if (ach.contains('integrat') || ach.contains('api'))
+      return FontAwesomeIcons.plug;
+    if (ach.contains('test') || ach.contains('coverage'))
+      return FontAwesomeIcons.vial;
+    if (ach.contains('deploy') || ach.contains('ci/cd'))
+      return FontAwesomeIcons.rocket;
+    if (ach.contains('mentor') || ach.contains('team'))
+      return FontAwesomeIcons.users;
+    if (ach.contains('security') || ach.contains('auth'))
+      return FontAwesomeIcons.lock;
+    if (ach.contains('analytics') || ach.contains('track'))
+      return FontAwesomeIcons.chartPie;
+    if (ach.contains('performance') || ach.contains('speed'))
+      return FontAwesomeIcons.bolt;
     return FontAwesomeIcons.circleCheck;
   }
 
@@ -177,7 +189,9 @@ class _ExperienceItemState extends State<ExperienceItem> {
                         horizontal: AppSizes.spacingRegular,
                       ),
                       child: Text(
-                        ExperienceUtils.convertToTimeline(widget.experience.period),
+                        ExperienceUtils.convertToTimeline(
+                          widget.experience.period,
+                        ),
                         style: AppStyles.extraSmallText(),
                       ),
                     ),
@@ -198,7 +212,9 @@ class _ExperienceItemState extends State<ExperienceItem> {
                     for (int i = 0; i < children.length; i++) {
                       spacedChildren.add(children[i]);
                       if (i < children.length - 1) {
-                        spacedChildren.add(SizedBox(height: AppSizes.spacingMedium));
+                        spacedChildren.add(
+                          SizedBox(height: AppSizes.spacingMedium),
+                        );
                       }
                     }
                     return Column(
@@ -208,34 +224,32 @@ class _ExperienceItemState extends State<ExperienceItem> {
                       children: spacedChildren,
                     );
                   },
-                  children: widget.experience.achievements.map(
-                    (achievement) {
-                      return Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.baseline,
-                        textBaseline: TextBaseline.alphabetic,
-                        children: [
-                          Baseline(
-                            baseline: AppStyles.regularText().fontSize ?? 14,
-                            baselineType: TextBaseline.alphabetic,
-                            child: Icon(
-                              _getIconForAchievement(achievement, 0),
-                              size: AppSizes.iconSmall,
-                              color: colors.primary,
-                            ),
+                  children: widget.experience.achievements.map((achievement) {
+                    return Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Baseline(
+                          baseline: AppStyles.regularText().fontSize ?? 14,
+                          baselineType: TextBaseline.alphabetic,
+                          child: Icon(
+                            _getIconForAchievement(achievement, 0),
+                            size: AppSizes.iconSmall,
+                            color: colors.primary,
                           ),
-                          SizedBox(width: AppSizes.spacingMedium),
-                          Expanded(
-                            child: Text(
-                              achievement,
-                              style: AppStyles.regularText(),
-                            ),
+                        ),
+                        SizedBox(width: AppSizes.spacingMedium),
+                        Expanded(
+                          child: Text(
+                            achievement,
+                            style: AppStyles.regularText(),
                           ),
-                        ],
-                      );
-                    },
-                  ).toList(),
+                        ),
+                      ],
+                    );
+                  }).toList(),
                 ),
               ],
               // Collapse button if it was initially collapsed
@@ -262,7 +276,9 @@ class _ExperienceItemState extends State<ExperienceItem> {
                             Text(
                               'Collapse',
                               style: AppStyles.smallText(
-                                textColor: colors.onSurface.withValues(alpha: 0.5),
+                                textColor: colors.onSurface.withValues(
+                                  alpha: 0.5,
+                                ),
                               ),
                             ),
                           ],

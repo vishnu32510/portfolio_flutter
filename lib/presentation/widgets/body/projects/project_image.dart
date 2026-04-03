@@ -32,4 +32,3 @@ class ProjectImage extends StatelessWidget {
     );
   }
 }
-
