@@ -198,9 +198,9 @@ class _ExperienceItemState extends State<ExperienceItem> {
           ),
         ),
         errorWidget: (context, url, _) => Icon(
-          FontAwesomeIcons.building,
-          size: 18,
-          color: colors.onSurface.withValues(alpha: 0.35),
+          Icons.public_outlined,
+          size: 20,
+          color: colors.onSurface.withValues(alpha: 0.3),
         ),
       ),
     );
@@ -222,10 +222,7 @@ class _ExperienceItemState extends State<ExperienceItem> {
     }
     return MouseRegion(
       cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: _openCompanySite,
-        child: box,
-      ),
+      child: GestureDetector(onTap: _openCompanySite, child: box),
     );
   }
 
@@ -258,7 +255,11 @@ class _ExperienceItemState extends State<ExperienceItem> {
     );
   }
 
-  Widget _buildHeader(ColorScheme colors, String experienceType, Color typeColor) {
+  Widget _buildHeader(
+    ColorScheme colors,
+    String experienceType,
+    Color typeColor,
+  ) {
     final stackDateBelow = context.isMobile || context.width < 700;
 
     final coreRow = Row(
@@ -267,30 +268,6 @@ class _ExperienceItemState extends State<ExperienceItem> {
           : CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-          padding: _collapsed ? EdgeInsets.zero : AppSizes.paddingMedium,
-          decoration: BoxDecoration(
-            color: _collapsed
-                ? Colors.transparent
-                : colors.onSurface.withValues(alpha: 0.05),
-            borderRadius: AppSizes.borderRadiusSmall,
-            border: _collapsed ? null : Border.all(color: colors.outline),
-          ),
-          child: Icon(
-            _collapsed
-                ? FontAwesomeIcons.chevronRight
-                : FontAwesomeIcons.briefcase,
-            size: _collapsed
-                ? AppSizes.iconRegular
-                : AppSizes.iconMedium,
-            color: _collapsed
-                ? colors.onSurface.withValues(alpha: 0.5)
-                : colors.primary,
-          ),
-        ),
-        SizedBox(width: AppSizes.spacingLarge),
         if (_resolveLogoUrl() != null) ...[
           _buildLogo(colors),
           SizedBox(width: AppSizes.spacingMedium),

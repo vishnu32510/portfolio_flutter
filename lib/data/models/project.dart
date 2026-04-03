@@ -1,5 +1,6 @@
 enum ProjectTag {
   all('All'),
+  featured('Featured'),
   ai('AI'),
   backend('Backend'),
   web('Web'),

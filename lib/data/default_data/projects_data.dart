@@ -5,7 +5,12 @@ class ProjectsData {
     return const [
       Project(
         name: "LinkedIn AI Assistant",
-        tags: [ProjectTag.ai, ProjectTag.web, ProjectTag.backend],
+        tags: [
+          ProjectTag.featured,
+          ProjectTag.ai,
+          ProjectTag.web,
+          ProjectTag.backend,
+        ],
         imageUrl:
             "https://raw.githubusercontent.com/vishnu32510/linkedin-ai-asistant/main/icon500.png",
         description:
@@ -24,7 +29,12 @@ class ProjectsData {
       ),
       Project(
         name: 'My Portfolio',
-        tags: [ProjectTag.web, ProjectTag.mobile, ProjectTag.backend],
+        tags: [
+          ProjectTag.featured,
+          ProjectTag.web,
+          ProjectTag.mobile,
+          ProjectTag.backend,
+        ],
         imageUrl:
             'https://raw.githubusercontent.com/vishnu32510/portfolio_flutter/main/assets/images/appIcon.png',
         description:
@@ -37,6 +47,7 @@ class ProjectsData {
       Project(
         name: 'Floxi',
         tags: [
+          ProjectTag.featured,
           ProjectTag.ai,
           ProjectTag.mobile,
           ProjectTag.web,
@@ -68,7 +79,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Flashlight Control',
-        tags: [ProjectTag.mobile],
+        tags: [ProjectTag.featured, ProjectTag.mobile],
         imageUrl:
             'https://raw.githubusercontent.com/vishnu32510/flashlight_control_flutter/main/assets/marketing/app_icon_512.png',
         description:
@@ -92,7 +103,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Plushify Me',
-        tags: [ProjectTag.ai, ProjectTag.mobile],
+        tags: [ProjectTag.featured, ProjectTag.ai, ProjectTag.mobile],
         imageUrl:
             'https://raw.githubusercontent.com/vishnu32510/plushie_flutter/main/assets/app_icon.png',
         description:
@@ -109,12 +120,12 @@ class ProjectsData {
         ],
         status: 'Live on App Store',
         githubRepoLink: 'https://github.com/vishnu32510/plushie_flutter',
-        demoLink:
-            'https://apps.apple.com/ca/app/plushify-me/id6760384789',
+        demoLink: 'https://apps.apple.com/ca/app/plushify-me/id6760384789',
       ),
       Project(
         name: 'Fact Dynamics',
         tags: [
+          ProjectTag.featured,
           ProjectTag.ai,
           ProjectTag.backend,
           ProjectTag.mobile,
@@ -139,7 +150,12 @@ class ProjectsData {
       ),
       Project(
         name: 'Chi Planner',
-        tags: [ProjectTag.ai, ProjectTag.mobile, ProjectTag.backend],
+        tags: [
+          ProjectTag.featured,
+          ProjectTag.ai,
+          ProjectTag.mobile,
+          ProjectTag.backend,
+        ],
         imageUrl:
             'https://raw.githubusercontent.com/vishnu32510/chi-scartlet-hacks/main/assets/images/chicago.png',
         description:
@@ -151,7 +167,7 @@ class ProjectsData {
       ),
       Project(
         name: 'perplexity_dart',
-        tags: [ProjectTag.ai, ProjectTag.backend],
+        tags: [ProjectTag.featured, ProjectTag.ai, ProjectTag.backend],
         imageUrl:
             'https://upload.wikimedia.org/wikipedia/commons/7/7e/Dart-logo.png',
         description: 'Dart SDK for the Perplexity API with streaming support.',
@@ -162,7 +178,12 @@ class ProjectsData {
       ),
       Project(
         name: 'perplexity_flutter',
-        tags: [ProjectTag.ai, ProjectTag.mobile, ProjectTag.web],
+        tags: [
+          ProjectTag.featured,
+          ProjectTag.ai,
+          ProjectTag.mobile,
+          ProjectTag.web,
+        ],
         imageUrl:
             'https://upload.wikimedia.org/wikipedia/commons/7/7e/Dart-logo.png',
         description:

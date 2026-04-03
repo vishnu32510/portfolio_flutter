@@ -19,7 +19,7 @@ class ProjectsSection extends StatefulWidget {
 }
 
 class _ProjectsSectionState extends State<ProjectsSection> {
-  ProjectTag _selectedTag = ProjectTag.all;
+  ProjectTag _selectedTag = ProjectTag.featured;
 
   @override
   void initState() {

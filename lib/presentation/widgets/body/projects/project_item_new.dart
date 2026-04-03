@@ -251,8 +251,9 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                                         widget.project.imageUrl,
                                         fit: BoxFit.cover,
                                         loadingBuilder: (context, child, loadingProgress) {
-                                          if (loadingProgress == null)
+                                          if (loadingProgress == null) {
                                             return child;
+                                          }
                                           return Center(
                                             child: SizedBox(
                                               width: 22,

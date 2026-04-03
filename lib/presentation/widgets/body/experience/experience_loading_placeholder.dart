@@ -34,9 +34,7 @@ class ExperienceLoadingPlaceholder extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: AppSizes.borderRadiusRegular,
-              border: Border.all(
-                color: colors.outline.withValues(alpha: 0.45),
-              ),
+              border: Border.all(color: colors.outline.withValues(alpha: 0.45)),
               color: colors.surface.withValues(alpha: 0.65),
             ),
             padding: AppSizes.paddingLarge,

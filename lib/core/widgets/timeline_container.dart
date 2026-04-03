@@ -92,8 +92,6 @@ class TimelineIndicator extends StatelessWidget {
       size = AppSizes.iconXS;
     }
 
-    final primaryGlow = colors.primary.withValues(alpha: 0.42);
-
     return Positioned(
       left: -(size / 1.7),
       top: AppSizes.spacingXL,
@@ -107,16 +105,21 @@ class TimelineIndicator extends StatelessWidget {
               : colors.onSurface.withValues(alpha: 0.45),
           border: present
               ? Border.all(
-                  color: colors.primary.withValues(alpha: 0.55),
+                  color: colors.primary.withValues(alpha: 0.72),
                   width: 1.5,
                 )
               : null,
           boxShadow: present
               ? [
                   BoxShadow(
-                    color: primaryGlow,
-                    spreadRadius: 2,
-                    blurRadius: 8,
+                    color: colors.primary.withValues(alpha: 0.65),
+                    spreadRadius: 1,
+                    blurRadius: 10,
+                  ),
+                  BoxShadow(
+                    color: colors.primary.withValues(alpha: 0.4),
+                    spreadRadius: 5,
+                    blurRadius: 18,
                   ),
                 ]
               : null,

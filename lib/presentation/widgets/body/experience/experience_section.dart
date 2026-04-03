@@ -38,8 +38,7 @@ class _ExperienceSectionState extends State<ExperienceSection> {
       builder: (context, portfolioState) {
         final experiences = portfolioState.data?.experiences ?? [];
         final colors = Theme.of(context).colorScheme;
-        final experiencesReady =
-            portfolioState.isSectionLoaded('experiences');
+        final experiencesReady = portfolioState.isSectionLoaded('experiences');
 
         return Padding(
           padding: EdgeInsets.symmetric(

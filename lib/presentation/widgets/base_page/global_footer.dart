@@ -15,14 +15,16 @@ class GlobalFooter extends StatelessWidget {
     if (link.contains('dev.to')) return FontAwesomeIcons.dev;
     if (link.contains('github.com')) return FontAwesomeIcons.github;
     if (link.contains('devpost.com')) return FontAwesomeIcons.dev;
-    if (link.contains('stackoverflow.com'))
+    if (link.contains('stackoverflow.com')) {
       return FontAwesomeIcons.stackOverflow;
+    }
     if (link.contains('instagram.com')) return FontAwesomeIcons.instagram;
     if (link.contains('linkedin.com')) return FontAwesomeIcons.linkedin;
     if (link.contains('twitter.com')) return FontAwesomeIcons.twitter;
     if (link.contains('mailto:')) return FontAwesomeIcons.envelope;
-    if (link.contains('floxi.co') || link.contains('portfolio'))
+    if (link.contains('floxi.co') || link.contains('portfolio')) {
       return FontAwesomeIcons.globe;
+    }
     return FontAwesomeIcons.link;
   }
 
