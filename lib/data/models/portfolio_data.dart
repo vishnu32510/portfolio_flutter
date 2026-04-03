@@ -34,19 +34,25 @@ class PortfolioData extends Equatable {
       introMessage: data['introMessage'] ?? '',
       resumeLink: data['resumeLink'] ?? '',
       socialLinks: Map<String, String>.from(data['socialLinks'] ?? {}),
-      technicalSkills: (data['technicalSkills'] as List<dynamic>?)
-              ?.map((e) => TechnicalSkill.fromFirestore(e as Map<String, dynamic>))
+      technicalSkills:
+          (data['technicalSkills'] as List<dynamic>?)
+              ?.map(
+                (e) => TechnicalSkill.fromFirestore(e as Map<String, dynamic>),
+              )
               .toList() ??
           [],
-      experiences: (data['experiences'] as List<dynamic>?)
+      experiences:
+          (data['experiences'] as List<dynamic>?)
               ?.map((e) => Experience.fromFirestore(e as Map<String, dynamic>))
               .toList() ??
           [],
-      projects: (data['projects'] as List<dynamic>?)
+      projects:
+          (data['projects'] as List<dynamic>?)
               ?.map((e) => Project.fromFirestore(e as Map<String, dynamic>))
               .toList() ??
           [],
-      education: (data['education'] as List<dynamic>?)
+      education:
+          (data['education'] as List<dynamic>?)
               ?.map((e) => Education.fromFirestore(e as Map<String, dynamic>))
               .toList() ??
           [],
@@ -79,14 +85,14 @@ class PortfolioData extends Equatable {
 
   @override
   List<Object?> get props => [
-        developerName,
-        developerTitle,
-        introMessage,
-        resumeLink,
-        socialLinks,
-        technicalSkills,
-        experiences,
-        projects,
-        education,
-      ];
+    developerName,
+    developerTitle,
+    introMessage,
+    resumeLink,
+    socialLinks,
+    technicalSkills,
+    experiences,
+    projects,
+    education,
+  ];
 }

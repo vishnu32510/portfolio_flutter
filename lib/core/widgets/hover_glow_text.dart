@@ -35,7 +35,8 @@ class _HoverGlowTextState extends State<HoverGlowText> {
   @override
   Widget build(BuildContext context) {
     final textStyle = widget.text.style ?? DefaultTextStyle.of(context).style;
-    final glowColor = widget.glowColor ??
+    final glowColor =
+        widget.glowColor ??
         textStyle.color ??
         Theme.of(context).colorScheme.primary;
 
@@ -67,7 +68,7 @@ class _HoverGlowTextState extends State<HoverGlowText> {
                   color: _hovered
                       ? glowColor
                       : textStyle.color ??
-                          Theme.of(context).colorScheme.onSurface,
+                            Theme.of(context).colorScheme.onSurface,
                   shadows: glow == 0
                       ? textStyle.shadows
                       : [

@@ -11,7 +11,7 @@ enum ServiceError {
   clientError,
   serverError,
   timeoutError,
-  socketError
+  socketError,
 }
 
 abstract class Services {}
@@ -27,11 +27,16 @@ class OpenLinkService extends Services {
 class HttpServices extends Services {
   Future postMethod(String url, var body) async {
     try {
-      var data =
-          await http.post(Uri.parse(url), body: body, headers: <String, String>{
-        // 'Authorization': 'Bearer $token',
-        // 'Content-Type': 'application/json; charset=UTF-8'
-      }).timeout(const Duration(seconds: 20));
+      var data = await http
+          .post(
+            Uri.parse(url),
+            body: body,
+            headers: <String, String>{
+              // 'Authorization': 'Bearer $token',
+              // 'Content-Type': 'application/json; charset=UTF-8'
+            },
+          )
+          .timeout(const Duration(seconds: 20));
       debugPrint(data.body);
       if (data.statusCode == 200) {
         var response = convert.jsonDecode(data.body);
@@ -59,11 +64,16 @@ class HttpServices extends Services {
 
   Future putMethod(String url, var body) async {
     try {
-      var data =
-          await http.put(Uri.parse(url), body: body, headers: <String, String>{
-        // 'Authorization': 'Bearer $token',
-        // 'Content-Type': 'application/json; charset=UTF-8'
-      }).timeout(const Duration(seconds: 20));
+      var data = await http
+          .put(
+            Uri.parse(url),
+            body: body,
+            headers: <String, String>{
+              // 'Authorization': 'Bearer $token',
+              // 'Content-Type': 'application/json; charset=UTF-8'
+            },
+          )
+          .timeout(const Duration(seconds: 20));
       debugPrint(data.body);
       if (data.statusCode == 200) {
         var response = convert.jsonDecode(data.body);
@@ -91,10 +101,15 @@ class HttpServices extends Services {
 
   Future getMethod(String url) async {
     try {
-      var data = await http.get(Uri.parse(url), headers: <String, String>{
-        // 'Authorization': 'Bearer $token',
-        'Content-Type': 'application/json; charset=UTF-8'
-      }).timeout(const Duration(seconds: 20));
+      var data = await http
+          .get(
+            Uri.parse(url),
+            headers: <String, String>{
+              // 'Authorization': 'Bearer $token',
+              'Content-Type': 'application/json; charset=UTF-8',
+            },
+          )
+          .timeout(const Duration(seconds: 20));
       debugPrint(data.body);
       if (data.statusCode == 200) {
         var response = convert.jsonDecode(data.body);

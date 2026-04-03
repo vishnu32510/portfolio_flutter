@@ -15,7 +15,7 @@ class HorizontalHeaders extends StatelessWidget {
         if (context.width < DeviceType.ipad.getMaxWidth()) {
           return const SizedBox.shrink();
         }
-        
+
         return SizedBox(
           width: context.width * 0.8,
           child: Wrap(
@@ -23,12 +23,9 @@ class HorizontalHeaders extends StatelessWidget {
             runAlignment: WrapAlignment.center,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              ...List.generate(
-                AppBarHeaders.values.length,
-                (index) {
-                  return CustomHeaderBtn(headerIndex: index);
-                },
-              ),
+              ...List.generate(AppBarHeaders.values.length, (index) {
+                return CustomHeaderBtn(headerIndex: index);
+              }),
             ],
           ),
           // child: Row(

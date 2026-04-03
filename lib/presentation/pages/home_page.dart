@@ -7,8 +7,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const BasePage(
-      content: IntroSection(),
-    );
+    return const BasePage(content: IntroSection());
   }
 }

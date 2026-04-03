@@ -77,9 +77,9 @@ class _TechnicalSkillsSectionState extends State<TechnicalSkillsSection> {
                         runSpacing: AppSizes.spacingLarge,
                         spacing: AppSizes.spacingLarge,
                         children: skills
-                            .map((skillGroup) => SkillItem(
-                                  skillGroup: skillGroup,
-                                ))
+                            .map(
+                              (skillGroup) => SkillItem(skillGroup: skillGroup),
+                            )
                             .toList(),
                       ),
                     ),

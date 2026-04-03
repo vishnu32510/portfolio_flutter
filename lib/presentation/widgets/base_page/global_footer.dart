@@ -15,31 +15,35 @@ class GlobalFooter extends StatelessWidget {
     if (link.contains('dev.to')) return FontAwesomeIcons.dev;
     if (link.contains('github.com')) return FontAwesomeIcons.github;
     if (link.contains('devpost.com')) return FontAwesomeIcons.dev;
-    if (link.contains('stackoverflow.com')) return FontAwesomeIcons.stackOverflow;
+    if (link.contains('stackoverflow.com'))
+      return FontAwesomeIcons.stackOverflow;
     if (link.contains('instagram.com')) return FontAwesomeIcons.instagram;
     if (link.contains('linkedin.com')) return FontAwesomeIcons.linkedin;
     if (link.contains('twitter.com')) return FontAwesomeIcons.twitter;
     if (link.contains('mailto:')) return FontAwesomeIcons.envelope;
-    if (link.contains('floxi.co') || link.contains('portfolio')) return FontAwesomeIcons.globe;
+    if (link.contains('floxi.co') || link.contains('portfolio'))
+      return FontAwesomeIcons.globe;
     return FontAwesomeIcons.link;
   }
 
   @override
   Widget build(BuildContext context) {
     final isMobile = context.width < 600;
-    
+
     return BlocBuilder<PortfolioBloc, PortfolioState>(
       builder: (context, portfolioState) {
         final socialLinks = portfolioState.data?.socialLinks ?? {};
         final links = socialLinks.entries.toList();
-        
+
         return Container(
           width: context.width,
           color: Theme.of(context).scaffoldBackgroundColor,
           padding: AppSizes.paddingLarge,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+            crossAxisAlignment: isMobile
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               SelectableText(
@@ -52,18 +56,26 @@ class GlobalFooter extends StatelessWidget {
               Wrap(
                 spacing: AppSizes.spacingLarge,
                 runSpacing: AppSizes.spacingRegular,
-                alignment: isMobile ? WrapAlignment.center : WrapAlignment.start,
-                children: links.map((entry) => _buildSocialIcon(
-                  context,
-                  _getIconForLink(entry.value),
-                  entry.value,
-                )).toList(),
+                alignment: isMobile
+                    ? WrapAlignment.center
+                    : WrapAlignment.start,
+                children: links
+                    .map(
+                      (entry) => _buildSocialIcon(
+                        context,
+                        _getIconForLink(entry.value),
+                        entry.value,
+                      ),
+                    )
+                    .toList(),
               ),
               SizedBox(height: AppSizes.spacingLarge),
               SizedBox(
                 width: double.infinity,
                 child: Wrap(
-                  alignment: isMobile ? WrapAlignment.center : WrapAlignment.spaceBetween,
+                  alignment: isMobile
+                      ? WrapAlignment.center
+                      : WrapAlignment.spaceBetween,
                   runAlignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
@@ -81,7 +93,9 @@ class GlobalFooter extends StatelessWidget {
                           SelectableText(
                             'Built with Flutter',
                             style: AppStyles.smallText(
-                              textColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),
+                              textColor: Theme.of(
+                                context,
+                              ).colorScheme.onSurface.withValues(alpha: 0.8),
                             ),
                           ),
                           SizedBox(width: AppSizes.spacingLarge),
@@ -94,7 +108,9 @@ class GlobalFooter extends StatelessWidget {
                           SelectableText(
                             'Deployed to Firebase',
                             style: AppStyles.smallText(
-                              textColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),
+                              textColor: Theme.of(
+                                context,
+                              ).colorScheme.onSurface.withValues(alpha: 0.8),
                             ),
                           ),
                         ],
@@ -107,14 +123,18 @@ class GlobalFooter extends StatelessWidget {
                         children: [
                           Icon(
                             FontAwesomeIcons.copyright,
-                            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.onSurface.withValues(alpha: 0.8),
                             size: AppSizes.iconXS,
                           ),
                           SizedBox(width: AppSizes.spacingSmall),
                           SelectableText(
                             'Designed & Built by ${portfolioState.data?.developerName ?? "Vishnu Priyan"} · ${DateTime.now().year}',
                             style: AppStyles.smallText(
-                              textColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),
+                              textColor: Theme.of(
+                                context,
+                              ).colorScheme.onSurface.withValues(alpha: 0.8),
                             ),
                           ),
                         ],
@@ -149,4 +169,3 @@ class GlobalFooter extends StatelessWidget {
     );
   }
 }
-

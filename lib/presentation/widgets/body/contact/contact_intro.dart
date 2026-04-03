@@ -14,7 +14,7 @@ class ContactIntro extends StatelessWidget {
     return BlocBuilder<PortfolioBloc, PortfolioState>(
       builder: (context, portfolioState) {
         final socialLinks = portfolioState.data?.socialLinks ?? {};
-        
+
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -25,10 +25,7 @@ class ContactIntro extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            SelectableText(
-              AppStrings.contactMsg,
-              style: AppStyles.s18,
-            ),
+            SelectableText(AppStrings.contactMsg, style: AppStyles.s18),
             const SizedBox(height: 10),
             SocialMediaIcons(socialLinks: socialLinks),
             const SizedBox(height: 20),

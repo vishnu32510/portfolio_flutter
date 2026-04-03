@@ -37,22 +37,16 @@ class _AsyncBackgroundStackState extends State<AsyncBackgroundStack> {
     super.initState();
     // Delay background loading to allow UI to render first
     // Grid loads first (lighter)
-    _gridLoadFuture = Future.delayed(
-      const Duration(milliseconds: 100),
-      () {
-        // Allow first frame to render
-        SchedulerBinding.instance.addPostFrameCallback((_) {});
-      },
-    );
+    _gridLoadFuture = Future.delayed(const Duration(milliseconds: 100), () {
+      // Allow first frame to render
+      SchedulerBinding.instance.addPostFrameCallback((_) {});
+    });
 
     // Particle network loads after grid (heavier)
-    _particleLoadFuture = Future.delayed(
-      const Duration(milliseconds: 500),
-      () {
-        // Load particle network after grid is ready
-        SchedulerBinding.instance.addPostFrameCallback((_) {});
-      },
-    );
+    _particleLoadFuture = Future.delayed(const Duration(milliseconds: 500), () {
+      // Load particle network after grid is ready
+      SchedulerBinding.instance.addPostFrameCallback((_) {});
+    });
   }
 
   @override
@@ -66,13 +60,14 @@ class _AsyncBackgroundStackState extends State<AsyncBackgroundStack> {
             builder: (context, snapshot) {
               return RepaintBoundary(
                 child: AnimatedOpacity(
-                  opacity: snapshot.connectionState == ConnectionState.done ? 1.0 : 0.0,
+                  opacity: snapshot.connectionState == ConnectionState.done
+                      ? 1.0
+                      : 0.0,
                   duration: const Duration(milliseconds: 300),
                   child: GridBackground(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onSurface
-                        .withValues(alpha: 0.2),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.2),
                     strokeWidth: 0.5,
                     horizontalSpacing: 45,
                     verticalSpacing: 45,
@@ -95,7 +90,9 @@ class _AsyncBackgroundStackState extends State<AsyncBackgroundStack> {
 
               return RepaintBoundary(
                 child: AnimatedOpacity(
-                  opacity: snapshot.connectionState == ConnectionState.done ? 1.0 : 0.0,
+                  opacity: snapshot.connectionState == ConnectionState.done
+                      ? 1.0
+                      : 0.0,
                   duration: const Duration(milliseconds: 500),
                   curve: Curves.easeIn,
                   child: ParticleNetworkBackground(

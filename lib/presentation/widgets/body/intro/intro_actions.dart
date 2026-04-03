@@ -50,8 +50,9 @@ class IntoActions extends StatelessWidget {
               icon: Icons.download,
               borderColor: AppColors.lowPriority,
               onPressed: () async {
-                DownloadService downloadService =
-                    kIsWeb ? WebDownloadService() : MobileDownloadService();
+                DownloadService downloadService = kIsWeb
+                    ? WebDownloadService()
+                    : MobileDownloadService();
                 await downloadService.downloadResume(url: resumeLink);
               },
               width: 180,

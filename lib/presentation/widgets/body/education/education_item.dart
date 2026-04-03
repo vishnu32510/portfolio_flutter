@@ -125,7 +125,8 @@ class EducationItem extends StatelessWidget {
             ),
             SizedBox(height: AppSizes.spacingMedium),
           ],
-          if (education.coursework != null && education.coursework!.isNotEmpty) ...[
+          if (education.coursework != null &&
+              education.coursework!.isNotEmpty) ...[
             SelectableText(
               'Key Coursework:',
               style: AppStyles.smallTextBold(
@@ -146,10 +147,12 @@ class EducationItem extends StatelessWidget {
                 for (int i = 0; i < children.length; i++) {
                   spacedChildren.add(children[i]);
                   if (i < children.length - 1) {
-                    spacedChildren.add(SizedBox(
-                      width: AppSizes.spacingMediumSmall,
-                      height: AppSizes.spacingMediumSmall,
-                    ));
+                    spacedChildren.add(
+                      SizedBox(
+                        width: AppSizes.spacingMediumSmall,
+                        height: AppSizes.spacingMediumSmall,
+                      ),
+                    );
                   }
                 }
                 return Wrap(
@@ -161,10 +164,7 @@ class EducationItem extends StatelessWidget {
                 );
               },
               children: education.coursework!
-                  .map((course) => SkillChip(
-                        skillName: course,
-                        compact: true,
-                      ))
+                  .map((course) => SkillChip(skillName: course, compact: true))
                   .toList(),
             ),
           ],

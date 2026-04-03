@@ -34,77 +34,77 @@ class _HomeBodyState extends State<HomeBody> {
   Widget build(BuildContext context) {
     // WelcomeToasts(context);
     return BlocListener<HomeBloc, HomeState>(
-        listener: (context, state) {
-          if (state is AppBarHeadersIndexChanged) {
-            Navigator.of(context).maybePop();
-            const duration = Duration(milliseconds: 300);
-            if (state.index == 0) {
-              Scrollable.ensureVisible(
-                introKey.currentContext!,
-                duration: duration,
-              );
-            }
-            if (state.index == 1) {
-              Scrollable.ensureVisible(
-                skillsKey.currentContext!,
-                duration: duration,
-              );
-            }
-            if (state.index == 2) {
-              Scrollable.ensureVisible(
-                experienceKey.currentContext!,
-                duration: duration,
-              );
-            }
-            if (state.index == 3) {
-              Scrollable.ensureVisible(
-                projectKey.currentContext!,
-                duration: duration,
-              );
-            }
-            if (state.index == 4) {
-              Scrollable.ensureVisible(
-                educationKey.currentContext!,
-                duration: duration,
-              );
-            }
-            if (state.index == 5) {
-              Scrollable.ensureVisible(
-                contactKey.currentContext!,
-                duration: duration,
-              );
-            }
+      listener: (context, state) {
+        if (state is AppBarHeadersIndexChanged) {
+          Navigator.of(context).maybePop();
+          const duration = Duration(milliseconds: 300);
+          if (state.index == 0) {
+            Scrollable.ensureVisible(
+              introKey.currentContext!,
+              duration: duration,
+            );
           }
-        },
-        child: Stack(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: context.width < DeviceType.ipad.getMaxWidth()
-                    ? AppSizes.spacingRegular
-                    : AppSizes.spacingXXL,
-              ),
-              child: Column(
-                children: [
-                  IntroSection(key: introKey),
-                  TechnicalSkillsSection(key: skillsKey),
-                  ExperienceSection(key: experienceKey),
-                  ProjectsSection(key: projectKey),
-                  EducationSection(key: educationKey),
-                  ContactSection(key: contactKey),
-                ],
-              ),
+          if (state.index == 1) {
+            Scrollable.ensureVisible(
+              skillsKey.currentContext!,
+              duration: duration,
+            );
+          }
+          if (state.index == 2) {
+            Scrollable.ensureVisible(
+              experienceKey.currentContext!,
+              duration: duration,
+            );
+          }
+          if (state.index == 3) {
+            Scrollable.ensureVisible(
+              projectKey.currentContext!,
+              duration: duration,
+            );
+          }
+          if (state.index == 4) {
+            Scrollable.ensureVisible(
+              educationKey.currentContext!,
+              duration: duration,
+            );
+          }
+          if (state.index == 5) {
+            Scrollable.ensureVisible(
+              contactKey.currentContext!,
+              duration: duration,
+            );
+          }
+        }
+      },
+      child: Stack(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: context.width < DeviceType.ipad.getMaxWidth()
+                  ? AppSizes.spacingRegular
+                  : AppSizes.spacingXXL,
             ),
-            const VerticalHeadersBuilder(),
-            Padding(
-              padding: const EdgeInsets.all(AppSizes.spacingLarge),
-              child: const Align(
-                alignment: Alignment.bottomRight,
-                child: ThemeHeader(),
-              ),
+            child: Column(
+              children: [
+                IntroSection(key: introKey),
+                TechnicalSkillsSection(key: skillsKey),
+                ExperienceSection(key: experienceKey),
+                ProjectsSection(key: projectKey),
+                EducationSection(key: educationKey),
+                ContactSection(key: contactKey),
+              ],
             ),
-          ],
-        ),
+          ),
+          const VerticalHeadersBuilder(),
+          Padding(
+            padding: const EdgeInsets.all(AppSizes.spacingLarge),
+            child: const Align(
+              alignment: Alignment.bottomRight,
+              child: ThemeHeader(),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

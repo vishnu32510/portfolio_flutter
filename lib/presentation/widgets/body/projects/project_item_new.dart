@@ -36,8 +36,8 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
   }
 
   Widget _buildMainProjectImage(ColorScheme colors, bool isDark) {
-    final hasGif = widget.project.gifUrl != null &&
-        widget.project.gifUrl!.isNotEmpty;
+    final hasGif =
+        widget.project.gifUrl != null && widget.project.gifUrl!.isNotEmpty;
 
     // When gifUrl is set: main area = GIF (big)
     if (hasGif) {
@@ -57,7 +57,7 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                     strokeWidth: 2,
                     value: loadingProgress.expectedTotalBytes != null
                         ? loadingProgress.cumulativeBytesLoaded /
-                            loadingProgress.expectedTotalBytes!
+                              loadingProgress.expectedTotalBytes!
                         : null,
                   ),
                 ),
@@ -229,43 +229,57 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                                       : Colors.white.withValues(alpha: 0.9),
                                   borderRadius: BorderRadius.circular(8),
                                   border: Border.all(
-                                    color: colors.outline.withValues(alpha: 0.25),
+                                    color: colors.outline.withValues(
+                                      alpha: 0.25,
+                                    ),
                                   ),
                                 ),
                                 child: widget.project.isAsset
                                     ? Image.asset(
                                         widget.project.imageUrl,
                                         fit: BoxFit.cover,
-                                        errorBuilder: (context, error, stackTrace) => Icon(
-                                          FontAwesomeIcons.image,
-                                          size: 22,
-                                          color: colors.onSurface.withValues(alpha: 0.4),
-                                        ),
+                                        errorBuilder:
+                                            (context, error, stackTrace) =>
+                                                Icon(
+                                                  FontAwesomeIcons.image,
+                                                  size: 22,
+                                                  color: colors.onSurface
+                                                      .withValues(alpha: 0.4),
+                                                ),
                                       )
                                     : Image.network(
                                         widget.project.imageUrl,
                                         fit: BoxFit.cover,
                                         loadingBuilder: (context, child, loadingProgress) {
-                                          if (loadingProgress == null) return child;
+                                          if (loadingProgress == null)
+                                            return child;
                                           return Center(
                                             child: SizedBox(
                                               width: 22,
                                               height: 22,
                                               child: CircularProgressIndicator(
                                                 strokeWidth: 2,
-                                                value: loadingProgress.expectedTotalBytes != null
-                                                    ? loadingProgress.cumulativeBytesLoaded /
-                                                        loadingProgress.expectedTotalBytes!
+                                                value:
+                                                    loadingProgress
+                                                            .expectedTotalBytes !=
+                                                        null
+                                                    ? loadingProgress
+                                                              .cumulativeBytesLoaded /
+                                                          loadingProgress
+                                                              .expectedTotalBytes!
                                                     : null,
                                               ),
                                             ),
                                           );
                                         },
-                                        errorBuilder: (context, error, stackTrace) => Icon(
-                                          FontAwesomeIcons.image,
-                                          size: 22,
-                                          color: colors.onSurface.withValues(alpha: 0.4),
-                                        ),
+                                        errorBuilder:
+                                            (context, error, stackTrace) =>
+                                                Icon(
+                                                  FontAwesomeIcons.image,
+                                                  size: 22,
+                                                  color: colors.onSurface
+                                                      .withValues(alpha: 0.4),
+                                                ),
                                       ),
                               ),
                             ),
@@ -300,19 +314,22 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                                   padding: AppSizes.paddingXS,
                                   decoration: BoxDecoration(
                                     borderRadius: AppSizes.borderRadiusXS,
-                                    color: _getStatusColor(widget.project.status)
-                                        .withValues(alpha: 0.1),
+                                    color: _getStatusColor(
+                                      widget.project.status,
+                                    ).withValues(alpha: 0.1),
                                     border: Border.all(
                                       width: 0.3,
-                                      color:
-                                          _getStatusColor(widget.project.status),
+                                      color: _getStatusColor(
+                                        widget.project.status,
+                                      ),
                                     ),
                                   ),
                                   child: SelectableText(
                                     widget.project.status!,
                                     style: AppStyles.extraSmallText(
-                                      textColor:
-                                          _getStatusColor(widget.project.status),
+                                      textColor: _getStatusColor(
+                                        widget.project.status,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -323,8 +340,9 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                             child: SelectableText(
                               widget.project.description,
                               style: AppStyles.regularText(
-                                textColor:
-                                    colors.onSurface.withValues(alpha: 0.7),
+                                textColor: colors.onSurface.withValues(
+                                  alpha: 0.7,
+                                ),
                               ),
                               maxLines: 4,
                             ),
@@ -336,19 +354,23 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                             curve: Curves.bounceInOut,
                             animationBuilder: (child, animation) =>
                                 ScaleTransition(
-                              scale: Tween<double>(begin: 0, end: 1)
-                                  .animate(animation),
-                              child: child,
-                            ),
+                                  scale: Tween<double>(
+                                    begin: 0,
+                                    end: 1,
+                                  ).animate(animation),
+                                  child: child,
+                                ),
                             builder: (children) {
                               final spacedChildren = <Widget>[];
                               for (int i = 0; i < children.length; i++) {
                                 spacedChildren.add(children[i]);
                                 if (i < children.length - 1) {
-                                  spacedChildren.add(SizedBox(
-                                    width: AppSizes.spacingSmall,
-                                    height: AppSizes.spacingSmall,
-                                  ));
+                                  spacedChildren.add(
+                                    SizedBox(
+                                      width: AppSizes.spacingSmall,
+                                      height: AppSizes.spacingSmall,
+                                    ),
+                                  );
                                 }
                               }
                               return Wrap(
@@ -360,10 +382,10 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                               );
                             },
                             children: widget.project.techStack
-                                .map((tech) => SkillChip(
-                                      skillName: tech,
-                                      compact: true,
-                                    ))
+                                .map(
+                                  (tech) =>
+                                      SkillChip(skillName: tech, compact: true),
+                                )
                                 .toList(),
                           ),
                           SizedBox(height: AppSizes.spacingSmallRegular),
@@ -378,17 +400,22 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               if (widget.project.githubRepoLink != null)
-                                _buildLink(context, FontAwesomeIcons.code,
-                                    'Code', widget.project.githubRepoLink!),
+                                _buildLink(
+                                  context,
+                                  FontAwesomeIcons.code,
+                                  'Code',
+                                  widget.project.githubRepoLink!,
+                                ),
                               if (widget.project.githubRepoLink != null &&
                                   widget.project.demoLink != null)
                                 SizedBox(width: AppSizes.spacingLarge),
                               if (widget.project.demoLink != null)
                                 _buildLink(
-                                    context,
-                                    FontAwesomeIcons.upRightFromSquare,
-                                    'Demo',
-                                    widget.project.demoLink!),
+                                  context,
+                                  FontAwesomeIcons.upRightFromSquare,
+                                  'Demo',
+                                  widget.project.demoLink!,
+                                ),
                             ],
                           ),
                         ],
@@ -405,7 +432,11 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
   }
 
   Widget _buildLink(
-      BuildContext context, IconData icon, String label, String url) {
+    BuildContext context,
+    IconData icon,
+    String label,
+    String url,
+  ) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -423,14 +454,17 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
             Icon(
               icon,
               size: AppSizes.iconXS,
-              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+              color: Theme.of(
+                context,
+              ).colorScheme.onSurface.withValues(alpha: 0.7),
             ),
             SizedBox(width: AppSizes.spacingSmallRegular),
             Text(
               label,
               style: AppStyles.smallText(
-                textColor:
-                    Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+                textColor: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
           ],
@@ -452,10 +486,7 @@ class AnimatedProjectItem extends StatelessWidget {
       duration: const Duration(milliseconds: 300),
       builder: (_, value, child) => Transform.scale(
         scale: value,
-        child: Opacity(
-          opacity: value,
-          child: child,
-        ),
+        child: Opacity(opacity: value, child: child),
       ),
       child: ProjectItemNew(project: project),
     );

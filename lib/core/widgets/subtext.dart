@@ -11,14 +11,14 @@ class Subtext extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: context.width * (context.isMobile ? 0.9 : 0.6),
-      constraints: const BoxConstraints(
-        minWidth: 400,
-      ),
+      constraints: const BoxConstraints(minWidth: 400),
       child: SelectableText(
         text,
         style: AppStyles.subText(
           isMobile: context.isMobile,
-          textColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+          textColor: Theme.of(
+            context,
+          ).colorScheme.onSurface.withValues(alpha: 0.7),
         ),
         textAlign: TextAlign.center,
       ),

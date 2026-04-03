@@ -17,27 +17,32 @@ class ResponsiveSize {
     this.largeScreenSize,
     this.extraLargeSize,
   }) {
-    mobileSize = mobileSize ??
+    mobileSize =
+        mobileSize ??
         ipadSize ??
         smallScreenSize ??
         largeScreenSize ??
         extraLargeSize;
-    ipadSize = ipadSize ??
+    ipadSize =
+        ipadSize ??
         smallScreenSize ??
         largeScreenSize ??
         extraLargeSize ??
         mobileSize;
-    smallScreenSize = smallScreenSize ??
+    smallScreenSize =
+        smallScreenSize ??
         largeScreenSize ??
         extraLargeSize ??
         ipadSize ??
         mobileSize;
-    largeScreenSize = largeScreenSize ??
+    largeScreenSize =
+        largeScreenSize ??
         extraLargeSize ??
         smallScreenSize ??
         ipadSize ??
         mobileSize;
-    extraLargeSize = extraLargeSize ??
+    extraLargeSize =
+        extraLargeSize ??
         largeScreenSize ??
         smallScreenSize ??
         ipadSize ??

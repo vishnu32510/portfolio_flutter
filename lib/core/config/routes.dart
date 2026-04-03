@@ -15,11 +15,10 @@ class CustomRouter {
 
   static Route _errorRoute() {
     return MaterialPageRoute(
-        settings: const RouteSettings(name: '/error'),
-        builder: (context) => Scaffold(
-              appBar: AppBar(
-                title: const Center(child: Text('Error Page')),
-              ),
-            ));
+      settings: const RouteSettings(name: '/error'),
+      builder: (context) => Scaffold(
+        appBar: AppBar(title: const Center(child: Text('Error Page'))),
+      ),
+    );
   }
 }

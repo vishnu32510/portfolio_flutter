@@ -24,7 +24,9 @@ class _BasicServiceItemState extends State<BasicServiceItem> {
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-          color: itemColor, borderRadius: BorderRadius.circular(10)),
+        color: itemColor,
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: MouseRegion(
         onEnter: _onEnter,
         onExit: _onExit,
@@ -32,10 +34,7 @@ class _BasicServiceItemState extends State<BasicServiceItem> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              widget.service.logo,
-              height: 48,
-            ),
+            SvgPicture.asset(widget.service.logo, height: 48),
             const SizedBox(height: 16),
             if (context.width > DeviceType.mobile.getMinWidth())
               FittedBox(

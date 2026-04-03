@@ -18,10 +18,7 @@ class ProjectsIntro extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        SelectableText(
-          AppStrings.projectsMsg,
-          style: AppStyles.s18,
-        ),
+        SelectableText(AppStrings.projectsMsg, style: AppStyles.s18),
       ],
     );
   }

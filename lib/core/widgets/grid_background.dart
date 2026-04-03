@@ -116,16 +116,14 @@ class _GridBackgroundState extends State<GridBackground>
 
   @override
   Widget build(BuildContext context) {
-    final gridColor = widget.color ??
+    final gridColor =
+        widget.color ??
         Theme.of(context).colorScheme.primary.withValues(alpha: 0.2);
     final runnerColor =
         widget.runnerColor ?? Theme.of(context).colorScheme.primary;
 
     return AnimatedBuilder(
-      animation: Listenable.merge([
-        _horizontalController,
-        _verticalController,
-      ]),
+      animation: Listenable.merge([_horizontalController, _verticalController]),
       builder: (context, child) {
         return CustomPaint(
           size: Size(context.width, context.height),
@@ -212,7 +210,8 @@ class _GridPainter extends CustomPainter {
 
     double headX, tailX;
     if (horizontalReverse) {
-      headX = (size.width + _runnerLength) - (totalDistance * horizontalProgress);
+      headX =
+          (size.width + _runnerLength) - (totalDistance * horizontalProgress);
       tailX = headX + _runnerLength;
     } else {
       headX = -_runnerLength + (totalDistance * horizontalProgress);
@@ -251,7 +250,8 @@ class _GridPainter extends CustomPainter {
 
     double headY, tailY;
     if (verticalReverse) {
-      headY = (size.height + _runnerLength) - (totalDistance * verticalProgress);
+      headY =
+          (size.height + _runnerLength) - (totalDistance * verticalProgress);
       tailY = headY + _runnerLength;
     } else {
       headY = -_runnerLength + (totalDistance * verticalProgress);

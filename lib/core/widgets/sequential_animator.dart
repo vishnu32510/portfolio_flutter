@@ -12,14 +12,14 @@ class SequentialAnimator extends StatefulWidget {
     this.overlap = 0.3,
     this.curve = Curves.easeInOut,
     this.delay = const Duration(milliseconds: 0),
-  })  : assert(
-          overlap >= 0 && overlap <= 1,
-          'overlap must be in range [0.0, 1.0]',
-        ),
-        assert(
-          (totalDuration == null) != (itemDuration == null),
-          'Provide exactly one: totalDuration or itemDuration',
-        );
+  }) : assert(
+         overlap >= 0 && overlap <= 1,
+         'overlap must be in range [0.0, 1.0]',
+       ),
+       assert(
+         (totalDuration == null) != (itemDuration == null),
+         'Provide exactly one: totalDuration or itemDuration',
+       );
 
   final Duration? totalDuration;
   final Duration? itemDuration;
@@ -28,7 +28,8 @@ class SequentialAnimator extends StatefulWidget {
   final double overlap;
   final List<Widget> children;
   final Widget Function(List<Widget> children)? builder;
-  final Widget Function(Widget child, Animation<double> animation)? animationBuilder;
+  final Widget Function(Widget child, Animation<double> animation)?
+  animationBuilder;
 
   bool needsUpdate(SequentialAnimator oldWidget) =>
       totalDuration != oldWidget.totalDuration ||
@@ -49,12 +50,11 @@ class _SequentialAnimatorState extends State<SequentialAnimator>
   void initState() {
     _animationController = AnimationController(vsync: this, duration: duration);
 
-    SchedulerBinding.instance.addPostFrameCallback((_) => Future.delayed(
-          widget.delay,
-          () {
-            if (mounted) _animationController.forward();
-          },
-        ));
+    SchedulerBinding.instance.addPostFrameCallback(
+      (_) => Future.delayed(widget.delay, () {
+        if (mounted) _animationController.forward();
+      }),
+    );
 
     super.initState();
   }
@@ -66,7 +66,8 @@ class _SequentialAnimatorState extends State<SequentialAnimator>
       duration = widget.totalDuration!;
     } else if (widget.itemDuration != null) {
       duration = Duration(
-        milliseconds: widget.itemDuration!.inMilliseconds * widget.children.length,
+        milliseconds:
+            widget.itemDuration!.inMilliseconds * widget.children.length,
       );
     } else {
       duration = const Duration(milliseconds: 800);
@@ -100,11 +101,7 @@ class _SequentialAnimatorState extends State<SequentialAnimator>
     final end = (start + segmentSize).clamp(0.0, 1.0);
     return CurvedAnimation(
       parent: _animationController,
-      curve: Interval(
-        start,
-        end,
-        curve: widget.curve,
-      ),
+      curve: Interval(start, end, curve: widget.curve),
     );
   }
 
@@ -115,15 +112,16 @@ class _SequentialAnimatorState extends State<SequentialAnimator>
       final animation = getAnimation(index);
 
       if (widget.animationBuilder != null) {
-        children.add(widget.animationBuilder!(
-          widget.children[index],
-          animation,
-        ));
+        children.add(
+          widget.animationBuilder!(widget.children[index], animation),
+        );
       } else {
-        children.add(ScaleTransition(
-          scale: Tween<double>(begin: 0, end: 1).animate(animation),
-          child: widget.children[index],
-        ));
+        children.add(
+          ScaleTransition(
+            scale: Tween<double>(begin: 0, end: 1).animate(animation),
+            child: widget.children[index],
+          ),
+        );
       }
     }
 

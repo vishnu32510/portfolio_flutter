@@ -9,8 +9,9 @@ class DeveloperNameBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isCurrentRoute = ModalRoute.of(context)?.settings.name == Routes.home.route;
-    
+    final isCurrentRoute =
+        ModalRoute.of(context)?.settings.name == Routes.home.route;
+
     return MouseRegion(
       cursor: isCurrentRoute
           ? SystemMouseCursors.basic
@@ -29,10 +30,7 @@ class DeveloperNameBtn extends StatelessWidget {
           ),
           child: Hero(
             tag: AppConstants.heroTagAppIcon,
-            child: Image.asset(
-              AppAssets.appIcon,
-              gaplessPlayback: true,
-            ),
+            child: Image.asset(AppAssets.appIcon, gaplessPlayback: true),
           ),
         ),
       ),

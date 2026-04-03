@@ -7,8 +7,6 @@ class SkillsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const BasePage(
-      content: TechnicalSkillsSection(),
-    );
+    return const BasePage(content: TechnicalSkillsSection());
   }
 }

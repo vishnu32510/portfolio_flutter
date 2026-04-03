@@ -2,10 +2,7 @@ class TechnicalSkill {
   final String category;
   final List<String> skills;
 
-  const TechnicalSkill({
-    required this.category,
-    required this.skills,
-  });
+  const TechnicalSkill({required this.category, required this.skills});
 
   factory TechnicalSkill.fromFirestore(Map<String, dynamic> data) {
     return TechnicalSkill(
@@ -15,9 +12,6 @@ class TechnicalSkill {
   }
 
   Map<String, dynamic> toFirestore() {
-    return {
-      'category': category,
-      'skills': skills,
-    };
+    return {'category': category, 'skills': skills};
   }
 }

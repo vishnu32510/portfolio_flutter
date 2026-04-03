@@ -29,9 +29,7 @@ class WindowContainer extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: AppSizes.borderRadiusRegular,
           color: colors.surface.withValues(alpha: 0.5),
-          border: Border.all(
-            color: colors.outline,
-          ),
+          border: Border.all(color: colors.outline),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.05),
@@ -111,7 +109,9 @@ class WindowContainer extends StatelessWidget {
                               SelectableText(
                                 headline,
                                 style: AppStyles.regularText(
-                                  textColor: colors.onSurface.withValues(alpha: 0.7),
+                                  textColor: colors.onSurface.withValues(
+                                    alpha: 0.7,
+                                  ),
                                 ),
                               ),
                             ],
@@ -123,10 +123,7 @@ class WindowContainer extends StatelessWidget {
                 ),
               ),
               Flexible(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: content,
-                ),
+                child: Align(alignment: Alignment.center, child: content),
               ),
               Container(
                 decoration: BoxDecoration(
@@ -146,9 +143,7 @@ class WindowContainer extends StatelessWidget {
                     SizedBox(width: AppSizes.spacingSmall),
                     SelectableText(
                       '~',
-                      style: AppStyles.regularText(
-                        textColor: colors.primary,
-                      ),
+                      style: AppStyles.regularText(textColor: colors.primary),
                     ),
                     SizedBox(width: AppSizes.spacingSmall),
                     Flexible(
@@ -158,10 +153,14 @@ class WindowContainer extends StatelessWidget {
                           'echo "$bottomText"',
                           style: context.isMobile
                               ? AppStyles.smallText(
-                                  textColor: colors.onSurface.withValues(alpha: 0.7),
+                                  textColor: colors.onSurface.withValues(
+                                    alpha: 0.7,
+                                  ),
                                 )
                               : AppStyles.regularText(
-                                  textColor: colors.onSurface.withValues(alpha: 0.7),
+                                  textColor: colors.onSurface.withValues(
+                                    alpha: 0.7,
+                                  ),
                                 ),
                         ),
                       ),

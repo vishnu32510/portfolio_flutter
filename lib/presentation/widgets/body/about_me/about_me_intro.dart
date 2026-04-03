@@ -13,12 +13,7 @@ class AboutMeIntro extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        FittedBox(
-          child: SelectableText(
-            'About Me',
-            style: AppStyles.s32,
-          ),
-        ),
+        FittedBox(child: SelectableText('About Me', style: AppStyles.s32)),
         const SizedBox(height: 8),
         SelectableText(
           AppStrings.aboutMeMsg,

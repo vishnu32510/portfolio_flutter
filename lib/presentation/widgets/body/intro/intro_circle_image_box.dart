@@ -20,10 +20,7 @@ class IntroCircleImageBox extends StatelessWidget {
       height: responsiveSize.getSize(),
       child: const Stack(
         alignment: Alignment.centerRight,
-        children: [
-          CircleImageBorder(),
-          IntroImage(),
-        ],
+        children: [CircleImageBorder(), IntroImage()],
       ),
     );
   }

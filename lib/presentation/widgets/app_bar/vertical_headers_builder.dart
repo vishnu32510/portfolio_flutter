@@ -16,9 +16,10 @@ class VerticalHeadersBuilder extends StatelessWidget {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         final currentHeaderAxis = context.read<HomeBloc>().appBarHeaderAxis;
-        final shouldShow = currentHeaderAxis == AppBarHeadersAxis.vertical &&
+        final shouldShow =
+            currentHeaderAxis == AppBarHeadersAxis.vertical &&
             (context.isMobile || context.width < 800);
-        
+
         return AnimatedCrossFade(
           sizeCurve: Curves.bounceInOut,
           alignment: Alignment.topCenter,
@@ -31,10 +32,9 @@ class VerticalHeadersBuilder extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30.0),
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withValues(alpha: 0.1),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.1),
                 ),
                 child: const VerticalHeaders(),
               ),

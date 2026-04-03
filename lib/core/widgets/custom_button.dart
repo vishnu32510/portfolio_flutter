@@ -52,11 +52,8 @@ class CustomButton extends StatelessWidget {
             ),
             if (icon != null) ...[
               const SizedBox(width: 5),
-              Icon(
-                icon,
-                size: 18,
-              ),
-            ]
+              Icon(icon, size: 18),
+            ],
           ],
         ),
       ),

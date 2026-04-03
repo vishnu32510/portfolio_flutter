@@ -20,9 +20,7 @@ class BasicServicesGrid extends StatelessWidget {
         mainAxisSpacing: 16,
       ),
       itemBuilder: (context, index) {
-        return BasicServiceItem(
-          service: AppConstants.services[index],
-        );
+        return BasicServiceItem(service: AppConstants.services[index]);
       },
       itemCount: AppConstants.services.length,
     );

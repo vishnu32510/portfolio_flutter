@@ -73,11 +73,7 @@ class TechnicalSkillsData {
       ),
       TechnicalSkill(
         category: 'Frontend Development & UI/UX',
-        skills: [
-          'React,js',
-          'Next.js',
-          'Angular',
-        ],
+        skills: ['React,js', 'Next.js', 'Angular'],
       ),
       TechnicalSkill(
         category: 'Backend Development & API Development',

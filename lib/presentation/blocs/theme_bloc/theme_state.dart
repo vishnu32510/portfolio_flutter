@@ -17,8 +17,12 @@ class ThemeState extends Equatable {
 
   // Cream color palette
   static const Color creamPrimary = Color(0xFFF5E6D3); // Warm cream
-  static const Color creamPrimaryDark = Color(0xFFD4C4B0); // Darker cream for dark theme
-  static const Color creamPrimaryLight = Color(0xFFB89A7A); // Dark cream for light mode (better visibility)
+  static const Color creamPrimaryDark = Color(
+    0xFFD4C4B0,
+  ); // Darker cream for dark theme
+  static const Color creamPrimaryLight = Color(
+    0xFFB89A7A,
+  ); // Dark cream for light mode (better visibility)
   static const Color creamLight = Color(0xFFFFF8E7); // Light cream
   static const Color creamDark = Color(0xFFE8DCC6); // Medium cream
 }
@@ -64,7 +68,8 @@ class LightThemeState extends ThemeState {
       themeData: baseTheme.copyWith(
         textTheme: GoogleFonts.outfitTextTheme(baseTheme.textTheme),
         colorScheme: ColorScheme.light(
-          primary: ThemeState.creamPrimaryLight, // Dark cream for better visibility in light mode
+          primary: ThemeState
+              .creamPrimaryLight, // Dark cream for better visibility in light mode
           onPrimary: const Color(0xFFFFFFFF),
           secondary: ThemeState.creamPrimaryDark,
           onSecondary: const Color(0xFF1A1A1A),
@@ -92,7 +97,8 @@ class SystemThemeState extends ThemeState {
       themeData: baseTheme.copyWith(
         textTheme: GoogleFonts.outfitTextTheme(baseTheme.textTheme),
         colorScheme: ColorScheme.light(
-          primary: ThemeState.creamPrimaryLight, // Dark cream for better visibility in light mode
+          primary: ThemeState
+              .creamPrimaryLight, // Dark cream for better visibility in light mode
           onPrimary: const Color(0xFFFFFFFF),
           secondary: ThemeState.creamPrimaryDark,
           onSecondary: const Color(0xFF1A1A1A),

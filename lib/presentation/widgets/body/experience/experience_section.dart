@@ -89,7 +89,9 @@ class _ExperienceSectionState extends State<ExperienceSection> {
                                 child: SelectableText(
                                   'Previous Work',
                                   style: AppStyles.largeTextBold(
-                                    textColor: colors.onSurface.withValues(alpha: 0.5),
+                                    textColor: colors.onSurface.withValues(
+                                      alpha: 0.5,
+                                    ),
                                   ),
                                 ),
                               ),
