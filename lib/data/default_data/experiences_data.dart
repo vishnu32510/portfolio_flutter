@@ -5,8 +5,17 @@ class ExperiencesData {
     return const [
       Experience(
         title: 'Software Engineer',
+        company: 'Capgemini',
+        period: 'MAR 30, 2026 - Present',
+        achievements: [
+          'Technology consulting and software engineering across enterprise client engagements',
+          'Collaborating in agile delivery teams on design, implementation, and solution rollout',
+        ],
+      ),
+      Experience(
+        title: 'Software Engineer',
         company: 'HealthLab Innovations Inc, Arlington, VA',
-        period: 'OCT 2025 - Present',
+        period: 'OCT 2025 - MAR 2026',
         achievements: [
           'Built and maintained React.js/Next.js + TypeScript portals for patients and staff by adding role based access',
           'Built FastAPI and Go agentic microservices for lab code mapping and data validation, improving data accuracy',
