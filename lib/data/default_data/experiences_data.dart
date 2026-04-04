@@ -17,7 +17,8 @@ class ExperiencesData {
         title: 'Software Engineer',
         company: 'HealthLab Innovations Inc, Arlington, VA',
         period: 'OCT 2025 - MAR 2026',
-        companyUrl: 'https://www.healthlab.com',
+        companyUrl: 'https://healthlab.com',
+        logoChipBlackInLight: true,
         achievements: [
           'Built and maintained React.js/Next.js + TypeScript portals for patients and staff by adding role based access',
           'Built FastAPI and Go agentic microservices for lab code mapping and data validation, improving data accuracy',

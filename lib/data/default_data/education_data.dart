@@ -5,8 +5,11 @@ class EducationData {
     return const [
       Education(
         degree: 'Master of Science in Computer Science',
+        level: "Master's",
+        major: 'Computer Science',
         institution: 'Illinois Institute of Technology, Chicago, IL, US',
         period: 'JAN 2024 - DEC 2025',
+        institutionUrl: 'https://www.iit.edu/',
         research: null,
         coursework: [
           'Machine Learning',
@@ -19,9 +22,12 @@ class EducationData {
       Education(
         degree:
             'Bachelor of Technology, Electronics and Communication Engineering',
+        level: "Bachelor's",
+        major: 'Electronics and Communication Engineering',
         institution:
             'Amrita Vishwa Vidhyapeetham, Coimbatore, Tamil Nadu, India',
         period: 'JUL 2017 - JUN 2021',
+        institutionUrl: 'https://www.amrita.edu/',
         research: null,
         coursework: null,
       ),

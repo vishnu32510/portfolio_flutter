@@ -39,20 +39,3 @@ class ExperienceUtils {
     return 'Full Time';
   }
 }
-
-class ExperienceBrandAssets {
-  ExperienceBrandAssets._();
-
-  /// Public favicon URL derived from a company website (no API key).
-  static String? faviconForCompanyWebsite(String websiteUrl) {
-    try {
-      final uri = Uri.parse(websiteUrl.trim());
-      if (!uri.hasScheme || uri.host.isEmpty) return null;
-      var host = uri.host.toLowerCase();
-      if (host.startsWith('www.')) host = host.substring(4);
-      return 'https://www.google.com/s2/favicons?domain=${Uri.encodeComponent(host)}&sz=128';
-    } catch (_) {
-      return null;
-    }
-  }
-}

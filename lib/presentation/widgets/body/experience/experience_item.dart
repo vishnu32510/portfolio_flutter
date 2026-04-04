@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -6,6 +5,8 @@ import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_sizes.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/utils/experience_utils.dart';
+import '../../../../core/utils/favicon_utils.dart';
+import '../../../../core/widgets/brand_favicon_chip.dart';
 import '../../../../core/widgets/bounce_animator.dart';
 import '../../../../core/widgets/sequential_animator.dart';
 import '../../../../core/widgets/timeline_container.dart';
@@ -40,7 +41,7 @@ class _ExperienceItemState extends State<ExperienceItem> {
     if (explicit != null && explicit.isNotEmpty) return explicit;
     final site = e.companyUrl?.trim();
     if (site != null && site.isNotEmpty) {
-      return ExperienceBrandAssets.faviconForCompanyWebsite(site);
+      return FaviconUtils.urlForWebsite(site);
     }
     return null;
   }
@@ -177,52 +178,17 @@ class _ExperienceItemState extends State<ExperienceItem> {
     );
   }
 
-  Widget _buildLogo(ColorScheme colors) {
-    final logoUrl = _resolveLogoUrl();
-    if (logoUrl == null) return const SizedBox.shrink();
-    final tappable = widget.experience.companyUrl?.trim().isNotEmpty ?? false;
-
-    final image = ClipRRect(
-      borderRadius: BorderRadius.circular(6),
-      child: CachedNetworkImage(
-        imageUrl: logoUrl,
-        fit: BoxFit.contain,
-        placeholder: (context, _) => Center(
-          child: SizedBox(
-            width: 16,
-            height: 16,
-            child: CircularProgressIndicator(
-              strokeWidth: 2,
-              color: colors.primary.withValues(alpha: 0.45),
-            ),
-          ),
-        ),
-        errorWidget: (context, url, _) => Icon(
-          Icons.public_outlined,
-          size: 20,
-          color: colors.onSurface.withValues(alpha: 0.3),
-        ),
-      ),
-    );
-
-    final box = Container(
-      width: 44,
-      height: 44,
-      padding: const EdgeInsets.all(6),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: colors.outline.withValues(alpha: 0.65)),
-        color: colors.surface,
-      ),
-      child: image,
-    );
-
-    if (!tappable) {
-      return box;
-    }
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(onTap: _openCompanySite, child: box),
+  Widget _buildLogo(ColorScheme colors, Brightness brightness) {
+    final logoRef = _resolveLogoUrl();
+    if (logoRef == null) return const SizedBox.shrink();
+    final chipBackgroundBlack =
+        widget.experience.logoChipBlackInLight &&
+        brightness == Brightness.light;
+    return BrandFaviconChip(
+      logoRef: logoRef,
+      linkUrl: widget.experience.companyUrl?.trim(),
+      chipBackgroundBlack: chipBackgroundBlack,
+      colors: colors,
     );
   }
 
@@ -257,10 +223,13 @@ class _ExperienceItemState extends State<ExperienceItem> {
 
   Widget _buildHeader(
     ColorScheme colors,
+    Brightness brightness,
     String experienceType,
     Color typeColor,
   ) {
     final stackDateBelow = context.isMobile || context.width < 700;
+    final logoUrl = _resolveLogoUrl();
+    final showExpandChevron = widget.collapsed && _collapsed && logoUrl != null;
 
     final coreRow = Row(
       crossAxisAlignment: _collapsed
@@ -268,8 +237,16 @@ class _ExperienceItemState extends State<ExperienceItem> {
           : CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        if (_resolveLogoUrl() != null) ...[
-          _buildLogo(colors),
+        if (showExpandChevron) ...[
+          Icon(
+            FontAwesomeIcons.chevronDown,
+            size: 12,
+            color: colors.onSurface.withValues(alpha: 0.42),
+          ),
+          SizedBox(width: AppSizes.spacingSmall),
+        ],
+        if (logoUrl != null) ...[
+          _buildLogo(colors, brightness),
           SizedBox(width: AppSizes.spacingMedium),
         ],
         Expanded(child: _buildTitleBlock(colors, experienceType, typeColor)),
@@ -302,7 +279,9 @@ class _ExperienceItemState extends State<ExperienceItem> {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final colors = theme.colorScheme;
+    final brightness = theme.brightness;
     final isPresent = ExperienceUtils.isPresent(widget.experience.period);
     final experienceType = ExperienceUtils.getExperienceType(
       widget.experience.title,
@@ -323,7 +302,12 @@ class _ExperienceItemState extends State<ExperienceItem> {
             children: [
               SizedBox(
                 width: double.infinity,
-                child: _buildHeader(colors, experienceType, typeColor),
+                child: _buildHeader(
+                  colors,
+                  brightness,
+                  experienceType,
+                  typeColor,
+                ),
               ),
               if (!_collapsed) ...[
                 SizedBox(height: AppSizes.spacingLarge),

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/utils/app_sizes.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/utils/experience_utils.dart';
+import '../../../../core/utils/favicon_utils.dart';
+import '../../../../core/widgets/brand_favicon_chip.dart';
 import '../../../../core/widgets/sequential_animator.dart';
 import '../../../../core/widgets/timeline_container.dart';
 import '../../../../data/models/education.dart';
@@ -18,9 +21,101 @@ class EducationItem extends StatelessWidget {
     this.isLast = false,
   });
 
+  String? _resolveSchoolLogo() {
+    final explicit = education.logoUrl?.trim();
+    if (explicit != null && explicit.isNotEmpty) return explicit;
+    final site = education.institutionUrl?.trim();
+    if (site != null && site.isNotEmpty) {
+      return FaviconUtils.urlForWebsite(site);
+    }
+    return null;
+  }
+
+  bool get _useStructuredLines {
+    final l = education.level?.trim();
+    final m = education.major?.trim();
+    return l != null && l.isNotEmpty && m != null && m.isNotEmpty;
+  }
+
+  Future<void> _openInstitutionSite() async {
+    final raw = education.institutionUrl?.trim();
+    if (raw == null || raw.isEmpty) return;
+    final uri = Uri.tryParse(raw);
+    if (uri == null) return;
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
+
+  Widget _buildInstitutionLine(ColorScheme colors) {
+    final name = education.institution;
+    final url = education.institutionUrl?.trim();
+    final linkStyle = AppStyles.smallTextBold(textColor: colors.primary);
+
+    if (url == null || url.isEmpty) {
+      return SelectableText(name, style: linkStyle);
+    }
+
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Semantics(
+        link: true,
+        label: 'Open $name website',
+        child: InkWell(
+          onTap: _openInstitutionSite,
+          borderRadius: BorderRadius.circular(6),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 2),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Flexible(child: Text(name, style: linkStyle, maxLines: 4)),
+                SizedBox(width: AppSizes.spacingSmall),
+                Icon(
+                  FontAwesomeIcons.arrowUpRightFromSquare,
+                  size: 11,
+                  color: linkStyle.color?.withValues(alpha: 0.72),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSchoolLeading(ColorScheme colors, Brightness brightness) {
+    final logoRef = _resolveSchoolLogo();
+    if (logoRef != null) {
+      final chipBackgroundBlack =
+          education.logoChipBlackInLight && brightness == Brightness.light;
+      return BrandFaviconChip(
+        logoRef: logoRef,
+        linkUrl: education.institutionUrl?.trim(),
+        chipBackgroundBlack: chipBackgroundBlack,
+        colors: colors,
+      );
+    }
+    return Container(
+      padding: AppSizes.paddingMedium,
+      decoration: BoxDecoration(
+        color: colors.onSurface.withValues(alpha: 0.05),
+        borderRadius: AppSizes.borderRadiusSmall,
+        border: Border.all(color: colors.outline),
+      ),
+      child: Icon(
+        FontAwesomeIcons.graduationCap,
+        size: AppSizes.iconMedium,
+        color: colors.primary,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final colors = theme.colorScheme;
+    final brightness = theme.brightness;
     final isPresent = ExperienceUtils.isPresent(education.period);
 
     return TimelineContainer(
@@ -43,38 +138,39 @@ class EducationItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: AppSizes.paddingMedium,
-                      decoration: BoxDecoration(
-                        color: colors.onSurface.withValues(alpha: 0.05),
-                        borderRadius: AppSizes.borderRadiusSmall,
-                        border: Border.all(color: colors.outline),
-                      ),
-                      child: Icon(
-                        FontAwesomeIcons.graduationCap,
-                        size: AppSizes.iconMedium,
-                        color: colors.primary,
-                      ),
-                    ),
+                    _buildSchoolLeading(colors, brightness),
                     SizedBox(width: AppSizes.spacingLarge),
                     Flexible(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
-                        children: [
-                          SelectableText(
-                            education.degree,
-                            style: AppStyles.mediumTextBold(),
-                          ),
-                          SizedBox(height: AppSizes.spacingSmall),
-                          SelectableText(
-                            education.institution,
-                            style: AppStyles.smallTextBold(
-                              textColor: colors.primary,
-                            ),
-                          ),
-                        ],
+                        children: _useStructuredLines
+                            ? [
+                                SelectableText(
+                                  education.level!.trim(),
+                                  style: AppStyles.mediumTextBold(),
+                                ),
+                                SizedBox(height: AppSizes.spacingSmall),
+                                SelectableText(
+                                  education.major!.trim(),
+                                  style: AppStyles.smallTextBold(
+                                    textColor: colors.onSurface.withValues(
+                                      alpha: 0.88,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: AppSizes.spacingSmall),
+                                _buildInstitutionLine(colors),
+                              ]
+                            : [
+                                SelectableText(
+                                  education.degree,
+                                  style: AppStyles.mediumTextBold(),
+                                ),
+                                SizedBox(height: AppSizes.spacingSmall),
+                                _buildInstitutionLine(colors),
+                              ],
                       ),
                     ),
                   ],
