@@ -1,7 +1,9 @@
 part of 'navigation.dart';
 
 Route<dynamic>? routeGenerator(RouteSettings settings) {
-  final route = Routes.fromPath(settings.name ?? '/');
+  var path = settings.name ?? '/';
+  if (path == '/contact') path = '/about';
+  final route = Routes.fromPath(path);
 
   final Widget page;
 
@@ -24,9 +26,6 @@ Route<dynamic>? routeGenerator(RouteSettings settings) {
     case Routes.education:
       page = const EducationPage();
       break;
-    case Routes.contact:
-      page = const ContactPage();
-      break;
     default:
       page = const NotFoundPage();
   }
@@ -44,7 +43,7 @@ Route<dynamic>? routeGenerator(RouteSettings settings) {
   }
 
   return PageRouteBuilder(
-    settings: settings,
+    settings: RouteSettings(name: path, arguments: settings.arguments),
     pageBuilder: (_, _, _) => page,
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       final slideFromRight = AppNavigator.isSlideFromRight;

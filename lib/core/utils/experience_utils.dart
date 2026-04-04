@@ -32,8 +32,9 @@ class ExperienceUtils {
   static String getExperienceType(String title, String company) {
     final titleLower = title.toLowerCase();
     if (titleLower.contains('intern')) return 'Internship';
-    if (titleLower.contains('founder') || titleLower.contains('co-founder'))
+    if (titleLower.contains('founder') || titleLower.contains('co-founder')) {
       return 'Freelance';
+    }
     if (titleLower.contains('part')) return 'Part Time';
     return 'Full Time';
   }

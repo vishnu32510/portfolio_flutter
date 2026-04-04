@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_sizes.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -8,6 +9,7 @@ import '../../../../core/widgets/subtext.dart';
 import '../../../../core/widgets/timeline_container.dart';
 import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';
 import 'experience_item.dart';
+import 'experience_loading_placeholder.dart';
 
 class ExperienceSection extends StatefulWidget {
   const ExperienceSection({super.key});
@@ -36,6 +38,7 @@ class _ExperienceSectionState extends State<ExperienceSection> {
       builder: (context, portfolioState) {
         final experiences = portfolioState.data?.experiences ?? [];
         final colors = Theme.of(context).colorScheme;
+        final experiencesReady = portfolioState.isSectionLoaded('experiences');
 
         return Padding(
           padding: EdgeInsets.symmetric(
@@ -68,41 +71,37 @@ class _ExperienceSectionState extends State<ExperienceSection> {
                   SizedBox(height: AppSizes.spacingXXL),
                   SizedBox(
                     width: context.width * (context.isMobile ? 0.9 : 0.6),
-                    child: ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: experiences.length,
-                      padding: EdgeInsets.zero,
-                      itemBuilder: (_, index) {
-                        final experience = ExperienceItem(
-                          experience: experiences[index],
-                          collapsed: index >= topK,
-                        );
-                        if (index == topK) {
-                          return Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              TimelineContainer(
-                                showContainer: false,
-                                child: SelectableText(
-                                  'Previous Work',
-                                  style: AppStyles.largeTextBold(
-                                    textColor: colors.onSurface.withValues(
-                                      alpha: 0.5,
+                    child: !experiencesReady
+                        ? const ExperienceLoadingPlaceholder()
+                        : ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: experiences.length,
+                            padding: EdgeInsets.zero,
+                            itemBuilder: (_, index) {
+                              final experience = ExperienceItem(
+                                experience: experiences[index],
+                                collapsed: index >= topK,
+                              );
+                              if (index == topK) {
+                                return Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    TimelineContainer(
+                                      showContainer: false,
+                                      child: _PreviousWorkSeparator(
+                                        colors: colors,
+                                      ),
                                     ),
-                                  ),
-                                ),
-                              ),
-                              experience,
-                            ],
-                          );
-                        } else {
-                          return experience;
-                        }
-                      },
-                    ),
+                                    experience,
+                                  ],
+                                );
+                              }
+                              return experience;
+                            },
+                          ),
                   ),
                 ],
               ),
@@ -110,6 +109,42 @@ class _ExperienceSectionState extends State<ExperienceSection> {
           ),
         );
       },
+    );
+  }
+}
+
+class _PreviousWorkSeparator extends StatelessWidget {
+  const _PreviousWorkSeparator({required this.colors});
+
+  final ColorScheme colors;
+
+  @override
+  Widget build(BuildContext context) {
+    final labelStyle = AppStyles.smallTextBold(
+      textColor: colors.onSurface.withValues(alpha: 0.55),
+    ).copyWith(letterSpacing: 2.2);
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: AppSizes.spacingMedium),
+      child: Row(
+        children: [
+          Icon(
+            FontAwesomeIcons.clockRotateLeft,
+            size: 14,
+            color: colors.primary.withValues(alpha: 0.75),
+          ),
+          SizedBox(width: AppSizes.spacingSmall),
+          Text('PREVIOUS WORK', style: labelStyle),
+          SizedBox(width: AppSizes.spacingMedium),
+          Expanded(
+            child: Divider(
+              height: 1,
+              thickness: 1,
+              color: colors.outline.withValues(alpha: 0.55),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

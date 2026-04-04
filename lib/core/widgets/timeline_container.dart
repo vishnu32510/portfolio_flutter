@@ -102,13 +102,24 @@ class TimelineIndicator extends StatelessWidget {
           shape: BoxShape.circle,
           color: present
               ? colors.surface
-              : colors.onSurface.withValues(alpha: 0.5),
+              : colors.onSurface.withValues(alpha: 0.45),
+          border: present
+              ? Border.all(
+                  color: colors.primary.withValues(alpha: 0.72),
+                  width: 1.5,
+                )
+              : null,
           boxShadow: present
               ? [
                   BoxShadow(
-                    color: Colors.green.withValues(alpha: 0.5),
-                    spreadRadius: 2.5,
-                    blurRadius: 4,
+                    color: colors.primary.withValues(alpha: 0.65),
+                    spreadRadius: 1,
+                    blurRadius: 10,
+                  ),
+                  BoxShadow(
+                    color: colors.primary.withValues(alpha: 0.4),
+                    spreadRadius: 5,
+                    blurRadius: 18,
                   ),
                 ]
               : null,
@@ -118,9 +129,9 @@ class TimelineIndicator extends StatelessWidget {
             ? Container(
                 height: size / 2,
                 width: size / 2,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.green,
+                  color: colors.primary,
                 ),
               )
             : null,

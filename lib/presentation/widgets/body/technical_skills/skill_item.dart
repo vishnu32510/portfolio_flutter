@@ -16,11 +16,13 @@ class SkillItem extends StatelessWidget {
   IconData _getIconForCategory(String category) {
     final cat = category.toLowerCase();
     if (cat.contains('language')) return FontAwesomeIcons.code;
-    if (cat.contains('mobile') || cat.contains('frontend'))
+    if (cat.contains('mobile') || cat.contains('frontend')) {
       return FontAwesomeIcons.mobileScreenButton;
+    }
     if (cat.contains('backend')) return FontAwesomeIcons.server;
-    if (cat.contains('tool') || cat.contains('devops'))
+    if (cat.contains('tool') || cat.contains('devops')) {
       return FontAwesomeIcons.screwdriverWrench;
+    }
     return FontAwesomeIcons.gear;
   }
 

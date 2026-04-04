@@ -5,7 +5,12 @@ class ProjectsData {
     return const [
       Project(
         name: "LinkedIn AI Assistant",
-        tags: [ProjectTag.ai, ProjectTag.web, ProjectTag.backend],
+        tags: [
+          ProjectTag.featured,
+          ProjectTag.ai,
+          ProjectTag.web,
+          ProjectTag.backend,
+        ],
         imageUrl:
             "https://raw.githubusercontent.com/vishnu32510/linkedin-ai-asistant/main/icon500.png",
         description:
@@ -24,7 +29,12 @@ class ProjectsData {
       ),
       Project(
         name: 'My Portfolio',
-        tags: [ProjectTag.web, ProjectTag.mobile],
+        tags: [
+          ProjectTag.featured,
+          ProjectTag.web,
+          ProjectTag.mobile,
+          ProjectTag.backend,
+        ],
         imageUrl:
             'https://raw.githubusercontent.com/vishnu32510/portfolio_flutter/main/assets/images/appIcon.png',
         description:
@@ -37,9 +47,10 @@ class ProjectsData {
       Project(
         name: 'Floxi',
         tags: [
+          ProjectTag.featured,
+          ProjectTag.ai,
           ProjectTag.mobile,
           ProjectTag.web,
-          ProjectTag.ai,
           ProjectTag.backend,
         ],
         isAsset: true,
@@ -67,8 +78,59 @@ class ProjectsData {
         demoLink: 'https://floxi.co',
       ),
       Project(
+        name: 'Flashlight Control',
+        tags: [ProjectTag.featured, ProjectTag.mobile],
+        imageUrl:
+            'https://raw.githubusercontent.com/vishnu32510/flashlight_control_flutter/main/assets/marketing/app_icon_512.png',
+        description:
+            'Cross-platform Flutter flashlight app with feature-first architecture (Bloc, go_router, get_it). Store pipelines: GitHub Actions for Android (Play Console internal/production via Fastlane) and iOS via Xcode Cloud with Fastlane match; optional iOS lanes on GitHub Actions for TestFlight and App Store submit.',
+        techStack: [
+          'Flutter',
+          'Dart',
+          'Bloc',
+          'go_router',
+          'get_it',
+          'Fastlane',
+          'GitHub Actions',
+          'Xcode Cloud',
+          'iOS',
+          'Android',
+          'CI/CD',
+        ],
+        status: 'Active (iOS & Android)',
+        githubRepoLink:
+            'https://github.com/vishnu32510/flashlight_control_flutter',
+      ),
+      Project(
+        name: 'Plushify Me',
+        tags: [ProjectTag.featured, ProjectTag.ai, ProjectTag.mobile],
+        imageUrl:
+            'https://raw.githubusercontent.com/vishnu32510/plushie_flutter/main/assets/app_icon.png',
+        description:
+            'iOS app that turns photos into plushie-style images using OpenAI gpt-image-1 (edits API). Shipped on the App Store; automation with Xcode Cloud and GitHub Actions alongside a clean BLoC-based Flutter codebase.',
+        techStack: [
+          'Flutter',
+          'Dart',
+          'Bloc',
+          'OpenAI API',
+          'gpt-image-1',
+          'Xcode Cloud',
+          'GitHub Actions',
+          'iOS',
+        ],
+        status: 'Live on App Store',
+        githubRepoLink: 'https://github.com/vishnu32510/plushie_flutter',
+        demoLink: 'https://apps.apple.com/ca/app/plushify-me/id6760384789',
+      ),
+      Project(
         name: 'Fact Dynamics',
-        tags: [ProjectTag.ai, ProjectTag.mobile, ProjectTag.web],
+        tags: [
+          ProjectTag.featured,
+          ProjectTag.ai,
+          ProjectTag.backend,
+          ProjectTag.mobile,
+          ProjectTag.web,
+        ],
         imageUrl:
             'https://raw.githubusercontent.com/vishnu32510/fact_pulse/main/assets/icon/icon.png',
         description:
@@ -88,7 +150,12 @@ class ProjectsData {
       ),
       Project(
         name: 'Chi Planner',
-        tags: [ProjectTag.ai, ProjectTag.mobile],
+        tags: [
+          ProjectTag.featured,
+          ProjectTag.ai,
+          ProjectTag.mobile,
+          ProjectTag.backend,
+        ],
         imageUrl:
             'https://raw.githubusercontent.com/vishnu32510/chi-scartlet-hacks/main/assets/images/chicago.png',
         description:
@@ -100,7 +167,7 @@ class ProjectsData {
       ),
       Project(
         name: 'perplexity_dart',
-        tags: [ProjectTag.ai, ProjectTag.mobile],
+        tags: [ProjectTag.featured, ProjectTag.ai, ProjectTag.backend],
         imageUrl:
             'https://upload.wikimedia.org/wikipedia/commons/7/7e/Dart-logo.png',
         description: 'Dart SDK for the Perplexity API with streaming support.',
@@ -111,7 +178,12 @@ class ProjectsData {
       ),
       Project(
         name: 'perplexity_flutter',
-        tags: [ProjectTag.mobile, ProjectTag.ai],
+        tags: [
+          ProjectTag.featured,
+          ProjectTag.ai,
+          ProjectTag.mobile,
+          ProjectTag.web,
+        ],
         imageUrl:
             'https://upload.wikimedia.org/wikipedia/commons/7/7e/Dart-logo.png',
         description:
@@ -199,7 +271,7 @@ class ProjectsData {
       ),
       Project(
         name: 'Whatsapp UI Clone',
-        tags: [ProjectTag.mobile],
+        tags: [ProjectTag.mobile, ProjectTag.web],
         imageUrl: '',
         description: 'Whatsapp UI Clone with FLutter',
         techStack: ['Flutter', 'Dart', 'UI/UX'],

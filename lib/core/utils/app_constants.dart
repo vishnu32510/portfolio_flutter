@@ -306,7 +306,10 @@ abstract class AppConstants {
   static const List<Education> education = [
     Education(
       degree: 'Bachelor of Science, Computer Science',
+      level: "Bachelor's",
+      major: 'Computer Science',
       institution: 'Your University',
+      institutionUrl: 'https://www.example.edu/',
       period: 'Year - Year',
       coursework: [
         'Software Development',

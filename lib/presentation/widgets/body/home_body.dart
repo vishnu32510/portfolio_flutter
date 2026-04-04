@@ -8,7 +8,6 @@ import '../../blocs/home_bloc/home_bloc.dart';
 import '../app_bar/theme_header_btn.dart';
 import '../app_bar/vertical_headers_builder.dart';
 // import 'Toasts/toasts.dart';
-import 'contact/contact_section.dart';
 import 'intro/intro_section.dart';
 import 'projects/projects_section.dart';
 import 'technical_skills/technical_skills_section.dart';
@@ -28,7 +27,6 @@ class _HomeBodyState extends State<HomeBody> {
   final experienceKey = GlobalKey();
   final projectKey = GlobalKey();
   final educationKey = GlobalKey();
-  final contactKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +36,8 @@ class _HomeBodyState extends State<HomeBody> {
         if (state is AppBarHeadersIndexChanged) {
           Navigator.of(context).maybePop();
           const duration = Duration(milliseconds: 300);
+          // Order matches AppBarHeaders: Home, Projects, Experience, Skills,
+          // Education, About (no on-home targets for About).
           if (state.index == 0) {
             Scrollable.ensureVisible(
               introKey.currentContext!,
@@ -46,7 +46,7 @@ class _HomeBodyState extends State<HomeBody> {
           }
           if (state.index == 1) {
             Scrollable.ensureVisible(
-              skillsKey.currentContext!,
+              projectKey.currentContext!,
               duration: duration,
             );
           }
@@ -58,19 +58,13 @@ class _HomeBodyState extends State<HomeBody> {
           }
           if (state.index == 3) {
             Scrollable.ensureVisible(
-              projectKey.currentContext!,
+              skillsKey.currentContext!,
               duration: duration,
             );
           }
           if (state.index == 4) {
             Scrollable.ensureVisible(
               educationKey.currentContext!,
-              duration: duration,
-            );
-          }
-          if (state.index == 5) {
-            Scrollable.ensureVisible(
-              contactKey.currentContext!,
               duration: duration,
             );
           }
@@ -91,7 +85,6 @@ class _HomeBodyState extends State<HomeBody> {
                 ExperienceSection(key: experienceKey),
                 ProjectsSection(key: projectKey),
                 EducationSection(key: educationKey),
-                ContactSection(key: contactKey),
               ],
             ),
           ),

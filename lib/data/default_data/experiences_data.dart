@@ -7,6 +7,7 @@ class ExperiencesData {
         title: 'Software Engineer',
         company: 'Capgemini',
         period: 'MAR 30, 2026 - Present',
+        companyUrl: 'https://www.capgemini.com',
         achievements: [
           'Technology consulting and software engineering across enterprise client engagements',
           'Collaborating in agile delivery teams on design, implementation, and solution rollout',
@@ -16,6 +17,8 @@ class ExperiencesData {
         title: 'Software Engineer',
         company: 'HealthLab Innovations Inc, Arlington, VA',
         period: 'OCT 2025 - MAR 2026',
+        companyUrl: 'https://healthlab.com',
+        logoChipBlackInLight: true,
         achievements: [
           'Built and maintained React.js/Next.js + TypeScript portals for patients and staff by adding role based access',
           'Built FastAPI and Go agentic microservices for lab code mapping and data validation, improving data accuracy',
@@ -27,6 +30,7 @@ class ExperiencesData {
         title: 'Software Development Intern',
         company: 'Leap Of Faith Technologies, Chicago, IL',
         period: 'MAY 2025 - DEC 2025',
+        companyUrl: 'https://www.leapoffaith.com',
         achievements: [
           'Integrated MCP and LLM/agent based ETL with FlaskAPI, enabling automated insight for healthcare operations',
           'Developed secure modules combining mobile technology and AI with Flutter to deliver a HIPAA-compliant experience',
@@ -37,6 +41,7 @@ class ExperiencesData {
         title: 'Software Engineer / CO-FOUNDER',
         company: 'Floxi, Chicago, IL',
         period: 'APR 2025 - DEC 2025',
+        companyUrl: 'https://floxi.co',
         achievements: [
           'Built and maintained web and mobile features for eco-reward platforms using React.js, Next.js, Flutter, Node.js and Flask',
           'Deployed dockerized Node.js/Flask APIs on GCP connected to MySQL and migrated to PostgreSQL for analytics',
@@ -49,6 +54,7 @@ class ExperiencesData {
         title: 'Software Engineer II',
         company: 'Grootan Technologies, Chennai',
         period: 'MAR 2022 - NOV 2023',
+        companyUrl: 'https://www.grootan.com',
         achievements: [
           'Collaborated in an agile, cross-functional team in White-Label Superapps (Istanbul Senin - Banking, 1M+ downloads)',
           'Modularized the app architecture improving maintainability and scalability, reducing application load time by 40%',
@@ -62,6 +68,7 @@ class ExperiencesData {
         title: 'Software Engineer',
         company: 'Farazon Software Technologies, Coimbatore',
         period: 'APR 2021 - MAR 2022',
+        companyUrl: 'https://www.farazon.com',
         achievements: [
           'Collaborated with the R & D team to develop real-time IoT systems for oxygen generators using Flutter and MQTT',
           'Developed cross-platform sensor-based apps (Bluetooth, GPS, NFC) & integrated IoT telemetry using Flask & Firebase',
