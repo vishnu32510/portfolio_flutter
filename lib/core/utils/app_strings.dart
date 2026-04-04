@@ -16,6 +16,7 @@ abstract class AppStrings {
       "Software Engineer - Full-stack with 4+ years of experience building high-performance, cross-platform apps with Flutter, Dart, and Firebase, plus native Android (Kotlin) & iOS (Swift) SDKs. Backend & web experience with Flask, Next.js, and cloud deployments (GCP, AWS, Azure) to power mobile and web experiences. Founder of Floxi – an eco-reward platform gamifying sustainable actions. Hackathon winner, open-source contributor, and AI enthusiast focused on shipping production-grade LLM & RAG systems.";
   static String aboutMeMsg =
       "I'm a Software Engineer - Full-stack and AI enthusiast with 4+ years of experience designing and building scalable apps across mobile, web, and backend. I specialize in Flutter, native Android (Kotlin), iOS (SwiftUI), and cloud-native backends (Flask, FastAPI, Node.js) deployed on GCP, AWS, and Firebase. My work focuses on clean architecture, performance, and great UX—combining Bloc, TDD, and SOLID practices with modern GenAI stacks (RAG, LangChain/AutoGen, MCP) to ship reliable, intelligent products that people actually use.";
+
   /// Career start for displayed tenure (April 2021).
   static final DateTime experienceStartDate = DateTime(2021, 4, 1);
 
