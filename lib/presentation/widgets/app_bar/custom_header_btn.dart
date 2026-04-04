@@ -16,17 +16,15 @@ class CustomHeaderBtn extends StatelessWidget {
       case 0:
         return Routes.home;
       case 1:
-        return Routes.about;
-      case 2:
-        return Routes.skills;
-      case 3:
-        return Routes.experience;
-      case 4:
         return Routes.projects;
-      case 5:
+      case 2:
+        return Routes.experience;
+      case 3:
+        return Routes.skills;
+      case 4:
         return Routes.education;
-      case 6:
-        return Routes.contact;
+      case 5:
+        return Routes.about;
       default:
         return Routes.home;
     }

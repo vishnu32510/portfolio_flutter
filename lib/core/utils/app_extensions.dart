@@ -22,8 +22,6 @@ extension AppBarHeaderExtension on AppBarHeaders {
         return 'Projects';
       case AppBarHeaders.education:
         return 'Education';
-      case AppBarHeaders.contact:
-        return 'Contact';
     }
   }
 }

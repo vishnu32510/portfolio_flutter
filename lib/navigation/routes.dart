@@ -6,8 +6,7 @@ enum Routes {
   skills('Skills', '/skills', icon: Icons.code),
   experience('Experience', '/experience', icon: Icons.work),
   projects('Projects', '/projects', icon: Icons.folder),
-  education('Education', '/education', icon: Icons.school),
-  contact('Contact', '/contact', icon: Icons.contact_mail);
+  education('Education', '/education', icon: Icons.school);
 
   final String name;
   final String route;
@@ -31,11 +30,10 @@ enum Routes {
 
   static List<Routes> get mainRoutes => [
     Routes.home,
-    Routes.about,
-    Routes.skills,
-    Routes.experience,
     Routes.projects,
+    Routes.experience,
+    Routes.skills,
     Routes.education,
-    Routes.contact,
+    Routes.about,
   ];
 }

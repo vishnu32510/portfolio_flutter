@@ -1,11 +1,10 @@
 enum AppBarHeaders {
   home,
-  about,
-  skills,
-  experience,
   projects,
+  experience,
+  skills,
   education,
-  contact,
+  about,
 }
 
 enum AppBarHeadersAxis { horizontal, vertical }
