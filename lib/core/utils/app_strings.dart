@@ -16,7 +16,29 @@ abstract class AppStrings {
       "Software Engineer - Full-stack with 4+ years of experience building high-performance, cross-platform apps with Flutter, Dart, and Firebase, plus native Android (Kotlin) & iOS (Swift) SDKs. Backend & web experience with Flask, Next.js, and cloud deployments (GCP, AWS, Azure) to power mobile and web experiences. Founder of Floxi – an eco-reward platform gamifying sustainable actions. Hackathon winner, open-source contributor, and AI enthusiast focused on shipping production-grade LLM & RAG systems.";
   static String aboutMeMsg =
       "I'm a Software Engineer - Full-stack and AI enthusiast with 4+ years of experience designing and building scalable apps across mobile, web, and backend. I specialize in Flutter, native Android (Kotlin), iOS (SwiftUI), and cloud-native backends (Flask, FastAPI, Node.js) deployed on GCP, AWS, and Firebase. My work focuses on clean architecture, performance, and great UX—combining Bloc, TDD, and SOLID practices with modern GenAI stacks (RAG, LangChain/AutoGen, MCP) to ship reliable, intelligent products that people actually use.";
-  static const String numOfExperience = '4';
+  /// Career start for displayed tenure (April 2021).
+  static final DateTime experienceStartDate = DateTime(2021, 4, 1);
+
+  static const double _microsecondsPerJulianYear =
+      365.25 * 24 * 60 * 60 * 1000000;
+
+  /// Elapsed years from [experienceStartDate] to now (365.25-day year).
+  static double get experienceYearsDecimal {
+    final now = DateTime.now();
+    if (!now.isAfter(experienceStartDate)) return 0;
+    final us = now.difference(experienceStartDate).inMicroseconds;
+    return us / _microsecondsPerJulianYear;
+  }
+
+  /// Shown next to [experienceMsg]: whole number if rounded to .0, else one decimal.
+  static String get experienceYearsDisplay {
+    final s = experienceYearsDecimal.toStringAsFixed(1);
+    if (s.endsWith('.0')) {
+      return s.substring(0, s.length - 2);
+    }
+    return s;
+  }
+
   static const String experienceMsg =
       'Years of hands-on experience across mobile, web, backend, and applied AI—specializing in Flutter, cloud-native systems, and production-ready LLM/RAG workflows.';
   static const String servicesIOffer = 'The services I offer:';

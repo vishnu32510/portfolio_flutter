@@ -13,7 +13,7 @@ class ExperienceInfo extends StatelessWidget {
     return Row(
       children: [
         SelectableText(
-          AppStrings.numOfExperience,
+          AppStrings.experienceYearsDisplay,
           style: context.width < DeviceType.mobile.getMaxWidth()
               ? AppStyles.s32.copyWith(fontSize: 48)
               : AppStyles.s32.copyWith(fontSize: 96),
