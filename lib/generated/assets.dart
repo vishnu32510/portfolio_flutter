@@ -13,8 +13,6 @@ class Assets {
   static const String imagesPortfolioIcon = 'assets/images/portfolio_icon.png';
   static const String imagesRuler = 'assets/images/ruler.svg';
   static const String imagesSlider = 'assets/images/slider.svg';
-  static const String imagesSunGif = 'assets/images/sunGif.gif';
-  static const String imagesMoonGif = 'assets/images/moonGif.gif';
 
   // Profile & Hero - Dark Theme
   static const String imagesProfileAnimated =
@@ -24,7 +22,7 @@ class Assets {
       'assets/images/home_hero_animated.png';
   static const String imagesHomeHeroReal = 'assets/images/home_hero_real.png';
 
-  // Walk Cycle Keyframes - Black Suit
+  // Walk Cycle Keyframes - Dark Theme (Black Suit)
   static const String imagesWalkDarkF1 = 'assets/images/walk_dark_f1.png';
   static const String imagesWalkDarkF2 = 'assets/images/walk_dark_f2.png';
   static const String imagesWalkDarkF3 = 'assets/images/walk_dark_f3.png';

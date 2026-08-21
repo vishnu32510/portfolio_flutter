@@ -4,8 +4,6 @@ abstract class AppAssets {
   static const appIcon = Assets.imagesAppIcon;
   static const devImg = 'https://avatars.githubusercontent.com/u/76788079?v=4';
   static const androidLogo = Assets.imagesAndroid;
-  static const sunGif = Assets.imagesSunGif;
-  static const moonGif = Assets.imagesMoonGif;
   static const scrappingLogo = Assets.imagesSlider;
   static const uiDesignLogo = Assets.imagesRuler;
   static const flutterDevLottie = Assets.lottieDeveloper;

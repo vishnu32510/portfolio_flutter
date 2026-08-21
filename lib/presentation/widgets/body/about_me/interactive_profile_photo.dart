@@ -102,123 +102,126 @@ class _InteractiveProfilePhotoState extends State<InteractiveProfilePhoto>
         : (context.width * 0.24).clamp(260.0, 340.0);
     final photoHeight = photoWidth * 1.3;
 
-    return MouseRegion(
-      cursor: SystemMouseCursors.basic,
-      onHover: _onHover,
-      onEnter: _onHover,
-      onExit: _onExit,
-      child: GestureDetector(
-        onTapDown: (details) {
-          setState(() {
-            _mousePosition = details.localPosition;
-          });
-          if (_revealController.isCompleted) {
-            _revealController.reverse();
-          } else {
-            _revealController.forward();
-          }
-        },
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeOutCubic,
-          width: photoWidth,
-          height: photoHeight,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(
-              color: _isHovered
-                  ? colors.primary.withValues(alpha: 0.8)
-                  : colors.outline.withValues(alpha: 0.8),
-              width: _isHovered ? 2.5 : 1.5,
-            ),
-            boxShadow: [
-              BoxShadow(
+    return RepaintBoundary(
+      child: MouseRegion(
+        cursor: SystemMouseCursors.basic,
+        onHover: _onHover,
+        onEnter: _onHover,
+        onExit: _onExit,
+        child: GestureDetector(
+          onTapDown: (details) {
+            setState(() {
+              _mousePosition = details.localPosition;
+            });
+            if (_revealController.isCompleted) {
+              _revealController.reverse();
+            } else {
+              _revealController.forward();
+            }
+          },
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeOutCubic,
+            width: photoWidth,
+            height: photoHeight,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
                 color: _isHovered
-                    ? colors.primary.withValues(alpha: 0.25)
-                    : Colors.black.withValues(alpha: 0.08),
-                blurRadius: _isHovered ? 24 : 12,
-                spreadRadius: _isHovered ? 2 : 0,
-                offset: Offset(0, _isHovered ? 8 : 4),
+                    ? colors.primary.withValues(alpha: 0.8)
+                    : colors.outline.withValues(alpha: 0.8),
+                width: _isHovered ? 2.5 : 1.5,
               ),
-            ],
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(19),
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                // Base layer: Animated illustration avatar (theme-adaptive)
-                Image.asset(
-                  animAsset,
-                  fit: BoxFit.cover,
-                  alignment: const Alignment(0, -0.35),
+              boxShadow: [
+                BoxShadow(
+                  color: _isHovered
+                      ? colors.primary.withValues(alpha: 0.25)
+                      : Colors.black.withValues(alpha: 0.08),
+                  blurRadius: _isHovered ? 24 : 12,
+                  spreadRadius: _isHovered ? 2 : 0,
+                  offset: Offset(0, _isHovered ? 8 : 4),
                 ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(19),
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  // Base layer: Animated illustration avatar (theme-adaptive)
+                  Image.asset(
+                    animAsset,
+                    fit: BoxFit.cover,
+                    alignment: const Alignment(0, -0.35),
+                  ),
 
-                // Top layer: Real Photo revealed through a dynamically morphing liquid blob
-                AnimatedBuilder(
-                  animation: Listenable.merge([
-                    _revealAnimation,
-                    _fluidWaveController,
-                  ]),
-                  builder: (context, child) {
-                    final factor = _revealAnimation.value;
-                    if (_mousePosition == null || factor <= 0.001) {
-                      return const SizedBox.shrink();
-                    }
+                  // Top layer: Real Photo revealed through a dynamically morphing liquid blob
+                  AnimatedBuilder(
+                    animation: Listenable.merge([
+                      _revealAnimation,
+                      _fluidWaveController,
+                    ]),
+                    builder: (context, child) {
+                      final factor = _revealAnimation.value;
+                      if (_mousePosition == null || factor <= 0.001) {
+                        return const SizedBox.shrink();
+                      }
 
-                    final currentRadius = 145.0 * factor;
-                    final timePhase = _fluidWaveController.value * 2 * math.pi;
+                      final currentRadius = 145.0 * factor;
+                      final timePhase =
+                          _fluidWaveController.value * 2 * math.pi;
 
-                    return ClipPath(
-                      clipper: _DynamicMorphingBlobClipper(
-                        center: _mousePosition!,
-                        radius: currentRadius,
-                        timePhase: timePhase,
-                      ),
-                      child: Image.asset(
-                        realAsset,
-                        fit: BoxFit.cover,
-                        alignment: const Alignment(0, -0.35),
-                      ),
-                    );
-                  },
-                ),
-
-                // Clean status pill at bottom right
-                Positioned(
-                  bottom: 12,
-                  right: 12,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 6,
+                      return ClipPath(
+                        clipper: _DynamicMorphingBlobClipper(
+                          center: _mousePosition!,
+                          radius: currentRadius,
+                          timePhase: timePhase,
                         ),
-                        decoration: BoxDecoration(
-                          color: Colors.black.withValues(alpha: 0.55),
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            color: Colors.white.withValues(alpha: 0.25),
-                            width: 0.8,
+                        child: Image.asset(
+                          realAsset,
+                          fit: BoxFit.cover,
+                          alignment: const Alignment(0, -0.35),
+                        ),
+                      );
+                    },
+                  ),
+
+                  // Clean status pill at bottom right
+                  Positioned(
+                    bottom: 12,
+                    right: 12,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 6,
                           ),
-                        ),
-                        child: Text(
-                          _isHovered ? 'Real Photo' : 'Hover to view',
-                          style: const TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                            letterSpacing: 0.3,
+                          decoration: BoxDecoration(
+                            color: Colors.black.withValues(alpha: 0.55),
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: Colors.white.withValues(alpha: 0.25),
+                              width: 0.8,
+                            ),
+                          ),
+                          child: Text(
+                            _isHovered ? 'Real Photo' : 'Hover to view',
+                            style: const TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                              letterSpacing: 0.3,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
