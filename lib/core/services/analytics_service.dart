@@ -73,7 +73,7 @@ class AnalyticsService {
                   'session_id': _clientId,
                   ...?parameters,
                 },
-              }
+              },
             ],
           };
 
@@ -103,10 +103,7 @@ class AnalyticsService {
 
   /// Log general page view
   static void logPageView(String path, [String? title]) {
-    logEvent('page_view', {
-      'page_path': path,
-      'page_title': title ?? path,
-    });
+    logEvent('page_view', {'page_path': path, 'page_title': title ?? path});
   }
 
   /// Log resume download or viewing
@@ -131,27 +128,17 @@ class AnalyticsService {
   }
 
   /// Log social icon clicks
-  static void logSocialClick({
-    required String platform,
-    required String url,
-  }) {
-    logEvent('click_social', {
-      'platform': platform,
-      'url': url,
-    });
+  static void logSocialClick({required String platform, required String url}) {
+    logEvent('click_social', {'platform': platform, 'url': url});
   }
 
   /// Log theme change (light / dark)
   static void logThemeToggle(bool isDark) {
-    logEvent('toggle_theme', {
-      'mode': isDark ? 'dark' : 'light',
-    });
+    logEvent('toggle_theme', {'mode': isDark ? 'dark' : 'light'});
   }
 
   /// Log skill chip exploration
   static void logSkillClick(String skillName) {
-    logEvent('click_skill', {
-      'skill_name': skillName,
-    });
+    logEvent('click_skill', {'skill_name': skillName});
   }
 }

@@ -140,7 +140,9 @@ class _TrafficBadgeState extends State<TrafficBadge> {
                             Text(
                               'Tracked across global web sessions',
                               style: AppStyles.extraSmallText(
-                                textColor: colors.onSurface.withValues(alpha: 0.6),
+                                textColor: colors.onSurface.withValues(
+                                  alpha: 0.6,
+                                ),
                               ),
                             ),
                           ],
@@ -301,11 +303,7 @@ class _TrafficBadgeState extends State<TrafficBadge> {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  FaIcon(
-                    FontAwesomeIcons.eye,
-                    size: 11,
-                    color: colors.primary,
-                  ),
+                  FaIcon(FontAwesomeIcons.eye, size: 11, color: colors.primary),
                   const SizedBox(width: 6),
                   Text(
                     '${_formatCount(count)} views',
