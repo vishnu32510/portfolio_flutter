@@ -2,6 +2,7 @@ import 'dart:math' as math;
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../../../core/utils/app_extensions.dart';
+import '../../../../generated/assets.dart';
 
 class InteractiveProfilePhoto extends StatefulWidget {
   const InteractiveProfilePhoto({super.key});
@@ -32,7 +33,6 @@ class _InteractiveProfilePhotoState extends State<InteractiveProfilePhoto>
       reverseCurve: Curves.easeInCubic,
     );
 
-    // Continuous subtle fluid surface tension wave animation
     _fluidWaveController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 3000),
@@ -42,11 +42,17 @@ class _InteractiveProfilePhotoState extends State<InteractiveProfilePhoto>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    // Precache both dark and cream light theme assets for instant transitions
+    precacheImage(const AssetImage(Assets.imagesProfileAnimated), context);
+    precacheImage(const AssetImage(Assets.imagesProfileReal), context);
     precacheImage(
-      const AssetImage('assets/images/profile_animated.jpg'),
+      const AssetImage(Assets.imagesProfileCreamAboutAnim),
       context,
     );
-    precacheImage(const AssetImage('assets/images/profile_real.jpg'), context);
+    precacheImage(
+      const AssetImage(Assets.imagesProfileCreamAboutReal),
+      context,
+    );
   }
 
   @override
@@ -79,8 +85,17 @@ class _InteractiveProfilePhotoState extends State<InteractiveProfilePhoto>
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final colors = theme.colorScheme;
+    final isDark = theme.brightness != Brightness.dark;
     final isMobile = context.isMobile;
+
+    final animAsset = isDark
+        ? Assets.imagesProfileAnimated
+        : Assets.imagesProfileCreamAboutAnim;
+    final realAsset = isDark
+        ? Assets.imagesProfileReal
+        : Assets.imagesProfileCreamAboutReal;
 
     final photoWidth = isMobile
         ? (context.width * 0.75).clamp(240.0, 320.0)
@@ -132,9 +147,9 @@ class _InteractiveProfilePhotoState extends State<InteractiveProfilePhoto>
             child: Stack(
               fit: StackFit.expand,
               children: [
-                // Base layer: Animated illustration avatar
+                // Base layer: Animated illustration avatar (theme-adaptive)
                 Image.asset(
-                  'assets/images/profile_animated.jpg',
+                  animAsset,
                   fit: BoxFit.cover,
                   alignment: const Alignment(0, -0.35),
                 ),
@@ -151,7 +166,6 @@ class _InteractiveProfilePhotoState extends State<InteractiveProfilePhoto>
                       return const SizedBox.shrink();
                     }
 
-                    // Dynamic organic blob radius
                     final currentRadius = 145.0 * factor;
                     final timePhase = _fluidWaveController.value * 2 * math.pi;
 
@@ -162,7 +176,7 @@ class _InteractiveProfilePhotoState extends State<InteractiveProfilePhoto>
                         timePhase: timePhase,
                       ),
                       child: Image.asset(
-                        'assets/images/profile_real.jpg',
+                        realAsset,
                         fit: BoxFit.cover,
                         alignment: const Alignment(0, -0.35),
                       ),
@@ -234,14 +248,12 @@ class _DynamicMorphingBlobClipper extends CustomClipper<Path> {
     const numPoints = 12;
     final points = <Offset>[];
 
-    // Derive spatial distortion phases from mouse coordinates
     final mousePhaseX = center.dx * 0.038;
     final mousePhaseY = center.dy * 0.032;
 
     for (int i = 0; i < numPoints; i++) {
       final theta = (i * 2 * math.pi) / numPoints;
 
-      // Multi-frequency harmonic perturbation morphed by cursor position and fluid time
       final wave1 = 0.22 * math.sin(3 * theta + mousePhaseX + timePhase * 0.8);
       final wave2 = 0.16 * math.cos(4 * theta - mousePhaseY + timePhase * 1.1);
       final wave3 =
@@ -256,7 +268,6 @@ class _DynamicMorphingBlobClipper extends CustomClipper<Path> {
       points.add(Offset(x, y));
     }
 
-    // Form smooth spline curve using quadratic beziers
     final startMid = Offset(
       (points[0].dx + points[numPoints - 1].dx) / 2,
       (points[0].dy + points[numPoints - 1].dy) / 2,
