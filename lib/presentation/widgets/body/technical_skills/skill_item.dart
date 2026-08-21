@@ -53,7 +53,11 @@ class SkillItem extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  FaIcon(icon, color: colors.primary, size: AppSizes.iconMedium),
+                  FaIcon(
+                    icon,
+                    color: colors.primary,
+                    size: AppSizes.iconMedium,
+                  ),
                   SizedBox(width: AppSizes.spacingMedium),
                   FittedBox(
                     fit: BoxFit.scaleDown,

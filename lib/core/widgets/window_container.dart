@@ -104,13 +104,17 @@ class WindowContainer extends StatelessWidget {
                                 FaIcon(
                                   headlineIcon as FaIconData,
                                   size: AppSizes.iconRegular,
-                                  color: colors.onSurface.withValues(alpha: 0.7),
+                                  color: colors.onSurface.withValues(
+                                    alpha: 0.7,
+                                  ),
                                 )
                               else if (headlineIcon is IconData)
                                 Icon(
                                   headlineIcon as IconData,
                                   size: AppSizes.iconRegular,
-                                  color: colors.onSurface.withValues(alpha: 0.7),
+                                  color: colors.onSurface.withValues(
+                                    alpha: 0.7,
+                                  ),
                                 ),
                               SizedBox(width: AppSizes.spacingRegular),
                               SelectableText(
