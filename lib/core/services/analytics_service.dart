@@ -2,10 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'dart:js_interop';
-
-@JS('gtag')
-external void _jsGtag(JSString command, JSString action, [JSObject? params]);
+import 'package:package_info_plus/package_info_plus.dart';
+import 'analytics/web_gtag.dart';
 
 /// Cross-platform Google Analytics 4 (GA4) service with zero native bloat.
 /// Supports both Web (gtag.js) and Measurement Protocol HTTP REST for all platforms.
@@ -25,13 +23,21 @@ class AnalyticsService {
   );
 
   static String? _clientId;
+  static String? _appVersion;
   static bool _initialized = false;
 
-  /// Initialize client session identifier
-  static void initialize() {
+  /// Initialize client session identifier and app version
+  static Future<void> initialize() async {
     if (_initialized) return;
     _clientId = 'visitor_${DateTime.now().millisecondsSinceEpoch}';
     _initialized = true;
+
+    try {
+      final info = await PackageInfo.fromPlatform();
+      _appVersion = '${info.version}+${info.buildNumber}';
+    } catch (_) {
+      _appVersion = '1.0.0';
+    }
   }
 
   /// Log generic event to GA4
@@ -39,20 +45,18 @@ class AnalyticsService {
     String eventName, [
     Map<String, dynamic>? parameters,
   ]) async {
-    initialize();
+    if (!_initialized) {
+      await initialize();
+    }
 
-    // 1. Web Native gtag.js integration
+    final enrichedParams = <String, dynamic>{
+      if (_appVersion != null) 'app_version': _appVersion,
+      ...?parameters,
+    };
+
+    // 1. Web Native gtag.js integration (safely no-ops on VM/test/mobile)
     if (kIsWeb) {
-      try {
-        if (parameters != null) {
-          final jsMap = parameters.jsify() as JSObject?;
-          _jsGtag('event'.toJS, eventName.toJS, jsMap);
-        } else {
-          _jsGtag('event'.toJS, eventName.toJS);
-        }
-      } catch (e) {
-        debugPrint('[Analytics] Web gtag call error: $e');
-      }
+      callWebGtag(eventName, enrichedParams);
     }
 
     // 2. Cross-platform Measurement Protocol (HTTP) fallback/reporting
@@ -71,7 +75,7 @@ class AnalyticsService {
                 'params': {
                   'engagement_time_msec': 100,
                   'session_id': _clientId,
-                  ...?parameters,
+                  ...enrichedParams,
                 },
               },
             ],

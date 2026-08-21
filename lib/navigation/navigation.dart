@@ -6,7 +6,9 @@ import '../presentation/pages/experience_page.dart';
 import '../presentation/pages/projects_page.dart';
 import '../presentation/pages/education_page.dart';
 import '../presentation/pages/not_found_page.dart';
+import 'routes.dart';
+
+export 'routes.dart';
 
 part 'app_navigator.dart';
 part 'route_generator.dart';
-part 'routes.dart';

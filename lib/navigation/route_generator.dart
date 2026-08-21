@@ -1,7 +1,9 @@
 part of 'navigation.dart';
 
 Route<dynamic>? routeGenerator(RouteSettings settings) {
-  var path = settings.name ?? '/';
+  final rawPath = settings.name ?? '/';
+  final uri = Uri.tryParse(rawPath) ?? Uri.parse('/');
+  var path = uri.path.isEmpty ? '/' : uri.path;
   if (path == '/contact') path = '/about';
   final route = Routes.fromPath(path);
 
