@@ -2,6 +2,7 @@ import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../core/services/analytics_service.dart';
 import '../../../../core/services/services.dart';
 
 class SocialMediaIcons extends StatelessWidget {
@@ -60,6 +61,7 @@ class SocialMediaIconBtn extends StatelessWidget {
         padding: const EdgeInsets.all(15),
       ),
       onPressed: () {
+        AnalyticsService.logSocialClick(platform: link, url: link);
         OpenLinkService().openUrl(link: link);
       },
       child: FaIcon(icon, size: 32),

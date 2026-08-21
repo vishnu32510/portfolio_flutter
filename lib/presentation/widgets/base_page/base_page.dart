@@ -3,6 +3,7 @@ import '../../../core/utils/app_extensions.dart';
 import '../../../core/utils/app_constants.dart';
 import '../../../core/utils/app_sizes.dart';
 import '../../../core/widgets/async_background_stack.dart';
+import '../analytics/traffic_badge.dart';
 import '../app_bar/home_app_bar.dart';
 import '../app_bar/resume_theme_widget.dart';
 import 'global_footer.dart';
@@ -74,6 +75,13 @@ class BasePage extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+          // Floating Live Traffic Badge (positioned bottom-left on mobile to not overlap FAB, bottom-right on desktop)
+          Positioned(
+            bottom: 20,
+            left: (context.isMobile || isCompactWidth) ? 20 : null,
+            right: (context.isMobile || isCompactWidth) ? null : 24,
+            child: const TrafficBadge(),
           ),
         ],
       ),

@@ -8,6 +8,7 @@ import 'package:portfolio_flutter/presentation/blocs/portfolio_bloc/portfolio_bl
 import 'package:portfolio_flutter/presentation/blocs/theme_bloc/theme_bloc.dart';
 
 import 'presentation/blocs/home_bloc/home_bloc.dart';
+import 'core/services/analytics_service.dart';
 
 class PortfolioApp extends StatelessWidget {
   const PortfolioApp({super.key});
@@ -42,11 +43,34 @@ class PortfolioApp extends StatelessWidget {
             theme: LightThemeState.lightTheme.themeData,
             darkTheme: DarkThemeState.darkTheme.themeData,
             themeMode: state.themeMode,
+            navigatorObservers: [
+              _AnalyticsRouteObserver(),
+            ],
             onGenerateRoute: routeGenerator,
             initialRoute: '/',
           );
         },
       ),
     );
+  }
+}
+
+class _AnalyticsRouteObserver extends NavigatorObserver {
+  @override
+  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    super.didPush(route, previousRoute);
+    final name = route.settings.name;
+    if (name != null) {
+      AnalyticsService.logScreenView(name);
+    }
+  }
+
+  @override
+  void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {
+    super.didReplace(newRoute: newRoute, oldRoute: oldRoute);
+    final name = newRoute?.settings.name;
+    if (name != null) {
+      AnalyticsService.logScreenView(name);
+    }
   }
 }
