@@ -37,7 +37,6 @@ enum Routes {
     Routes.projects,
     Routes.experience,
     Routes.skills,
-    Routes.education,
     Routes.about,
   ];
 }

@@ -198,12 +198,10 @@ class EducationItem extends StatelessWidget {
             Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.baseline,
-              textBaseline: TextBaseline.alphabetic,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Baseline(
-                  baseline: AppStyles.regularText().fontSize ?? 14,
-                  baselineType: TextBaseline.alphabetic,
+                Padding(
+                  padding: const EdgeInsets.only(top: 3),
                   child: FaIcon(
                     FontAwesomeIcons.microscope,
                     size: AppSizes.iconSmall,

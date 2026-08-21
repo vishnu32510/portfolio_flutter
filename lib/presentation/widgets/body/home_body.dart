@@ -7,12 +7,10 @@ import '../../../core/utils/app_sizes.dart';
 import '../../blocs/home_bloc/home_bloc.dart';
 import '../app_bar/theme_header_btn.dart';
 import '../app_bar/vertical_headers_builder.dart';
-// import 'Toasts/toasts.dart';
 import 'intro/intro_section.dart';
 import 'projects/projects_section.dart';
 import 'technical_skills/technical_skills_section.dart';
 import 'experience/experience_section.dart';
-import 'education/education_section.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
@@ -26,18 +24,15 @@ class _HomeBodyState extends State<HomeBody> {
   final skillsKey = GlobalKey();
   final experienceKey = GlobalKey();
   final projectKey = GlobalKey();
-  final educationKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
-    // WelcomeToasts(context);
     return BlocListener<HomeBloc, HomeState>(
       listener: (context, state) {
         if (state is AppBarHeadersIndexChanged) {
           Navigator.of(context).maybePop();
           const duration = Duration(milliseconds: 300);
-          // Order matches AppBarHeaders: Home, Projects, Experience, Skills,
-          // Education, About (no on-home targets for About).
+          // Order matches AppBarHeaders: Home (0), Projects (1), Experience (2), Skills (3), About (4)
           if (state.index == 0) {
             Scrollable.ensureVisible(
               introKey.currentContext!,
@@ -62,12 +57,6 @@ class _HomeBodyState extends State<HomeBody> {
               duration: duration,
             );
           }
-          if (state.index == 4) {
-            Scrollable.ensureVisible(
-              educationKey.currentContext!,
-              duration: duration,
-            );
-          }
         }
       },
       child: Stack(
@@ -84,7 +73,6 @@ class _HomeBodyState extends State<HomeBody> {
                 TechnicalSkillsSection(key: skillsKey),
                 ExperienceSection(key: experienceKey),
                 ProjectsSection(key: projectKey),
-                EducationSection(key: educationKey),
               ],
             ),
           ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_sizes.dart';
@@ -56,49 +55,49 @@ class _ExperienceItemState extends State<ExperienceItem> {
     }
   }
 
-  FaIconData _getIconForAchievement(String achievement) {
+  IconData _getIconForAchievement(String achievement) {
     final ach = achievement.toLowerCase();
     if (ach.contains('built') || ach.contains('develop')) {
-      return FontAwesomeIcons.code;
+      return Icons.code_rounded;
     }
     if (ach.contains('design') || ach.contains('architect')) {
-      return FontAwesomeIcons.penRuler;
+      return Icons.architecture_rounded;
     }
     if (ach.contains('optimiz') ||
         ach.contains('improve') ||
         ach.contains('reduce')) {
-      return FontAwesomeIcons.gaugeHigh;
+      return Icons.speed_rounded;
     }
     if (ach.contains('integrat') || ach.contains('api')) {
-      return FontAwesomeIcons.plug;
+      return Icons.extension_rounded;
     }
     if (ach.contains('test') || ach.contains('coverage')) {
-      return FontAwesomeIcons.vial;
+      return Icons.fact_check_outlined;
     }
     if (ach.contains('deploy') || ach.contains('ci/cd')) {
-      return FontAwesomeIcons.rocket;
+      return Icons.rocket_launch_rounded;
     }
     if (ach.contains('mentor') || ach.contains('team')) {
-      return FontAwesomeIcons.users;
+      return Icons.groups_rounded;
     }
     if (ach.contains('security') || ach.contains('auth')) {
-      return FontAwesomeIcons.lock;
+      return Icons.lock_outline_rounded;
     }
     if (ach.contains('analytics') || ach.contains('track')) {
-      return FontAwesomeIcons.chartPie;
+      return Icons.insights_rounded;
     }
     if (ach.contains('performance') || ach.contains('speed')) {
-      return FontAwesomeIcons.bolt;
+      return Icons.bolt_rounded;
     }
     if (ach.contains('consult') ||
         ach.contains('client') ||
         ach.contains('enterprise')) {
-      return FontAwesomeIcons.handshake;
+      return Icons.handshake_outlined;
     }
     if (ach.contains('agile') || ach.contains('rollout')) {
-      return FontAwesomeIcons.timeline;
+      return Icons.view_timeline_outlined;
     }
-    return FontAwesomeIcons.circleCheck;
+    return Icons.check_circle_outline_rounded;
   }
 
   Color _getTypeColor(String type) {
@@ -165,9 +164,9 @@ class _ExperienceItemState extends State<ExperienceItem> {
                   ),
                 ),
                 SizedBox(width: AppSizes.spacingSmall),
-                FaIcon(
-                  FontAwesomeIcons.arrowUpRightFromSquare,
-                  size: 11,
+                Icon(
+                  Icons.open_in_new_rounded,
+                  size: 13,
                   color: style.color?.withValues(alpha: 0.72),
                 ),
               ],
@@ -238,9 +237,9 @@ class _ExperienceItemState extends State<ExperienceItem> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         if (showExpandChevron) ...[
-          FaIcon(
-            FontAwesomeIcons.chevronDown,
-            size: 12,
+          Icon(
+            Icons.keyboard_arrow_down_rounded,
+            size: 14,
             color: colors.onSurface.withValues(alpha: 0.42),
           ),
           SizedBox(width: AppSizes.spacingSmall),
@@ -339,13 +338,11 @@ class _ExperienceItemState extends State<ExperienceItem> {
                     return Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.baseline,
-                      textBaseline: TextBaseline.alphabetic,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Baseline(
-                          baseline: AppStyles.regularText().fontSize ?? 14,
-                          baselineType: TextBaseline.alphabetic,
-                          child: FaIcon(
+                        Padding(
+                          padding: const EdgeInsets.only(top: 2.5),
+                          child: Icon(
                             _getIconForAchievement(achievement),
                             size: AppSizes.iconSmall,
                             color: colors.primary,
@@ -378,8 +375,8 @@ class _ExperienceItemState extends State<ExperienceItem> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            FaIcon(
-                              FontAwesomeIcons.chevronUp,
+                            Icon(
+                              Icons.keyboard_arrow_up_rounded,
                               size: AppSizes.iconSmall,
                               color: colors.onSurface.withValues(alpha: 0.5),
                             ),

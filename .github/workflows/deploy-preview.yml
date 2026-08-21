@@ -36,7 +36,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Flutter web
-        run: flutter build web --release --wasm
+        run: flutter build web --release --wasm --no-tree-shake-icons
 
       - name: Deploy preview to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0

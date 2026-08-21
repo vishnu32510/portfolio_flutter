@@ -7,8 +7,9 @@ import '../analytics/traffic_badge.dart';
 import '../app_bar/home_app_bar.dart';
 import '../app_bar/resume_theme_widget.dart';
 import 'global_footer.dart';
+import 'scroll_down_hint.dart';
 
-class BasePage extends StatelessWidget {
+class BasePage extends StatefulWidget {
   const BasePage({
     super.key,
     required this.content,
@@ -19,6 +20,19 @@ class BasePage extends StatelessWidget {
   final Widget content;
   final bool singlePageContent;
   final Widget? additionalBackground;
+
+  @override
+  State<BasePage> createState() => _BasePageState();
+}
+
+class _BasePageState extends State<BasePage> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,16 +67,17 @@ class BasePage extends StatelessWidget {
               height: context.height,
               width: context.width,
               child: CustomScrollView(
+                controller: _scrollController,
                 physics: const BouncingScrollPhysics(),
                 slivers: [
                   SliverToBoxAdapter(
                     child: Container(
-                      alignment: singlePageContent
+                      alignment: widget.singlePageContent
                           ? Alignment.center
                           : Alignment.topCenter,
                       padding: EdgeInsets.only(top: AppConstants.appBarHeight),
                       constraints: BoxConstraints(minHeight: context.height),
-                      child: content,
+                      child: widget.content,
                     ),
                   ),
                   SliverToBoxAdapter(
@@ -76,12 +91,21 @@ class BasePage extends StatelessWidget {
               ),
             ),
           ),
-          // Floating Live Traffic Badge (positioned bottom-left on mobile to not overlap FAB, bottom-right on desktop)
+          // Floating Live Traffic Badge
           Positioned(
             bottom: 20,
             left: (context.isMobile || isCompactWidth) ? 20 : null,
             right: (context.isMobile || isCompactWidth) ? null : 24,
             child: const TrafficBadge(),
+          ),
+          // Pulsing scroll-down arrow (fades as user scrolls)
+          Positioned(
+            bottom: 56,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: ScrollDownHint(scrollController: _scrollController),
+            ),
           ),
         ],
       ),

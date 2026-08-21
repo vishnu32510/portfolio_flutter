@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_sizes.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -13,17 +12,22 @@ class SkillItem extends StatelessWidget {
 
   final TechnicalSkill skillGroup;
 
-  FaIconData _getIconForCategory(String category) {
+  IconData _getIconForCategory(String category) {
     final cat = category.toLowerCase();
-    if (cat.contains('language')) return FontAwesomeIcons.code;
+    if (cat.contains('language')) return Icons.code_rounded;
     if (cat.contains('mobile') || cat.contains('frontend')) {
-      return FontAwesomeIcons.mobileScreenButton;
+      return Icons.phone_android_rounded;
     }
-    if (cat.contains('backend')) return FontAwesomeIcons.server;
-    if (cat.contains('tool') || cat.contains('devops')) {
-      return FontAwesomeIcons.screwdriverWrench;
+    if (cat.contains('backend')) return Icons.dns_rounded;
+    if (cat.contains('cloud') ||
+        cat.contains('devops') ||
+        cat.contains('tool')) {
+      return Icons.cloud_outlined;
     }
-    return FontAwesomeIcons.gear;
+    if (cat.contains('ai') || cat.contains('llm') || cat.contains('gen ai')) {
+      return Icons.psychology_outlined;
+    }
+    return Icons.settings_rounded;
   }
 
   @override
@@ -53,11 +57,7 @@ class SkillItem extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  FaIcon(
-                    icon,
-                    color: colors.primary,
-                    size: AppSizes.iconMedium,
-                  ),
+                  Icon(icon, color: colors.primary, size: AppSizes.iconMedium),
                   SizedBox(width: AppSizes.spacingMedium),
                   FittedBox(
                     fit: BoxFit.scaleDown,
@@ -101,7 +101,7 @@ class SkillItem extends StatelessWidget {
     );
   }
 
-  Positioned _randomlyPositionedIcon(ColorScheme colors, FaIconData icon) {
+  Positioned _randomlyPositionedIcon(ColorScheme colors, IconData icon) {
     final r = Random(skillGroup.category.hashCode);
     double v() => 5 + r.nextDouble() * 10;
     final useTop = r.nextBool();
@@ -109,10 +109,10 @@ class SkillItem extends StatelessWidget {
       top: useTop ? v() : null,
       bottom: useTop ? null : v(),
       right: v(),
-      child: FaIcon(
+      child: Icon(
         icon,
         size: AppSizes.iconHuge,
-        color: colors.primary.withValues(alpha: 0.3),
+        color: colors.primary.withValues(alpha: 0.15),
       ),
     );
   }

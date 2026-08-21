@@ -8,8 +8,35 @@ import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';
 
-class IntroText extends StatelessWidget {
+class IntroText extends StatefulWidget {
   const IntroText({super.key});
+
+  @override
+  State<IntroText> createState() => _IntroTextState();
+}
+
+class _IntroTextState extends State<IntroText>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _pulseController;
+  late final Animation<double> _pulseAnim;
+
+  @override
+  void initState() {
+    super.initState();
+    _pulseController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1400),
+    )..repeat(reverse: true);
+    _pulseAnim = Tween<double>(begin: 0.5, end: 1.0).animate(
+      CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _pulseController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +47,9 @@ class IntroText extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
 
-        // Multiple roles to cycle through
+        final isMobile = context.width < DeviceType.ipad.getMaxWidth();
+        final colors = Theme.of(context).colorScheme;
+
         final List<String> roles = [
           data.developerTitle,
           'Software Engineer',
@@ -37,37 +66,88 @@ class IntroText extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            // ── Name ─────────────────────────────────────────────────────────
             SelectableText(
               data.developerName,
-              style: context.width < DeviceType.ipad.getMaxWidth()
-                  ? AppStyles.s28
-                  : AppStyles.s52,
+              style: isMobile ? AppStyles.s28 : AppStyles.s52,
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 8),
-            // Animated scale text for multiple roles
+            const SizedBox(height: 14),
+
+            // ── Animated Role Text ────────────────────────────────────────────
             SizedBox(
-              height: context.width < DeviceType.ipad.getMaxWidth() ? 48 : 80,
+              height: isMobile ? 48 : 80,
               child: AnimatedTextKit(
                 repeatForever: true,
                 pause: const Duration(milliseconds: 500),
                 animatedTexts: roles.map((role) {
                   return ScaleAnimatedText(
                     role,
-                    textStyle:
-                        (context.width < DeviceType.ipad.getMaxWidth()
-                                ? AppStyles.s18
-                                : AppStyles.s28)
-                            .copyWith(
-                              color: Theme.of(context).colorScheme.primary,
-                              fontWeight: FontWeight.bold,
-                            ),
+                    textStyle: (isMobile ? AppStyles.s18 : AppStyles.s28)
+                        .copyWith(
+                          color: colors.primary,
+                          fontWeight: FontWeight.bold,
+                        ),
                     textAlign: TextAlign.center,
                   );
                 }).toList(),
               ),
             ),
-            // const SizedBox(height: 24),
+
+            // ── "Available for Opportunities" Badge ───────────────────────────
+            AnimatedBuilder(
+              animation: _pulseAnim,
+              builder: (context, child) => Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 7,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(999),
+                  color: const Color(0xFF22C55E).withValues(alpha: 0.10),
+                  border: Border.all(
+                    color: const Color(
+                      0xFF22C55E,
+                    ).withValues(alpha: _pulseAnim.value),
+                    width: 1.5,
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: 8,
+                      height: 8,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: const Color(
+                          0xFF22C55E,
+                        ).withValues(alpha: _pulseAnim.value),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(
+                              0xFF22C55E,
+                            ).withValues(alpha: _pulseAnim.value * 0.6),
+                            blurRadius: 8,
+                            spreadRadius: 2,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      'Available for Opportunities',
+                      style: AppStyles.smallTextBold(
+                        textColor: const Color(0xFF22C55E),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 28),
+
+            // ── Achievement / Highlight Badges ────────────────────────────────
             Wrap(
               alignment: WrapAlignment.center,
               spacing: 12,
