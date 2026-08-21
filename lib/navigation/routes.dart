@@ -1,4 +1,4 @@
-part of 'navigation.dart';
+import 'package:flutter/material.dart';
 
 enum Routes {
   home('Home', '/', icon: Icons.home),
@@ -14,9 +14,13 @@ enum Routes {
 
   const Routes(this.name, this.route, {required this.icon});
 
-  static Routes? fromPath(String path) {
+  static Routes? fromPath(String rawPath) {
+    final cleanPath = Uri.tryParse(rawPath)?.path ?? rawPath.split('?').first;
+    final normalized = cleanPath.isEmpty
+        ? '/'
+        : (cleanPath.startsWith('/') ? cleanPath : '/$cleanPath');
     for (final route in Routes.values) {
-      if (route.route == path) return route;
+      if (route.route == normalized) return route;
     }
     return null;
   }

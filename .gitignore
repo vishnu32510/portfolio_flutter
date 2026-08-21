@@ -44,15 +44,26 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Don't check in the keystore files or equivalent
+# Environment & secrets
+.env
+.env.*
+*.env
 
+# Keystores, certificates & private keys
+*.jks
+*.keystore
 key
 key*.properties
+*.p12
+*.p8
+*.pem
+*.mobileprovision
 
-# FVM Version Cache
-.fvm/
-
-# Service account keys (never commit)
+# Service account keys & Firebase configs (never commit)
 firebase-service-account.json
+*service-account*.json
+google-services.json
+GoogleService-Info.plist
+
 # Widget Preview related
 .widget_preview/
