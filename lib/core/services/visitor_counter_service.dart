@@ -15,13 +15,21 @@ class VisitorCounterService {
   /// Baseline visitor count offset so initial launch starts at a healthy baseline (1.4k+)
   static const int baseOffset = 1420;
 
-  final ValueNotifier<int> visitCount = ValueNotifier<int>(baseOffset + 1);
+  final ValueNotifier<int> visitCount = ValueNotifier<int>(baseOffset);
   final ValueNotifier<bool> isLoading = ValueNotifier<bool>(true);
 
   bool _hasIncremented = false;
 
-  /// Fetch visitor count and increment once per session
+  /// Fetch visitor count and increment once per session in release mode.
+  /// In debug mode (development), skips incrementing to avoid inflating numbers.
   Future<int> recordVisit() async {
+    // In local development / debug mode, display baseline without incrementing live counter
+    if (kDebugMode) {
+      visitCount.value = baseOffset;
+      isLoading.value = false;
+      return baseOffset;
+    }
+
     if (_hasIncremented && visitCount.value > baseOffset) {
       return visitCount.value;
     }

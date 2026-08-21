@@ -51,6 +51,7 @@ class AnalyticsService {
 
     final enrichedParams = <String, dynamic>{
       if (_appVersion != null) 'app_version': _appVersion,
+      if (kDebugMode) 'debug_mode': true,
       ...?parameters,
     };
 

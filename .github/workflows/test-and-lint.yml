@@ -36,3 +36,6 @@ jobs:
 
       - name: Run tests
         run: flutter test
+
+      - name: Build WebAssembly (Wasm) verification
+        run: flutter build web --release --wasm
