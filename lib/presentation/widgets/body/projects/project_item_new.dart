@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../../core/services/analytics_service.dart';
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_sizes.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -442,6 +443,11 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: () async {
+          AnalyticsService.logProjectClick(
+            projectName: widget.project.name,
+            linkType: label,
+            url: url,
+          );
           final uri = Uri.parse(url);
           if (await canLaunchUrl(uri)) {
             await launchUrl(uri, mode: LaunchMode.externalApplication);

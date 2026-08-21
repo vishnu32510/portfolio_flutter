@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../core/services/analytics_service.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/theme_enums.dart';
 import '../../blocs/theme_bloc/theme_bloc.dart';
@@ -25,6 +26,7 @@ class _ThemeHeaderState extends State<ThemeHeader> {
                 splashColor: Colors.transparent,
                 hoverColor: Colors.transparent,
                 onTap: () {
+                  AnalyticsService.logThemeToggle(true);
                   BlocProvider.of<ThemeBloc>(
                     context,
                   ).add(ThemeEventChange(ThemeType.darkMode));
@@ -39,6 +41,7 @@ class _ThemeHeaderState extends State<ThemeHeader> {
                 splashColor: Colors.transparent,
                 hoverColor: Colors.transparent,
                 onTap: () {
+                  AnalyticsService.logThemeToggle(false);
                   BlocProvider.of<ThemeBloc>(
                     context,
                   ).add(ThemeEventChange(ThemeType.lightMode));
