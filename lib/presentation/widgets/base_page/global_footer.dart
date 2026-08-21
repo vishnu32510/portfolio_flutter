@@ -11,7 +11,7 @@ import '../../blocs/portfolio_bloc/portfolio_bloc.dart';
 class GlobalFooter extends StatelessWidget {
   const GlobalFooter({super.key});
 
-  IconData _getIconForLink(String link) {
+  FaIconData _getIconForLink(String link) {
     if (link.contains('dev.to')) return FontAwesomeIcons.dev;
     if (link.contains('github.com')) return FontAwesomeIcons.github;
     if (link.contains('devpost.com')) return FontAwesomeIcons.dev;
@@ -123,7 +123,7 @@ class GlobalFooter extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(
+                          FaIcon(
                             FontAwesomeIcons.copyright,
                             color: Theme.of(
                               context,
@@ -152,7 +152,7 @@ class GlobalFooter extends StatelessWidget {
     );
   }
 
-  Widget _buildSocialIcon(BuildContext context, IconData icon, String url) {
+  Widget _buildSocialIcon(BuildContext context, FaIconData icon, String url) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -162,7 +162,7 @@ class GlobalFooter extends StatelessWidget {
             await launchUrl(uri);
           }
         },
-        child: Icon(
+        child: FaIcon(
           icon,
           size: AppSizes.iconLarge,
           color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),

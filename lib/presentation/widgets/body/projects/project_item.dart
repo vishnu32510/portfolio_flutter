@@ -192,7 +192,7 @@ class ProjectItem extends StatelessWidget {
 
   Widget _buildLinkButton(
     BuildContext context, {
-    required IconData icon,
+    required dynamic icon,
     required String label,
     required VoidCallback onTap,
   }) {
@@ -215,13 +215,22 @@ class ProjectItem extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              size: AppSizes.iconSmall,
-              color: Theme.of(
-                context,
-              ).colorScheme.onSurface.withValues(alpha: 0.8),
-            ),
+            if (icon is FaIconData)
+              FaIcon(
+                icon,
+                size: AppSizes.iconSmall,
+                color: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.8),
+              )
+            else if (icon is IconData)
+              Icon(
+                icon,
+                size: AppSizes.iconSmall,
+                color: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.8),
+              ),
             const SizedBox(width: AppSizes.spacingXS),
             Text(
               label,
@@ -252,7 +261,7 @@ class ProjectItem extends StatelessWidget {
 
   Widget _getTechIcon(String tech) {
     final lowerTech = tech.toLowerCase();
-    IconData icon;
+    FaIconData icon;
     Color color;
 
     if (lowerTech.contains('flutter')) {
@@ -282,6 +291,6 @@ class ProjectItem extends StatelessWidget {
       color = Colors.grey;
     }
 
-    return Icon(icon, size: 12, color: color);
+    return FaIcon(icon, size: 12, color: color);
   }
 }

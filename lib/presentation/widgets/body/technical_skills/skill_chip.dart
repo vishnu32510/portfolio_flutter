@@ -64,7 +64,7 @@ class SkillChip extends StatelessWidget {
     return null;
   }
 
-  MapEntry<IconData, Color?> _iconForSkill(String skill, ColorScheme colors) {
+  MapEntry<FaIconData, Color?> _iconForSkill(String skill, ColorScheme colors) {
     final s = skill.toLowerCase();
     if (s.contains('python')) {
       return MapEntry(FontAwesomeIcons.python, const Color(0xFF3776AB));
@@ -250,7 +250,7 @@ class SkillChip extends StatelessWidget {
               width: compact ? AppSizes.iconXS : AppSizes.iconSmall,
             )
           else
-            Icon(
+            FaIcon(
               iconEntry.key,
               size: compact ? AppSizes.iconXS : AppSizes.iconSmall,
               color: iconEntry.value ?? colors.primary,

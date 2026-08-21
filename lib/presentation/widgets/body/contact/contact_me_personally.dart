@@ -54,7 +54,7 @@ class ContactMePersonally extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(FontAwesomeIcons.google, color: AppColors.redColor),
+                FaIcon(FontAwesomeIcons.google, color: AppColors.redColor),
                 const SizedBox(width: 10),
                 const Text("Email Me"),
               ],

@@ -129,7 +129,7 @@ class _HighlightBadge extends StatelessWidget {
     required this.urls,
   });
 
-  final IconData icon;
+  final dynamic icon;
   final String label;
   final List<String> urls;
 
@@ -173,11 +173,18 @@ class _HighlightBadge extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
-                  icon,
-                  size: 16,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
+                if (icon is FaIconData)
+                  FaIcon(
+                    icon as FaIconData,
+                    size: 16,
+                    color: Theme.of(context).colorScheme.primary,
+                  )
+                else if (icon is IconData)
+                  Icon(
+                    icon as IconData,
+                    size: 16,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 const SizedBox(width: 8),
                 Text(
                   label,

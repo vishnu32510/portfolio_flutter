@@ -71,7 +71,7 @@ class EducationItem extends StatelessWidget {
               children: [
                 Flexible(child: Text(name, style: linkStyle, maxLines: 4)),
                 SizedBox(width: AppSizes.spacingSmall),
-                Icon(
+                FaIcon(
                   FontAwesomeIcons.arrowUpRightFromSquare,
                   size: 11,
                   color: linkStyle.color?.withValues(alpha: 0.72),
@@ -103,7 +103,7 @@ class EducationItem extends StatelessWidget {
         borderRadius: AppSizes.borderRadiusSmall,
         border: Border.all(color: colors.outline),
       ),
-      child: Icon(
+      child: FaIcon(
         FontAwesomeIcons.graduationCap,
         size: AppSizes.iconMedium,
         color: colors.primary,
@@ -204,7 +204,7 @@ class EducationItem extends StatelessWidget {
                 Baseline(
                   baseline: AppStyles.regularText().fontSize ?? 14,
                   baselineType: TextBaseline.alphabetic,
-                  child: Icon(
+                  child: FaIcon(
                     FontAwesomeIcons.microscope,
                     size: AppSizes.iconSmall,
                     color: colors.primary,

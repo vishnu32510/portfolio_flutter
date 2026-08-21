@@ -54,3 +54,5 @@ key*.properties
 
 # Service account keys (never commit)
 firebase-service-account.json
+# Widget Preview related
+.widget_preview/
