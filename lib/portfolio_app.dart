@@ -43,9 +43,7 @@ class PortfolioApp extends StatelessWidget {
             theme: LightThemeState.lightTheme.themeData,
             darkTheme: DarkThemeState.darkTheme.themeData,
             themeMode: state.themeMode,
-            navigatorObservers: [
-              _AnalyticsRouteObserver(),
-            ],
+            navigatorObservers: [_AnalyticsRouteObserver()],
             onGenerateRoute: routeGenerator,
             initialRoute: '/',
           );

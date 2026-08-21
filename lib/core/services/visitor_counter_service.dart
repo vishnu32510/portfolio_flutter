@@ -27,9 +27,7 @@ class VisitorCounterService {
     try {
       // Use the 'up' action to increment and retrieve updated count
       final url = Uri.parse('$_apiEndpoint/up');
-      final response = await http
-          .get(url)
-          .timeout(const Duration(seconds: 4));
+      final response = await http.get(url).timeout(const Duration(seconds: 4));
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
@@ -42,7 +40,9 @@ class VisitorCounterService {
         }
       }
     } catch (e) {
-      debugPrint('[VisitorCounter] Count API unreachable, attempting fallback: $e');
+      debugPrint(
+        '[VisitorCounter] Count API unreachable, attempting fallback: $e',
+      );
     }
 
     // Fallback: if counter API is unreachable or slow, retrieve static or mock baseline
