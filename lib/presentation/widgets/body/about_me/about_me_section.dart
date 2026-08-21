@@ -6,6 +6,7 @@ import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/gradient_text.dart';
 import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';
 import 'experience_info.dart';
+import 'interactive_profile_photo.dart';
 
 class AboutMeSection extends StatelessWidget {
   const AboutMeSection({super.key});
@@ -41,28 +42,7 @@ class AboutMeSection extends StatelessWidget {
                       spacing: AppSizes.spacingXXL,
                       runSpacing: AppSizes.spacingXXL,
                       children: [
-                        // Image placeholder - can be replaced with actual image
-                        Container(
-                          width: context.width * (context.isMobile ? 0.4 : 0.3),
-                          height:
-                              context.width * (context.isMobile ? 0.4 : 0.3),
-                          constraints: const BoxConstraints(
-                            minWidth: 200,
-                            minHeight: 200,
-                            maxWidth: 350,
-                            maxHeight: 350,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: AppSizes.borderRadiusRegular,
-                            color: colors.surface,
-                            border: Border.all(color: colors.outline),
-                          ),
-                          child: Icon(
-                            Icons.person,
-                            size: AppSizes.iconHuge * 2,
-                            color: colors.primary.withValues(alpha: 0.3),
-                          ),
-                        ),
+                        const InteractiveProfilePhoto(),
                         Container(
                           width: context.width * (context.isMobile ? 0.9 : 0.3),
                           constraints: const BoxConstraints(minWidth: 500),
