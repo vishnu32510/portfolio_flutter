@@ -22,8 +22,6 @@ class CustomHeaderBtn extends StatelessWidget {
       case 3:
         return Routes.skills;
       case 4:
-        return Routes.education;
-      case 5:
         return Routes.about;
       default:
         return Routes.home;

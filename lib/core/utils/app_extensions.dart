@@ -20,8 +20,6 @@ extension AppBarHeaderExtension on AppBarHeaders {
         return 'Experience';
       case AppBarHeaders.projects:
         return 'Projects';
-      case AppBarHeaders.education:
-        return 'Education';
     }
   }
 }

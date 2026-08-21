@@ -8,6 +8,7 @@ import '../../../../core/widgets/gradient_text.dart';
 import '../../../../core/widgets/subtext.dart';
 import '../../../../core/widgets/timeline_container.dart';
 import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';
+import '../education/education_item.dart';
 import 'experience_item.dart';
 import 'experience_loading_placeholder.dart';
 
@@ -24,10 +25,11 @@ class _ExperienceSectionState extends State<ExperienceSection> {
   @override
   void initState() {
     super.initState();
-    // Trigger lazy loading when section is first rendered
+    // Trigger lazy loading of experiences and education
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         context.read<PortfolioBloc>().add(const LoadExperiences());
+        context.read<PortfolioBloc>().add(const LoadEducation());
       }
     });
   }
@@ -37,6 +39,7 @@ class _ExperienceSectionState extends State<ExperienceSection> {
     return BlocBuilder<PortfolioBloc, PortfolioState>(
       builder: (context, portfolioState) {
         final experiences = portfolioState.data?.experiences ?? [];
+        final education = portfolioState.data?.education ?? [];
         final colors = Theme.of(context).colorScheme;
         final experiencesReady = portfolioState.isSectionLoaded('experiences');
 
@@ -56,7 +59,7 @@ class _ExperienceSectionState extends State<ExperienceSection> {
                   SizedBox(
                     width: context.width * 0.9,
                     child: GradientText(
-                      text: '*Career* Path',
+                      text: '*Career* & Education',
                       textStyle: AppStyles.headlineTextBold(
                         textColor: colors.onSurface,
                         isMobile: context.isMobile,
@@ -66,41 +69,72 @@ class _ExperienceSectionState extends State<ExperienceSection> {
                   ),
                   SizedBox(height: AppSizes.spacingMedium),
                   const Subtext(
-                    'A timeline of my professional journey in software engineering, focusing on scalable architecture, mobile development, and full-stack solutions.',
+                    'A timeline of my professional journey in software engineering and academic background.',
                   ),
                   SizedBox(height: AppSizes.spacingXXL),
                   SizedBox(
                     width: context.width * (context.isMobile ? 0.9 : 0.6),
                     child: !experiencesReady
                         ? const ExperienceLoadingPlaceholder()
-                        : ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: experiences.length,
-                            padding: EdgeInsets.zero,
-                            itemBuilder: (_, index) {
-                              final experience = ExperienceItem(
-                                experience: experiences[index],
-                                collapsed: index >= topK,
-                              );
-                              if (index == topK) {
-                                return Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    TimelineContainer(
-                                      showContainer: false,
-                                      child: _PreviousWorkSeparator(
-                                        colors: colors,
-                                      ),
-                                    ),
-                                    experience,
-                                  ],
-                                );
-                              }
-                              return experience;
-                            },
+                        : Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              // Work Experience Timeline
+                              ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: experiences.length,
+                                padding: EdgeInsets.zero,
+                                itemBuilder: (_, index) {
+                                  final experience = ExperienceItem(
+                                    experience: experiences[index],
+                                    collapsed: index >= topK,
+                                  );
+                                  if (index == topK) {
+                                    return Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        TimelineContainer(
+                                          showContainer: false,
+                                          child: _PreviousWorkSeparator(
+                                            colors: colors,
+                                          ),
+                                        ),
+                                        experience,
+                                      ],
+                                    );
+                                  }
+                                  return experience;
+                                },
+                              ),
+
+                              // Education Subsection Integrated Seamlessly
+                              if (education.isNotEmpty) ...[
+                                SizedBox(height: AppSizes.spacingLarge),
+                                TimelineContainer(
+                                  showContainer: false,
+                                  child: _EducationSectionSeparator(
+                                    colors: colors,
+                                  ),
+                                ),
+                                ListView.builder(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: education.length,
+                                  padding: EdgeInsets.zero,
+                                  itemBuilder: (_, index) {
+                                    return EducationItem(
+                                      education: education[index],
+                                      isLast: index == education.length - 1,
+                                    );
+                                  },
+                                ),
+                              ],
+                            ],
                           ),
                   ),
                 ],
@@ -135,6 +169,42 @@ class _PreviousWorkSeparator extends StatelessWidget {
           ),
           SizedBox(width: AppSizes.spacingSmall),
           Text('PREVIOUS WORK', style: labelStyle),
+          SizedBox(width: AppSizes.spacingMedium),
+          Expanded(
+            child: Divider(
+              height: 1,
+              thickness: 1,
+              color: colors.outline.withValues(alpha: 0.55),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _EducationSectionSeparator extends StatelessWidget {
+  const _EducationSectionSeparator({required this.colors});
+
+  final ColorScheme colors;
+
+  @override
+  Widget build(BuildContext context) {
+    final labelStyle = AppStyles.smallTextBold(
+      textColor: colors.onSurface.withValues(alpha: 0.55),
+    ).copyWith(letterSpacing: 2.2);
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: AppSizes.spacingMedium),
+      child: Row(
+        children: [
+          FaIcon(
+            FontAwesomeIcons.graduationCap,
+            size: 14,
+            color: colors.primary.withValues(alpha: 0.75),
+          ),
+          SizedBox(width: AppSizes.spacingSmall),
+          Text('EDUCATION', style: labelStyle),
           SizedBox(width: AppSizes.spacingMedium),
           Expanded(
             child: Divider(
