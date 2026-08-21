@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../core/utils/app_sizes.dart';
 import '../../../core/utils/app_styles.dart';
 import '../../../core/widgets/hover_glow_text.dart';
@@ -120,8 +119,8 @@ class _MobileMenuState extends State<MobileMenu> {
       },
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 400),
-        child: FaIcon(
-          _menuOpen ? FontAwesomeIcons.xmark : FontAwesomeIcons.bars,
+        child: Icon(
+          _menuOpen ? Icons.close_rounded : Icons.menu_rounded,
           key: ValueKey(_menuOpen),
           size: AppSizes.iconMedium,
           color: Theme.of(context).colorScheme.onSurface,

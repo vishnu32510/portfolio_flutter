@@ -339,12 +339,10 @@ class _ExperienceItemState extends State<ExperienceItem> {
                     return Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.baseline,
-                      textBaseline: TextBaseline.alphabetic,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Baseline(
-                          baseline: AppStyles.regularText().fontSize ?? 14,
-                          baselineType: TextBaseline.alphabetic,
+                        Padding(
+                          padding: const EdgeInsets.only(top: 3),
                           child: FaIcon(
                             _getIconForAchievement(achievement),
                             size: AppSizes.iconSmall,
