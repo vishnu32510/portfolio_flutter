@@ -56,7 +56,7 @@ class _ExperienceItemState extends State<ExperienceItem> {
     }
   }
 
-  IconData _getIconForAchievement(String achievement) {
+  FaIconData _getIconForAchievement(String achievement) {
     final ach = achievement.toLowerCase();
     if (ach.contains('built') || ach.contains('develop')) {
       return FontAwesomeIcons.code;
@@ -165,7 +165,7 @@ class _ExperienceItemState extends State<ExperienceItem> {
                   ),
                 ),
                 SizedBox(width: AppSizes.spacingSmall),
-                Icon(
+                FaIcon(
                   FontAwesomeIcons.arrowUpRightFromSquare,
                   size: 11,
                   color: style.color?.withValues(alpha: 0.72),
@@ -238,7 +238,7 @@ class _ExperienceItemState extends State<ExperienceItem> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         if (showExpandChevron) ...[
-          Icon(
+          FaIcon(
             FontAwesomeIcons.chevronDown,
             size: 12,
             color: colors.onSurface.withValues(alpha: 0.42),
@@ -345,7 +345,7 @@ class _ExperienceItemState extends State<ExperienceItem> {
                         Baseline(
                           baseline: AppStyles.regularText().fontSize ?? 14,
                           baselineType: TextBaseline.alphabetic,
-                          child: Icon(
+                          child: FaIcon(
                             _getIconForAchievement(achievement),
                             size: AppSizes.iconSmall,
                             color: colors.primary,
@@ -378,7 +378,7 @@ class _ExperienceItemState extends State<ExperienceItem> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Icon(
+                            FaIcon(
                               FontAwesomeIcons.chevronUp,
                               size: AppSizes.iconSmall,
                               color: colors.onSurface.withValues(alpha: 0.5),

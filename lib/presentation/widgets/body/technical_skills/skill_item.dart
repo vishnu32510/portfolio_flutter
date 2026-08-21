@@ -13,7 +13,7 @@ class SkillItem extends StatelessWidget {
 
   final TechnicalSkill skillGroup;
 
-  IconData _getIconForCategory(String category) {
+  FaIconData _getIconForCategory(String category) {
     final cat = category.toLowerCase();
     if (cat.contains('language')) return FontAwesomeIcons.code;
     if (cat.contains('mobile') || cat.contains('frontend')) {
@@ -53,7 +53,11 @@ class SkillItem extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(icon, color: colors.primary, size: AppSizes.iconMedium),
+                  FaIcon(
+                    icon,
+                    color: colors.primary,
+                    size: AppSizes.iconMedium,
+                  ),
                   SizedBox(width: AppSizes.spacingMedium),
                   FittedBox(
                     fit: BoxFit.scaleDown,
@@ -97,7 +101,7 @@ class SkillItem extends StatelessWidget {
     );
   }
 
-  Positioned _randomlyPositionedIcon(ColorScheme colors, IconData icon) {
+  Positioned _randomlyPositionedIcon(ColorScheme colors, FaIconData icon) {
     final r = Random(skillGroup.category.hashCode);
     double v() => 5 + r.nextDouble() * 10;
     final useTop = r.nextBool();
@@ -105,7 +109,7 @@ class SkillItem extends StatelessWidget {
       top: useTop ? v() : null,
       bottom: useTop ? null : v(),
       right: v(),
-      child: Icon(
+      child: FaIcon(
         icon,
         size: AppSizes.iconHuge,
         color: colors.primary.withValues(alpha: 0.3),

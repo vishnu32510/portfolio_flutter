@@ -9,7 +9,7 @@ class SocialMediaIcons extends StatelessWidget {
 
   const SocialMediaIcons({super.key, required this.socialLinks});
 
-  IconData _getIconForLink(String link) {
+  FaIconData _getIconForLink(String link) {
     if (link.contains('dev.to')) return FontAwesomeIcons.dev;
     if (link.contains('github.com')) return FontAwesomeIcons.github;
     if (link.contains('devpost.com')) return FontAwesomeIcons.dev;
@@ -49,7 +49,7 @@ class SocialMediaIcons extends StatelessWidget {
 
 class SocialMediaIconBtn extends StatelessWidget {
   const SocialMediaIconBtn({super.key, required this.icon, required this.link});
-  final IconData icon;
+  final FaIconData icon;
   final String link;
 
   @override
@@ -62,7 +62,7 @@ class SocialMediaIconBtn extends StatelessWidget {
       onPressed: () {
         OpenLinkService().openUrl(link: link);
       },
-      child: Icon(icon, size: 32),
+      child: FaIcon(icon, size: 32),
     );
   }
 }

@@ -57,7 +57,7 @@ class ResumeThemeWidget extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: AppSizes.spacingSmall),
-                      Icon(
+                      FaIcon(
                         FontAwesomeIcons.arrowUpRightFromSquare,
                         size: AppSizes.iconSmall,
                         color: colors.onPrimary,

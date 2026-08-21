@@ -15,7 +15,7 @@ class WindowContainer extends StatelessWidget {
 
   final Widget content;
   final String headline;
-  final IconData headlineIcon;
+  final dynamic headlineIcon;
   final String bottomText;
 
   @override
@@ -100,11 +100,22 @@ class WindowContainer extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Icon(
-                                headlineIcon,
-                                size: AppSizes.iconRegular,
-                                color: colors.onSurface.withValues(alpha: 0.7),
-                              ),
+                              if (headlineIcon is FaIconData)
+                                FaIcon(
+                                  headlineIcon as FaIconData,
+                                  size: AppSizes.iconRegular,
+                                  color: colors.onSurface.withValues(
+                                    alpha: 0.7,
+                                  ),
+                                )
+                              else if (headlineIcon is IconData)
+                                Icon(
+                                  headlineIcon as IconData,
+                                  size: AppSizes.iconRegular,
+                                  color: colors.onSurface.withValues(
+                                    alpha: 0.7,
+                                  ),
+                                ),
                               SizedBox(width: AppSizes.spacingRegular),
                               SelectableText(
                                 headline,
@@ -135,7 +146,7 @@ class WindowContainer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(
+                    FaIcon(
                       FontAwesomeIcons.arrowRight,
                       color: Colors.green,
                       size: AppSizes.spacingRegular,

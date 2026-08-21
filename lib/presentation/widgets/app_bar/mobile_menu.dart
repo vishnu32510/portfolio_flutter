@@ -120,7 +120,7 @@ class _MobileMenuState extends State<MobileMenu> {
       },
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 400),
-        child: Icon(
+        child: FaIcon(
           _menuOpen ? FontAwesomeIcons.xmark : FontAwesomeIcons.bars,
           key: ValueKey(_menuOpen),
           size: AppSizes.iconMedium,

@@ -20,6 +20,7 @@ version: 1.0.0+1
 
 environment:
   sdk: '>=3.10.0 <4.0.0'
+  flutter: '>=3.47.1'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -33,34 +34,34 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
 
-  cupertino_icons: ^1.0.6
+  cupertino_icons: ^1.0.9
   auto_size_text: ^3.0.0
-  cached_network_image: ^3.3.0
-  equatable: ^2.0.5
+  cached_network_image: ^3.4.1
+  equatable: ^2.1.0
   flutter_bloc: ^9.1.1
   delayed_display: ^2.0.0
-  toastification: ^3.0.2
-  bloc: ^9.0.0
-  dio: ^5.4.1
-  permission_handler: ^12.0.0+1
-  flutter_svg: ^2.0.10+1
-  font_awesome_flutter: ^10.7.0
-  http: ^1.2.1
-  lottie: ^3.1.0
-  open_file: ^3.3.2
-  package_info_plus: ^9.0.0
-  path_provider: ^2.1.2
+  toastification: ^3.2.0
+  bloc: ^9.2.1
+  dio: ^5.11.0
+  permission_handler: ^13.0.1
+  flutter_svg: ^2.3.0
+  font_awesome_flutter: ^11.0.0
+  http: ^1.6.0
+  lottie: ^3.5.1
+  open_file: ^4.0.0
+  package_info_plus: ^10.2.1
+  path_provider: ^2.1.6
   web: ^1.1.1
-  url_launcher: ^6.2.5
+  url_launcher: ^6.3.2
   lava_lamp_effect: ^1.0.3
   animated_text_kit: ^4.3.0
-  particles_network: ^1.9.0
-  google_fonts: ^8.0.0
+  particles_network: ^1.9.5
+  google_fonts: ^8.2.1
   flutter_staggered_animations: ^1.1.1
 
 dev_dependencies:
   flutter_lints: ^6.0.0
-  flutter_launcher_icons: ^0.14.3
+  flutter_launcher_icons: ^0.14.4
   flutter_test:
     sdk: flutter
 
@@ -79,13 +80,6 @@ flutter_launcher_icons:
     generate: true
     image_path: "assets/images/appIcon.png"
   remove_alpha_ios: true
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^3.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

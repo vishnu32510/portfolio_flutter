@@ -128,7 +128,7 @@ class _PreviousWorkSeparator extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: AppSizes.spacingMedium),
       child: Row(
         children: [
-          Icon(
+          FaIcon(
             FontAwesomeIcons.clockRotateLeft,
             size: 14,
             color: colors.primary.withValues(alpha: 0.75),

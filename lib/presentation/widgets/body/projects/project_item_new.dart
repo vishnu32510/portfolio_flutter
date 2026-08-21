@@ -80,7 +80,7 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
+              FaIcon(
                 FontAwesomeIcons.image,
                 size: AppSizes.iconHuge,
                 color: colors.onSurface.withValues(alpha: 0.3),
@@ -106,7 +106,7 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
               widget.project.imageUrl,
               fit: BoxFit.contain,
               errorBuilder: (context, error, stackTrace) => Center(
-                child: Icon(
+                child: FaIcon(
                   FontAwesomeIcons.image,
                   size: AppSizes.iconHuge,
                   color: colors.onSurface.withValues(alpha: 0.3),
@@ -117,7 +117,7 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
               widget.project.imageUrl,
               fit: BoxFit.contain,
               errorBuilder: (context, error, stackTrace) => Center(
-                child: Icon(
+                child: FaIcon(
                   FontAwesomeIcons.image,
                   size: AppSizes.iconHuge,
                   color: colors.onSurface.withValues(alpha: 0.3),
@@ -126,7 +126,7 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
             );
     }
     return Center(
-      child: Icon(
+      child: FaIcon(
         FontAwesomeIcons.code,
         size: AppSizes.iconHuge,
         color: colors.onSurface.withValues(alpha: 0.3),
@@ -240,7 +240,7 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                                         fit: BoxFit.cover,
                                         errorBuilder:
                                             (context, error, stackTrace) =>
-                                                Icon(
+                                                FaIcon(
                                                   FontAwesomeIcons.image,
                                                   size: 22,
                                                   color: colors.onSurface
@@ -275,7 +275,7 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                                         },
                                         errorBuilder:
                                             (context, error, stackTrace) =>
-                                                Icon(
+                                                FaIcon(
                                                   FontAwesomeIcons.image,
                                                   size: 22,
                                                   color: colors.onSurface
@@ -434,7 +434,7 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
 
   Widget _buildLink(
     BuildContext context,
-    IconData icon,
+    dynamic icon,
     String label,
     String url,
   ) {
@@ -452,13 +452,22 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              size: AppSizes.iconXS,
-              color: Theme.of(
-                context,
-              ).colorScheme.onSurface.withValues(alpha: 0.7),
-            ),
+            if (icon is FaIconData)
+              FaIcon(
+                icon,
+                size: AppSizes.iconXS,
+                color: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.7),
+              )
+            else if (icon is IconData)
+              Icon(
+                icon,
+                size: AppSizes.iconXS,
+                color: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.7),
+              ),
             SizedBox(width: AppSizes.spacingSmallRegular),
             Text(
               label,
