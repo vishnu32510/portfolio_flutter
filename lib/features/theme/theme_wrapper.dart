@@ -9,9 +9,6 @@ class ThemeWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ThemeBloc>(
-      create: (_) => ThemeBloc(),
-      child: child,
-    );
+    return BlocProvider<ThemeBloc>(create: (_) => ThemeBloc(), child: child);
   }
 }

@@ -29,9 +29,17 @@ class ThemeChangeDropdownButton extends StatelessWidget {
                   children: [
                     if (item.iconData is IconData &&
                         item.iconData != FontAwesomeIcons.spider)
-                      Icon(item.iconData as IconData, size: 18, color: colors.primary)
+                      Icon(
+                        item.iconData as IconData,
+                        size: 18,
+                        color: colors.primary,
+                      )
                     else
-                      FaIcon(FontAwesomeIcons.spider, size: 18, color: colors.primary),
+                      FaIcon(
+                        FontAwesomeIcons.spider,
+                        size: 18,
+                        color: colors.primary,
+                      ),
                     const SizedBox(width: 10),
                     Text(
                       item.themeName,
