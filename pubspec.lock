@@ -125,8 +125,8 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/code_store_theme"
-      ref: "feature/package-universal"
-      resolved-ref: "2b77fe0d0262f6b9e8a2f761ee53b8d6c3942043"
+      ref: main
+      resolved-ref: "252284c351fe019bd88fdff2b9174af9090f9b6e"
       url: "https://github.com/vishnu32510/code_store.git"
     source: git
     version: "1.0.0"
