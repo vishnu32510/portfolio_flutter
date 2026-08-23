@@ -5,21 +5,11 @@ import 'package:google_fonts/google_fonts.dart';
 import '../utils/app_colors.dart';
 
 /// App-specific theme suite for the portfolio.
+/// All underlying colors are sourced directly from [AppColors].
 class AppThemes {
-  // Cream brand color palette
-  static const Color creamPrimary = Color(0xFFF5E6D3);
-  static const Color creamPrimaryDark = Color(0xFFD4C4B0);
-  static const Color creamPrimaryLight = Color(0xFFB89A7A);
-  static const Color creamLight = Color(0xFFFFF8E7);
-  static const Color creamDark = Color(0xFFE8DCC6);
-
-  // Spider-Man: Brand New Day color palette
-  static const Color spiderRed = Color(0xFFE62429);
-  static const Color spiderRedBright = Color(0xFFFF334B);
-  static const Color spiderBlue = Color(0xFF38BDF8);
-  static const Color spiderBlueCobalt = Color(0xFF1E88E5);
-  static const Color spiderDarkSurface = Color(0xFF0B0F19);
-  static const Color spiderCardSurface = Color(0xFF141B2D);
+  // Aliases for quick access to palette definitions
+  static const Color spiderRed = AppColors.spiderRed;
+  static const Color spiderBlue = AppColors.spiderBlue;
 
   /// 1. Dark Executive Theme
   static AppThemeConfig get dark {
@@ -32,15 +22,15 @@ class AppThemes {
       themeData: base.copyWith(
         textTheme: GoogleFonts.outfitTextTheme(base.textTheme),
         extensions: const [AppCustomColors.dark],
-        colorScheme: ColorScheme.dark(
-          primary: creamPrimaryDark,
-          onPrimary: const Color(0xFF1A1A1A),
-          secondary: creamDark,
-          onSecondary: const Color(0xFF1A1A1A),
-          surface: const Color(0xFF0C0C0C),
-          onSurface: const Color(0xFFFFFFFF),
+        colorScheme: const ColorScheme.dark(
+          primary: AppColors.creamPrimaryDark,
+          onPrimary: Color(0xFF1A1A1A),
+          secondary: AppColors.creamDark,
+          onSecondary: Color(0xFF1A1A1A),
+          surface: AppColors.darkSurface,
+          onSurface: Color(0xFFFFFFFF),
         ),
-        scaffoldBackgroundColor: const Color(0xFF0C0C0C),
+        scaffoldBackgroundColor: AppColors.darkScaffold,
       ),
     );
   }
@@ -57,17 +47,17 @@ class AppThemes {
         textTheme: GoogleFonts.outfitTextTheme(base.textTheme),
         extensions: const [AppCustomColors.spiderMan],
         colorScheme: const ColorScheme.dark(
-          primary: spiderRed,
+          primary: AppColors.spiderRed,
           onPrimary: Color(0xFFFFFFFF),
-          secondary: spiderBlue,
+          secondary: AppColors.spiderBlue,
           onSecondary: Color(0xFF0B0F19),
-          tertiary: spiderBlueCobalt,
-          surface: spiderDarkSurface,
+          tertiary: AppColors.spiderBlueCobalt,
+          surface: AppColors.spiderDarkSurface,
           onSurface: Color(0xFFF1F5F9),
           outline: Color(0xFF2A364F),
         ),
-        scaffoldBackgroundColor: spiderDarkSurface,
-        cardColor: spiderCardSurface,
+        scaffoldBackgroundColor: AppColors.spiderDarkSurface,
+        cardColor: AppColors.spiderCardSurface,
       ),
     );
   }
@@ -83,15 +73,15 @@ class AppThemes {
       themeData: base.copyWith(
         textTheme: GoogleFonts.outfitTextTheme(base.textTheme),
         extensions: const [AppCustomColors.light],
-        colorScheme: ColorScheme.light(
-          primary: creamPrimaryLight,
-          onPrimary: const Color(0xFFFFFFFF),
-          secondary: creamPrimaryDark,
-          onSecondary: const Color(0xFF1A1A1A),
-          surface: const Color(0xFFF4F5F6),
-          onSurface: const Color(0xFF0E121D),
+        colorScheme: const ColorScheme.light(
+          primary: AppColors.creamPrimaryLight,
+          onPrimary: Color(0xFFFFFFFF),
+          secondary: AppColors.creamPrimaryDark,
+          onSecondary: Color(0xFF1A1A1A),
+          surface: AppColors.lightSurface,
+          onSurface: Color(0xFF0E121D),
         ),
-        scaffoldBackgroundColor: const Color(0xFFF4F5F6),
+        scaffoldBackgroundColor: AppColors.lightScaffold,
       ),
     );
   }
