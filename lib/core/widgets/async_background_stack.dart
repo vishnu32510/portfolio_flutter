@@ -51,6 +51,10 @@ class _AsyncBackgroundStackState extends State<AsyncBackgroundStack> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final gridColor = colorScheme.secondary.withValues(alpha: 0.16);
+    final runnerColor = colorScheme.primary;
+
     return Stack(
       children: [
         // Grid Background (lighter, loads first) - wrapped in RepaintBoundary
@@ -65,13 +69,11 @@ class _AsyncBackgroundStackState extends State<AsyncBackgroundStack> {
                       : 0.0,
                   duration: const Duration(milliseconds: 300),
                   child: GridBackground(
-                    color: Theme.of(
-                      context,
-                    ).colorScheme.onSurface.withValues(alpha: 0.2),
+                    color: gridColor,
                     strokeWidth: 0.5,
                     horizontalSpacing: 45,
                     verticalSpacing: 45,
-                    runnerColor: Theme.of(context).colorScheme.primary,
+                    runnerColor: runnerColor,
                   ),
                 ),
               );

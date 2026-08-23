@@ -25,6 +25,14 @@ class ThemeState extends Equatable {
   ); // Dark cream for light mode (better visibility)
   static const Color creamLight = Color(0xFFFFF8E7); // Light cream
   static const Color creamDark = Color(0xFFE8DCC6); // Medium cream
+  // Spider-Man Brand New Day color palette
+  static const Color spiderRed = Color(0xFFE62429); // Marvel Spider-Red
+  static const Color spiderRedBright = Color(0xFFFF334B); // Bright hero crimson
+  static const Color spiderBlue = Color(0xFF38BDF8); // Iconic Electric Web Light Blue
+  static const Color spiderBlueCobalt = Color(0xFF1E88E5); // Deep Web Cobalt Blue
+  static const Color spiderDarkSurface = Color(0xFF0B0F19); // Midnight ink background
+  static const Color spiderCardSurface = Color(0xFF141B2D); // Subtle slate-navy card
+  static const Color spiderWebOutline = Color(0x33E62429); // Web red accent border
 }
 
 class DarkThemeState extends ThemeState {
@@ -51,6 +59,37 @@ class DarkThemeState extends ThemeState {
       ),
       themeMode: ThemeMode.dark,
       themeEventType: ThemeType.darkMode,
+    );
+  }
+}
+
+class SpiderManThemeState extends ThemeState {
+  const SpiderManThemeState({
+    required super.themeData,
+    required super.themeMode,
+    required super.themeEventType,
+  });
+
+  static ThemeState get spiderManTheme {
+    final baseTheme = ThemeData.dark(useMaterial3: true);
+    return ThemeState(
+      themeData: baseTheme.copyWith(
+        textTheme: GoogleFonts.outfitTextTheme(baseTheme.textTheme),
+        colorScheme: const ColorScheme.dark(
+          primary: ThemeState.spiderRed,
+          onPrimary: Color(0xFFFFFFFF),
+          secondary: ThemeState.spiderBlue,
+          onSecondary: Color(0xFF0B0F19),
+          tertiary: ThemeState.spiderBlueCobalt,
+          surface: ThemeState.spiderDarkSurface,
+          onSurface: Color(0xFFF1F5F9),
+          outline: Color(0xFF2A364F),
+        ),
+        scaffoldBackgroundColor: ThemeState.spiderDarkSurface,
+        cardColor: ThemeState.spiderCardSurface,
+      ),
+      themeMode: ThemeMode.dark,
+      themeEventType: ThemeType.spiderMan,
     );
   }
 }

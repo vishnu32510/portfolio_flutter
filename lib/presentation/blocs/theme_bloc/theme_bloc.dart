@@ -14,6 +14,9 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
         case ThemeType.darkMode:
           emit(DarkThemeState.darkTheme);
           break;
+        case ThemeType.spiderMan:
+          emit(SpiderManThemeState.spiderManTheme);
+          break;
         case ThemeType.lightMode:
           emit(LightThemeState.lightTheme);
           break;
