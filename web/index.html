@@ -41,13 +41,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Google Analytics 4 (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4C2K609VC"></script>
+  <!-- Google Analytics 4 (GA4) - Production Only -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-G4C2K609VC', { send_page_view: false });
+    (function() {
+      var hostname = window.location.hostname;
+      // Do not track localhost, 127.0.0.1, or PR preview channels (e.g. *-pr-*.web.app)
+      var isPreview = hostname === 'localhost' ||
+                      hostname === '127.0.0.1' ||
+                      hostname.includes('--pr-') ||
+                      (hostname.includes('web.app') && hostname.includes('--')) ||
+                      (hostname.includes('firebaseapp.com') && hostname.includes('--'));
+
+      if (!isPreview) {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-G4C2K609VC';
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-G4C2K609VC', { send_page_view: false });
+      } else {
+        // Safe stub on preview/dev so calls do not throw errors or send analytics
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function() {};
+      }
+    })();
   </script>
 
   <style>
