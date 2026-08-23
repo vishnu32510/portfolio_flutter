@@ -40,10 +40,10 @@ class ParticleNetworkBackground extends StatelessWidget {
     // Adaptive particle density (saves >65% distance calculations on 60fps)
     final effectiveParticleCount = particleCount ?? (isMobile ? 38 : 72);
 
-    final defaultParticleColor = theme.colorScheme.onSurface.withValues(
-      alpha: 0.4,
+    final defaultParticleColor = theme.colorScheme.secondary.withValues(
+      alpha: 0.45,
     );
-    final defaultLineColor = theme.colorScheme.primary.withValues(alpha: 0.2);
+    final defaultLineColor = theme.colorScheme.secondary.withValues(alpha: 0.22);
     final defaultTouchColor = theme.colorScheme.primary;
 
     // RepaintBoundary isolates background canvas painting from foreground widgets
