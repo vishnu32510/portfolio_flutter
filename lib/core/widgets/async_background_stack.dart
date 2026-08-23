@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import '../utils/app_colors.dart';
 import 'grid_background.dart';
 import 'particle_network_background.dart';
 
@@ -51,9 +52,7 @@ class _AsyncBackgroundStackState extends State<AsyncBackgroundStack> {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final gridColor = colorScheme.secondary.withValues(alpha: 0.16);
-    final runnerColor = colorScheme.primary;
+    final customColors = context.customColors;
 
     return Stack(
       children: [
@@ -69,11 +68,11 @@ class _AsyncBackgroundStackState extends State<AsyncBackgroundStack> {
                       : 0.0,
                   duration: const Duration(milliseconds: 300),
                   child: GridBackground(
-                    color: gridColor,
+                    color: customColors.gridLine,
                     strokeWidth: 0.5,
                     horizontalSpacing: 45,
                     verticalSpacing: 45,
-                    runnerColor: runnerColor,
+                    runnerColor: customColors.laserRunner,
                   ),
                 ),
               );

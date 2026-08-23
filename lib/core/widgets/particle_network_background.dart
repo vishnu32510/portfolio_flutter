@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:particles_network/particles_network.dart';
+import '../utils/app_colors.dart';
 import '../utils/app_extensions.dart';
 
 class ParticleNetworkBackground extends StatelessWidget {
@@ -34,17 +35,15 @@ class ParticleNetworkBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final customColors = context.customColors;
     final isMobile = context.isMobile;
 
     // Adaptive particle density (saves >65% distance calculations on 60fps)
     final effectiveParticleCount = particleCount ?? (isMobile ? 38 : 72);
 
-    final defaultParticleColor = theme.colorScheme.secondary.withValues(
-      alpha: 0.45,
-    );
-    final defaultLineColor = theme.colorScheme.secondary.withValues(alpha: 0.22);
-    final defaultTouchColor = theme.colorScheme.primary;
+    final defaultParticleColor = customColors.particleColor;
+    final defaultLineColor = customColors.particleLine;
+    final defaultTouchColor = customColors.laserRunner;
 
     // RepaintBoundary isolates background canvas painting from foreground widgets
     return RepaintBoundary(

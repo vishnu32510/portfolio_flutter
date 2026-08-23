@@ -3,9 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_flutter/core/utils/app_constants.dart';
+import 'package:portfolio_flutter/features/theme/theme.dart';
 import 'package:portfolio_flutter/navigation/navigation.dart';
 import 'package:portfolio_flutter/presentation/blocs/portfolio_bloc/portfolio_bloc.dart';
-import 'package:portfolio_flutter/presentation/blocs/theme_bloc/theme_bloc.dart';
 
 import 'presentation/blocs/home_bloc/home_bloc.dart';
 import 'core/services/analytics_service.dart';

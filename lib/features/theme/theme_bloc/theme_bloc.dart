@@ -2,7 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/utils/theme_enums.dart';
+import '../../../core/utils/app_colors.dart';
+import '../theme_enums.dart';
 
 part 'theme_event.dart';
 part 'theme_state.dart';
