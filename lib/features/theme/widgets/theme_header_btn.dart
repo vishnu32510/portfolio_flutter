@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../core/services/analytics_service.dart';
-import '../../../core/utils/theme_enums.dart';
-import '../../blocs/theme_bloc/theme_bloc.dart';
+import '../../../core/utils/app_colors.dart';
+import '../theme_bloc/theme_bloc.dart';
+import '../theme_enums.dart';
 
 class ThemeHeader extends StatefulWidget {
   const ThemeHeader({super.key});
@@ -22,6 +23,7 @@ class _ThemeHeaderState extends State<ThemeHeader> {
         final currentType = state.themeEventType;
         final theme = Theme.of(context);
         final primaryColor = theme.colorScheme.primary;
+        final customColors = context.customColors;
 
         final dynamic currentIcon;
         final Color iconColor;
@@ -76,16 +78,8 @@ class _ThemeHeaderState extends State<ThemeHeader> {
                   shape: BoxShape.circle,
                   color: isDarkOrSpider
                       ? (_isHovered
-                            ? (currentType == ThemeType.spiderMan
-                                  ? const Color(0xFFE62429).withValues(
-                                      alpha: 0.18,
-                                    )
-                                  : Colors.white.withValues(alpha: 0.12))
-                            : (currentType == ThemeType.spiderMan
-                                  ? const Color(0xFFE62429).withValues(
-                                      alpha: 0.08,
-                                    )
-                                  : Colors.white.withValues(alpha: 0.06)))
+                            ? customColors.glowColor
+                            : Colors.white.withValues(alpha: 0.06))
                       : (_isHovered
                             ? Colors.black.withValues(alpha: 0.08)
                             : Colors.black.withValues(alpha: 0.04)),
@@ -93,18 +87,14 @@ class _ThemeHeaderState extends State<ThemeHeader> {
                     color: _isHovered
                         ? primaryColor.withValues(alpha: 0.8)
                         : (isDarkOrSpider
-                              ? (currentType == ThemeType.spiderMan
-                                    ? const Color(0xFFE62429).withValues(
-                                        alpha: 0.45,
-                                      )
-                                    : Colors.white.withValues(alpha: 0.15))
+                              ? customColors.accentGlow
                               : Colors.black.withValues(alpha: 0.1)),
                     width: 1.2,
                   ),
                   boxShadow: _isHovered
                       ? [
                           BoxShadow(
-                            color: primaryColor.withValues(alpha: 0.3),
+                            color: customColors.glowColor,
                             blurRadius: 14,
                             spreadRadius: 1.5,
                           ),
@@ -112,9 +102,7 @@ class _ThemeHeaderState extends State<ThemeHeader> {
                       : (currentType == ThemeType.spiderMan
                             ? [
                                 BoxShadow(
-                                  color: const Color(
-                                    0xFFE62429,
-                                  ).withValues(alpha: 0.2),
+                                  color: customColors.accentGlow,
                                   blurRadius: 8,
                                   spreadRadius: 0.5,
                                 ),
@@ -141,7 +129,7 @@ class _ThemeHeaderState extends State<ThemeHeader> {
                             color: iconColor,
                           )
                         : Icon(
-                            currentIcon,
+                            currentIcon as IconData,
                             key: ValueKey<ThemeType>(currentType),
                             size: 22,
                             color: iconColor,

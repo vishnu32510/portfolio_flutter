@@ -25,6 +25,7 @@ class ThemeState extends Equatable {
   ); // Dark cream for light mode (better visibility)
   static const Color creamLight = Color(0xFFFFF8E7); // Light cream
   static const Color creamDark = Color(0xFFE8DCC6); // Medium cream
+
   // Spider-Man Brand New Day color palette
   static const Color spiderRed = Color(0xFFE62429); // Marvel Spider-Red
   static const Color spiderRedBright = Color(0xFFFF334B); // Bright hero crimson
@@ -47,6 +48,7 @@ class DarkThemeState extends ThemeState {
     return ThemeState(
       themeData: baseTheme.copyWith(
         textTheme: GoogleFonts.outfitTextTheme(baseTheme.textTheme),
+        extensions: const [AppCustomColors.dark],
         colorScheme: ColorScheme.dark(
           primary: ThemeState.creamPrimaryDark,
           onPrimary: const Color(0xFF1A1A1A),
@@ -75,6 +77,7 @@ class SpiderManThemeState extends ThemeState {
     return ThemeState(
       themeData: baseTheme.copyWith(
         textTheme: GoogleFonts.outfitTextTheme(baseTheme.textTheme),
+        extensions: const [AppCustomColors.spiderMan],
         colorScheme: const ColorScheme.dark(
           primary: ThemeState.spiderRed,
           onPrimary: Color(0xFFFFFFFF),
@@ -106,6 +109,7 @@ class LightThemeState extends ThemeState {
     return ThemeState(
       themeData: baseTheme.copyWith(
         textTheme: GoogleFonts.outfitTextTheme(baseTheme.textTheme),
+        extensions: const [AppCustomColors.light],
         colorScheme: ColorScheme.light(
           primary: ThemeState
               .creamPrimaryLight, // Dark cream for better visibility in light mode
@@ -135,6 +139,7 @@ class SystemThemeState extends ThemeState {
     return ThemeState(
       themeData: baseTheme.copyWith(
         textTheme: GoogleFonts.outfitTextTheme(baseTheme.textTheme),
+        extensions: const [AppCustomColors.light],
         colorScheme: ColorScheme.light(
           primary: ThemeState
               .creamPrimaryLight, // Dark cream for better visibility in light mode
