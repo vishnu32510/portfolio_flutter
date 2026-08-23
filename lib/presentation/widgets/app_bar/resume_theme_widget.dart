@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../core/services/analytics_service.dart';
 import '../../../core/utils/app_sizes.dart';
 import '../../../core/utils/app_styles.dart';
-import '../../../features/theme/theme.dart';
+import 'package:code_store_theme/code_store_theme.dart';
 import '../../blocs/portfolio_bloc/portfolio_bloc.dart';
 
 class ResumeThemeWidget extends StatelessWidget {

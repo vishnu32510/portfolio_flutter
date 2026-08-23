@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/utils/app_extensions.dart';
 import '../../../core/utils/app_enums.dart';
 import '../../../core/utils/app_sizes.dart';
-import '../../../features/theme/theme.dart';
+import 'package:code_store_theme/code_store_theme.dart';
 import '../../blocs/home_bloc/home_bloc.dart';
 import '../app_bar/vertical_headers_builder.dart';
 import 'intro/intro_section.dart';

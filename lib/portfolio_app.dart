@@ -2,8 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:code_store_theme/code_store_theme.dart';
+import 'package:portfolio_flutter/core/theme/app_themes.dart';
 import 'package:portfolio_flutter/core/utils/app_constants.dart';
-import 'package:portfolio_flutter/features/theme/theme.dart';
 import 'package:portfolio_flutter/navigation/navigation.dart';
 import 'package:portfolio_flutter/presentation/blocs/portfolio_bloc/portfolio_bloc.dart';
 
@@ -17,7 +18,9 @@ class PortfolioApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ThemeBloc()),
+        BlocProvider(
+          create: (context) => ThemeBloc(availableThemes: AppThemes.allThemes),
+        ),
         BlocProvider(create: (context) => PortfolioBloc()),
         BlocProvider(
           create: (context) =>
