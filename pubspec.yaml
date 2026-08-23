@@ -34,6 +34,17 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
 
+  # (Optional) Local Path for live dev:
+  # code_store_theme:
+  #   path: ../code_store/packages/code_store_theme
+
+  # Modular Theme Package from code_store (Git Dependency):
+  code_store_theme:
+    git:
+      url: https://github.com/vishnu32510/code_store.git
+      path: packages/code_store_theme
+      ref: feature/package-universal
+
   cupertino_icons: ^1.0.9
   auto_size_text: ^3.0.0
   cached_network_image: ^3.4.1
