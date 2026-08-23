@@ -29,11 +29,21 @@ class ThemeState extends Equatable {
   // Spider-Man Brand New Day color palette
   static const Color spiderRed = Color(0xFFE62429); // Marvel Spider-Red
   static const Color spiderRedBright = Color(0xFFFF334B); // Bright hero crimson
-  static const Color spiderBlue = Color(0xFF38BDF8); // Iconic Electric Web Light Blue
-  static const Color spiderBlueCobalt = Color(0xFF1E88E5); // Deep Web Cobalt Blue
-  static const Color spiderDarkSurface = Color(0xFF0B0F19); // Midnight ink background
-  static const Color spiderCardSurface = Color(0xFF141B2D); // Subtle slate-navy card
-  static const Color spiderWebOutline = Color(0x33E62429); // Web red accent border
+  static const Color spiderBlue = Color(
+    0xFF38BDF8,
+  ); // Iconic Electric Web Light Blue
+  static const Color spiderBlueCobalt = Color(
+    0xFF1E88E5,
+  ); // Deep Web Cobalt Blue
+  static const Color spiderDarkSurface = Color(
+    0xFF0B0F19,
+  ); // Midnight ink background
+  static const Color spiderCardSurface = Color(
+    0xFF141B2D,
+  ); // Subtle slate-navy card
+  static const Color spiderWebOutline = Color(
+    0x33E62429,
+  ); // Web red accent border
 }
 
 class DarkThemeState extends ThemeState {
