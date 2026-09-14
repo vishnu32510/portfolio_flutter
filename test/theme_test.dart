@@ -3,9 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:portfolio_flutter/core/theme/app_themes.dart';
 import 'package:portfolio_flutter/core/utils/app_colors.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'package:flutter/services.dart';
+import 'dart:io';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+
+  setUpAll(() async {
+    GoogleFonts.config.allowRuntimeFetching = false;
+
+    // Load font for testing so google fonts does not try to get it
+    final fontLoader = FontLoader('Outfit');
+    final fontFile = File('test/assets/fonts/Outfit-Regular.ttf');
+    final fontBytes = await fontFile.readAsBytes();
+    fontLoader.addFont(Future.value(ByteData.view(fontBytes.buffer)));
+    await fontLoader.load();
+  });
 
   group('code_store_theme Integration Tests', () {
     test('AppThemes.spiderMan has correct configuration', () {
