@@ -53,41 +53,25 @@ class SocialMediaIconBtn extends StatelessWidget {
   final FaIconData icon;
   final String link;
 
-  String _getPlatformName() {
-    if (link.contains('dev.to')) {
-      return 'DEV Community';
-    }
-    if (link.contains('github.com')) {
-      return 'GitHub';
-    }
-    if (link.contains('devpost.com')) {
-      return 'Devpost';
-    }
-    if (link.contains('stackoverflow.com')) {
-      return 'Stack Overflow';
-    }
-    if (link.contains('instagram.com')) {
-      return 'Instagram';
-    }
-    if (link.contains('linkedin.com')) {
-      return 'LinkedIn';
-    }
-    if (link.contains('twitter.com') || link.contains('x.com')) {
-      return 'Twitter';
-    }
-    if (link.contains('mailto:')) {
-      return 'Email';
-    }
+  String _getNameForLink(String link) {
+    if (link.contains('dev.to')) return 'Dev.to';
+    if (link.contains('github.com')) return 'GitHub';
+    if (link.contains('devpost.com')) return 'Devpost';
+    if (link.contains('stackoverflow.com')) return 'Stack Overflow';
+    if (link.contains('instagram.com')) return 'Instagram';
+    if (link.contains('linkedin.com')) return 'LinkedIn';
+    if (link.contains('twitter.com')) return 'Twitter';
+    if (link.contains('mailto:')) return 'Email';
     if (link.contains('floxi.co') || link.contains('portfolio')) {
       return 'Website';
     }
-    return 'Visit link';
+    return 'Link';
   }
 
   @override
   Widget build(BuildContext context) {
     return Tooltip(
-      message: _getPlatformName(),
+      message: _getNameForLink(link),
       child: TextButton(
         style: IconButton.styleFrom(
           shape: const CircleBorder(),
