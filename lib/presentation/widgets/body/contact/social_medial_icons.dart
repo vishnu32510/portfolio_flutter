@@ -62,8 +62,9 @@ class SocialMediaIconBtn extends StatelessWidget {
     if (link.contains('linkedin.com')) return 'LinkedIn';
     if (link.contains('twitter.com')) return 'Twitter';
     if (link.contains('mailto:')) return 'Email';
-    if (link.contains('floxi.co')) return 'Website';
-    if (link.contains('portfolio')) return 'Portfolio';
+    if (link.contains('floxi.co') || link.contains('portfolio')) {
+      return 'Website';
+    }
     return 'Link';
   }
 
