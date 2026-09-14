@@ -37,3 +37,15 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VISHNUPRIYAN_SS }}'
           channelId: live
           projectId: vishnupriyan-ss
+
+      - name: Tag Release
+        if: success()
+        run: |
+          VERSION=$(grep '^version:' pubspec.yaml | awk '{print $2}')
+          TIMESTAMP=$(date +'%Y%m%d%H%M%S')
+          TAG_NAME="web-prod-v${VERSION}-${TIMESTAMP}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "$TAG_NAME" -m "Release $TAG_NAME"
+          git push origin "$TAG_NAME"

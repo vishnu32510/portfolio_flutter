@@ -17,9 +17,7 @@ permissions:
 jobs:
   build_and_preview:
     # Only create preview, never deploy to production
-    if: |
-      github.event.pull_request.head.repo.full_name == github.repository &&
-      github.event.pull_request.merged == false
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
