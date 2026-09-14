@@ -32,10 +32,15 @@ class ResumeThemeWidget extends StatelessWidget {
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
                   onTap: () async {
-                    AnalyticsService.logResumeClick(source: 'header_resume_btn');
+                    AnalyticsService.logResumeClick(
+                      source: 'header_resume_btn',
+                    );
                     final uri = Uri.parse(resumeLink);
                     if (await canLaunchUrl(uri)) {
-                      await launchUrl(uri, mode: LaunchMode.externalApplication);
+                      await launchUrl(
+                        uri,
+                        mode: LaunchMode.externalApplication,
+                      );
                     }
                   },
                   child: Container(
@@ -76,10 +81,7 @@ class ResumeThemeWidget extends StatelessWidget {
         ),
         SizedBox(width: AppSizes.spacingLarge),
         // Theme Button (always visible)
-        const Tooltip(
-          message: 'Toggle Theme',
-          child: ThemeHeader(),
-        ),
+        const Tooltip(message: 'Toggle Theme', child: ThemeHeader()),
       ],
     );
   }
