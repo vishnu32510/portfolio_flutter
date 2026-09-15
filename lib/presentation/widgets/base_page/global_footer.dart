@@ -29,6 +29,21 @@ class GlobalFooter extends StatelessWidget {
     return FontAwesomeIcons.link;
   }
 
+  String _getNameForLink(String link) {
+    if (link.contains('dev.to')) return 'Dev.to';
+    if (link.contains('github.com')) return 'GitHub';
+    if (link.contains('devpost.com')) return 'Devpost';
+    if (link.contains('stackoverflow.com')) return 'Stack Overflow';
+    if (link.contains('instagram.com')) return 'Instagram';
+    if (link.contains('linkedin.com')) return 'LinkedIn';
+    if (link.contains('twitter.com')) return 'Twitter';
+    if (link.contains('mailto:')) return 'Email';
+    if (link.contains('floxi.co') || link.contains('portfolio')) {
+      return 'Website';
+    }
+    return 'Link';
+  }
+
   @override
   Widget build(BuildContext context) {
     final isMobile = context.width < 600;
@@ -154,20 +169,23 @@ class GlobalFooter extends StatelessWidget {
   }
 
   Widget _buildSocialIcon(BuildContext context, FaIconData icon, String url) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: () async {
-          AnalyticsService.logSocialClick(platform: url, url: url);
-          final uri = Uri.parse(url);
-          if (await canLaunchUrl(uri)) {
-            await launchUrl(uri);
-          }
-        },
-        child: FaIcon(
-          icon,
-          size: AppSizes.iconLarge,
-          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),
+    return Tooltip(
+      message: _getNameForLink(url),
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          onTap: () async {
+            AnalyticsService.logSocialClick(platform: url, url: url);
+            final uri = Uri.parse(url);
+            if (await canLaunchUrl(uri)) {
+              await launchUrl(uri);
+            }
+          },
+          child: FaIcon(
+            icon,
+            size: AppSizes.iconLarge,
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),
+          ),
         ),
       ),
     );
