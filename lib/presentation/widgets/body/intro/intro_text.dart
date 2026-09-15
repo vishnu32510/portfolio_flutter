@@ -234,96 +234,94 @@ class _HighlightBadge extends StatelessWidget {
     final isSingle = urls.length == 1;
 
     Widget badgeContent = Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(999),
-            color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.9),
-            border: Border.all(
-              color: Theme.of(
-                context,
-              ).colorScheme.primary.withValues(alpha: 0.4),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(999),
+        color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.9),
+        border: Border.all(
+          color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.4),
+        ),
+      ),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (icon is FaIconData)
+              FaIcon(
+                icon as FaIconData,
+                size: 16,
+                color: Theme.of(context).colorScheme.primary,
+              )
+            else if (icon is IconData)
+              Icon(
+                icon as IconData,
+                size: 16,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            const SizedBox(width: 8),
+            Text(
+              label,
+              style: AppStyles.smallText(
+                textColor: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.85),
+              ),
             ),
-          ),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (icon is FaIconData)
-                  FaIcon(
-                    icon as FaIconData,
-                    size: 16,
-                    color: Theme.of(context).colorScheme.primary,
-                  )
-                else if (icon is IconData)
-                  Icon(
-                    icon as IconData,
-                    size: 16,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                const SizedBox(width: 8),
-                Text(
-                  label,
-                  style: AppStyles.smallText(
-                    textColor: Theme.of(
-                      context,
-                    ).colorScheme.onSurface.withValues(alpha: 0.85),
-                  ),
-                ),
-                if (!isSingle) ...[
-                  const SizedBox(width: 8),
-                  Wrap(
-                    spacing: 6,
-                    runSpacing: 6,
-                    children: urls
-                        .map(
-                          (u) => Semantics(
-                            button: true,
-                            label: 'Open ${chipLabel(u)}',
-                            child: MouseRegion(
-                              cursor: SystemMouseCursors.click,
-                              child: GestureDetector(
-                                onTap: () => onTap(u),
-                                child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 6,
-                                ),
-                                decoration: BoxDecoration(
+            if (!isSingle) ...[
+              const SizedBox(width: 8),
+              Wrap(
+                spacing: 6,
+                runSpacing: 6,
+                children: urls
+                    .map(
+                      (u) => Semantics(
+                        button: true,
+                        label: 'Open ${chipLabel(u)}',
+                        child: MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                            onTap: () => onTap(u),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 6,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Theme.of(
+                                  context,
+                                ).colorScheme.primary.withValues(alpha: 0.12),
+                                borderRadius: BorderRadius.circular(999),
+                                border: Border.all(
                                   color: Theme.of(
                                     context,
-                                  ).colorScheme.primary.withValues(alpha: 0.12),
-                                  borderRadius: BorderRadius.circular(999),
-                                  border: Border.all(
-                                    color: Theme.of(
-                                      context,
-                                    ).colorScheme.primary.withValues(alpha: 0.35),
-                                  ),
+                                  ).colorScheme.primary.withValues(alpha: 0.35),
                                 ),
-                                child: Text(
-                                  chipLabel(u),
-                                  style: AppStyles.extraSmallTextThin(
-                                    textColor: Theme.of(
-                                      context,
-                                    ).colorScheme.primary,
-                                  ),
+                              ),
+                              child: Text(
+                                chipLabel(u),
+                                style: AppStyles.extraSmallTextThin(
+                                  textColor: Theme.of(
+                                    context,
+                                  ).colorScheme.primary,
                                 ),
                               ),
                             ),
                           ),
                         ),
-                        )
-                        .toList(),
-                  ),
-                ],
-              ],
-            ),
-          ),
-        );
+                      ),
+                    )
+                    .toList(),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
 
     Widget gestureContent = GestureDetector(
-        onTap: isSingle ? () => onTap(urls.first) : null,
-        child: badgeContent,
+      onTap: isSingle ? () => onTap(urls.first) : null,
+      child: badgeContent,
     );
 
     if (isSingle) {
