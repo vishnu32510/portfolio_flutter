@@ -184,7 +184,9 @@ class GlobalFooter extends StatelessWidget {
           child: FaIcon(
             icon,
             size: AppSizes.iconLarge,
-            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),
+            color: Theme.of(
+              context,
+            ).colorScheme.onSurface.withValues(alpha: 0.8),
           ),
         ),
       ),
