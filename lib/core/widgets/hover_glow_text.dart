@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../utils/app_sizes.dart';
 
 class HoverGlowText extends StatefulWidget {

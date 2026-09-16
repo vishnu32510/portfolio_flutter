@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../core/services/download_service.dart';
 import '../../../core/utils/app_enums.dart';
 import '../../blocs/portfolio_bloc/portfolio_bloc.dart';

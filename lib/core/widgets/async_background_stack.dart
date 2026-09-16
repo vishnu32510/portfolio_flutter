@@ -1,6 +1,8 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+
 import '../utils/app_colors.dart';
 import 'grid_background.dart';
 import 'particle_network_background.dart';

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_sizes.dart';
 import '../../../../core/utils/app_styles.dart';
+
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+
 import '../../../../core/widgets/gradient_text.dart';
 import '../../../../core/widgets/subtext.dart';
 import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';

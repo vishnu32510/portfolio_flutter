@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:package_info_plus/package_info_plus.dart';
+
 import 'analytics/web_gtag.dart';
 
 /// Cross-platform Google Analytics 4 (GA4) service with zero native bloat.
