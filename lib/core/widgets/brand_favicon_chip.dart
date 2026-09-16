@@ -102,9 +102,21 @@ class BrandFaviconChip extends StatelessWidget {
     if (!tappable) {
       return box;
     }
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(onTap: _openLink, child: box),
+
+    String tooltipMessage = 'Visit website';
+    try {
+      final uri = Uri.parse(linkUrl!.trim());
+      if (uri.host.isNotEmpty) {
+        tooltipMessage = 'Visit ${uri.host}';
+      }
+    } catch (_) {}
+
+    return Tooltip(
+      message: tooltipMessage,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(onTap: _openLink, child: box),
+      ),
     );
   }
 }
