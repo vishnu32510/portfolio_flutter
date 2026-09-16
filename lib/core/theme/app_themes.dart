@@ -2,6 +2,7 @@ import 'package:code_store_theme/code_store_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import '../utils/app_colors.dart';
 
 /// App-specific theme suite for the portfolio.

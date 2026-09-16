@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_flutter/presentation/widgets/body/contact/contact_me_personally.dart';
 import 'package:portfolio_flutter/presentation/widgets/body/contact/social_medial_icons.dart';
+
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';

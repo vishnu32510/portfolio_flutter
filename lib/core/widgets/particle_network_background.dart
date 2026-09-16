@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:particles_network/particles_network.dart';
+
 import '../utils/app_colors.dart';
 import '../utils/app_extensions.dart';
 

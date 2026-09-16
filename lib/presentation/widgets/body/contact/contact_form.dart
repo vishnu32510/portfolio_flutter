@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web/web.dart' as web;
+
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_enums.dart';
 import '../../../../core/utils/app_extensions.dart';
@@ -165,9 +166,8 @@ class _ContactFormState extends State<ContactForm> {
   }
 
   Future<void> sendEmail() async {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("Redirecting to Gmail!")));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text("Redirecting to Gmail!")));
     final emailUrl =
         "${AppStrings.developerEmail}?subject=${_subjectController.text}&body=My Name is ${_nameController.text} with ${_emailController.text} and I would like to send you a message: ${_messageController.text}";
     web.window.open(emailUrl, '_blank');

@@ -1,5 +1,7 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
+
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../generated/assets.dart';
 

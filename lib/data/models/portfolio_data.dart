@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import 'education.dart';
 import 'experience.dart';
 import 'project.dart';

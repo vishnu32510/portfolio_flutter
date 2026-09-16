@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
 import '../../../data/models/portfolio_data.dart';
 import '../../../data/default_data/basic_info_data.dart';
 import '../../../data/default_data/technical_skills_data.dart';

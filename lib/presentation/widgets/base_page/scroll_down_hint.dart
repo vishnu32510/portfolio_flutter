@@ -59,42 +59,35 @@ class _ScrollDownHintState extends State<ScrollDownHint>
     return AnimatedOpacity(
       opacity: _opacity,
       duration: const Duration(milliseconds: 150),
-      child: Tooltip(
-        message: 'Scroll Down',
-        child: Semantics(
-          button: true,
-          label: 'Scroll Down',
-          child: GestureDetector(
-            onTap: () {
-              widget.scrollController.animateTo(
-                widget.scrollController.position.maxScrollExtent,
-                duration: const Duration(milliseconds: 700),
-                curve: Curves.easeInOut,
-              );
-            },
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: AnimatedBuilder(
-                animation: _bounceAnim,
-                builder: (context, child) => Transform.translate(
+      child: GestureDetector(
+        onTap: () {
+          widget.scrollController.animateTo(
+            widget.scrollController.position.maxScrollExtent,
+            duration: const Duration(milliseconds: 700),
+            curve: Curves.easeInOut,
+          );
+        },
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: AnimatedBuilder(
+            animation: _bounceAnim,
+            builder: (context, child) => Transform.translate(
               offset: Offset(0, _bounceAnim.value),
               child: child,
             ),
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: colors.surface.withValues(alpha: 0.55),
-                    border: Border.all(
-                      color: colors.outline.withValues(alpha: 0.5),
-                    ),
-                  ),
-                  child: Icon(
-                    Icons.keyboard_arrow_down_rounded,
-                    size: 22,
-                    color: colors.onSurface.withValues(alpha: 0.55),
-                  ),
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: colors.surface.withValues(alpha: 0.55),
+                border: Border.all(
+                  color: colors.outline.withValues(alpha: 0.5),
                 ),
+              ),
+              child: Icon(
+                Icons.keyboard_arrow_down_rounded,
+                size: 22,
+                color: colors.onSurface.withValues(alpha: 0.55),
               ),
             ),
           ),
