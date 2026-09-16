@@ -14,13 +14,15 @@ class WelcomeToasts {
     showToast(
       time: 20,
       title: "Do you want to work together?",
-      description: "Contact Vishnu via What's App, He will be more than happy to work with you! :)",
+      description:
+          "Contact Vishnu via What's App, He will be more than happy to work with you! :)",
       context: context,
     );
     showToast(
       time: 40,
       title: "Seems like your are still not sure",
-      description: "Connect with Vishnu in Linkedin, maybe you can have a quick chat together",
+      description:
+          "Connect with Vishnu in Linkedin, maybe you can have a quick chat together",
       context: context,
     );
     showToast(

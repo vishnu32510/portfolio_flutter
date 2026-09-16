@@ -464,22 +464,25 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
               FaIcon(
                 icon,
                 size: AppSizes.iconXS,
-                color: Theme.of(context).colorScheme.onSurface
-                    .withValues(alpha: 0.7),
+                color: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.7),
               )
             else if (icon is IconData)
               Icon(
                 icon,
                 size: AppSizes.iconXS,
-                color: Theme.of(context).colorScheme.onSurface
-                    .withValues(alpha: 0.7),
+                color: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             SizedBox(width: AppSizes.spacingSmallRegular),
             Text(
               label,
               style: AppStyles.smallText(
-                textColor: Theme.of(context).colorScheme.onSurface
-                    .withValues(alpha: 0.7),
+                textColor: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
           ],

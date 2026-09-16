@@ -92,8 +92,9 @@ class ProjectItem extends StatelessWidget {
                 SelectableText(
                   project.description,
                   style: AppStyles.smallText(
-                    textColor: Theme.of(context).colorScheme.onSurface
-                        .withValues(alpha: 0.7),
+                    textColor: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
                 ),
                 const SizedBox(height: AppSizes.spacingLarge),
@@ -109,12 +110,14 @@ class ProjectItem extends StatelessWidget {
                           vertical: AppSizes.spacingXS,
                         ),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary
-                              .withValues(alpha: 0.1),
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.primary.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
-                            color: Theme.of(context).colorScheme.primary
-                                .withValues(alpha: 0.3),
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.primary.withValues(alpha: 0.3),
                             width: 1,
                           ),
                         ),
@@ -126,9 +129,9 @@ class ProjectItem extends StatelessWidget {
                             SelectableText(
                               tech,
                               style: AppStyles.smallText(
-                                textColor: Theme.of(context)
-                                    .colorScheme
-                                    .primary,
+                                textColor: Theme.of(
+                                  context,
+                                ).colorScheme.primary,
                               ),
                             ),
                           ],
@@ -203,8 +206,9 @@ class ProjectItem extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           border: Border.all(
-            color: Theme.of(context).colorScheme.onSurface
-                .withValues(alpha: 0.2),
+            color: Theme.of(
+              context,
+            ).colorScheme.onSurface.withValues(alpha: 0.2),
           ),
           borderRadius: BorderRadius.circular(8),
         ),
@@ -215,22 +219,25 @@ class ProjectItem extends StatelessWidget {
               FaIcon(
                 icon,
                 size: AppSizes.iconSmall,
-                color: Theme.of(context).colorScheme.onSurface
-                    .withValues(alpha: 0.8),
+                color: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.8),
               )
             else if (icon is IconData)
               Icon(
                 icon,
                 size: AppSizes.iconSmall,
-                color: Theme.of(context).colorScheme.onSurface
-                    .withValues(alpha: 0.8),
+                color: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.8),
               ),
             const SizedBox(width: AppSizes.spacingXS),
             Text(
               label,
               style: AppStyles.smallText(
-                textColor: Theme.of(context).colorScheme.onSurface
-                    .withValues(alpha: 0.8),
+                textColor: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.8),
               ),
             ),
           ],
