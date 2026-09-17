@@ -33,48 +33,52 @@ class ResumeThemeWidget extends StatelessWidget {
               message: 'Open Resume',
               child: MouseRegion(
                 cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                  onTap: () async {
-                    AnalyticsService.logResumeClick(
-                      source: 'header_resume_btn',
-                    );
-                    final uri = Uri.parse(resumeLink);
-                    if (await canLaunchUrl(uri)) {
-                      await launchUrl(
-                        uri,
-                        mode: LaunchMode.externalApplication,
+                child: Semantics(
+                  button: true,
+                  label: 'Open Resume',
+                  child: GestureDetector(
+                    onTap: () async {
+                      AnalyticsService.logResumeClick(
+                        source: 'header_resume_btn',
                       );
-                    }
-                  },
-                  child: Container(
-                    height: AppSizes.spacingXL,
-                    decoration: BoxDecoration(
-                      borderRadius: AppSizes.borderRadiusXS,
-                      border: Border.all(color: colors.outline),
-                      color: colors.primary,
-                    ),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: AppSizes.spacingSmallRegular,
-                    ),
-                    alignment: Alignment.center,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Resume',
-                          style: AppStyles.regularText(
-                            textColor: colors.onPrimary,
+                      final uri = Uri.parse(resumeLink);
+                      if (await canLaunchUrl(uri)) {
+                        await launchUrl(
+                          uri,
+                          mode: LaunchMode.externalApplication,
+                        );
+                      }
+                    },
+                    child: Container(
+                      height: AppSizes.spacingXL,
+                      decoration: BoxDecoration(
+                        borderRadius: AppSizes.borderRadiusXS,
+                        border: Border.all(color: colors.outline),
+                        color: colors.primary,
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppSizes.spacingSmallRegular,
+                      ),
+                      alignment: Alignment.center,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Resume',
+                            style: AppStyles.regularText(
+                              textColor: colors.onPrimary,
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: AppSizes.spacingSmall),
-                        FaIcon(
-                          FontAwesomeIcons.arrowUpRightFromSquare,
-                          size: AppSizes.iconSmall,
-                          color: colors.onPrimary,
-                        ),
-                      ],
+                          const SizedBox(width: AppSizes.spacingSmall),
+                          FaIcon(
+                            FontAwesomeIcons.arrowUpRightFromSquare,
+                            size: AppSizes.iconSmall,
+                            color: colors.onPrimary,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

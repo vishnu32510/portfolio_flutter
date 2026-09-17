@@ -4,3 +4,7 @@
 ## 2026-09-17 - Wrap InkWell interactions with Semantics
 **Learning:** Interactive widgets like `InkWell` do not implicitly communicate their purpose to assistive technologies when they rely solely on non-text elements or generic containers.
 **Action:** Always wrap interactive `InkWell` widgets with `Semantics(button: true, label: 'Descriptive Action', child: ...)`.
+
+## 2026-09-17 - [Add Semantics to custom interactive elements]
+**Learning:** Custom interactive elements like GestureDetector or InkWell in Flutter need an explicit Semantics wrapper with button: true and a label for screen readers to correctly identify and announce them as actionable buttons.
+**Action:** When creating custom interactive elements (e.g. for resume download or social links), always wrap them in a Semantics widget with appropriate properties to ensure accessibility.
