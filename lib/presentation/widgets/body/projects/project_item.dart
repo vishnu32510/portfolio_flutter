@@ -196,51 +196,55 @@ class ProjectItem extends StatelessWidget {
     required String label,
     required VoidCallback onTap,
   }) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSizes.spacingRegular,
-          vertical: AppSizes.spacingSmallRegular,
-        ),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Theme.of(
-              context,
-            ).colorScheme.onSurface.withValues(alpha: 0.2),
+    return Semantics(
+      button: true,
+      label: label,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(8),
+        child: Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSizes.spacingRegular,
+            vertical: AppSizes.spacingSmallRegular,
           ),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (icon is FaIconData)
-              FaIcon(
-                icon,
-                size: AppSizes.iconSmall,
-                color: Theme.of(
-                  context,
-                ).colorScheme.onSurface.withValues(alpha: 0.8),
-              )
-            else if (icon is IconData)
-              Icon(
-                icon,
-                size: AppSizes.iconSmall,
-                color: Theme.of(
-                  context,
-                ).colorScheme.onSurface.withValues(alpha: 0.8),
-              ),
-            const SizedBox(width: AppSizes.spacingXS),
-            Text(
-              label,
-              style: AppStyles.smallText(
-                textColor: Theme.of(
-                  context,
-                ).colorScheme.onSurface.withValues(alpha: 0.8),
-              ),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Theme.of(
+                context,
+              ).colorScheme.onSurface.withValues(alpha: 0.2),
             ),
-          ],
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (icon is FaIconData)
+                FaIcon(
+                  icon,
+                  size: AppSizes.iconSmall,
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.8),
+                )
+              else if (icon is IconData)
+                Icon(
+                  icon,
+                  size: AppSizes.iconSmall,
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.8),
+                ),
+              const SizedBox(width: AppSizes.spacingXS),
+              Text(
+                label,
+                style: AppStyles.smallText(
+                  textColor: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.8),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
