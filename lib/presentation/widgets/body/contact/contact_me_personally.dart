@@ -40,24 +40,28 @@ class ContactMePersonally extends StatelessWidget {
         //   ),
         // ),
         // const SizedBox(height: 10),
-        InkWell(
-          onTap: () {
-            web.window.open(AppStrings.developerEmail, '_blank');
-          },
-          child: Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: AppColors.redColor),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                FaIcon(FontAwesomeIcons.google, color: AppColors.redColor),
-                const SizedBox(width: 10),
-                const Text("Email Me"),
-              ],
+        Semantics(
+          button: true,
+          label: 'Email Me',
+          child: InkWell(
+            onTap: () {
+              web.window.open(AppStrings.developerEmail, '_blank');
+            },
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: AppColors.redColor),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  FaIcon(FontAwesomeIcons.google, color: AppColors.redColor),
+                  const SizedBox(width: 10),
+                  const Text("Email Me"),
+                ],
+              ),
             ),
           ),
         ),
