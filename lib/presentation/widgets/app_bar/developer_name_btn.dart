@@ -19,21 +19,25 @@ class DeveloperNameBtn extends StatelessWidget {
         cursor: isCurrentRoute
             ? SystemMouseCursors.basic
             : SystemMouseCursors.click,
-        child: GestureDetector(
-          onTap: () => isCurrentRoute ? null : AppNavigator.goHome(),
-          child: Container(
-            // Slightly bigger app icon in the app bar
-            height: AppSizes.iconXL + 6,
-            width: AppSizes.iconXL + 6,
-            alignment: Alignment.center,
-            clipBehavior: Clip.hardEdge,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.transparent,
-            ),
-            child: Hero(
-              tag: AppConstants.heroTagAppIcon,
-              child: Image.asset(AppAssets.appIcon, gaplessPlayback: true),
+        child: Semantics(
+          button: true,
+          label: 'Go Home',
+          child: GestureDetector(
+            onTap: () => isCurrentRoute ? null : AppNavigator.goHome(),
+            child: Container(
+              // Slightly bigger app icon in the app bar
+              height: AppSizes.iconXL + 6,
+              width: AppSizes.iconXL + 6,
+              alignment: Alignment.center,
+              clipBehavior: Clip.hardEdge,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.transparent,
+              ),
+              child: Hero(
+                tag: AppConstants.heroTagAppIcon,
+                child: Image.asset(AppAssets.appIcon, gaplessPlayback: true),
+              ),
             ),
           ),
         ),
