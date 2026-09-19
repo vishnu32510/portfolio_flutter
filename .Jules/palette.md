@@ -8,3 +8,6 @@
 ## 2026-09-17 - [Add Semantics to custom interactive elements]
 **Learning:** Custom interactive elements like GestureDetector or InkWell in Flutter need an explicit Semantics wrapper with button: true and a label for screen readers to correctly identify and announce them as actionable buttons.
 **Action:** When creating custom interactive elements (e.g. for resume download or social links), always wrap them in a Semantics widget with appropriate properties to ensure accessibility.
+## 2026-09-19 - Contact Form Clarity Fix
+**Learning:** Labels that imply in-app processing ('Submit') cause confusion when the actual action opens an external app (like an email client via mailto).
+**Action:** Use precise verbs that match the outcome, such as 'Send via Email', and ensure feedback messages accurately reflect the technical behavior (e.g., 'Opening email client...' instead of 'Redirecting to Gmail!').

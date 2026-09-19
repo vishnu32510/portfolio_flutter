@@ -152,7 +152,7 @@ class _ContactFormState extends State<ContactForm> {
             ),
             const SizedBox(height: 16),
             CustomButton(
-              label: 'Submit',
+              label: 'Send via Email',
               onPressed: () async {
                 sendEmail();
               },
@@ -168,7 +168,7 @@ class _ContactFormState extends State<ContactForm> {
   Future<void> sendEmail() async {
     ScaffoldMessenger.of(
       context,
-    ).showSnackBar(const SnackBar(content: Text("Redirecting to Gmail!")));
+    ).showSnackBar(const SnackBar(content: Text("Opening email client...")));
     final emailUrl =
         "${AppStrings.developerEmail}?subject=${_subjectController.text}&body=My Name is ${_nameController.text} with ${_emailController.text} and I would like to send you a message: ${_messageController.text}";
     web.window.open(emailUrl, '_blank');
