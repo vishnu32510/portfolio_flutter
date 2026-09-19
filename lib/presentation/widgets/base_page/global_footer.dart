@@ -174,20 +174,24 @@ class GlobalFooter extends StatelessWidget {
       message: _getNameForLink(url),
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          onTap: () async {
-            AnalyticsService.logSocialClick(platform: url, url: url);
-            final uri = Uri.parse(url);
-            if (await canLaunchUrl(uri)) {
-              await launchUrl(uri);
-            }
-          },
-          child: FaIcon(
-            icon,
-            size: AppSizes.iconLarge,
-            color: Theme.of(
-              context,
-            ).colorScheme.onSurface.withValues(alpha: 0.8),
+        child: Semantics(
+          button: true,
+          label: _getNameForLink(url),
+          child: GestureDetector(
+            onTap: () async {
+              AnalyticsService.logSocialClick(platform: url, url: url);
+              final uri = Uri.parse(url);
+              if (await canLaunchUrl(uri)) {
+                await launchUrl(uri);
+              }
+            },
+            child: FaIcon(
+              icon,
+              size: AppSizes.iconLarge,
+              color: Theme.of(
+                context,
+              ).colorScheme.onSurface.withValues(alpha: 0.8),
+            ),
           ),
         ),
       ),
