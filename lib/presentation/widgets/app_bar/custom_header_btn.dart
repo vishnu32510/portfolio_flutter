@@ -37,16 +37,20 @@ class CustomHeaderBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     final isActive = _isCurrentRoute(context);
 
-    return GestureDetector(
-      onTap: isActive ? null : () => AppNavigator.pushReplacement(_route),
-      child: HoverGlowText(
-        text: Text(
-          AppBarHeaders.values[headerIndex].getString(),
-          style: AppStyles.regularText(),
-        ),
-        alwaysHighlight: isActive,
+    return Semantics(
+      button: true,
+      label: 'Navigate to ${AppBarHeaders.values[headerIndex].getString()}',
+      child: GestureDetector(
         onTap: isActive ? null : () => AppNavigator.pushReplacement(_route),
-        glowColor: Theme.of(context).colorScheme.primary,
+        child: HoverGlowText(
+          text: Text(
+            AppBarHeaders.values[headerIndex].getString(),
+            style: AppStyles.regularText(),
+          ),
+          alwaysHighlight: isActive,
+          onTap: isActive ? null : () => AppNavigator.pushReplacement(_route),
+          glowColor: Theme.of(context).colorScheme.primary,
+        ),
       ),
     );
   }

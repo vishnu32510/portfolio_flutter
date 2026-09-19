@@ -11,3 +11,6 @@
 ## 2026-09-19 - Contact Form Clarity Fix
 **Learning:** Labels that imply in-app processing ('Submit') cause confusion when the actual action opens an external app (like an email client via mailto).
 **Action:** Use precise verbs that match the outcome, such as 'Send via Email', and ensure feedback messages accurately reflect the technical behavior (e.g., 'Opening email client...' instead of 'Redirecting to Gmail!').
+## 2026-09-19 - Add Semantics to GestureDetector
+**Learning:** Custom interactive elements (like `GestureDetector`) often lack inherent accessibility properties, making them invisible or confusing to screen reader users. Adding a `Semantics` widget with `button: true` and a descriptive `label` ensures these elements are properly announced as actionable buttons by assistive technologies.
+**Action:** Always wrap custom interactive elements (e.g., `GestureDetector`, `InkWell`) with a `Semantics` widget that provides a clear `label` and sets `button: true` when they function as buttons.
