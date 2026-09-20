@@ -31,31 +31,37 @@ class ProjectTagSelector extends StatelessWidget {
             .map(
               (tag) => MouseRegion(
                 cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                  onTap: () => onChanged(tag),
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 400),
-                    decoration: BoxDecoration(
-                      borderRadius: selectedTag == tag
-                          ? AppSizes.borderRadiusRegular
-                          : AppSizes.borderRadiusSmall,
-                      border: selectedTag == tag
-                          ? null
-                          : Border.all(color: colors.outline),
-                      color: selectedTag == tag
-                          ? colors.primary
-                          : colors.surface.withValues(alpha: 0.8),
-                    ),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: AppSizes.spacingRegular,
-                      vertical: AppSizes.spacingSmall,
-                    ),
-                    child: Text(
-                      tag.value,
-                      style: selectedTag == tag
-                          ? AppStyles.smallTextBold(textColor: colors.onPrimary)
-                          : AppStyles.smallText(),
-                      textAlign: TextAlign.center,
+                child: Semantics(
+                  button: true,
+                  label: 'Filter by ${tag.value}',
+                  child: GestureDetector(
+                    onTap: () => onChanged(tag),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 400),
+                      decoration: BoxDecoration(
+                        borderRadius: selectedTag == tag
+                            ? AppSizes.borderRadiusRegular
+                            : AppSizes.borderRadiusSmall,
+                        border: selectedTag == tag
+                            ? null
+                            : Border.all(color: colors.outline),
+                        color: selectedTag == tag
+                            ? colors.primary
+                            : colors.surface.withValues(alpha: 0.8),
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppSizes.spacingRegular,
+                        vertical: AppSizes.spacingSmall,
+                      ),
+                      child: Text(
+                        tag.value,
+                        style: selectedTag == tag
+                            ? AppStyles.smallTextBold(
+                                textColor: colors.onPrimary,
+                              )
+                            : AppStyles.smallText(),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 ),
