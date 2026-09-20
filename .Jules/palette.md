@@ -11,3 +11,6 @@
 ## 2026-09-19 - Contact Form Clarity Fix
 **Learning:** Labels that imply in-app processing ('Submit') cause confusion when the actual action opens an external app (like an email client via mailto).
 **Action:** Use precise verbs that match the outcome, such as 'Send via Email', and ensure feedback messages accurately reflect the technical behavior (e.g., 'Opening email client...' instead of 'Redirecting to Gmail!').
+## 2023-10-27 - Improve tooltip semantics for mobile menu
+**Learning:** Generic tooltips like 'More' on hamburger menus do not provide clear semantic context for users, particularly those relying on screen readers.
+**Action:** Use specific, action-oriented or descriptive tooltips like 'Navigation Menu' for key interactive elements.

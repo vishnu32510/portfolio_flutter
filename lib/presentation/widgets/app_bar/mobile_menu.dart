@@ -19,7 +19,7 @@ class _MobileMenuState extends State<MobileMenu> {
     final colors = Theme.of(context).colorScheme;
 
     return PopupMenuButton<dynamic>(
-      tooltip: 'More',
+      tooltip: 'Navigation Menu',
       offset: Offset(0, AppSizes.spacingXL + AppSizes.spacingSmall),
       shape: RoundedRectangleBorder(
         borderRadius: AppSizes.borderRadiusSmall,
