@@ -15,3 +15,7 @@
 **Learning:** Custom interactive elements (like `GestureDetector`) often lack inherent accessibility properties, making them invisible or confusing to screen reader users. Adding a `Semantics` widget with `button: true` and a descriptive `label` ensures these elements are properly announced as actionable buttons by assistive technologies.
 **Action:** Always wrap custom interactive elements (e.g., `GestureDetector`, `InkWell`) with a `Semantics` widget that provides a clear `label` and sets `button: true` when they function as buttons.
 \n## 2026-09-20 - Wrap custom interactive elements in Project Tag Selector with Semantics\n**Learning:** Filtering elements built with `GestureDetector` lack semantic meaning, causing screen readers to ignore them or announce them incorrectly.\n**Action:** Wrapped the `GestureDetector` inside `ProjectTagSelector` with a `Semantics` widget (setting `button: true` and providing a descriptive `label`) so assistive technologies correctly identify them as filter buttons.
+
+## 2026-09-21 - Add Tooltip and Semantics to ScrollDownHint GestureDetector
+**Learning:** Icon-only floating action buttons implemented with custom `GestureDetector` widgets are completely opaque to screen readers and offer no hover hints for desktop users, leading to a poor UX and accessibility barriers.
+**Action:** Always wrap custom icon-only interactive elements (like `GestureDetector`) with both a `Tooltip` for visual hover feedback and a `Semantics` widget (with `button: true` and a clear `label`) for screen reader support.
