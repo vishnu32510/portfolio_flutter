@@ -19,3 +19,6 @@
 ## 2026-09-21 - Add Tooltip and Semantics to ScrollDownHint GestureDetector
 **Learning:** Icon-only floating action buttons implemented with custom `GestureDetector` widgets are completely opaque to screen readers and offer no hover hints for desktop users, leading to a poor UX and accessibility barriers.
 **Action:** Always wrap custom icon-only interactive elements (like `GestureDetector`) with both a `Tooltip` for visual hover feedback and a `Semantics` widget (with `button: true` and a clear `label`) for screen reader support.
+## 2024-05-18 - Accessibility for Custom Interactive Widgets
+**Learning:** Custom interactive elements created with `GestureDetector` or `InkWell` (especially those acting as buttons or links) are invisible to screen readers without explicit semantic metadata.
+**Action:** Always wrap `GestureDetector` and `InkWell` in `Semantics(button: true, label: "...")` or `Semantics(link: true, label: "...")` to ensure screen readers can navigate and interpret custom UI elements.
