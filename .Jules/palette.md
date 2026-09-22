@@ -19,3 +19,7 @@
 ## 2026-09-21 - Add Tooltip and Semantics to ScrollDownHint GestureDetector
 **Learning:** Icon-only floating action buttons implemented with custom `GestureDetector` widgets are completely opaque to screen readers and offer no hover hints for desktop users, leading to a poor UX and accessibility barriers.
 **Action:** Always wrap custom icon-only interactive elements (like `GestureDetector`) with both a `Tooltip` for visual hover feedback and a `Semantics` widget (with `button: true` and a clear `label`) for screen reader support.
+
+## 2026-09-22 - Wrap custom interactive link elements in Project links with Semantics
+**Learning:** Link elements built with `GestureDetector` lack semantic meaning, causing screen readers to ignore them or announce them incorrectly. When replacing `InkWell` with `GestureDetector` and `MouseRegion` for styling, it's easy to forget `Semantics`.
+**Action:** Wrapped the `GestureDetector` inside `_buildLink` in `ProjectItemNew` with a `Semantics` widget (setting `button: true` and providing a descriptive `label`) so assistive technologies correctly identify them as links.

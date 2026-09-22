@@ -443,49 +443,53 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
   ) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: () async {
-          AnalyticsService.logProjectClick(
-            projectName: widget.project.name,
-            linkType: label,
-            url: url,
-          );
-          final uri = Uri.parse(url);
-          if (await canLaunchUrl(uri)) {
-            await launchUrl(uri, mode: LaunchMode.externalApplication);
-          }
-        },
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            if (icon is FaIconData)
-              FaIcon(
-                icon,
-                size: AppSizes.iconXS,
-                color: Theme.of(
-                  context,
-                ).colorScheme.onSurface.withValues(alpha: 0.7),
-              )
-            else if (icon is IconData)
-              Icon(
-                icon,
-                size: AppSizes.iconXS,
-                color: Theme.of(
-                  context,
-                ).colorScheme.onSurface.withValues(alpha: 0.7),
+      child: Semantics(
+        button: true,
+        label: 'Open $label link',
+        child: GestureDetector(
+          onTap: () async {
+            AnalyticsService.logProjectClick(
+              projectName: widget.project.name,
+              linkType: label,
+              url: url,
+            );
+            final uri = Uri.parse(url);
+            if (await canLaunchUrl(uri)) {
+              await launchUrl(uri, mode: LaunchMode.externalApplication);
+            }
+          },
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              if (icon is FaIconData)
+                FaIcon(
+                  icon,
+                  size: AppSizes.iconXS,
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.7),
+                )
+              else if (icon is IconData)
+                Icon(
+                  icon,
+                  size: AppSizes.iconXS,
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.7),
+                ),
+              SizedBox(width: AppSizes.spacingSmallRegular),
+              Text(
+                label,
+                style: AppStyles.smallText(
+                  textColor: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.7),
+                ),
               ),
-            SizedBox(width: AppSizes.spacingSmallRegular),
-            Text(
-              label,
-              style: AppStyles.smallText(
-                textColor: Theme.of(
-                  context,
-                ).colorScheme.onSurface.withValues(alpha: 0.7),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
