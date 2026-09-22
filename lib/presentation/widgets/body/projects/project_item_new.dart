@@ -444,8 +444,8 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: Semantics(
-        button: true,
-        label: 'Open $label link',
+        link: true,
+        label: 'Open $label for ${widget.project.name}',
         child: GestureDetector(
           onTap: () async {
             AnalyticsService.logProjectClick(
