@@ -120,7 +120,9 @@ class _IntroTextState extends State<IntroText>
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(999),
-                          color: const Color(0xFF22C55E).withValues(alpha: 0.10),
+                          color: const Color(
+                            0xFF22C55E,
+                          ).withValues(alpha: 0.10),
                           border: Border.all(
                             color: const Color(
                               0xFF22C55E,
