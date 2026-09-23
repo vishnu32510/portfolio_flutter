@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/utils/app_enums.dart';
 import '../../../../core/utils/app_extensions.dart';
+import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';
 
@@ -96,53 +97,73 @@ class _IntroTextState extends State<IntroText>
             ),
 
             // ── "Available for Opportunities" Badge ───────────────────────────
-            AnimatedBuilder(
-              animation: _pulseAnim,
-              builder: (context, child) => Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 14,
-                  vertical: 7,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(999),
-                  color: const Color(0xFF22C55E).withValues(alpha: 0.10),
-                  border: Border.all(
-                    color: const Color(
-                      0xFF22C55E,
-                    ).withValues(alpha: _pulseAnim.value),
-                    width: 1.5,
-                  ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      width: 8,
-                      height: 8,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: const Color(
-                          0xFF22C55E,
-                        ).withValues(alpha: _pulseAnim.value),
-                        boxShadow: [
-                          BoxShadow(
+            Tooltip(
+              message: 'Email me',
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: Semantics(
+                  button: true,
+                  label: 'Email me for opportunities',
+                  child: GestureDetector(
+                    onTap: () async {
+                      final uri = Uri.parse(AppStrings.developerEmail);
+                      if (await canLaunchUrl(uri)) {
+                        await launchUrl(uri);
+                      }
+                    },
+                    child: AnimatedBuilder(
+                      animation: _pulseAnim,
+                      builder: (context, child) => Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 14,
+                          vertical: 7,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(999),
+                          color: const Color(
+                            0xFF22C55E,
+                          ).withValues(alpha: 0.10),
+                          border: Border.all(
                             color: const Color(
                               0xFF22C55E,
-                            ).withValues(alpha: _pulseAnim.value * 0.6),
-                            blurRadius: 8,
-                            spreadRadius: 2,
+                            ).withValues(alpha: _pulseAnim.value),
+                            width: 1.5,
                           ),
-                        ],
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 8,
+                              height: 8,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: const Color(
+                                  0xFF22C55E,
+                                ).withValues(alpha: _pulseAnim.value),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: const Color(
+                                      0xFF22C55E,
+                                    ).withValues(alpha: _pulseAnim.value * 0.6),
+                                    blurRadius: 8,
+                                    spreadRadius: 2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              'Available for Opportunities',
+                              style: AppStyles.smallTextBold(
+                                textColor: const Color(0xFF22C55E),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    const SizedBox(width: 8),
-                    Text(
-                      'Available for Opportunities',
-                      style: AppStyles.smallTextBold(
-                        textColor: const Color(0xFF22C55E),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),
