@@ -26,3 +26,6 @@
 ## 2024-05-18 - Accessibility for Custom Interactive Widgets
 **Learning:** Custom interactive elements created with `GestureDetector` or `InkWell` (especially those acting as buttons or links) are invisible to screen readers without explicit semantic metadata.
 **Action:** Always wrap `GestureDetector` and `InkWell` in `Semantics(button: true, label: "...")` or `Semantics(link: true, label: "...")` to ensure screen readers can navigate and interpret custom UI elements.
+## 2026-09-23 - Interactive Badges
+**Learning:** Static status badges (like 'Available for Opportunities') are missed opportunities for immediate action, adding friction for users.
+**Action:** When adding status badges that indicate user availability, wrap them in interactive elements (e.g., `GestureDetector`, `Tooltip`, `Semantics(button: true)`) to convert them into clear Calls to Action (CTAs).
