@@ -29,3 +29,6 @@
 ## 2026-09-23 - Interactive Badges
 **Learning:** Static status badges (like 'Available for Opportunities') are missed opportunities for immediate action, adding friction for users.
 **Action:** When adding status badges that indicate user availability, wrap them in interactive elements (e.g., `GestureDetector`, `Tooltip`, `Semantics(button: true)`) to convert them into clear Calls to Action (CTAs).
+## 2024-11-13 - [Cross-platform navigation]
+**Learning:** Hardcoding web-only APIs like `web.window.open` in presentation code breaks compilation on native platforms.
+**Action:** Always utilize an abstracted service that relies on cross-platform dependencies (like `url_launcher`) for generic external link navigations.

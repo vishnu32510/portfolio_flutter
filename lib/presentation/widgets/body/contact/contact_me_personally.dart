@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:web/web.dart' as web;
+import '../../../../core/services/services.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
@@ -45,7 +45,7 @@ class ContactMePersonally extends StatelessWidget {
           label: 'Email Me',
           child: InkWell(
             onTap: () {
-              web.window.open(AppStrings.developerEmail, '_blank');
+              OpenLinkService().openUrl(link: AppStrings.developerEmail);
             },
             child: Container(
               padding: const EdgeInsets.all(20),
