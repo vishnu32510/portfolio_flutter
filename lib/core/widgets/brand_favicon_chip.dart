@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+import '../services/services.dart';
 
 /// Rounded chip that shows a bundled asset or network favicon-style image.
 ///
@@ -25,11 +26,7 @@ class BrandFaviconChip extends StatelessWidget {
   Future<void> _openLink() async {
     final raw = linkUrl?.trim();
     if (raw == null || raw.isEmpty) return;
-    final uri = Uri.tryParse(raw);
-    if (uri == null) return;
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
+    OpenLinkService().openUrl(link: raw);
   }
 
   @override
@@ -115,7 +112,11 @@ class BrandFaviconChip extends StatelessWidget {
       message: tooltipMessage,
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
-        child: GestureDetector(onTap: _openLink, child: box),
+        child: Semantics(
+          button: true,
+          label: tooltipMessage,
+          child: GestureDetector(onTap: _openLink, child: box),
+        ),
       ),
     );
   }
