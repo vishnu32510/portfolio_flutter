@@ -86,7 +86,7 @@ class _MobileMenuState extends State<MobileMenu> {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
+                FaIcon(
                   FontAwesomeIcons.arrowUpRightFromSquare,
                   size: AppSizes.iconSmall,
                   color: popupColors.primary,
