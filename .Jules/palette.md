@@ -29,6 +29,9 @@
 ## 2026-09-23 - Interactive Badges
 **Learning:** Static status badges (like 'Available for Opportunities') are missed opportunities for immediate action, adding friction for users.
 **Action:** When adding status badges that indicate user availability, wrap them in interactive elements (e.g., `GestureDetector`, `Tooltip`, `Semantics(button: true)`) to convert them into clear Calls to Action (CTAs).
+## 2026-09-25 - Content Clarity Improvements
+**Learning:** Grammar errors and overly wordy text can decrease readability and perceived professionalism.
+**Action:** When auditing copy, prioritize conciseness, correct grammar, and a consistent perspective (e.g., first-person for personal portfolios).
 ## 2026-09-27 - [BrandFaviconChip Accessibility and Consistency]
 **Learning:** Interactive UI elements wrapped in `GestureDetector` without explicit semantic descriptions are inaccessible to screen readers, missing critical context when linked out to external URLs.
 **Action:** When implementing custom buttons or external link chips using `GestureDetector` or `InkWell`, always wrap them in a `Semantics` widget with `button: true` and an appropriately descriptive `label`. Additionally, utilize standard project services like `OpenLinkService` instead of `url_launcher` directly for link operations.
