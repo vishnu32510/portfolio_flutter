@@ -35,3 +35,6 @@
 ## 2026-09-27 - [BrandFaviconChip Accessibility and Consistency]
 **Learning:** Interactive UI elements wrapped in `GestureDetector` without explicit semantic descriptions are inaccessible to screen readers, missing critical context when linked out to external URLs.
 **Action:** When implementing custom buttons or external link chips using `GestureDetector` or `InkWell`, always wrap them in a `Semantics` widget with `button: true` and an appropriately descriptive `label`. Additionally, utilize standard project services like `OpenLinkService` instead of `url_launcher` directly for link operations.
+## 2024-05-18 - [Cross-platform link handling]
+**Learning:** Using platform-specific imports like package:web directly in UI code can break compilation on non-web platforms.
+**Action:** Use an abstraction like OpenLinkService().openUrl() instead of web.window.open to handle URLs consistently across web and mobile platforms.
