@@ -38,3 +38,7 @@
 ## 2024-05-18 - [Cross-platform link handling]
 **Learning:** Using platform-specific imports like package:web directly in UI code can break compilation on non-web platforms.
 **Action:** Use an abstraction like OpenLinkService().openUrl() instead of web.window.open to handle URLs consistently across web and mobile platforms.
+
+## 2024-05-18 - [Centralize external link handling]
+**Learning:** Hardcoding url_launcher calls across UI files can lead to inconsistencies and misses in analytics or error handling.
+**Action:** Always prefer using a centralized service like `OpenLinkService().openUrl()` instead of raw `url_launcher` functions to ensure uniform behavior and cleaner UI code.
