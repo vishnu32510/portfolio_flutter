@@ -106,7 +106,9 @@ class _IntroTextState extends State<IntroText>
                   label: 'Email me for opportunities',
                   child: GestureDetector(
                     onTap: () {
-                      OpenLinkService().openUrl(link: AppStrings.developerEmail);
+                      OpenLinkService().openUrl(
+                        link: AppStrings.developerEmail,
+                      );
                     },
                     child: AnimatedBuilder(
                       animation: _pulseAnim,
