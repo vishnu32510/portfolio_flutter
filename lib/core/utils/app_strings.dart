@@ -47,7 +47,7 @@ abstract class AppStrings {
   static const String projectsMsg =
       "I have successfully delivered 8+ large-scale projects, focusing on innovative solutions and exceptional user experiences. I take pride in building reliable, high-performance applications that solve real-world problems.";
   static const String contactMsg =
-      "Feel free to reach out for any projects, collaborations, or inquiries via email or through my social media profiles.";
+      "Have a project in mind, a question, or just want to say hi? Send me a message using the form below or reach out via my social profiles.";
   static const String contactWithMe = 'Connect with me';
 
   // New sections
