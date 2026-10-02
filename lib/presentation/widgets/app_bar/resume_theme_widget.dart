@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/services/analytics_service.dart';
+import '../../../core/services/services.dart';
 import '../../../core/utils/app_sizes.dart';
 import '../../../core/utils/app_styles.dart';
 
@@ -37,17 +37,11 @@ class ResumeThemeWidget extends StatelessWidget {
                   button: true,
                   label: 'Open Resume',
                   child: GestureDetector(
-                    onTap: () async {
+                    onTap: () {
                       AnalyticsService.logResumeClick(
                         source: 'header_resume_btn',
                       );
-                      final uri = Uri.parse(resumeLink);
-                      if (await canLaunchUrl(uri)) {
-                        await launchUrl(
-                          uri,
-                          mode: LaunchMode.externalApplication,
-                        );
-                      }
+                      OpenLinkService().openUrl(link: resumeLink);
                     },
                     child: Container(
                       height: AppSizes.spacingXL,
