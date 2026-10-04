@@ -1,13 +1,13 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/utils/app_enums.dart';
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_styles.dart';
+import '../../../../core/services/services.dart';
 import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';
 
 class IntroText extends StatefulWidget {
@@ -106,10 +106,9 @@ class _IntroTextState extends State<IntroText>
                   label: 'Email me for opportunities',
                   child: GestureDetector(
                     onTap: () async {
-                      final uri = Uri.parse(AppStrings.developerEmail);
-                      if (await canLaunchUrl(uri)) {
-                        await launchUrl(uri);
-                      }
+                      OpenLinkService().openUrl(
+                        link: AppStrings.developerEmail,
+                      );
                     },
                     child: AnimatedBuilder(
                       animation: _pulseAnim,
@@ -238,10 +237,7 @@ class _HighlightBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future<void> onTap(String url) async {
-      final uri = Uri.parse(url);
-      if (await canLaunchUrl(uri)) {
-        await launchUrl(uri, mode: LaunchMode.externalApplication);
-      }
+      OpenLinkService().openUrl(link: url);
     }
 
     String chipLabel(String url) {
