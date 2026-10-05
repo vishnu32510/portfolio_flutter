@@ -289,8 +289,9 @@ class _ExperienceItemState extends State<ExperienceItem> {
     );
     final typeColor = _getTypeColor(experienceType);
 
-    return MouseRegion(
-      cursor: _collapsed ? SystemMouseCursors.click : SystemMouseCursors.basic,
+    Widget mainContent = Semantics(
+      button: _collapsed,
+      label: _collapsed ? 'Expand experience details' : null,
       child: GestureDetector(
         onTap: _collapsed ? () => setState(() => _collapsed = false) : null,
         child: TimelineContainer(
@@ -368,28 +369,37 @@ class _ExperienceItemState extends State<ExperienceItem> {
                   alignment: Alignment.center,
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
-                    child: GestureDetector(
-                      onTap: () => setState(() => _collapsed = true),
-                      child: BounceAnimator(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.keyboard_arrow_up_rounded,
-                              size: AppSizes.iconSmall,
-                              color: colors.onSurface.withValues(alpha: 0.5),
-                            ),
-                            Text(
-                              'Collapse',
-                              style: AppStyles.smallText(
-                                textColor: colors.onSurface.withValues(
-                                  alpha: 0.5,
+                    child: Tooltip(
+                      message: 'Collapse details',
+                      child: Semantics(
+                        button: true,
+                        label: 'Collapse experience details',
+                        child: GestureDetector(
+                          onTap: () => setState(() => _collapsed = true),
+                          child: BounceAnimator(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.keyboard_arrow_up_rounded,
+                                  size: AppSizes.iconSmall,
+                                  color: colors.onSurface.withValues(
+                                    alpha: 0.5,
+                                  ),
                                 ),
-                              ),
+                                Text(
+                                  'Collapse',
+                                  style: AppStyles.smallText(
+                                    textColor: colors.onSurface.withValues(
+                                      alpha: 0.5,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
                     ),
@@ -400,6 +410,15 @@ class _ExperienceItemState extends State<ExperienceItem> {
           ),
         ),
       ),
+    );
+
+    if (_collapsed) {
+      mainContent = Tooltip(message: 'Expand details', child: mainContent);
+    }
+
+    return MouseRegion(
+      cursor: _collapsed ? SystemMouseCursors.click : SystemMouseCursors.basic,
+      child: mainContent,
     );
   }
 }
