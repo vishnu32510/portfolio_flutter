@@ -23,7 +23,7 @@
 ## 2026-09-22 - Wrap custom interactive link elements in Project links with Semantics
 **Learning:** Link elements built with `GestureDetector` lack semantic meaning, causing screen readers to ignore them or announce them incorrectly. When replacing `InkWell` with `GestureDetector` and `MouseRegion` for styling, it's easy to forget `Semantics`.
 **Action:** Wrapped the `GestureDetector` inside `_buildLink` in `ProjectItemNew` with a `Semantics` widget (setting `button: true` and providing a descriptive `label`) so assistive technologies correctly identify them as links.
-## 2024-05-18 - Accessibility for Custom Interactive Widgets
+## 2026-10-05 - Accessibility for Custom Interactive Widgets
 **Learning:** Custom interactive elements created with `GestureDetector` or `InkWell` (especially those acting as buttons or links) are invisible to screen readers without explicit semantic metadata.
 **Action:** Always wrap `GestureDetector` and `InkWell` in `Semantics(button: true, label: "...")` or `Semantics(link: true, label: "...")` to ensure screen readers can navigate and interpret custom UI elements.
 ## 2026-09-23 - Interactive Badges
@@ -35,7 +35,15 @@
 ## 2026-09-27 - [BrandFaviconChip Accessibility and Consistency]
 **Learning:** Interactive UI elements wrapped in `GestureDetector` without explicit semantic descriptions are inaccessible to screen readers, missing critical context when linked out to external URLs.
 **Action:** When implementing custom buttons or external link chips using `GestureDetector` or `InkWell`, always wrap them in a `Semantics` widget with `button: true` and an appropriately descriptive `label`. Additionally, utilize standard project services like `OpenLinkService` instead of `url_launcher` directly for link operations.
-## 2024-05-18 - [Cross-platform link handling]
+## 2026-10-05 - [Cross-platform link handling]
 **Learning:** Using platform-specific imports like package:web directly in UI code can break compilation on non-web platforms.
 **Action:** Use an abstraction like OpenLinkService().openUrl() instead of web.window.open to handle URLs consistently across web and mobile platforms.
 ## 2024-10-01 - Add Tooltip to Interactive Badges\n**Learning:** Interactive UI elements wrapped in `GestureDetector` and `Semantics` should also provide visual feedback on hover (for desktop) and long-press (for mobile) to indicate actionability to sighted users.\n**Action:** When wrapping icon-only or badge-like elements with `Semantics` for accessibility, also wrap them in a `Tooltip` widget to ensure a hover text description appears, improving discoverability.
+
+## 2026-10-05 - Experience Timeline Accessibility Improvement
+**Learning:** Custom interactive elements (like `GestureDetector` used for expand/collapse actions) in lists or timelines need explicit accessibility context. While sighted users might deduce interaction from the `MouseRegion` cursor change, screen readers and keyboard users require clear labels, and mouse users benefit from explicit tooltips.
+**Action:** When implementing expand/collapse interactions using custom gesture detectors, always wrap them in a `Semantics` widget with `button: true` and an appropriate `label`. Additionally, use a `Tooltip` to clarify the action for pointer users.
+
+## 2026-10-05 - Experience Timeline Accessibility Improvement
+**Learning:** Custom interactive elements (like `GestureDetector` used for expand/collapse actions) in lists or timelines need explicit accessibility context. While sighted users might deduce interaction from the `MouseRegion` cursor change, screen readers and keyboard users require clear labels, and mouse users benefit from explicit tooltips.
+**Action:** When implementing expand/collapse interactions using custom gesture detectors, always wrap them in a `Semantics` widget with `button: true` and an appropriate `label`. Additionally, use a `Tooltip` to clarify the action for pointer users.
