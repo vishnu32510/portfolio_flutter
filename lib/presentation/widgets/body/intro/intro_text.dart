@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../core/services/services.dart';
 import '../../../../core/utils/app_enums.dart';
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_strings.dart';
@@ -98,14 +99,14 @@ class _IntroTextState extends State<IntroText>
 
             // ── "Available for Opportunities" Badge ───────────────────────────
             Tooltip(
-              message: 'Email me',
+              message: 'Email me for opportunities',
               child: MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: Semantics(
                   button: true,
                   label: 'Email me for opportunities',
                   child: GestureDetector(
-                    onTap: () async {
+                    onTap: () {
                       OpenLinkService().openUrl(
                         link: AppStrings.developerEmail,
                       );
@@ -236,7 +237,7 @@ class _HighlightBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<void> onTap(String url) async {
+    void onTap(String url) {
       OpenLinkService().openUrl(link: url);
     }
 
