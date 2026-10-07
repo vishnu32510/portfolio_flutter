@@ -120,13 +120,11 @@ class _IntroTextState extends State<IntroText>
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(999),
-                          color: const Color(
-                            0xFF22C55E,
-                          ).withValues(alpha: 0.10),
+                          color: const Color(0xFF22C55E)
+                              .withValues(alpha: 0.10),
                           border: Border.all(
-                            color: const Color(
-                              0xFF22C55E,
-                            ).withValues(alpha: _pulseAnim.value),
+                            color: const Color(0xFF22C55E)
+                                .withValues(alpha: _pulseAnim.value),
                             width: 1.5,
                           ),
                         ),
@@ -138,9 +136,8 @@ class _IntroTextState extends State<IntroText>
                               height: 8,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: const Color(
-                                  0xFF22C55E,
-                                ).withValues(alpha: _pulseAnim.value),
+                                color: const Color(0xFF22C55E)
+                                    .withValues(alpha: _pulseAnim.value),
                                 boxShadow: [
                                   BoxShadow(
                                     color: const Color(
@@ -282,9 +279,8 @@ class _HighlightBadge extends StatelessWidget {
             Text(
               label,
               style: AppStyles.smallText(
-                textColor: Theme.of(
-                  context,
-                ).colorScheme.onSurface.withValues(alpha: 0.85),
+                textColor: Theme.of(context).colorScheme.onSurface
+                    .withValues(alpha: 0.85),
               ),
             ),
             if (!isSingle) ...[
@@ -307,22 +303,20 @@ class _HighlightBadge extends StatelessWidget {
                                 vertical: 6,
                               ),
                               decoration: BoxDecoration(
-                                color: Theme.of(
-                                  context,
-                                ).colorScheme.primary.withValues(alpha: 0.12),
+                                color: Theme.of(context).colorScheme.primary
+                                    .withValues(alpha: 0.12),
                                 borderRadius: BorderRadius.circular(999),
                                 border: Border.all(
-                                  color: Theme.of(
-                                    context,
-                                  ).colorScheme.primary.withValues(alpha: 0.35),
+                                  color: Theme.of(context).colorScheme.primary
+                                      .withValues(alpha: 0.35),
                                 ),
                               ),
                               child: Text(
                                 chipLabel(u),
                                 style: AppStyles.extraSmallTextThin(
-                                  textColor: Theme.of(
-                                    context,
-                                  ).colorScheme.primary,
+                                  textColor: Theme.of(context)
+                                      .colorScheme
+                                      .primary,
                                 ),
                               ),
                             ),

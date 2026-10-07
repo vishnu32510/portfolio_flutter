@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/services/analytics_service.dart';
+import '../../../core/services/services.dart';
 import '../../../core/utils/app_extensions.dart';
 import '../../../core/utils/app_styles.dart';
 import '../../../core/utils/app_sizes.dart';
@@ -112,9 +112,8 @@ class GlobalFooter extends StatelessWidget {
                           SelectableText(
                             'Built with Flutter',
                             style: AppStyles.smallText(
-                              textColor: Theme.of(
-                                context,
-                              ).colorScheme.onSurface.withValues(alpha: 0.8),
+                              textColor: Theme.of(context).colorScheme.onSurface
+                                  .withValues(alpha: 0.8),
                             ),
                           ),
                           SizedBox(width: AppSizes.spacingLarge),
@@ -127,9 +126,8 @@ class GlobalFooter extends StatelessWidget {
                           SelectableText(
                             'Deployed to Firebase',
                             style: AppStyles.smallText(
-                              textColor: Theme.of(
-                                context,
-                              ).colorScheme.onSurface.withValues(alpha: 0.8),
+                              textColor: Theme.of(context).colorScheme.onSurface
+                                  .withValues(alpha: 0.8),
                             ),
                           ),
                         ],
@@ -142,18 +140,16 @@ class GlobalFooter extends StatelessWidget {
                         children: [
                           FaIcon(
                             FontAwesomeIcons.copyright,
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.onSurface.withValues(alpha: 0.8),
+                            color: Theme.of(context).colorScheme.onSurface
+                                .withValues(alpha: 0.8),
                             size: AppSizes.iconXS,
                           ),
                           SizedBox(width: AppSizes.spacingSmall),
                           SelectableText(
                             'Designed & Built by ${portfolioState.data?.developerName ?? "Vishnu Priyan"} · ${DateTime.now().year}',
                             style: AppStyles.smallText(
-                              textColor: Theme.of(
-                                context,
-                              ).colorScheme.onSurface.withValues(alpha: 0.8),
+                              textColor: Theme.of(context).colorScheme.onSurface
+                                  .withValues(alpha: 0.8),
                             ),
                           ),
                         ],
@@ -180,17 +176,13 @@ class GlobalFooter extends StatelessWidget {
           child: GestureDetector(
             onTap: () async {
               AnalyticsService.logSocialClick(platform: url, url: url);
-              final uri = Uri.parse(url);
-              if (await canLaunchUrl(uri)) {
-                await launchUrl(uri);
-              }
+              OpenLinkService().openUrl(link: url);
             },
             child: FaIcon(
               icon,
               size: AppSizes.iconLarge,
-              color: Theme.of(
-                context,
-              ).colorScheme.onSurface.withValues(alpha: 0.8),
+              color: Theme.of(context).colorScheme.onSurface
+                  .withValues(alpha: 0.8),
             ),
           ),
         ),
