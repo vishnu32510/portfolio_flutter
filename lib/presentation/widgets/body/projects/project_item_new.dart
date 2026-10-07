@@ -3,9 +3,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/services/analytics_service.dart';
+import '../../../../core/services/services.dart';
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_sizes.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -455,10 +455,7 @@ class _ProjectItemNewState extends State<ProjectItemNew> {
                 linkType: label,
                 url: url,
               );
-              final uri = Uri.parse(url);
-              if (await canLaunchUrl(uri)) {
-                await launchUrl(uri, mode: LaunchMode.externalApplication);
-              }
+              OpenLinkService().openUrl(link: url);
             },
             child: Row(
               mainAxisSize: MainAxisSize.min,

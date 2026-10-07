@@ -8,7 +8,6 @@ import '../../../../core/utils/app_enums.dart';
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_styles.dart';
-import '../../../../core/services/services.dart';
 import '../../../blocs/portfolio_bloc/portfolio_bloc.dart';
 
 class IntroText extends StatefulWidget {

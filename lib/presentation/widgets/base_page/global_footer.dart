@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/services/analytics_service.dart';
+import '../../../core/services/services.dart';
 import '../../../core/utils/app_extensions.dart';
 import '../../../core/utils/app_styles.dart';
 import '../../../core/utils/app_sizes.dart';
@@ -180,10 +180,7 @@ class GlobalFooter extends StatelessWidget {
           child: GestureDetector(
             onTap: () async {
               AnalyticsService.logSocialClick(platform: url, url: url);
-              final uri = Uri.parse(url);
-              if (await canLaunchUrl(uri)) {
-                await launchUrl(uri);
-              }
+              OpenLinkService().openUrl(link: url);
             },
             child: FaIcon(
               icon,
