@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
+import '../../../../core/services/services.dart';
 
 import '../../../../core/utils/app_sizes.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -149,14 +149,10 @@ class ProjectItem extends StatelessWidget {
                           context,
                           icon: FontAwesomeIcons.code,
                           label: 'Code',
-                          onTap: () async {
-                            final uri = Uri.parse(project.githubRepoLink!);
-                            if (await canLaunchUrl(uri)) {
-                              await launchUrl(
-                                uri,
-                                mode: LaunchMode.externalApplication,
-                              );
-                            }
+                          onTap: () {
+                            OpenLinkService().openUrl(
+                              link: project.githubRepoLink!,
+                            );
                           },
                         ),
                       ),
@@ -169,14 +165,8 @@ class ProjectItem extends StatelessWidget {
                           context,
                           icon: FontAwesomeIcons.upRightFromSquare,
                           label: 'Demo',
-                          onTap: () async {
-                            final uri = Uri.parse(project.demoLink!);
-                            if (await canLaunchUrl(uri)) {
-                              await launchUrl(
-                                uri,
-                                mode: LaunchMode.externalApplication,
-                              );
-                            }
+                          onTap: () {
+                            OpenLinkService().openUrl(link: project.demoLink!);
                           },
                         ),
                       ),
