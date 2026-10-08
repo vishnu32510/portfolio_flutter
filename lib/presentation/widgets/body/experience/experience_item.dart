@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../core/services/services.dart';
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_sizes.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -46,14 +46,10 @@ class _ExperienceItemState extends State<ExperienceItem> {
     return null;
   }
 
-  Future<void> _openCompanySite() async {
+  void _openCompanySite() {
     final raw = widget.experience.companyUrl?.trim();
     if (raw == null || raw.isEmpty) return;
-    final uri = Uri.tryParse(raw);
-    if (uri == null) return;
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
+    OpenLinkService().openUrl(link: raw);
   }
 
   IconData _getIconForAchievement(String achievement) {

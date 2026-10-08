@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../core/services/services.dart';
 import '../../../../core/utils/app_sizes.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/utils/experience_utils.dart';
@@ -38,14 +38,10 @@ class EducationItem extends StatelessWidget {
     return l != null && l.isNotEmpty && m != null && m.isNotEmpty;
   }
 
-  Future<void> _openInstitutionSite() async {
+  void _openInstitutionSite() {
     final raw = education.institutionUrl?.trim();
     if (raw == null || raw.isEmpty) return;
-    final uri = Uri.tryParse(raw);
-    if (uri == null) return;
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
+    OpenLinkService().openUrl(link: raw);
   }
 
   Widget _buildInstitutionLine(ColorScheme colors) {
