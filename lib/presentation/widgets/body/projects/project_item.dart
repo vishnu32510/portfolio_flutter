@@ -150,7 +150,9 @@ class ProjectItem extends StatelessWidget {
                           icon: FontAwesomeIcons.code,
                           label: 'Code',
                           onTap: () {
-                            OpenLinkService().openUrl(link: project.githubRepoLink!);
+                            OpenLinkService().openUrl(
+                              link: project.githubRepoLink!,
+                            );
                           },
                         ),
                       ),
