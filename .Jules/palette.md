@@ -39,3 +39,6 @@
 **Learning:** Using platform-specific imports like package:web directly in UI code can break compilation on non-web platforms.
 **Action:** Use an abstraction like OpenLinkService().openUrl() instead of web.window.open to handle URLs consistently across web and mobile platforms.
 ## 2024-10-01 - Add Tooltip to Interactive Badges\n**Learning:** Interactive UI elements wrapped in `GestureDetector` and `Semantics` should also provide visual feedback on hover (for desktop) and long-press (for mobile) to indicate actionability to sighted users.\n**Action:** When wrapping icon-only or badge-like elements with `Semantics` for accessibility, also wrap them in a `Tooltip` widget to ensure a hover text description appears, improving discoverability.
+## 2024-10-12 - Improve ExperienceItem Accessibility
+**Learning:** Found multiple interactive `GestureDetector` widgets in custom components lacking basic `Semantics` descriptors, which prevents screen readers from identifying them as actionable elements or explaining their function (e.g. Expand/Collapse details).
+**Action:** When implementing or reviewing custom interactive widgets (especially expandable cards), always ensure they are wrapped in a `Semantics` widget providing an accurate `label` and setting `button: true` when appropriate.

@@ -289,83 +289,85 @@ class _ExperienceItemState extends State<ExperienceItem> {
     );
     final typeColor = _getTypeColor(experienceType);
 
-    return MouseRegion(
-      cursor: _collapsed ? SystemMouseCursors.click : SystemMouseCursors.basic,
-      child: GestureDetector(
-        onTap: _collapsed ? () => setState(() => _collapsed = false) : null,
-        child: TimelineContainer(
-          present: isPresent,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: double.infinity,
-                child: _buildHeader(
-                  colors,
-                  brightness,
-                  experienceType,
-                  typeColor,
-                ),
+    Widget content = GestureDetector(
+      onTap: _collapsed ? () => setState(() => _collapsed = false) : null,
+      child: TimelineContainer(
+        present: isPresent,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: double.infinity,
+              child: _buildHeader(
+                colors,
+                brightness,
+                experienceType,
+                typeColor,
               ),
-              if (!_collapsed) ...[
-                SizedBox(height: AppSizes.spacingLarge),
-                SequentialAnimator(
-                  itemDuration: const Duration(milliseconds: 200),
-                  curve: Curves.bounceInOut,
-                  animationBuilder: (child, animation) => FadeTransition(
-                    opacity: Tween<double>(begin: 0, end: 1).animate(animation),
-                    child: child,
-                  ),
-                  builder: (children) {
-                    final spacedChildren = <Widget>[];
-                    for (int i = 0; i < children.length; i++) {
-                      spacedChildren.add(children[i]);
-                      if (i < children.length - 1) {
-                        spacedChildren.add(
-                          SizedBox(height: AppSizes.spacingMedium),
-                        );
-                      }
-                    }
-                    return Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: spacedChildren,
-                    );
-                  },
-                  children: widget.experience.achievements.map((achievement) {
-                    return Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 2.5),
-                          child: Icon(
-                            _getIconForAchievement(achievement),
-                            size: AppSizes.iconSmall,
-                            color: colors.primary,
-                          ),
-                        ),
-                        SizedBox(width: AppSizes.spacingMedium),
-                        Expanded(
-                          child: Text(
-                            achievement,
-                            style: AppStyles.regularText(),
-                          ),
-                        ),
-                      ],
-                    );
-                  }).toList(),
+            ),
+            if (!_collapsed) ...[
+              SizedBox(height: AppSizes.spacingLarge),
+              SequentialAnimator(
+                itemDuration: const Duration(milliseconds: 200),
+                curve: Curves.bounceInOut,
+                animationBuilder: (child, animation) => FadeTransition(
+                  opacity: Tween<double>(begin: 0, end: 1).animate(animation),
+                  child: child,
                 ),
-              ],
-              if (!_collapsed && widget.collapsed) ...[
-                SizedBox(height: AppSizes.spacingMedium),
-                Container(
-                  width: double.infinity,
-                  alignment: Alignment.center,
+                builder: (children) {
+                  final spacedChildren = <Widget>[];
+                  for (int i = 0; i < children.length; i++) {
+                    spacedChildren.add(children[i]);
+                    if (i < children.length - 1) {
+                      spacedChildren.add(
+                        SizedBox(height: AppSizes.spacingMedium),
+                      );
+                    }
+                  }
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: spacedChildren,
+                  );
+                },
+                children: widget.experience.achievements.map((achievement) {
+                  return Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 2.5),
+                        child: Icon(
+                          _getIconForAchievement(achievement),
+                          size: AppSizes.iconSmall,
+                          color: colors.primary,
+                        ),
+                      ),
+                      SizedBox(width: AppSizes.spacingMedium),
+                      Expanded(
+                        child: Text(
+                          achievement,
+                          style: AppStyles.regularText(),
+                        ),
+                      ),
+                    ],
+                  );
+                }).toList(),
+              ),
+            ],
+            if (!_collapsed && widget.collapsed) ...[
+              SizedBox(height: AppSizes.spacingMedium),
+              Container(
+                width: double.infinity,
+                alignment: Alignment.center,
+                child: Semantics(
+                  button: true,
+                  label:
+                      'Collapse details for ${widget.experience.title} at ${widget.experience.company}',
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(
@@ -395,11 +397,25 @@ class _ExperienceItemState extends State<ExperienceItem> {
                     ),
                   ),
                 ),
-              ],
+              ),
             ],
-          ),
+          ],
         ),
       ),
+    );
+
+    if (_collapsed) {
+      content = Semantics(
+        button: true,
+        label:
+            'Expand details for ${widget.experience.title} at ${widget.experience.company}',
+        child: content,
+      );
+    }
+
+    return MouseRegion(
+      cursor: _collapsed ? SystemMouseCursors.click : SystemMouseCursors.basic,
+      child: content,
     );
   }
 }
