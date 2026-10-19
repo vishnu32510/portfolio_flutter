@@ -170,10 +170,10 @@ class _ContactFormState extends State<ContactForm> {
       context,
     ).showSnackBar(const SnackBar(content: Text("Opening email client...")));
     final subject = Uri.encodeComponent(_subjectController.text);
-    final bodyText = "My Name is ${_nameController.text} with ${_emailController.text} and I would like to send you a message: ${_messageController.text}";
+    final bodyText =
+        "My Name is ${_nameController.text} with ${_emailController.text} and I would like to send you a message: ${_messageController.text}";
     final body = Uri.encodeComponent(bodyText);
-    final emailUrl =
-        "${AppStrings.developerEmail}?subject=$subject&body=$body";
+    final emailUrl = "${AppStrings.developerEmail}?subject=$subject&body=$body";
     OpenLinkService().openUrl(link: emailUrl);
   }
 
