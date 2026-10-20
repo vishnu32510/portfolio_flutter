@@ -1,0 +1,5 @@
+Observed behavior: The "Send via Email" button in the contact form constructs a `mailto:` URL by directly interpolating user inputs (Name, Email, Subject, Message) without URL-encoding them.
+Affected user task: Reaching out via the contact form on the portfolio website.
+Evidence and likely consequence: If a user types special characters (e.g., `&`, `=`, `?`, or newlines) in the subject or message, the resulting `mailto:` link will be malformed, which can break the generated email format or cause the email client to fail to open correctly, leading to lost user intent and poor reliability. This is a functional bug that blocks a critical user journey.
+Smallest useful fix: Wrap the `_subjectController.text` and the interpolated body string with `Uri.encodeComponent()` before appending them to the `mailto:` URL.
+Verification method: Ran `fvm flutter test` and `fvm flutter analyze` to ensure the Dart code is valid and does not introduce regressions.
