@@ -134,28 +134,32 @@ class AboutMeSection extends StatelessWidget {
                                 context,
                                 icon: Icons.smart_toy,
                                 title: 'AI Driven Development',
-                                description: 'Agentic workflows, RAG, LLM pipelines, and more. Using LangChain/AutoGen, MCP, RAG, OCR+LLM extraction, Vector embeddings.',
+                                description:
+                                    'Agentic workflows, RAG, LLM pipelines, and more. Using LangChain/AutoGen, MCP, RAG, OCR+LLM extraction, Vector embeddings.',
                                 color: Colors.green,
                               ),
                               _buildPhilosophyCard(
                                 context,
                                 icon: Icons.code,
                                 title: 'Clean Code',
-                                description: 'Writing maintainable, scalable code following SOLID principles and best practices.',
+                                description:
+                                    'Writing maintainable, scalable code following SOLID principles and best practices.',
                                 color: Colors.blue,
                               ),
                               _buildPhilosophyCard(
                                 context,
                                 icon: Icons.architecture,
                                 title: 'System Design',
-                                description: 'Designing robust architectures that scale with business needs and handle complexity gracefully.',
+                                description:
+                                    'Designing robust architectures that scale with business needs and handle complexity gracefully.',
                                 color: Colors.purple,
                               ),
                               _buildPhilosophyCard(
                                 context,
                                 icon: Icons.people,
                                 title: 'Collaboration',
-                                description: 'Working closely with teams, mentoring developers, and contributing to open-source projects.',
+                                description:
+                                    'Working closely with teams, mentoring developers, and contributing to open-source projects.',
                                 color: Colors.green,
                               ),
                             ],
