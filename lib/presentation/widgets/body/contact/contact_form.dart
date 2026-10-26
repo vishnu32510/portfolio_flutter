@@ -166,8 +166,9 @@ class _ContactFormState extends State<ContactForm> {
   }
 
   Future<void> sendEmail() async {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(const SnackBar(content: Text("Opening email client...")));
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text("Opening email client...")));
 
     final subject = Uri.encodeComponent(_subjectController.text);
     final body = Uri.encodeComponent(
