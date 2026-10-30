@@ -32,9 +32,8 @@ class VerticalHeadersBuilder extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30.0),
-                  color: Theme.of(
-                    context,
-                  ).colorScheme.onSurface.withValues(alpha: 0.1),
+                  color: Theme.of(context).colorScheme.onSurface
+                      .withValues(alpha: 0.1),
                 ),
                 child: const VerticalHeaders(),
               ),
