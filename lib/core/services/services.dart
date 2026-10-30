@@ -25,7 +25,7 @@ class OpenLinkService extends Services {
 }
 
 class HttpServices extends Services {
-  Future postMethod(String url, var body) async {
+  Future postMethod(String url, dynamic body) async {
     try {
       var data = await http
           .post(
@@ -62,7 +62,7 @@ class HttpServices extends Services {
     }
   }
 
-  Future putMethod(String url, var body) async {
+  Future putMethod(String url, dynamic body) async {
     try {
       var data = await http
           .put(
