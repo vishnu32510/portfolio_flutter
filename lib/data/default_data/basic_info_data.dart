@@ -11,7 +11,8 @@ class BasicInfoData {
     'email': 'mailto:vishnu32510@gmail.com',
     'devpost': 'https://devpost.com/vishnu32510',
     'twitter': 'https://twitter.com/vishnu32510',
-    'stackOverflow': 'https://stackoverflow.com/users/15953982/vishnu-priyan-s-s?tab=profile',
+    'stackOverflow':
+        'https://stackoverflow.com/users/15953982/vishnu-priyan-s-s?tab=profile',
     'instagram': 'https://www.instagram.com/vishnu32510/',
     'portfolio': 'https://floxi.co',
   };

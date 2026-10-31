@@ -17,8 +17,9 @@ class Subtext extends StatelessWidget {
         text,
         style: AppStyles.subText(
           isMobile: context.isMobile,
-          textColor: Theme.of(context).colorScheme.onSurface
-              .withValues(alpha: 0.7),
+          textColor: Theme.of(
+            context,
+          ).colorScheme.onSurface.withValues(alpha: 0.7),
         ),
         textAlign: TextAlign.center,
       ),
