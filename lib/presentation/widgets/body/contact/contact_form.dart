@@ -169,8 +169,12 @@ class _ContactFormState extends State<ContactForm> {
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(const SnackBar(content: Text("Opening email client...")));
+    final encodedSubject = Uri.encodeComponent(_subjectController.text);
+    final encodedBody = Uri.encodeComponent(
+      "My Name is ${_nameController.text} with ${_emailController.text} and I would like to send you a message: ${_messageController.text}",
+    );
     final emailUrl =
-        "${AppStrings.developerEmail}?subject=${_subjectController.text}&body=My Name is ${_nameController.text} with ${_emailController.text} and I would like to send you a message: ${_messageController.text}";
+        "${AppStrings.developerEmail}?subject=$encodedSubject&body=$encodedBody";
     OpenLinkService().openUrl(link: emailUrl);
   }
 
