@@ -15,14 +15,12 @@ abstract class AppConstants {
     CustomService(
       service: 'RESPONSIVENESS UI',
       logo: AppAssets.uiDesignLogo,
-      description:
-          'Working on enhancing the user interface and experience with focus on aesthetics and functionality. My repressiveness designing and  and skills  ensure that your application looks great and offers a seamless and user-friendly experience.',
+      description: 'Working on enhancing the user interface and experience with focus on aesthetics and functionality. My repressiveness designing and  and skills  ensure that your application looks great and offers a seamless and user-friendly experience.',
     ),
     CustomService(
       service: 'MOBILE DEVELOPMENT',
       logo: AppAssets.androidLogo,
-      description:
-          'Crafting mobile applications that meet any unique requirements. My skills will bring your ideas to a feature-rich, intuitive, and platform-specific Mobile App. From Android to iOS.',
+      description: 'Crafting mobile applications that meet any unique requirements. My skills will bring your ideas to a feature-rich, intuitive, and platform-specific Mobile App. From Android to iOS.',
     ),
     // CustomService(
     //     service: 'CYBER SECURITY',
@@ -34,10 +32,8 @@ abstract class AppConstants {
     Project(
       name: "LinkedIn AI Assistant",
       tags: [ProjectTag.ai, ProjectTag.web, ProjectTag.backend],
-      imageUrl:
-          "https://raw.githubusercontent.com/vishnu32510/linkedin-ai-asistant/main/icon500.png",
-      description:
-          "AI-powered Chrome extension for generating personalized LinkedIn connection notes and messages using OpenAI GPT-4o-mini with Google Sheets logging integration",
+      imageUrl: "https://raw.githubusercontent.com/vishnu32510/linkedin-ai-asistant/main/icon500.png",
+      description: "AI-powered Chrome extension for generating personalized LinkedIn connection notes and messages using OpenAI GPT-4o-mini with Google Sheets logging integration",
       techStack: [
         "JavaScript",
         "Chrome Extension API",
@@ -51,10 +47,8 @@ abstract class AppConstants {
     Project(
       name: "My Portfolio",
       tags: [ProjectTag.web, ProjectTag.mobile],
-      imageUrl:
-          "https://raw.githubusercontent.com/vishnu32510/portfolio_flutter/main/assets/images/appIcon.png",
-      description:
-          "Responsive Portfolio designed for Android, IOS, Web, MacOS with Flutter SDK using Bloc State management",
+      imageUrl: "https://raw.githubusercontent.com/vishnu32510/portfolio_flutter/main/assets/images/appIcon.png",
+      description: "Responsive Portfolio designed for Android, IOS, Web, MacOS with Flutter SDK using Bloc State management",
       techStack: ["Flutter", "Dart", "Bloc", "Firebase", "Firestore", "Web"],
       status: "Completed",
       githubRepoLink: "https://github.com/vishnu32510/portfolio_flutter",
@@ -63,8 +57,7 @@ abstract class AppConstants {
       name: "Reports Node.js Backend",
       tags: [ProjectTag.backend, ProjectTag.web],
       imageUrl: "",
-      description:
-          "Backend service built with Node.js and TypeScript for generating and managing reports",
+      description: "Backend service built with Node.js and TypeScript for generating and managing reports",
       techStack: ["TypeScript", "Node.js", "REST API"],
       githubRepoLink: "https://github.com/vishnu32510/reports_nodejs",
     ),
@@ -79,10 +72,8 @@ abstract class AppConstants {
     Project(
       name: "Aurora Mobile Challenge",
       tags: [ProjectTag.mobile],
-      imageUrl:
-          "https://raw.githubusercontent.com/vishnu32510/aurora_mobile_challenge/refs/heads/main/assets/icons/icon.png",
-      description:
-          "Mobile application challenge project showcasing Flutter development skills",
+      imageUrl: "https://raw.githubusercontent.com/vishnu32510/aurora_mobile_challenge/refs/heads/main/assets/icons/icon.png",
+      description: "Mobile application challenge project showcasing Flutter development skills",
       techStack: ["Flutter", "Dart"],
       githubRepoLink: "https://github.com/vishnu32510/aurora_mobile_challenge",
     ),
@@ -98,8 +89,7 @@ abstract class AppConstants {
       name: "Nova AI Assistant",
       tags: [ProjectTag.ai, ProjectTag.backend],
       imageUrl: "",
-      description:
-          "AI-powered assistant built with Python for intelligent automation and task management",
+      description: "AI-powered assistant built with Python for intelligent automation and task management",
       techStack: ["Python", "AI/ML"],
       githubRepoLink: "https://github.com/vishnu32510/nova",
     ),
@@ -107,8 +97,7 @@ abstract class AppConstants {
       name: "Fact Dynamics",
       tags: [ProjectTag.web, ProjectTag.ai],
       imageUrl: "",
-      description:
-          "Real-time fact-checking application powered by AI to verify information accuracy",
+      description: "Real-time fact-checking application powered by AI to verify information accuracy",
       techStack: ["JavaScript", "AI/ML", "REST API"],
       githubRepoLink: "https://github.com/vishnu32510/fact_pulse",
     ),
@@ -116,8 +105,7 @@ abstract class AppConstants {
       name: "Swift Weather App",
       tags: [ProjectTag.mobile],
       imageUrl: "",
-      description:
-          "iOS weather application using Open Meteo API with SwiftUI for real-time weather data",
+      description: "iOS weather application using Open Meteo API with SwiftUI for real-time weather data",
       techStack: ["Swift", "SwiftUI", "iOS", "REST API"],
       githubRepoLink: "https://github.com/vishnu32510/swift-weather-app",
     ),
@@ -125,8 +113,7 @@ abstract class AppConstants {
       name: "Perplexity Flutter SDK",
       tags: [ProjectTag.mobile, ProjectTag.ai],
       imageUrl: "",
-      description:
-          "A lightweight Flutter SDK to interact with Perplexity.ai's chat completion API",
+      description: "A lightweight Flutter SDK to interact with Perplexity.ai's chat completion API",
       techStack: ["Flutter", "Dart", "AI/ML", "REST API"],
       githubRepoLink: "https://github.com/vishnu32510/perplexity_flutter",
     ),
@@ -134,8 +121,7 @@ abstract class AppConstants {
       name: "Perplexity Dart SDK",
       tags: [ProjectTag.backend, ProjectTag.ai],
       imageUrl: "",
-      description:
-          "A lightweight Dart SDK to interact with Perplexity.ai's chat completion API",
+      description: "A lightweight Dart SDK to interact with Perplexity.ai's chat completion API",
       techStack: ["Dart", "AI/ML", "REST API"],
       githubRepoLink: "https://github.com/vishnu32510/perplexity_dart",
     ),
@@ -143,8 +129,7 @@ abstract class AppConstants {
       name: "WhosThatDog",
       tags: [ProjectTag.mobile, ProjectTag.ai],
       imageUrl: "",
-      description:
-          "Fun game app to identify dog breeds and learn about different breeds and sub-breeds using AI",
+      description: "Fun game app to identify dog breeds and learn about different breeds and sub-breeds using AI",
       techStack: ["Kotlin", "Android", "AI/ML", "REST API"],
       githubRepoLink: "https://github.com/vishnu32510/WhosThatDog",
     ),
@@ -161,8 +146,7 @@ abstract class AppConstants {
       name: "Mars Visitation App",
       tags: [ProjectTag.mobile, ProjectTag.web],
       imageUrl: "",
-      description:
-          "Interactive Mars visitation application built with Flutter for exploring Mars missions",
+      description: "Interactive Mars visitation application built with Flutter for exploring Mars missions",
       techStack: ["Flutter", "Dart", "JavaScript"],
       githubRepoLink: "https://github.com/vishnu32510/mars_visitation_flutter",
     ),
@@ -170,8 +154,7 @@ abstract class AppConstants {
       name: "Sign Language Detection",
       tags: [ProjectTag.ai],
       imageUrl: "",
-      description:
-          "Machine learning model for real-time sign language detection and translation",
+      description: "Machine learning model for real-time sign language detection and translation",
       techStack: ["Python", "Jupyter Notebook", "AI/ML", "Computer Vision"],
       githubRepoLink: "https://github.com/vishnu32510/sign_language",
     ),
@@ -179,8 +162,7 @@ abstract class AppConstants {
       name: "Anomaly-Driven Video Summarization",
       tags: [ProjectTag.ai],
       imageUrl: "",
-      description:
-          "AI-powered video summarization system for real-time surveillance using anomaly detection",
+      description: "AI-powered video summarization system for real-time surveillance using anomaly detection",
       techStack: ["Python", "Jupyter Notebook", "AI/ML", "Computer Vision"],
       githubRepoLink:
           "https://github.com/vishnu32510/anomaly-driven-video-summarization",
@@ -188,10 +170,8 @@ abstract class AppConstants {
     Project(
       name: "Unsplash public photos",
       tags: [ProjectTag.mobile],
-      imageUrl:
-          "https://raw.githubusercontent.com/vishnu32510/Photos_using_unsplash_api/main/images/icon.png",
-      description:
-          "Application to access Unsplash public photos (Unsplash Public API are used)",
+      imageUrl: "https://raw.githubusercontent.com/vishnu32510/Photos_using_unsplash_api/main/images/icon.png",
+      description: "Application to access Unsplash public photos (Unsplash Public API are used)",
       techStack: ["Flutter", "Dart", "REST API", "Unsplash API"],
       githubRepoLink:
           "https://github.com/vishnu32510/Photos_using_unsplash_api",
@@ -199,8 +179,7 @@ abstract class AppConstants {
     Project(
       name: "Appetizer IOS Application",
       tags: [ProjectTag.mobile],
-      imageUrl:
-          "https://raw.githubusercontent.com/vishnu32510/Appetizer/main/appetizers/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
+      imageUrl: "https://raw.githubusercontent.com/vishnu32510/Appetizer/main/appetizers/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
       description: "Appetizer IOS Application with SwiftUI and Api interfaces.",
       techStack: ["Swift", "SwiftUI", "iOS", "REST API"],
       githubRepoLink: "https://github.com/vishnu32510/Appetizer",
@@ -208,8 +187,7 @@ abstract class AppConstants {
     Project(
       name: "Apple Framework List",
       tags: [ProjectTag.mobile],
-      imageUrl:
-          "https://raw.githubusercontent.com/vishnu32510/Apple-Frameworks/main/Apple-Frameworks/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
+      imageUrl: "https://raw.githubusercontent.com/vishnu32510/Apple-Frameworks/main/Apple-Frameworks/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
       description:
           "Apple Frameworks List in Gridview and Listview with SwiftUI",
       techStack: ["Swift", "SwiftUI", "iOS"],
@@ -235,8 +213,7 @@ abstract class AppConstants {
     Project(
       name: "Weather App UI",
       tags: [ProjectTag.mobile],
-      imageUrl:
-          "https://raw.githubusercontent.com/vishnu32510/SwiftUI-Weather/main/SwiftUI-Weather/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
+      imageUrl: "https://raw.githubusercontent.com/vishnu32510/SwiftUI-Weather/main/SwiftUI-Weather/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
       description: "Swift Weather App UI in Dark and Light Mode",
       techStack: ["Swift", "SwiftUI", "iOS", "Dark Mode"],
       githubRepoLink: "https://github.com/vishnu32510/SwiftUI-Weather",
@@ -244,10 +221,8 @@ abstract class AppConstants {
     Project(
       name: "My GitHub Profile Details",
       tags: [ProjectTag.mobile],
-      imageUrl:
-          "https://raw.githubusercontent.com/vishnu32510/GitHubSwift/main/GitHubSwift/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
-      description:
-          "Simple Swift IOS App to display my GitHub Details form the Github API",
+      imageUrl: "https://raw.githubusercontent.com/vishnu32510/GitHubSwift/main/GitHubSwift/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
+      description: "Simple Swift IOS App to display my GitHub Details form the Github API",
       techStack: ["Swift", "SwiftUI", "iOS", "GitHub API"],
       githubRepoLink: "https://github.com/vishnu32510/GitHubSwift",
     ),

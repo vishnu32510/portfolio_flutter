@@ -112,9 +112,8 @@ class GlobalFooter extends StatelessWidget {
                           SelectableText(
                             'Built with Flutter',
                             style: AppStyles.smallText(
-                              textColor: Theme.of(
-                                context,
-                              ).colorScheme.onSurface.withValues(alpha: 0.8),
+                              textColor: Theme.of(context).colorScheme.onSurface
+                                  .withValues(alpha: 0.8),
                             ),
                           ),
                           SizedBox(width: AppSizes.spacingLarge),
@@ -127,9 +126,8 @@ class GlobalFooter extends StatelessWidget {
                           SelectableText(
                             'Deployed to Firebase',
                             style: AppStyles.smallText(
-                              textColor: Theme.of(
-                                context,
-                              ).colorScheme.onSurface.withValues(alpha: 0.8),
+                              textColor: Theme.of(context).colorScheme.onSurface
+                                  .withValues(alpha: 0.8),
                             ),
                           ),
                         ],
@@ -142,18 +140,16 @@ class GlobalFooter extends StatelessWidget {
                         children: [
                           FaIcon(
                             FontAwesomeIcons.copyright,
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.onSurface.withValues(alpha: 0.8),
+                            color: Theme.of(context).colorScheme.onSurface
+                                .withValues(alpha: 0.8),
                             size: AppSizes.iconXS,
                           ),
                           SizedBox(width: AppSizes.spacingSmall),
                           SelectableText(
                             'Designed & Built by ${portfolioState.data?.developerName ?? "Vishnu Priyan"} · ${DateTime.now().year}',
                             style: AppStyles.smallText(
-                              textColor: Theme.of(
-                                context,
-                              ).colorScheme.onSurface.withValues(alpha: 0.8),
+                              textColor: Theme.of(context).colorScheme.onSurface
+                                  .withValues(alpha: 0.8),
                             ),
                           ),
                         ],
@@ -188,9 +184,8 @@ class GlobalFooter extends StatelessWidget {
             child: FaIcon(
               icon,
               size: AppSizes.iconLarge,
-              color: Theme.of(
-                context,
-              ).colorScheme.onSurface.withValues(alpha: 0.8),
+              color: Theme.of(context).colorScheme.onSurface
+                  .withValues(alpha: 0.8),
             ),
           ),
         ),
