@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "vishnupriyan-ss"
+  },
+  "targets": {
+    "vishnupriyan-ss": {
+      "hosting": {
+        "wedding": [
+          "noviya-wedding-vishnupriyan"
+        ]
+      }
+    }
+  }
+}

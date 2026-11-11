@@ -93,35 +93,10 @@ export function IntroductionSection() {
 
       {/* Floral Gold Temple Arch & Watercolor Couple Stage */}
       <div className="print-arch-stage relative z-10 mx-auto w-full max-w-[54rem] print:max-w-none overflow-hidden rounded-3xl print:rounded-none border border-gold-400/40 print:border-0 shadow-[0_24px_64px_rgba(58,8,17,0.14)] print:shadow-none bg-[#FBF1E6]">
-        {/* Layer 1: Full-bleed Floral Arch Frame */}
-        <img
-          src={activeIllustration.src}
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none select-none absolute inset-0 h-full w-full object-fill"
-        />
-
-        {/* Cream Parchment Mask (#FBF1E6 exact arch tone) over the original couple so only the scaled-down couple shows cleanly */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute left-[22.5%] right-[18.8%] top-[50%] bottom-[11.5%] rounded-2xl"
-          style={{ backgroundColor: '#FBF1E6' }}
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute left-[27.5%] right-[24%] top-[51%] bottom-[1.5%] rounded-2xl"
-          style={{ backgroundColor: '#FBF1E6' }}
-        />
-
-        {/* Layer 2: Scaled-down Couple Illustration (~22% smaller, anchored at the bottom center of the arch) */}
+        {/* Full-bleed Floral Arch & Compact Couple Illustration */}
         <img
           src={activeIllustration.src}
           alt={activeIllustration.alt}
-          style={{
-            clipPath: 'inset(50.5% 19.2% 0% 22.5% round 28px)',
-            transform: 'scale(0.78)',
-            transformOrigin: '50% 98.5%',
-          }}
           className="pointer-events-none select-none absolute inset-0 h-full w-full object-fill"
         />
 
