@@ -39,3 +39,7 @@
 **Learning:** Using platform-specific imports like package:web directly in UI code can break compilation on non-web platforms.
 **Action:** Use an abstraction like OpenLinkService().openUrl() instead of web.window.open to handle URLs consistently across web and mobile platforms.
 ## 2024-10-01 - Add Tooltip to Interactive Badges\n**Learning:** Interactive UI elements wrapped in `GestureDetector` and `Semantics` should also provide visual feedback on hover (for desktop) and long-press (for mobile) to indicate actionability to sighted users.\n**Action:** When wrapping icon-only or badge-like elements with `Semantics` for accessibility, also wrap them in a `Tooltip` widget to ensure a hover text description appears, improving discoverability.
+
+## 2026-11-11 - [URL Encode mailto parameters]
+**Learning:** When dynamically generating mailto: URLs from user input (like a contact form), special characters (e.g., spaces, newlines, ampersands) can break the link format or cause data loss.
+**Action:** Always encode parameters such as the subject and body using Uri.encodeComponent() before appending them to a mailto: URL.
