@@ -43,7 +43,15 @@ const ARCH_ILLUSTRATION_MODES = [
 ]
 
 export function IntroductionSection() {
-  const [archMode, setArchMode] = useState('embrace')
+  const [archMode, setArchMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const param = new URLSearchParams(window.location.search).get('style')
+      if (param && ARCH_ILLUSTRATION_MODES.some((m) => m.id === param)) {
+        return param
+      }
+    }
+    return 'embrace'
+  })
   const brideParentsProse = getBrideParentsDisplay('prose')
   const brideParentsCard = getBrideParentsDisplay('card')
   const { groom, bride } = WEDDING_CONFIG
@@ -84,11 +92,36 @@ export function IntroductionSection() {
       </div>
 
       {/* Floral Gold Temple Arch & Watercolor Couple Stage */}
-      <div className="print-arch-stage relative z-10 mx-auto w-full max-w-[54rem] print:max-w-none overflow-hidden rounded-3xl print:rounded-none border border-gold-400/40 print:border-0 shadow-[0_24px_64px_rgba(58,8,17,0.14)] print:shadow-none bg-[#FDF7EB]">
-        {/* Full-bleed Floral Arch + Couple Watercolor Illustration */}
+      <div className="print-arch-stage relative z-10 mx-auto w-full max-w-[54rem] print:max-w-none overflow-hidden rounded-3xl print:rounded-none border border-gold-400/40 print:border-0 shadow-[0_24px_64px_rgba(58,8,17,0.14)] print:shadow-none bg-[#FBF1E6]">
+        {/* Layer 1: Full-bleed Floral Arch Frame */}
+        <img
+          src={activeIllustration.src}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none select-none absolute inset-0 h-full w-full object-fill"
+        />
+
+        {/* Cream Parchment Mask (#FBF1E6 exact arch tone) over the original couple so only the scaled-down couple shows cleanly */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-[22.5%] right-[18.8%] top-[50%] bottom-[11.5%] rounded-2xl"
+          style={{ backgroundColor: '#FBF1E6' }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-[27.5%] right-[24%] top-[51%] bottom-[1.5%] rounded-2xl"
+          style={{ backgroundColor: '#FBF1E6' }}
+        />
+
+        {/* Layer 2: Scaled-down Couple Illustration (~22% smaller, anchored at the bottom center of the arch) */}
         <img
           src={activeIllustration.src}
           alt={activeIllustration.alt}
+          style={{
+            clipPath: 'inset(50.5% 19.2% 0% 22.5% round 28px)',
+            transform: 'scale(0.78)',
+            transformOrigin: '50% 98.5%',
+          }}
           className="pointer-events-none select-none absolute inset-0 h-full w-full object-fill"
         />
 
@@ -165,16 +198,16 @@ export function IntroductionSection() {
                   <span className="inline-block text-[0.58rem] uppercase tracking-[0.18em] text-gold-600 font-semibold">
                     மணமகன் • The Groom
                   </span>
-                  <h3 className="mt-0.5 font-heading text-base sm:text-lg text-maroon-900 font-medium leading-tight">
+                  <h3 className="mt-0.5 font-heading text-sm sm:text-base text-maroon-900 font-semibold leading-snug">
                     {groom.fullName}
                   </h3>
                 </div>
 
                 <div className="mt-2 pt-1.5 border-t border-gold-400/30">
-                  <p className="text-[0.56rem] uppercase tracking-[0.18em] text-maroon-700/75 mb-0.5">
+                  <p className="text-[0.55rem] uppercase tracking-[0.16em] text-maroon-700/75 mb-0.5">
                     Son of
                   </p>
-                  <p className="font-heading text-xs sm:text-[0.82rem] text-maroon-900 leading-snug">
+                  <p className="font-heading text-xs sm:text-[0.8rem] text-maroon-900 leading-snug">
                     {groom.parents.father} &amp; {groom.parents.mother}
                   </p>
                 </div>
@@ -220,18 +253,30 @@ export function IntroductionSection() {
                   <span className="inline-block text-[0.58rem] uppercase tracking-[0.18em] text-gold-600 font-semibold">
                     மணமகள் • The Bride
                   </span>
-                  <h3 className="mt-0.5 font-heading text-base sm:text-lg text-maroon-900 font-medium leading-tight">
+                  <h3 className="mt-0.5 font-heading text-sm sm:text-base text-maroon-900 font-semibold leading-snug">
                     {bride.fullName}
                   </h3>
                 </div>
 
-                <div className="mt-2 pt-1.5 border-t border-gold-400/30">
-                  <p className="text-[0.56rem] uppercase tracking-[0.18em] text-maroon-700/75 mb-0.5">
-                    Daughter of
-                  </p>
-                  <p className="font-heading text-xs sm:text-[0.82rem] text-maroon-900 leading-snug">
-                    {brideParentsCard}
-                  </p>
+                <div className="mt-2 pt-1.5 border-t border-gold-400/30 space-y-1">
+                  <div>
+                    <p className="text-[0.55rem] uppercase tracking-[0.16em] text-maroon-700/75">
+                      Daughter of
+                    </p>
+                    <p className="font-heading text-xs sm:text-[0.8rem] text-maroon-900 leading-snug">
+                      {brideParentsCard}
+                    </p>
+                  </div>
+                  {bride.sister && (
+                    <div className="pt-1 border-t border-gold-400/20">
+                      <p className="text-[0.54rem] uppercase tracking-[0.16em] text-maroon-700/75">
+                        Sister of
+                      </p>
+                      <p className="font-heading text-xs sm:text-[0.78rem] text-maroon-900 leading-snug">
+                        {bride.sister}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </motion.article>
             </div>

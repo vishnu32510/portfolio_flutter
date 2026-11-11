@@ -9,16 +9,17 @@ export const WEDDING_CONFIG = {
     fullName: 'Noviya Balasubramanian',
     natchatram: 'Kettai Natchatram',
     rasi: 'Viruchigam Rasi',
+    sister: 'Janashruthi Balasubramanian',
     parents: {
-      father: 'Balasubramanian',
-      mother: 'Muthulakshmi',
+      father: 'Balasubramanian Velu',
+      mother: 'Muthulakshmi Subbiah',
       proseFallback: "the bride's parents",
       cardFallback: 'Beloved Parents of Noviya',
     },
   },
   groom: {
     shortName: 'Vishnu Priyan',
-    fullName: 'Vishnu Priyan',
+    fullName: 'Vishnu Priyan Sellam Shanmugavel',
     natchatram: 'Uthiram Natchatram',
     rasi: 'Simmam Rasi',
     parents: {
