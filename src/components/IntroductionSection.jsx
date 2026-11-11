@@ -23,6 +23,12 @@ const ARCH_ILLUSTRATION_MODES = [
     alt: 'Watercolor illustration of Vishnu Priyan and Noviya looking into each other’s eyes inside a floral gold temple arch',
   },
   {
+    id: 'front',
+    label: 'Front Portrait',
+    src: '/images/page2-arch-front-portrait.jpg',
+    alt: 'Watercolor illustration of Vishnu Priyan and Noviya smiling together toward the camera inside a floral gold temple arch',
+  },
+  {
     id: 'kneeling',
     label: 'Kneeling Proposal',
     src: '/images/page2-arch-kneeling-proposal.jpg',
@@ -44,6 +50,11 @@ export function IntroductionSection() {
   const brideParentsCard = getBrideParentsDisplay('card')
   const { groom, bride } = WEDDING_CONFIG
 
+  const isLocal =
+    import.meta.env.DEV ||
+    (typeof window !== 'undefined' &&
+      (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
+
   const activeIllustration =
     ARCH_ILLUSTRATION_MODES.find((m) => m.id === archMode) || ARCH_ILLUSTRATION_MODES[0]
 
@@ -53,31 +64,33 @@ export function IntroductionSection() {
       aria-labelledby="intro-heading"
       className="print-page-intro relative overflow-hidden bg-gradient-to-b from-turmeric-50 via-turmeric-100/65 to-turmeric-50 text-maroon-900 py-14 sm:py-20 print:p-0"
     >
-      {/* Web-only Illustration Style Switcher so you can preview both custom sketches & export either to PDF */}
-      <div className="no-print print:hidden relative z-20 mx-auto max-w-3xl safe-inline-pad mb-5 flex flex-wrap items-center justify-center gap-2">
-        <span className="text-xs uppercase tracking-[0.2em] text-maroon-800/80 font-semibold mr-1 flex items-center gap-1.5">
-          <Sparkles className="w-3.5 h-3.5 text-gold-600" aria-hidden="true" />
-          <span>Couple Sketch Style:</span>
-        </span>
-        {ARCH_ILLUSTRATION_MODES.map((mode) => {
-          const active = mode.id === archMode
-          return (
-            <button
-              key={mode.id}
-              type="button"
-              onClick={() => setArchMode(mode.id)}
-              aria-pressed={active}
-              className={`rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-all cursor-pointer ${
-                active
-                  ? 'bg-maroon-900 text-turmeric-200 border border-gold-400 shadow-sm'
-                  : 'bg-white/80 text-maroon-800 border border-gold-400/40 hover:bg-turmeric-100/70'
-              }`}
-            >
-              {mode.label}
-            </button>
-          )
-        })}
-      </div>
+      {/* Local-only Illustration Style Switcher for debugging; hidden in production */}
+      {isLocal && (
+        <div className="no-print print:hidden relative z-20 mx-auto max-w-3xl safe-inline-pad mb-5 flex flex-wrap items-center justify-center gap-2">
+          <span className="text-xs uppercase tracking-[0.2em] text-maroon-800/80 font-semibold mr-1 flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-gold-600" aria-hidden="true" />
+            <span>Couple Sketch Style:</span>
+          </span>
+          {ARCH_ILLUSTRATION_MODES.map((mode) => {
+            const active = mode.id === archMode
+            return (
+              <button
+                key={mode.id}
+                type="button"
+                onClick={() => setArchMode(mode.id)}
+                aria-pressed={active}
+                className={`rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+                  active
+                    ? 'bg-maroon-900 text-turmeric-200 border border-gold-400 shadow-sm'
+                    : 'bg-white/80 text-maroon-800 border border-gold-400/40 hover:bg-turmeric-100/70'
+                }`}
+              >
+                {mode.label}
+              </button>
+            )
+          })}
+        </div>
+      )}
 
       {/* Floral Gold Temple Arch & Watercolor Couple Stage */}
       <div className="print-arch-stage relative z-10 mx-auto w-full max-w-[54rem] print:max-w-none overflow-hidden rounded-3xl print:rounded-none border border-gold-400/40 print:border-0 shadow-[0_24px_64px_rgba(58,8,17,0.14)] print:shadow-none bg-[#FBF1E6]">

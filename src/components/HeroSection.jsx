@@ -19,7 +19,8 @@ function computeCountdown(targetIso) {
   const days = Math.floor(diff / (1000 * 60 * 60 * 24))
   const hours = Math.floor((diff / (1000 * 60 * 60)) % 24)
   const minutes = Math.floor((diff / (1000 * 60)) % 60)
-  return { days, hours, minutes }
+  const seconds = Math.floor((diff / 1000) % 60)
+  return { days, hours, minutes, seconds }
 }
 
 const fadeUp = {
@@ -44,7 +45,7 @@ export function HeroSection() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCountdown(computeCountdown(WEDDING_CONFIG.event.muhurthamIsoStart))
-    }, 30_000)
+    }, 1000)
     return () => clearInterval(timer)
   }, [])
 
@@ -210,23 +211,24 @@ export function HeroSection() {
             initial="hidden"
             animate="visible"
             custom={0.68}
-            aria-label={`Countdown to Muhurtham: ${countdown.days} days, ${countdown.hours} hours, and ${countdown.minutes} minutes`}
-            className="no-print print:hidden mt-7 inline-flex items-center gap-3 sm:gap-5 rounded-2xl border border-gold-400/25 bg-maroon-950/50 px-5 py-3"
+            aria-label={`Countdown to Muhurtham: ${countdown.days} days, ${countdown.hours} hours, ${countdown.minutes} minutes, and ${countdown.seconds} seconds`}
+            className="no-print print:hidden mt-7 inline-flex items-center gap-2.5 sm:gap-4 md:gap-5 rounded-2xl border border-gold-400/25 bg-maroon-950/50 px-4 py-3 sm:px-5"
           >
             {[
               { label: 'Days', value: countdown.days },
               { label: 'Hours', value: countdown.hours },
               { label: 'Mins', value: countdown.minutes },
+              { label: 'Secs', value: countdown.seconds },
             ].map((item, idx) => (
-              <div key={item.label} className="flex items-center gap-3 sm:gap-5">
+              <div key={item.label} className="flex items-center gap-2.5 sm:gap-4 md:gap-5">
                 {idx > 0 && (
                   <span className="h-7 w-px bg-gold-400/25" aria-hidden="true" />
                 )}
-                <div className="text-center min-w-[3.1rem]">
-                  <div className="font-heading text-xl sm:text-2xl font-semibold text-turmeric-300 tabular-nums">
+                <div className="text-center min-w-[2.8rem] sm:min-w-[3.1rem]">
+                  <div className="font-heading text-lg sm:text-2xl font-semibold text-turmeric-300 tabular-nums">
                     {String(item.value).padStart(2, '0')}
                   </div>
-                  <div className="text-[0.65rem] uppercase tracking-[0.2em] text-gold-200/75">
+                  <div className="text-[0.62rem] sm:text-[0.65rem] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-gold-200/75">
                     {item.label}
                   </div>
                 </div>
