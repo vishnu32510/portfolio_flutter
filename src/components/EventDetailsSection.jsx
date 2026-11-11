@@ -98,7 +98,7 @@ export function EventDetailsSection() {
                 {event.subtitle}
               </span>
               <h3 className="mt-3.5 font-heading text-2xl sm:text-3xl md:text-4xl text-turmeric-50 font-normal">
-                {event.title} (Muhurtham)
+                {event.title}
               </h3>
               <p className="mt-2.5 text-sm sm:text-base text-turmeric-100/85">
                 {event.details}

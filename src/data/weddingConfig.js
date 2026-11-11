@@ -28,7 +28,7 @@ export const WEDDING_CONFIG = {
     },
   },
   event: {
-    title: 'Traditional Tamil Wedding',
+    title: 'Muhurtham',
     subtitle: 'Subha Muhurtham',
     tamilSubtitle: 'சுப முகூர்த்தம்',
     dateDisplay: 'Sunday, December 13, 2026',
