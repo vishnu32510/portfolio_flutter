@@ -17,21 +17,33 @@ const revealProps = {
 
 const ARCH_ILLUSTRATION_MODES = [
   {
-    id: 'proposal',
-    label: 'Your Proposal Sketch',
-    src: '/images/page2-arch-proposal-couple.jpg',
-    alt: 'Watercolor illustration of Vishnu Priyan and Noviya in their proposal attire inside a floral gold temple arch',
+    id: 'embrace',
+    label: 'Romantic Embrace',
+    src: '/images/page2-arch-embrace-refined.jpg',
+    alt: 'Watercolor illustration of Vishnu Priyan and Noviya looking into each other’s eyes inside a floral gold temple arch',
+  },
+  {
+    id: 'front',
+    label: 'Front Portrait',
+    src: '/images/page2-arch-front-portrait.jpg',
+    alt: 'Watercolor illustration of Vishnu Priyan and Noviya smiling together toward the camera inside a floral gold temple arch',
+  },
+  {
+    id: 'kneeling',
+    label: 'Kneeling Proposal',
+    src: '/images/page2-arch-kneeling-proposal.jpg',
+    alt: 'Watercolor illustration of Vishnu Priyan kneeling on one knee proposing to Noviya inside a floral gold temple arch',
   },
   {
     id: 'traditional',
-    label: 'Traditional Muhurtham Sketch',
-    src: '/images/page2-arch-traditional-couple.jpg',
+    label: 'Traditional Muhurtham',
+    src: '/images/page2-arch-traditional-likeness.jpg',
     alt: 'Watercolor illustration of Vishnu Priyan and Noviya in traditional Tamil wedding attire inside a floral gold temple arch',
   },
 ]
 
 export function IntroductionSection() {
-  const [archMode, setArchMode] = useState('proposal')
+  const [archMode, setArchMode] = useState('embrace')
   const brideParentsProse = getBrideParentsDisplay('prose')
   const brideParentsCard = getBrideParentsDisplay('card')
   const { groom, bride } = WEDDING_CONFIG
@@ -81,23 +93,24 @@ export function IntroductionSection() {
         />
 
         {/* Content Positioned Cleanly Inside the Upper Scalloped Gold Arch */}
-        <div className="print-arch-content relative z-10 flex flex-col items-center justify-start text-center pt-[24%] sm:pt-[23%] pb-[62%] sm:pb-[60%] px-[18%] sm:px-[19%]">
+        <div className="print-arch-content relative z-10 flex flex-col items-center justify-start text-center pt-[18%] sm:pt-[17.5%] pb-[66%] sm:pb-[64%] px-[18%] sm:px-[19%]">
           <motion.div {...revealProps} className="w-full max-w-md mx-auto">
-            <p className="text-[0.6rem] sm:text-[0.68rem] uppercase tracking-[0.2em] text-gold-600 font-semibold mb-1">
-              An Auspicious Beginning • இரு மனம் இணையும் திருநாள்
-            </p>
             <h2
               id="intro-heading"
-              className="font-heading text-lg sm:text-xl md:text-2xl font-normal text-maroon-900 leading-tight"
+              lang="ta"
+              className="font-tamil text-sm sm:text-base text-maroon-900 font-semibold tracking-wide"
             >
-              With Divine Grace &amp; Parental Blessings
+              இரு மனம் இணையும் திருநாள்
             </h2>
+            <p className="text-[0.58rem] sm:text-[0.65rem] uppercase tracking-[0.24em] text-gold-600 font-semibold mt-0.5">
+              An Auspicious Beginning
+            </p>
 
             <div className="my-1.5 sm:my-2">
               <ZariLotusDivider />
             </div>
 
-            <p className="text-xs sm:text-[0.84rem] leading-relaxed text-maroon-800/95 font-normal">
+            <p className="text-[0.72rem] sm:text-[0.82rem] leading-snug sm:leading-relaxed text-maroon-800/95 font-normal">
               With hearts full of gratitude and joy, and with the warm blessings of our beloved
               parents —{' '}
               <strong className="font-semibold text-maroon-900">
@@ -124,7 +137,7 @@ export function IntroductionSection() {
           </motion.div>
 
           {/* Groom & Bride Lineage Cards Inside the Arch */}
-          <div className="couple-cards-wrapper w-full mt-4 sm:mt-5">
+          <div className="couple-cards-wrapper w-full mt-2.5 sm:mt-3.5">
             <div className="couple-cards-grid">
               {/* Groom Card */}
               <motion.article
@@ -132,36 +145,36 @@ export function IntroductionSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="relative rounded-2xl border border-gold-400/55 bg-white/85 backdrop-blur-xs p-3.5 sm:p-5 shadow-[0_8px_24px_rgba(58,8,17,0.06)] flex flex-col justify-between text-center"
+                className="relative rounded-2xl border border-gold-400/55 bg-[#FFFDF8]/85 backdrop-blur-xs p-2.5 sm:p-3.5 shadow-[0_6px_20px_rgba(58,8,17,0.05)] flex flex-col justify-between text-center"
               >
-                <CornerKolamFlourish className="absolute top-2 left-2 w-6 h-6" color="#B88F22" />
+                <CornerKolamFlourish className="absolute top-2 left-2 w-4 h-4" color="#B88F22" />
                 <CornerKolamFlourish
-                  className="absolute top-2 right-2 w-6 h-6 -scale-x-100"
+                  className="absolute top-2 right-2 w-4 h-4 -scale-x-100"
                   color="#B88F22"
                 />
                 <CornerKolamFlourish
-                  className="absolute bottom-2 left-2 w-6 h-6 -scale-y-100"
+                  className="absolute bottom-2 left-2 w-4 h-4 -scale-y-100"
                   color="#B88F22"
                 />
                 <CornerKolamFlourish
-                  className="absolute bottom-2 right-2 w-6 h-6 scale-[-1]"
+                  className="absolute bottom-2 right-2 w-4 h-4 scale-[-1]"
                   color="#B88F22"
                 />
 
                 <div>
-                  <span className="inline-block text-[0.65rem] uppercase tracking-[0.22em] text-gold-600 font-semibold">
+                  <span className="inline-block text-[0.58rem] uppercase tracking-[0.18em] text-gold-600 font-semibold">
                     மணமகன் • The Groom
                   </span>
-                  <h3 className="mt-1 font-heading text-lg sm:text-xl md:text-2xl text-maroon-900 font-medium">
+                  <h3 className="mt-0.5 font-heading text-base sm:text-lg text-maroon-900 font-medium leading-tight">
                     {groom.fullName}
                   </h3>
                 </div>
 
-                <div className="mt-3 pt-2.5 border-t border-gold-400/30">
-                  <p className="text-[0.62rem] uppercase tracking-[0.18em] text-maroon-700/75 mb-0.5">
+                <div className="mt-2 pt-1.5 border-t border-gold-400/30">
+                  <p className="text-[0.56rem] uppercase tracking-[0.18em] text-maroon-700/75 mb-0.5">
                     Son of
                   </p>
-                  <p className="font-heading text-xs sm:text-sm md:text-base text-maroon-900 leading-snug">
+                  <p className="font-heading text-xs sm:text-[0.82rem] text-maroon-900 leading-snug">
                     {groom.parents.father} &amp; {groom.parents.mother}
                   </p>
                 </div>
@@ -176,8 +189,8 @@ export function IntroductionSection() {
                 className="flex flex-col items-center justify-center py-0.5"
                 aria-hidden="true"
               >
-                <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border-2 border-gold-400/60 bg-maroon-900 text-turmeric-300 shadow-[0_6px_18px_rgba(58,8,17,0.18)]">
-                  <KuthuvilakkuIcon className="w-5 h-7" />
+                <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border-2 border-gold-400/60 bg-maroon-900 text-turmeric-300 shadow-[0_6px_18px_rgba(58,8,17,0.18)]">
+                  <KuthuvilakkuIcon className="w-4 h-5 sm:w-4 sm:h-6" />
                 </div>
               </motion.div>
 
@@ -187,36 +200,36 @@ export function IntroductionSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="relative rounded-2xl border border-gold-400/55 bg-white/85 backdrop-blur-xs p-3.5 sm:p-5 shadow-[0_8px_24px_rgba(58,8,17,0.06)] flex flex-col justify-between text-center"
+                className="relative rounded-2xl border border-gold-400/55 bg-[#FFFDF8]/85 backdrop-blur-xs p-2.5 sm:p-3.5 shadow-[0_6px_20px_rgba(58,8,17,0.05)] flex flex-col justify-between text-center"
               >
-                <CornerKolamFlourish className="absolute top-2 left-2 w-6 h-6" color="#B88F22" />
+                <CornerKolamFlourish className="absolute top-2 left-2 w-4 h-4" color="#B88F22" />
                 <CornerKolamFlourish
-                  className="absolute top-2 right-2 w-6 h-6 -scale-x-100"
+                  className="absolute top-2 right-2 w-4 h-4 -scale-x-100"
                   color="#B88F22"
                 />
                 <CornerKolamFlourish
-                  className="absolute bottom-2 left-2 w-6 h-6 -scale-y-100"
+                  className="absolute bottom-2 left-2 w-4 h-4 -scale-y-100"
                   color="#B88F22"
                 />
                 <CornerKolamFlourish
-                  className="absolute bottom-2 right-2 w-6 h-6 scale-[-1]"
+                  className="absolute bottom-2 right-2 w-4 h-4 scale-[-1]"
                   color="#B88F22"
                 />
 
                 <div>
-                  <span className="inline-block text-[0.65rem] uppercase tracking-[0.22em] text-gold-600 font-semibold">
+                  <span className="inline-block text-[0.58rem] uppercase tracking-[0.18em] text-gold-600 font-semibold">
                     மணமகள் • The Bride
                   </span>
-                  <h3 className="mt-1 font-heading text-lg sm:text-xl md:text-2xl text-maroon-900 font-medium">
+                  <h3 className="mt-0.5 font-heading text-base sm:text-lg text-maroon-900 font-medium leading-tight">
                     {bride.fullName}
                   </h3>
                 </div>
 
-                <div className="mt-3 pt-2.5 border-t border-gold-400/30">
-                  <p className="text-[0.62rem] uppercase tracking-[0.18em] text-maroon-700/75 mb-0.5">
+                <div className="mt-2 pt-1.5 border-t border-gold-400/30">
+                  <p className="text-[0.56rem] uppercase tracking-[0.18em] text-maroon-700/75 mb-0.5">
                     Daughter of
                   </p>
-                  <p className="font-heading text-xs sm:text-sm md:text-base text-maroon-900 leading-snug">
+                  <p className="font-heading text-xs sm:text-[0.82rem] text-maroon-900 leading-snug">
                     {brideParentsCard}
                   </p>
                 </div>
