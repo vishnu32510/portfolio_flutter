@@ -10,6 +10,8 @@ import {
 } from './TraditionalMotifs'
 
 const STORAGE_KEY = 'noviya_vishnu_rsvp_v1'
+const FIRESTORE_RSVP_ENDPOINT =
+  'https://firestore.googleapis.com/v1/projects/vishnupriyan-ss/databases/(default)/documents/wedding_rsvps'
 
 function linkError(el, shown) {
   const errorId = el.dataset?.error
@@ -219,6 +221,24 @@ export function RsvpSection() {
     }
 
     try {
+      const firestoreRes = await fetch(FIRESTORE_RSVP_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fields: {
+            guestName: { stringValue: payload.guestName },
+            email: { stringValue: payload.email },
+            attending: { stringValue: payload.attending },
+            attendees: { integerValue: String(payload.attendees) },
+            notes: { stringValue: payload.notes },
+            submittedAt: { stringValue: payload.submittedAt },
+          },
+        }),
+      })
+      if (!firestoreRes.ok) {
+        throw new Error('Unable to save your RSVP right now. Please try again in a moment.')
+      }
+
       if (WEDDING_CONFIG.rsvpWebhookUrl) {
         const res = await fetch(WEDDING_CONFIG.rsvpWebhookUrl, {
           method: 'POST',
@@ -228,9 +248,6 @@ export function RsvpSection() {
         if (!res.ok) {
           throw new Error('Unable to reach RSVP server. Please try again in a moment.')
         }
-      } else {
-        // Gentle tactile transition for local confirmation
-        await new Promise((resolve) => setTimeout(resolve, 450))
       }
 
       try {

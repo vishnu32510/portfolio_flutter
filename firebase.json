@@ -1,4 +1,7 @@
 {
+  "firestore": {
+    "rules": "firestore.rules"
+  },
   "hosting": {
     "site": "noviya-wedding-vishnupriyan",
     "public": "dist",
@@ -37,3 +40,4 @@
     ]
   }
 }
+
