@@ -44,7 +44,7 @@ export function EventDetailsSection() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-4xl 2xl:max-w-5xl safe-inline-pad md:px-24 lg:px-28">
+      <div className="relative z-10 mx-auto max-w-4xl 2xl:max-w-5xl safe-inline-pad md:px-24 lg:px-28 print:px-8">
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}

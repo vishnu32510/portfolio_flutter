@@ -580,7 +580,7 @@ export function MandapamSidePillars() {
     <div
       ref={pillarsRef}
       aria-hidden="true"
-      className="mandapam-side-pillars pointer-events-none fixed inset-0 z-[2] hidden md:flex print:flex justify-between items-stretch select-none overflow-hidden"
+      className="mandapam-side-pillars no-print print:hidden pointer-events-none fixed inset-0 z-[2] hidden md:flex justify-between items-stretch select-none overflow-hidden"
     >
       <MandapamPillarSvg className="h-full w-auto opacity-85 drop-shadow-[10px_0_24px_rgba(0,0,0,0.55)]" />
       <MandapamPillarSvg
@@ -590,5 +590,55 @@ export function MandapamSidePillars() {
     </div>
   )
 }
+
+/**
+ * Option 3: Delicate Antique-Gold Zari Patrikai Vertical Border for Saved PDF
+ * Replaces the heavy dark stone pillars in @media print with a refined double-line gold frame.
+ */
+export function PrintZariBorderFrame() {
+  const diamondYs = [90, 210, 330, 450, 570, 690, 810]
+
+  return (
+    <div
+      aria-hidden="true"
+      className="print-only-zari-border hidden print:flex pointer-events-none fixed inset-0 z-30 justify-between items-stretch select-none"
+    >
+      {/* Left Zari Gold Patrikai Border */}
+      <svg
+        viewBox="0 0 28 900"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-full w-6"
+      >
+        <line x1="10" y1="24" x2="10" y2="876" stroke="#D4AF37" strokeWidth="1.6" strokeOpacity="0.85" />
+        <line x1="16" y1="36" x2="16" y2="864" stroke="#B88F22" strokeWidth="0.9" strokeOpacity="0.65" strokeDasharray="4 4" />
+        {diamondYs.map((y) => (
+          <g key={y} transform={`translate(10, ${y})`}>
+            <path d="M0 -6 L5 0 L0 6 L-5 0 Z" fill="#F4B829" stroke="#B88F22" strokeWidth="0.8" />
+            <circle cx="0" cy="0" r="1.5" fill="#FFFDF6" />
+          </g>
+        ))}
+      </svg>
+
+      {/* Right Zari Gold Patrikai Border */}
+      <svg
+        viewBox="0 0 28 900"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-full w-6 -scale-x-100"
+      >
+        <line x1="10" y1="24" x2="10" y2="876" stroke="#D4AF37" strokeWidth="1.6" strokeOpacity="0.85" />
+        <line x1="16" y1="36" x2="16" y2="864" stroke="#B88F22" strokeWidth="0.9" strokeOpacity="0.65" strokeDasharray="4 4" />
+        {diamondYs.map((y) => (
+          <g key={y} transform={`translate(10, ${y})`}>
+            <path d="M0 -6 L5 0 L0 6 L-5 0 Z" fill="#F4B829" stroke="#B88F22" strokeWidth="0.8" />
+            <circle cx="0" cy="0" r="1.5" fill="#FFFDF6" />
+          </g>
+        ))}
+      </svg>
+    </div>
+  )
+}
+
 
 

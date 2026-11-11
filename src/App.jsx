@@ -4,7 +4,7 @@ import { FooterSection } from './components/FooterSection'
 import { HeroSection } from './components/HeroSection'
 import { IntroductionSection } from './components/IntroductionSection'
 import { RsvpSection } from './components/RsvpSection'
-import { MandapamSidePillars } from './components/TraditionalMotifs'
+import { MandapamSidePillars, PrintZariBorderFrame } from './components/TraditionalMotifs'
 
 export default function App() {
   const { scrollYProgress } = useScroll()
@@ -31,8 +31,11 @@ export default function App() {
         className="no-print fixed top-0 left-0 right-0 z-50 h-[3px] bg-gradient-to-r from-gold-500 via-turmeric-400 to-gold-300"
       />
 
-      {/* Carved Dravidian Kalyana Mandapam Stone Side Pillars (from temple branch) */}
+      {/* Carved Dravidian Kalyana Mandapam Stone Side Pillars (Web only) */}
       <MandapamSidePillars />
+
+      {/* Option 3: Delicate Antique-Gold Zari Vertical Border (PDF / Print only) */}
+      <PrintZariBorderFrame />
 
       <div className="min-h-dvh flex flex-col bg-maroon-950">
         <HeroSection />
