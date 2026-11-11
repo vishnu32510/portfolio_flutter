@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Calendar, Clock, ExternalLink, MapPin, Sparkles, Utensils } from 'lucide-react'
+import { Calendar, Clock, ExternalLink, MapPin, Sparkles } from 'lucide-react'
 import { WEDDING_CONFIG, downloadWeddingIcs } from '../data/weddingConfig'
 import {
   CornerKolamFlourish,
@@ -203,21 +203,6 @@ export function EventDetailsSection() {
                 </div>
               </div>
             )}
-
-            {/* Authentic Vegetarian Lunch & Temple Visit Note */}
-            <div className="mt-5 print:mt-2.5 rounded-2xl border border-gold-300/20 bg-maroon-950/45 p-5 sm:p-6 print:p-2.5 flex flex-col sm:flex-row sm:items-center gap-4 print:gap-2">
-              <div className="flex h-11 w-11 print:h-7 print:w-7 shrink-0 items-center justify-center rounded-xl border border-gold-400/40 bg-gold-400/15 text-turmeric-300">
-                <Utensils className="w-5 h-5 print:w-3.5 print:h-3.5" aria-hidden="true" />
-              </div>
-              <div>
-                <h4 className="font-sans text-xs uppercase tracking-[0.22em] text-gold-300 font-semibold print:text-[0.65rem]">
-                  {event.feastTitle}
-                </h4>
-                <p className="mt-1 text-sm sm:text-base print:text-[0.7rem] text-turmeric-100/90 leading-relaxed">
-                  {event.feastNote}
-                </p>
-              </div>
-            </div>
 
             {/* Action Buttons: Directions & Add to Calendar (Web only, hidden in PDF) */}
             <div className="no-print mt-8 pt-6 border-t border-gold-300/25 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4">

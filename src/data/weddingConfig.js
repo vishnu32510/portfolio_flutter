@@ -72,7 +72,7 @@ export const WEDDING_CONFIG = {
       },
       {
         time: '1:00 PM',
-        title: 'Kalyana Virundhu (Lunch)',
+        title: 'Kalyana Virundhu (Wedding Feast)',
         tamilTitle: 'கல்யாண விருந்து',
         location: 'Serene Springs Farm',
         description: 'Traditional wedding feast and celebrations upon returning from the temple.',
