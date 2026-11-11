@@ -38,13 +38,13 @@ export const WEDDING_CONFIG = {
     muhurthamIsoStart: '2026-12-13T10:00:00-05:00',
     ceremonyTime: '8:30 AM to 1:30 PM EST',
     muhurthamWindow: '10:00 AM – 11:00 AM',
-    hall: 'Kalyana Mandapam',
-    venueName: 'Sri Venkateswara Temple (Balaji Mandir)',
-    addressLine: '1 Balaji Temple Drive, Bridgewater, NJ 08807',
-    mapsUrl:
-      'https://www.google.com/maps/search/?api=1&query=Sri+Venkateswara+Temple+1+Balaji+Temple+Drive+Bridgewater+NJ+08807',
+    venueName: 'Serene Springs Farm',
+    cityState: 'Hillsborough Township, NJ',
+    addressLine: '121 S Branch Rd, Hillsborough Township, NJ 08844',
+    mapsUrl: 'https://maps.app.goo.gl/d6DG2rNsGL6nSmCr5',
     feastTitle: 'Kalyana Virundhu (Wedding Feast)',
-    feastNote: 'Following the auspicious Muhurtham rituals, please join us for lunch.',
+    feastNote:
+      'Following the auspicious Muhurtham rituals, we will visit the temple for blessings and return to Serene Springs Farm for lunch.',
   },
   // Optional endpoint (e.g., Google Apps Script Web App or Formspree URL) for cloud RSVP storage
   rsvpWebhookUrl: import.meta.env.VITE_RSVP_WEBHOOK_URL || '',
@@ -77,8 +77,8 @@ export function downloadWeddingIcs() {
     'DTSTART:20261213T133000Z',
     'DTEND:20261213T183000Z',
     'SUMMARY:Wedding of Vishnu Priyan & Noviya (Subha Muhurtham)',
-    'DESCRIPTION:Subha Muhurtham (10:00 AM - 11:00 AM EST). Vaazhga Valamudan!',
-    'LOCATION:Kalyana Mandapam\\, Sri Venkateswara Temple (Balaji Mandir)\\, 1 Balaji Temple Drive\\, Bridgewater\\, NJ 08807',
+    'DESCRIPTION:Subha Muhurtham (10:00 AM - 11:00 AM EST) at Serene Springs Farm, followed by temple visit and lunch. Vaazhga Valamudan!',
+    'LOCATION:Serene Springs Farm\\, 121 S Branch Rd\\, Hillsborough Township\\, NJ 08844',
     'END:VEVENT',
     'END:VCALENDAR',
   ].join('\r\n')

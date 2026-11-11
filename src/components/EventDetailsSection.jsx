@@ -133,17 +133,17 @@ export function EventDetailsSection() {
                 </div>
               </div>
 
-              {/* Temple Venue & Address */}
+              {/* Wedding Venue & Address */}
               <div className="rounded-2xl border border-gold-300/20 bg-maroon-950/45 p-5 sm:p-6 flex items-start gap-4">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-gold-400/40 bg-gold-400/15 text-turmeric-300">
                   <MapPin className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
                   <h4 className="font-sans text-xs uppercase tracking-[0.22em] text-gold-300 font-semibold">
-                    Sacred Venue
+                    Wedding Venue
                   </h4>
                   <p className="mt-1 font-heading text-lg sm:text-xl text-turmeric-50">
-                    {event.hall}, {event.venueName}
+                    {event.venueName}
                   </p>
                   <p className="mt-1 text-sm text-turmeric-100/85">
                     {event.addressLine}

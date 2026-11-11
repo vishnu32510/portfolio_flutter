@@ -42,7 +42,7 @@ export function FooterSection() {
           {WEDDING_CONFIG.bride.shortName}
         </p>
         <p className="mt-1 text-xs uppercase tracking-[0.26em] text-gold-300/75">
-          {WEDDING_CONFIG.event.shortDate} • Bridgewater, New Jersey
+          {WEDDING_CONFIG.event.shortDate} • Hillsborough Township, New Jersey
         </p>
 
         <a

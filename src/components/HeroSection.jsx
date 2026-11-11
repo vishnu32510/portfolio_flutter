@@ -199,7 +199,7 @@ export function HeroSection() {
             {WEDDING_CONFIG.event.shortDate}
           </p>
           <p className="text-sm sm:text-base text-gold-200/90 tracking-wider">
-            Sunday • {WEDDING_CONFIG.event.venueName}, Bridgewater, NJ
+            Sunday • {WEDDING_CONFIG.event.venueName}, {WEDDING_CONFIG.event.cityState}
           </p>
         </motion.div>
 

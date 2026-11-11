@@ -324,8 +324,8 @@ export function RsvpSection() {
             <ZariLotusDivider />
           </div>
           <p className="text-sm sm:text-base text-maroon-800/85 max-w-xl mx-auto">
-            Your presence at the Kalyana Mandapam and wedding lunch will mean the world to both
-            of our families. Kindly share your response below.
+            Your presence at our Muhurtham and wedding lunch will mean the world to both of our
+            families. Kindly share your response below.
           </p>
         </motion.div>
 
@@ -381,7 +381,7 @@ export function RsvpSection() {
                   {savedRsvp.attending === 'yes'
                     ? `We are delighted to reserve ${savedRsvp.attendees} ${
                         savedRsvp.attendees === 1 ? 'seat' : 'seats'
-                      } for you on Sunday, December 13, 2026 at Sri Venkateswara Temple.`
+                      } for you on Sunday, December 13, 2026 at Serene Springs Farm.`
                     : 'We will miss celebrating with you in person and deeply appreciate your warm wishes and blessings.'}
                 </p>
 
@@ -593,7 +593,7 @@ export function RsvpSection() {
                       <span className="text-red-700" aria-hidden="true">*</span>
                     </label>
                     <span id="attendees-hint" className="text-xs text-maroon-700/75 mb-1.5">
-                      Helps us plan temple seating and the vegetarian wedding lunch.
+                      Helps us plan seating and the wedding lunch.
                     </span>
                     <div className="relative">
                       <select
