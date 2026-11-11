@@ -44,7 +44,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <header className="relative min-h-dvh flex flex-col justify-between overflow-hidden bg-gradient-to-b from-maroon-950 via-maroon-900 to-maroon-950 text-turmeric-50">
+    <header className="print-page-hero relative min-h-dvh flex flex-col justify-between overflow-hidden bg-gradient-to-b from-maroon-950 via-maroon-900 to-maroon-950 text-turmeric-50">
       {/* Subtle radial Kanchipuram silk & turmeric lamp glow */}
       <div
         className="pointer-events-none absolute inset-0"

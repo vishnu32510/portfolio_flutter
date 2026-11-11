@@ -15,7 +15,7 @@ export function EventDetailsSection() {
     <section
       id="event-details"
       aria-labelledby="event-heading"
-      className="relative overflow-hidden bg-gradient-to-b from-maroon-950 via-maroon-900 to-maroon-950 text-turmeric-50 py-24 sm:py-32 2xl:py-40"
+      className="print-page-event relative overflow-hidden bg-gradient-to-b from-maroon-950 via-maroon-900 to-maroon-950 text-turmeric-50 py-24 sm:py-32 2xl:py-40"
     >
       {/* Warm ambient turmeric & antique gold glows behind the glassmorphic card */}
       <div

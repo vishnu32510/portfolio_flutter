@@ -5,7 +5,7 @@ import { PulliKolamMandala, ZariLotusDivider } from './TraditionalMotifs'
 
 export function FooterSection() {
   return (
-    <footer className="relative overflow-hidden bg-maroon-950 text-turmeric-100 pt-16 pb-12 sm:pt-20 sm:pb-16 border-t border-gold-400/30">
+    <footer className="print-page-footer relative overflow-hidden bg-maroon-950 text-turmeric-100 pt-16 pb-12 sm:pt-20 sm:pb-16 border-t border-gold-400/30">
       <div
         className="zari-temple-border-bottom absolute top-0 left-0 right-0 h-3 w-full"
         aria-hidden="true"

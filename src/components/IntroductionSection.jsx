@@ -24,7 +24,7 @@ export function IntroductionSection() {
     <section
       id="introduction"
       aria-labelledby="intro-heading"
-      className="relative overflow-hidden bg-gradient-to-b from-turmeric-50 via-turmeric-100/65 to-turmeric-50 text-maroon-900 py-20 sm:py-28 2xl:py-36"
+      className="print-page-intro relative overflow-hidden bg-gradient-to-b from-turmeric-50 via-turmeric-100/65 to-turmeric-50 text-maroon-900 py-20 sm:py-28 2xl:py-36"
     >
       {/* Subtle Kolam & Banana Leaf background watermarks */}
       <PulliKolamMandala className="pointer-events-none absolute -top-24 -left-24 w-72 h-72 sm:w-96 sm:h-96 text-gold-500 opacity-[0.08]" />
@@ -35,7 +35,7 @@ export function IntroductionSection() {
         className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-40 2xl:w-56 h-auto opacity-30"
       />
 
-      <div className="relative z-10 mx-auto max-w-4xl lg:max-w-5xl 2xl:max-w-6xl safe-inline-pad">
+      <div className="relative z-10 w-full mx-auto max-w-4xl lg:max-w-5xl 2xl:max-w-6xl safe-inline-pad">
         {/* Welcoming Header & Blessing Paragraph */}
         <motion.div {...revealProps} className="text-center max-w-3xl mx-auto">
           <p className="text-xs sm:text-sm uppercase tracking-[0.28em] text-gold-600 font-semibold mb-2">

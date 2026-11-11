@@ -269,6 +269,41 @@ a:focus-visible {
     page-break-inside: avoid;
   }
 
+  .print-page-hero {
+    min-height: 100vh !important;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .print-page-intro {
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .print-page-event {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .print-page-event .mb-12 {
+    margin-bottom: 1.25rem !important;
+  }
+
+  .print-page-event .print-solid-glass {
+    padding: 1.5rem 2rem !important;
+  }
+
+  .print-page-footer {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
   /* Replace backdrop-filter blur in print so PDF text stays razor-sharp vector text */
   .print-solid-glass {
     backdrop-filter: none !important;
