@@ -74,7 +74,7 @@ export function EventDetailsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-            className="print-avoid-break print-solid-glass relative rounded-3xl border border-gold-300/35 bg-white/[0.075] print:bg-[#2B050D] backdrop-blur-md print:backdrop-blur-none p-6 sm:p-10 md:p-12 print:p-6 shadow-[0_24px_64px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,253,246,0.18)] print:shadow-none"
+            className="print-avoid-break print-solid-glass relative rounded-3xl border border-gold-300/35 print:border-[#D4AF37] bg-white/[0.075] print:bg-[#2B050D] backdrop-blur-md print:backdrop-blur-none p-6 sm:p-10 md:p-12 print:p-6 shadow-[0_24px_64px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,253,246,0.18)] print:shadow-none overflow-hidden"
           >
             {/* Ornamental Gold Corner Flourishes */}
             <CornerKolamFlourish className="absolute top-4 left-4 w-10 h-10 print:w-7 print:h-7" color="#EAD18F" />

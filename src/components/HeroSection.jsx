@@ -127,7 +127,7 @@ export function HeroSection() {
           custom={0.05}
           className="mb-6 sm:mb-8 inline-flex flex-col items-center"
         >
-          <div className="inline-flex items-center gap-3 sm:gap-4 rounded-full border border-gold-400/45 print:border-gold-400/80 bg-maroon-950/65 print:bg-[#2B050D] px-5 py-2 sm:px-7 sm:py-2.5 shadow-[0_0_30px_rgba(244,184,41,0.12)] print:shadow-none">
+          <div className="inline-flex items-center gap-3 sm:gap-4 rounded-full border border-gold-400/60 print:border-[#D4AF37] ring-1 ring-gold-400/25 ring-offset-2 ring-offset-maroon-950 print:ring-0 bg-maroon-950/70 print:bg-transparent px-5 py-2 sm:px-7 sm:py-2.5 overflow-hidden">
             <KuthuvilakkuIcon className="w-5 h-7 sm:w-6 sm:h-8 shrink-0" />
             <div className="flex flex-col items-center">
               <span

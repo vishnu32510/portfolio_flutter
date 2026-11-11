@@ -42,3 +42,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VISHNUPRIYAN_SS }}'
           projectId: vishnupriyan-ss
           target: wedding
+

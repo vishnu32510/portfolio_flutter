@@ -79,8 +79,10 @@ export const WEDDING_CONFIG = {
       },
     ],
   },
-  // Optional endpoint (e.g., Google Apps Script Web App or Formspree URL) for cloud RSVP storage
-  rsvpWebhookUrl: import.meta.env.VITE_RSVP_WEBHOOK_URL || '',
+  // Google Apps Script Web App connected to user's Google Sheet
+  rsvpWebhookUrl:
+    import.meta.env.VITE_RSVP_WEBHOOK_URL ||
+    'https://script.google.com/macros/s/AKfycbyPBDCX6uPfGiBqTtYgv1zKsbp8EPaZM8QcKWlU32sT7FKCSWvMWg2SbhHu8xonJUY/exec',
 }
 
 export function getBrideParentsDisplay(mode = 'card') {

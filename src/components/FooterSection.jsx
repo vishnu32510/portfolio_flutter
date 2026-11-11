@@ -18,7 +18,7 @@ export function FooterSection() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-5 rounded-full border border-gold-400/35 print:border-gold-400/80 bg-maroon-900/70 print:bg-[#2B050D] p-4 shadow-[0_0_32px_rgba(244,184,41,0.12)] print:shadow-none"
+          className="mb-5 rounded-full border border-gold-400/60 print:border-[#D4AF37] ring-1 ring-gold-400/25 ring-offset-2 ring-offset-maroon-950 print:ring-0 bg-maroon-900/70 print:bg-transparent p-4 overflow-hidden"
         >
           <PulliKolamMandala className="w-16 h-16 sm:w-20 sm:h-20 text-turmeric-300" />
         </motion.div>
