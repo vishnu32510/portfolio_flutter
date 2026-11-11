@@ -344,8 +344,14 @@ a:focus-visible {
   }
 
   .print-page-event {
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
     padding-top: 1.5rem !important;
-    padding-bottom: 1rem !important;
+    padding-bottom: 1.5rem !important;
+    break-after: page;
+    page-break-after: always;
   }
 
   .print-page-event .mb-12 {
@@ -357,8 +363,13 @@ a:focus-visible {
   }
 
   .print-page-footer {
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
     break-inside: avoid;
     page-break-inside: avoid;
   }
