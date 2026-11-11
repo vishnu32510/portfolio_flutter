@@ -102,24 +102,24 @@ export function IntroductionSection() {
         />
 
         {/* Content Positioned Cleanly Inside the Upper Scalloped Gold Arch */}
-        <div className="print-arch-content relative z-10 flex flex-col items-center justify-start text-center pt-[18%] sm:pt-[17.5%] pb-[66%] sm:pb-[64%] px-[18%] sm:px-[19%]">
+        <div className="print-arch-content relative z-10 flex flex-col items-center justify-start text-center pt-[11%] sm:pt-[17.5%] pb-[62%] sm:pb-[64%] px-[9%] sm:px-[19%]">
           <motion.div {...revealProps} className="w-full max-w-md mx-auto">
             <h2
               id="intro-heading"
               lang="ta"
-              className="font-tamil text-sm sm:text-base text-maroon-900 font-semibold tracking-wide"
+              className="font-tamil text-xs sm:text-base text-maroon-900 font-semibold tracking-wide"
             >
               இரு மனம் இணையும் திருநாள்
             </h2>
-            <p className="text-[0.58rem] sm:text-[0.65rem] uppercase tracking-[0.24em] text-gold-600 font-semibold mt-0.5">
+            <p className="text-[0.5rem] sm:text-[0.65rem] uppercase tracking-[0.24em] text-gold-600 font-semibold mt-0.5">
               An Auspicious Beginning
             </p>
 
-            <div className="my-1.5 sm:my-2">
+            <div className="my-0.5 sm:my-2">
               <ZariLotusDivider />
             </div>
 
-            <p className="text-[0.72rem] sm:text-[0.82rem] leading-snug sm:leading-relaxed text-maroon-800/95 font-normal">
+            <p className="text-[0.62rem] sm:text-[0.82rem] leading-[1.34] sm:leading-relaxed text-maroon-800/95 font-normal">
               With hearts full of gratitude and joy, and with the warm blessings of our beloved
               parents —{' '}
               <strong className="font-semibold text-maroon-900">
@@ -146,7 +146,7 @@ export function IntroductionSection() {
           </motion.div>
 
           {/* Groom & Bride Lineage Cards Inside the Arch */}
-          <div className="couple-cards-wrapper w-full mt-2.5 sm:mt-3.5">
+          <div className="couple-cards-wrapper w-full mt-1.5 sm:mt-3.5">
             <div className="couple-cards-grid">
               {/* Groom Card */}
               <motion.article
@@ -154,36 +154,36 @@ export function IntroductionSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="relative rounded-2xl border border-gold-400/55 bg-[#FFFDF8]/85 print:bg-[#FFFDF8] backdrop-blur-xs print:backdrop-blur-none p-2.5 sm:p-3.5 shadow-[0_6px_20px_rgba(58,8,17,0.05)] print:shadow-none flex flex-col justify-between text-center"
+                className="relative rounded-xl sm:rounded-2xl border border-gold-400/55 bg-[#FFFDF8]/85 print:bg-[#FFFDF8] backdrop-blur-xs print:backdrop-blur-none p-1.5 sm:p-3.5 shadow-[0_6px_20px_rgba(58,8,17,0.05)] print:shadow-none flex flex-col justify-between text-center"
               >
-                <CornerKolamFlourish className="absolute top-2 left-2 w-4 h-4" color="#B88F22" />
+                <CornerKolamFlourish className="absolute top-1 left-1 w-2.5 h-2.5 sm:w-4 sm:h-4" color="#B88F22" />
                 <CornerKolamFlourish
-                  className="absolute top-2 right-2 w-4 h-4 -scale-x-100"
+                  className="absolute top-1 right-1 w-2.5 h-2.5 sm:w-4 sm:h-4 -scale-x-100"
                   color="#B88F22"
                 />
                 <CornerKolamFlourish
-                  className="absolute bottom-2 left-2 w-4 h-4 -scale-y-100"
+                  className="absolute bottom-1 left-1 w-2.5 h-2.5 sm:w-4 sm:h-4 -scale-y-100"
                   color="#B88F22"
                 />
                 <CornerKolamFlourish
-                  className="absolute bottom-2 right-2 w-4 h-4 scale-[-1]"
+                  className="absolute bottom-1 right-1 w-2.5 h-2.5 sm:w-4 sm:h-4 scale-[-1]"
                   color="#B88F22"
                 />
 
                 <div>
-                  <span className="inline-block text-[0.58rem] uppercase tracking-[0.18em] text-gold-600 font-semibold">
+                  <span className="inline-block text-[0.46rem] sm:text-[0.58rem] uppercase tracking-[0.14em] sm:tracking-[0.18em] text-gold-600 font-semibold">
                     மணமகன் • The Groom
                   </span>
-                  <h3 className="mt-0.5 font-heading text-sm sm:text-base text-maroon-900 font-semibold leading-snug">
+                  <h3 className="mt-0.5 font-heading text-[0.72rem] sm:text-base text-maroon-900 font-semibold leading-tight sm:leading-snug">
                     {groom.fullName}
                   </h3>
                 </div>
 
-                <div className="mt-2 pt-1.5 border-t border-gold-400/30">
-                  <p className="text-[0.55rem] uppercase tracking-[0.16em] text-maroon-700/75 mb-0.5">
+                <div className="mt-1 pt-1 sm:mt-2 sm:pt-1.5 border-t border-gold-400/30">
+                  <p className="text-[0.44rem] sm:text-[0.55rem] uppercase tracking-[0.14em] sm:tracking-[0.16em] text-maroon-700/75 mb-0.5">
                     Son of
                   </p>
-                  <p className="font-heading text-xs sm:text-[0.8rem] text-maroon-900 leading-snug">
+                  <p className="font-heading text-[0.56rem] sm:text-[0.8rem] text-maroon-900 leading-tight sm:leading-snug">
                     {groom.parents.father} &amp; {groom.parents.mother}
                   </p>
                 </div>
@@ -198,8 +198,8 @@ export function IntroductionSection() {
                 className="flex flex-col items-center justify-center py-0.5"
                 aria-hidden="true"
               >
-                <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border-2 border-gold-400/60 bg-maroon-900 text-turmeric-300 shadow-[0_6px_18px_rgba(58,8,17,0.18)] print:shadow-none">
-                  <KuthuvilakkuIcon className="w-4 h-5 sm:w-4 sm:h-6" />
+                <div className="flex h-6 w-6 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-gold-400/60 sm:border-2 bg-maroon-900 text-turmeric-300 shadow-[0_4px_12px_rgba(58,8,17,0.18)] print:shadow-none">
+                  <KuthuvilakkuIcon className="w-2.5 h-3.5 sm:w-4 sm:h-6" />
                 </div>
               </motion.div>
 
@@ -209,46 +209,46 @@ export function IntroductionSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="relative rounded-2xl border border-gold-400/55 bg-[#FFFDF8]/85 print:bg-[#FFFDF8] backdrop-blur-xs print:backdrop-blur-none p-2.5 sm:p-3.5 shadow-[0_6px_20px_rgba(58,8,17,0.05)] print:shadow-none flex flex-col justify-between text-center"
+                className="relative rounded-xl sm:rounded-2xl border border-gold-400/55 bg-[#FFFDF8]/85 print:bg-[#FFFDF8] backdrop-blur-xs print:backdrop-blur-none p-1.5 sm:p-3.5 shadow-[0_6px_20px_rgba(58,8,17,0.05)] print:shadow-none flex flex-col justify-between text-center"
               >
-                <CornerKolamFlourish className="absolute top-2 left-2 w-4 h-4" color="#B88F22" />
+                <CornerKolamFlourish className="absolute top-1 left-1 w-2.5 h-2.5 sm:w-4 sm:h-4" color="#B88F22" />
                 <CornerKolamFlourish
-                  className="absolute top-2 right-2 w-4 h-4 -scale-x-100"
+                  className="absolute top-1 right-1 w-2.5 h-2.5 sm:w-4 sm:h-4 -scale-x-100"
                   color="#B88F22"
                 />
                 <CornerKolamFlourish
-                  className="absolute bottom-2 left-2 w-4 h-4 -scale-y-100"
+                  className="absolute bottom-1 left-1 w-2.5 h-2.5 sm:w-4 sm:h-4 -scale-y-100"
                   color="#B88F22"
                 />
                 <CornerKolamFlourish
-                  className="absolute bottom-2 right-2 w-4 h-4 scale-[-1]"
+                  className="absolute bottom-1 right-1 w-2.5 h-2.5 sm:w-4 sm:h-4 scale-[-1]"
                   color="#B88F22"
                 />
 
                 <div>
-                  <span className="inline-block text-[0.58rem] uppercase tracking-[0.18em] text-gold-600 font-semibold">
+                  <span className="inline-block text-[0.46rem] sm:text-[0.58rem] uppercase tracking-[0.14em] sm:tracking-[0.18em] text-gold-600 font-semibold">
                     மணமகள் • The Bride
                   </span>
-                  <h3 className="mt-0.5 font-heading text-sm sm:text-base text-maroon-900 font-semibold leading-snug">
+                  <h3 className="mt-0.5 font-heading text-[0.72rem] sm:text-base text-maroon-900 font-semibold leading-tight sm:leading-snug">
                     {bride.fullName}
                   </h3>
                 </div>
 
-                <div className="mt-2 pt-1.5 border-t border-gold-400/30 space-y-1">
+                <div className="mt-1 pt-1 sm:mt-2 sm:pt-1.5 border-t border-gold-400/30 space-y-0.5 sm:space-y-1">
                   <div>
-                    <p className="text-[0.55rem] uppercase tracking-[0.16em] text-maroon-700/75">
+                    <p className="text-[0.44rem] sm:text-[0.55rem] uppercase tracking-[0.14em] sm:tracking-[0.16em] text-maroon-700/75">
                       Daughter of
                     </p>
-                    <p className="font-heading text-xs sm:text-[0.8rem] text-maroon-900 leading-snug">
+                    <p className="font-heading text-[0.56rem] sm:text-[0.8rem] text-maroon-900 leading-tight sm:leading-snug">
                       {brideParentsCard}
                     </p>
                   </div>
                   {bride.sister && (
-                    <div className="pt-1 border-t border-gold-400/20">
-                      <p className="text-[0.54rem] uppercase tracking-[0.16em] text-maroon-700/75">
+                    <div className="pt-0.5 sm:pt-1 border-t border-gold-400/20">
+                      <p className="text-[0.42rem] sm:text-[0.54rem] uppercase tracking-[0.14em] sm:tracking-[0.16em] text-maroon-700/75">
                         Sister of
                       </p>
-                      <p className="font-heading text-xs sm:text-[0.78rem] text-maroon-900 leading-snug">
+                      <p className="font-heading text-[0.54rem] sm:text-[0.78rem] text-maroon-900 leading-tight sm:leading-snug">
                         {bride.sister}
                       </p>
                     </div>
