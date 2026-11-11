@@ -154,7 +154,7 @@ export function IntroductionSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="relative rounded-2xl border border-gold-400/55 bg-[#FFFDF8]/85 backdrop-blur-xs p-2.5 sm:p-3.5 shadow-[0_6px_20px_rgba(58,8,17,0.05)] flex flex-col justify-between text-center"
+                className="relative rounded-2xl border border-gold-400/55 bg-[#FFFDF8]/85 print:bg-[#FFFDF8] backdrop-blur-xs print:backdrop-blur-none p-2.5 sm:p-3.5 shadow-[0_6px_20px_rgba(58,8,17,0.05)] print:shadow-none flex flex-col justify-between text-center"
               >
                 <CornerKolamFlourish className="absolute top-2 left-2 w-4 h-4" color="#B88F22" />
                 <CornerKolamFlourish
@@ -198,7 +198,7 @@ export function IntroductionSection() {
                 className="flex flex-col items-center justify-center py-0.5"
                 aria-hidden="true"
               >
-                <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border-2 border-gold-400/60 bg-maroon-900 text-turmeric-300 shadow-[0_6px_18px_rgba(58,8,17,0.18)]">
+                <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border-2 border-gold-400/60 bg-maroon-900 text-turmeric-300 shadow-[0_6px_18px_rgba(58,8,17,0.18)] print:shadow-none">
                   <KuthuvilakkuIcon className="w-4 h-5 sm:w-4 sm:h-6" />
                 </div>
               </motion.div>
@@ -209,7 +209,7 @@ export function IntroductionSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="relative rounded-2xl border border-gold-400/55 bg-[#FFFDF8]/85 backdrop-blur-xs p-2.5 sm:p-3.5 shadow-[0_6px_20px_rgba(58,8,17,0.05)] flex flex-col justify-between text-center"
+                className="relative rounded-2xl border border-gold-400/55 bg-[#FFFDF8]/85 print:bg-[#FFFDF8] backdrop-blur-xs print:backdrop-blur-none p-2.5 sm:p-3.5 shadow-[0_6px_20px_rgba(58,8,17,0.05)] print:shadow-none flex flex-col justify-between text-center"
               >
                 <CornerKolamFlourish className="absolute top-2 left-2 w-4 h-4" color="#B88F22" />
                 <CornerKolamFlourish

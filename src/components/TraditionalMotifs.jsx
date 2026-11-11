@@ -192,7 +192,7 @@ export function HangingTempleBell({
         viewBox={`0 0 64 ${chainLength + 76}`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full drop-shadow-[0_6px_12px_rgba(0,0,0,0.45)]"
+        className="w-full h-full drop-shadow-[0_6px_12px_rgba(0,0,0,0.45)] print:drop-shadow-none"
       >
         <defs>
           <linearGradient id="brassBellGrad" x1="12" y1="0" x2="52" y2="60" gradientUnits="userSpaceOnUse">

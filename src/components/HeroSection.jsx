@@ -51,9 +51,9 @@ export function HeroSection() {
 
   return (
     <header className="print-page-hero relative min-h-dvh flex flex-col justify-between overflow-hidden bg-gradient-to-b from-maroon-950 via-maroon-900 to-maroon-950 text-turmeric-50">
-      {/* Subtle radial Kanchipuram silk & turmeric lamp glow */}
+      {/* Subtle radial Kanchipuram silk & turmeric lamp glow (web only) */}
       <div
-        className="pointer-events-none absolute inset-0"
+        className="no-print print:hidden pointer-events-none absolute inset-0"
         aria-hidden="true"
         style={{
           background:
@@ -127,7 +127,7 @@ export function HeroSection() {
           custom={0.05}
           className="mb-6 sm:mb-8 inline-flex flex-col items-center"
         >
-          <div className="inline-flex items-center gap-3 sm:gap-4 rounded-full border border-gold-400/45 bg-maroon-950/65 px-5 py-2 sm:px-7 sm:py-2.5 shadow-[0_0_30px_rgba(244,184,41,0.12)]">
+          <div className="inline-flex items-center gap-3 sm:gap-4 rounded-full border border-gold-400/45 print:border-gold-400/80 bg-maroon-950/65 print:bg-[#2B050D] px-5 py-2 sm:px-7 sm:py-2.5 shadow-[0_0_30px_rgba(244,184,41,0.12)] print:shadow-none">
             <KuthuvilakkuIcon className="w-5 h-7 sm:w-6 sm:h-8 shrink-0" />
             <div className="flex flex-col items-center">
               <span

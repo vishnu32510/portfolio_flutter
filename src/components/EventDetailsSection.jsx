@@ -17,10 +17,10 @@ export function EventDetailsSection() {
       aria-labelledby="event-heading"
       className="print-page-event relative overflow-hidden bg-gradient-to-b from-maroon-950 via-maroon-900 to-maroon-950 text-turmeric-50 py-24 sm:py-32 2xl:py-40"
     >
-      {/* Warm ambient turmeric & antique gold glows behind the glassmorphic card */}
+      {/* Warm ambient turmeric & antique gold glows behind the glassmorphic card (web only) */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[28rem] w-[28rem] sm:h-[36rem] sm:w-[44rem] rounded-full blur-3xl"
+        className="no-print print:hidden pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[28rem] w-[28rem] sm:h-[36rem] sm:w-[44rem] rounded-full blur-3xl"
         style={{
           background:
             'radial-gradient(circle, rgba(244, 184, 41, 0.20) 0%, rgba(212, 175, 55, 0.10) 45%, transparent 75%)',
@@ -74,7 +74,7 @@ export function EventDetailsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-            className="print-avoid-break print-solid-glass relative rounded-3xl border border-gold-300/35 bg-white/[0.075] backdrop-blur-md p-6 sm:p-10 md:p-12 shadow-[0_24px_64px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,253,246,0.18)]"
+            className="print-avoid-break print-solid-glass relative rounded-3xl border border-gold-300/35 bg-white/[0.075] print:bg-[#2B050D] backdrop-blur-md print:backdrop-blur-none p-6 sm:p-10 md:p-12 shadow-[0_24px_64px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,253,246,0.18)] print:shadow-none"
           >
             {/* Ornamental Gold Corner Flourishes */}
             <CornerKolamFlourish className="absolute top-4 left-4 w-10 h-10" color="#EAD18F" />

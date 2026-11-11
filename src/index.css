@@ -275,6 +275,10 @@ a:focus-visible {
     print-color-adjust: exact !important;
     animation: none !important;
     transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
   }
 
   html,
