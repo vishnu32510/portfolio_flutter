@@ -34,12 +34,6 @@ const ARCH_ILLUSTRATION_MODES = [
     src: '/images/page2-arch-kneeling-proposal.jpg',
     alt: 'Watercolor illustration of Vishnu Priyan kneeling on one knee proposing to Noviya inside a floral gold temple arch',
   },
-  {
-    id: 'traditional',
-    label: 'Traditional Muhurtham',
-    src: '/images/page2-arch-traditional-likeness.jpg',
-    alt: 'Watercolor illustration of Vishnu Priyan and Noviya in traditional Tamil wedding attire inside a floral gold temple arch',
-  },
 ]
 
 export function IntroductionSection() {
