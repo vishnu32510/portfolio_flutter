@@ -36,6 +36,11 @@ export function HeroSection() {
     computeCountdown(WEDDING_CONFIG.event.muhurthamIsoStart),
   )
 
+  const isLocal =
+    import.meta.env.DEV ||
+    (typeof window !== 'undefined' &&
+      (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCountdown(computeCountdown(WEDDING_CONFIG.event.muhurthamIsoStart))
@@ -251,14 +256,16 @@ export function HeroSection() {
           >
             View Muhurtham Details
           </a>
-          <button
-            type="button"
-            onClick={() => window.print()}
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-gold-400/50 bg-maroon-950/65 px-6 py-3.5 text-sm sm:text-base font-medium text-gold-200 transition-colors duration-200 hover:bg-gold-400/15 hover:border-turmeric-300 cursor-pointer"
-          >
-            <Printer className="w-4 h-4 text-turmeric-300" aria-hidden="true" />
-            <span>Save as PDF</span>
-          </button>
+          {isLocal && (
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-gold-400/50 bg-maroon-950/65 px-6 py-3.5 text-sm sm:text-base font-medium text-gold-200 transition-colors duration-200 hover:bg-gold-400/15 hover:border-turmeric-300 cursor-pointer"
+            >
+              <Printer className="w-4 h-4 text-turmeric-300" aria-hidden="true" />
+              <span>Save as PDF</span>
+            </button>
+          )}
         </motion.div>
       </div>
 
