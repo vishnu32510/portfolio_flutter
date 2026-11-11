@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 /**
@@ -411,4 +412,183 @@ export function CornerKolamFlourish({ className = 'w-12 h-12', color = '#D4AF37'
     </svg>
   )
 }
+
+/**
+ * Carved Dravidian Kalyana Mandapam Stone Pillar (Thoon)
+ * Brought over from the temple-gopuram-scroll branch to frame the left & right edges.
+ */
+export function MandapamPillarSvg({ flip = false, className = '' }) {
+  const gradId = flip ? 'pillarStoneRight' : 'pillarStoneLeft'
+
+  return (
+    <svg
+      viewBox="0 0 180 900"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`${flip ? '-scale-x-100' : ''} ${className}`}
+      aria-hidden="true"
+      focusable="false"
+    >
+      <defs>
+        <linearGradient id={gradId} x1="0" y1="0" x2="140" y2="0" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#1B0307" />
+          <stop offset="55%" stopColor="#3B0A13" />
+          <stop offset="90%" stopColor="#5C1421" />
+          <stop offset="100%" stopColor="#D4AF37" />
+        </linearGradient>
+      </defs>
+
+      <path
+        d="M0 0 L175 0 L175 42 L135 58 C122 64, 118 82, 112 92 C104 82, 98 66, 86 64 L86 96 L0 96 Z"
+        fill={`url(#${gradId})`}
+        stroke="#D4AF37"
+        strokeOpacity="0.65"
+        strokeWidth="1.5"
+      />
+      <circle cx="112" cy="100" r="6" fill="#F4B829" opacity="0.85" />
+      <path d="M107 104 L112 118 L117 104 Z" fill="#D4AF37" />
+
+      <line x1="148" y1="42" x2="148" y2="178" stroke="#EAD18F" strokeOpacity="0.7" strokeWidth="1.4" />
+      <g transform="translate(148, 178)">
+        <path d="M0 -8 C3 -3, 3 1, 0 5 C-3 1, -3 -3, 0 -8 Z" fill="#FCE7A2" />
+        <path d="M-12 6 L12 6 C9 13, -9 13, -12 6 Z" fill="#D4AF37" />
+        <path d="M-4 12 L4 12 L0 19 Z" fill="#B8861B" />
+      </g>
+
+      <rect
+        x="8"
+        y="96"
+        width="84"
+        height="18"
+        rx="3"
+        fill="#4A0E17"
+        stroke="#D4AF37"
+        strokeOpacity="0.7"
+        strokeWidth="1.4"
+      />
+      <path
+        d="M16 114 L84 114 L74 136 L26 136 Z"
+        fill="#5C1421"
+        stroke="#EAD18F"
+        strokeOpacity="0.6"
+        strokeWidth="1.2"
+      />
+
+      <rect
+        x="22"
+        y="136"
+        width="56"
+        height="690"
+        fill={`url(#${gradId})`}
+        stroke="#D4AF37"
+        strokeOpacity="0.55"
+        strokeWidth="1.5"
+      />
+      <line x1="38" y1="145" x2="38" y2="820" stroke="#EAD18F" strokeOpacity="0.24" strokeWidth="1.2" />
+      <line x1="58" y1="145" x2="58" y2="820" stroke="#EAD18F" strokeOpacity="0.24" strokeWidth="1.2" />
+
+      {[240, 420, 600].map((by) => (
+        <g key={by} transform={`translate(20, ${by})`}>
+          <rect
+            x="0"
+            y="0"
+            width="60"
+            height="48"
+            rx="3"
+            fill="#4A0E17"
+            stroke="#D4AF37"
+            strokeOpacity="0.75"
+            strokeWidth="1.3"
+          />
+          <circle cx="30" cy="24" r="11" stroke="#F4B829" strokeOpacity="0.7" strokeWidth="1.2" />
+          <circle cx="30" cy="24" r="3.5" fill="#F4B829" opacity="0.8" />
+        </g>
+      ))}
+
+      <rect
+        x="10"
+        y="826"
+        width="80"
+        height="74"
+        rx="2"
+        fill="#2A060C"
+        stroke="#D4AF37"
+        strokeOpacity="0.65"
+        strokeWidth="1.5"
+      />
+    </svg>
+  )
+}
+
+/**
+ * Left & Right Kalyana Mandapam Side Pillars Frame
+ * Positioned at z-[2] so it sits behind all z-10 content/cards and z-20 garlands,
+ * and animates with the exact scroll-driven depth effect from the temple branch.
+ */
+export function MandapamSidePillars() {
+  const pillarsRef = useRef(null)
+
+  useEffect(() => {
+    const supportsScrollTimeline =
+      typeof CSS !== 'undefined' &&
+      typeof CSS.supports === 'function' &&
+      CSS.supports('animation-timeline: scroll()') &&
+      CSS.supports('animation-range: 0% 100%')
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (supportsScrollTimeline || prefersReducedMotion) {
+      if (pillarsRef.current) {
+        pillarsRef.current.style.transform = ''
+      }
+      return undefined
+    }
+
+    let rafId = 0
+    const updateFallbackTransform = () => {
+      rafId = 0
+      const maxScroll = Math.max(
+        1,
+        document.documentElement.scrollHeight - window.innerHeight,
+      )
+      const p = Math.min(1, Math.max(0, window.scrollY / maxScroll))
+      if (pillarsRef.current) {
+        const scale = 1 + p * 0.14
+        const y = 36 - p * 72
+        pillarsRef.current.style.transform = `translate3d(0, ${y}px, 0) scale(${scale})`
+      }
+    }
+
+    const onScroll = () => {
+      if (!rafId) {
+        rafId = window.requestAnimationFrame(updateFallbackTransform)
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
+    updateFallbackTransform()
+
+    return () => {
+      if (rafId) window.cancelAnimationFrame(rafId)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
+  return (
+    <div
+      ref={pillarsRef}
+      aria-hidden="true"
+      className="mandapam-side-pillars pointer-events-none fixed inset-0 z-[2] hidden md:flex print:flex justify-between items-stretch select-none overflow-hidden"
+    >
+      <MandapamPillarSvg className="h-full w-auto opacity-85 drop-shadow-[10px_0_24px_rgba(0,0,0,0.55)]" />
+      <MandapamPillarSvg
+        flip
+        className="h-full w-auto opacity-85 drop-shadow-[-10px_0_24px_rgba(0,0,0,0.55)]"
+      />
+    </div>
+  )
+}
+
 

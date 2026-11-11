@@ -4,6 +4,7 @@ import { FooterSection } from './components/FooterSection'
 import { HeroSection } from './components/HeroSection'
 import { IntroductionSection } from './components/IntroductionSection'
 import { RsvpSection } from './components/RsvpSection'
+import { MandapamSidePillars } from './components/TraditionalMotifs'
 
 export default function App() {
   const { scrollYProgress } = useScroll()
@@ -29,6 +30,9 @@ export default function App() {
         style={{ scaleX, transformOrigin: '0%' }}
         className="no-print fixed top-0 left-0 right-0 z-50 h-[3px] bg-gradient-to-r from-gold-500 via-turmeric-400 to-gold-300"
       />
+
+      {/* Carved Dravidian Kalyana Mandapam Stone Side Pillars (from temple branch) */}
+      <MandapamSidePillars />
 
       <div className="min-h-dvh flex flex-col bg-maroon-950">
         <HeroSection />

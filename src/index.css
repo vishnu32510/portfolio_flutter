@@ -164,11 +164,11 @@ a:focus-visible {
   gap: 1.5rem;
 }
 
-@container couple-cards (inline-size > 44rem) {
+@container couple-cards (inline-size > 34rem) {
   .couple-cards-grid {
     grid-template-columns: 1fr auto 1fr;
     align-items: stretch;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 }
 
@@ -182,7 +182,7 @@ a:focus-visible {
   gap: 1.25rem;
 }
 
-@container event-card (inline-size > 38rem) {
+@container event-card (inline-size > 32rem) {
   .event-card-details-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
@@ -210,10 +210,43 @@ a:focus-visible {
   background-size: 28px 12px;
 }
 
-/* Safe area padding helpers */
+/* Safe area padding helpers (leaves room for Kalyana Mandapam side pillars on md+ and print) */
 .safe-inline-pad {
   padding-inline-start: max(1rem, env(safe-area-inset-left, 0px));
   padding-inline-end: max(1rem, env(safe-area-inset-right, 0px));
+}
+
+@media (min-width: 768px), print {
+  .safe-inline-pad {
+    padding-inline-start: max(5rem, env(safe-area-inset-left, 0px));
+    padding-inline-end: max(5rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+/* Scroll-driven depth animation for Kalyana Mandapam side pillars (from temple branch) */
+@keyframes mandapamPillarsDepth {
+  0% {
+    transform: translate3d(0, 36px, 0) scale(1);
+    opacity: 0.74;
+  }
+  55% {
+    transform: translate3d(0, -16px, 0) scale(1.08);
+    opacity: 0.94;
+  }
+  100% {
+    transform: translate3d(0, -72px, 0) scale(1.14);
+    opacity: 0.84;
+  }
+}
+
+@supports ((animation-timeline: scroll()) and (animation-range: 0% 100%)) {
+  @media screen and (prefers-reduced-motion: no-preference) {
+    .mandapam-side-pillars {
+      animation: mandapamPillarsDepth linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0% 100%;
+    }
+  }
 }
 
 /* ==========================================================================
@@ -245,7 +278,8 @@ a:focus-visible {
   }
 
   /* Ensure Framer Motion elements that haven't scrolled into view yet render at 100% opacity in PDF */
-  [style*="opacity"] {
+  [style*="opacity"],
+  .mandapam-side-pillars {
     opacity: 1 !important;
     transform: none !important;
   }

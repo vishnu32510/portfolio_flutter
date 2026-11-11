@@ -149,41 +149,34 @@ export function HeroSection() {
           Together With Our Families, We Joyfully Invite You
         </motion.p>
 
-        {/* Couple's Names: Vishnu Priyan weds Noviya */}
+        {/* Couple's Names: Vishnu Priyan / weds / Noviya (stacked vertically) */}
         <motion.h1
           variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={0.3}
-          className="hero-couple-title font-normal tracking-tight text-gold-shimmer py-1"
+          className="hero-couple-title flex flex-col items-center font-normal tracking-tight py-1"
         >
-          <span className="block sm:inline">{WEDDING_CONFIG.groom.shortName}</span>
-          <span className="mx-3 sm:mx-5 my-1 sm:my-0 inline-block font-heading italic font-normal text-[0.52em] text-turmeric-400 align-middle">
-            weds
+          <span className="block text-gold-shimmer">{WEDDING_CONFIG.groom.shortName}</span>
+          <span className="my-1.5 sm:my-2.5 inline-flex items-center gap-3 font-heading italic font-normal text-[0.44em] tracking-[0.1em] text-turmeric-400">
+            <span
+              aria-hidden="true"
+              className="h-px w-7 sm:w-10 bg-gradient-to-r from-transparent to-gold-400/75"
+            />
+            <span>weds</span>
+            <span
+              aria-hidden="true"
+              className="h-px w-7 sm:w-10 bg-gradient-to-l from-transparent to-gold-400/75"
+            />
           </span>
-          <span className="block sm:inline">{WEDDING_CONFIG.bride.shortName}</span>
+          <span className="block text-gold-shimmer">{WEDDING_CONFIG.bride.shortName}</span>
         </motion.h1>
-
-        {/* Full Traditional Names */}
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          custom={0.42}
-          className="mt-2 text-sm sm:text-base md:text-lg text-turmeric-100/85 tracking-wide font-light"
-        >
-          {WEDDING_CONFIG.groom.fullName}
-          <span className="mx-2.5 text-gold-400" aria-hidden="true">
-            •
-          </span>
-          {WEDDING_CONFIG.bride.fullName}
-        </motion.p>
 
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          custom={0.5}
+          custom={0.42}
           className="my-6 sm:my-7 w-full"
         >
           <ZariLotusDivider light />
@@ -213,7 +206,7 @@ export function HeroSection() {
             animate="visible"
             custom={0.68}
             aria-label={`Countdown to Muhurtham: ${countdown.days} days, ${countdown.hours} hours, and ${countdown.minutes} minutes`}
-            className="no-print mt-7 inline-flex items-center gap-3 sm:gap-5 rounded-2xl border border-gold-400/25 bg-maroon-950/50 px-5 py-3"
+            className="no-print print:hidden mt-7 inline-flex items-center gap-3 sm:gap-5 rounded-2xl border border-gold-400/25 bg-maroon-950/50 px-5 py-3"
           >
             {[
               { label: 'Days', value: countdown.days },

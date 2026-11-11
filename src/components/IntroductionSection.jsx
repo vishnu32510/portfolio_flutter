@@ -35,7 +35,7 @@ export function IntroductionSection() {
         className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-40 2xl:w-56 h-auto opacity-30"
       />
 
-      <div className="relative z-10 w-full mx-auto max-w-4xl lg:max-w-5xl 2xl:max-w-6xl safe-inline-pad">
+      <div className="relative z-10 w-full mx-auto max-w-4xl lg:max-w-5xl 2xl:max-w-6xl safe-inline-pad md:px-24 lg:px-28">
         {/* Welcoming Header & Blessing Paragraph */}
         <motion.div {...revealProps} className="text-center max-w-3xl mx-auto">
           <p className="text-xs sm:text-sm uppercase tracking-[0.28em] text-gold-600 font-semibold mb-2">
@@ -84,7 +84,7 @@ export function IntroductionSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.75, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="relative rounded-2xl border border-gold-400/50 bg-white/80 p-7 sm:p-9 shadow-[0_12px_36px_rgba(58,8,17,0.06)] flex flex-col justify-between text-center"
+              className="relative rounded-2xl border border-gold-400/50 bg-white/80 p-5 sm:p-7 lg:p-9 shadow-[0_12px_36px_rgba(58,8,17,0.06)] flex flex-col justify-between text-center"
             >
               <CornerKolamFlourish className="absolute top-3 left-3 w-9 h-9" color="#B88F22" />
               <CornerKolamFlourish
@@ -104,16 +104,9 @@ export function IntroductionSection() {
                 <span className="inline-block text-xs uppercase tracking-[0.26em] text-gold-600 font-semibold">
                   மணமகன் • The Groom
                 </span>
-                <h3 className="mt-2.5 font-heading text-2xl sm:text-3xl text-maroon-900 font-medium">
+                <h3 className="mt-2.5 font-heading text-xl sm:text-2xl lg:text-3xl text-maroon-900 font-medium">
                   {groom.fullName}
                 </h3>
-                <div className="mt-3 inline-flex flex-wrap items-center justify-center gap-2 rounded-full bg-turmeric-100/90 border border-gold-400/35 px-4 py-1 text-xs sm:text-sm text-maroon-800 font-medium">
-                  <span>{groom.natchatram}</span>
-                  <span className="text-gold-600" aria-hidden="true">
-                    •
-                  </span>
-                  <span>{groom.rasi}</span>
-                </div>
               </div>
 
               <div className="mt-6 pt-5 border-t border-gold-400/30">
@@ -135,8 +128,8 @@ export function IntroductionSection() {
               className="flex flex-col items-center justify-center py-1"
               aria-hidden="true"
             >
-              <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-gold-400/60 bg-maroon-900 text-turmeric-300 shadow-[0_8px_24px_rgba(58,8,17,0.18)]">
-                <KuthuvilakkuIcon className="w-7 h-9" />
+              <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full border-2 border-gold-400/60 bg-maroon-900 text-turmeric-300 shadow-[0_8px_24px_rgba(58,8,17,0.18)]">
+                <KuthuvilakkuIcon className="w-6 h-8 sm:w-7 sm:h-9" />
               </div>
             </motion.div>
 
@@ -146,7 +139,7 @@ export function IntroductionSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.75, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-              className="relative rounded-2xl border border-gold-400/50 bg-white/80 p-7 sm:p-9 shadow-[0_12px_36px_rgba(58,8,17,0.06)] flex flex-col justify-between text-center"
+              className="relative rounded-2xl border border-gold-400/50 bg-white/80 p-5 sm:p-7 lg:p-9 shadow-[0_12px_36px_rgba(58,8,17,0.06)] flex flex-col justify-between text-center"
             >
               <CornerKolamFlourish className="absolute top-3 left-3 w-9 h-9" color="#B88F22" />
               <CornerKolamFlourish
@@ -166,16 +159,9 @@ export function IntroductionSection() {
                 <span className="inline-block text-xs uppercase tracking-[0.26em] text-gold-600 font-semibold">
                   மணமகள் • The Bride
                 </span>
-                <h3 className="mt-2.5 font-heading text-2xl sm:text-3xl text-maroon-900 font-medium">
+                <h3 className="mt-2.5 font-heading text-xl sm:text-2xl lg:text-3xl text-maroon-900 font-medium">
                   {bride.fullName}
                 </h3>
-                <div className="mt-3 inline-flex flex-wrap items-center justify-center gap-2 rounded-full bg-turmeric-100/90 border border-gold-400/35 px-4 py-1 text-xs sm:text-sm text-maroon-800 font-medium">
-                  <span>{bride.natchatram}</span>
-                  <span className="text-gold-600" aria-hidden="true">
-                    •
-                  </span>
-                  <span>{bride.rasi}</span>
-                </div>
               </div>
 
               <div className="mt-6 pt-5 border-t border-gold-400/30">
