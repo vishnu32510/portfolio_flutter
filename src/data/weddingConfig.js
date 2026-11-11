@@ -44,8 +44,7 @@ export const WEDDING_CONFIG = {
     mapsUrl:
       'https://www.google.com/maps/search/?api=1&query=Sri+Venkateswara+Temple+1+Balaji+Temple+Drive+Bridgewater+NJ+08807',
     feastTitle: 'Kalyana Virundhu (Wedding Feast)',
-    feastNote:
-      'Following the auspicious Muhurtham rituals, please join us for an authentic traditional South Indian vegetarian lunch.',
+    feastNote: 'Following the auspicious Muhurtham rituals, please join us for lunch.',
   },
   // Optional endpoint (e.g., Google Apps Script Web App or Formspree URL) for cloud RSVP storage
   rsvpWebhookUrl: import.meta.env.VITE_RSVP_WEBHOOK_URL || '',
@@ -78,7 +77,7 @@ export function downloadWeddingIcs() {
     'DTSTART:20261213T133000Z',
     'DTEND:20261213T183000Z',
     'SUMMARY:Wedding of Vishnu Priyan & Noviya (Subha Muhurtham)',
-    'DESCRIPTION:Traditional Tamil Hindu Wedding (Auspicious Muhurtham: 10:00 AM - 11:00 AM EST) followed by an authentic vegetarian lunch. Vaazhga Valamudan!',
+    'DESCRIPTION:Subha Muhurtham (10:00 AM - 11:00 AM EST). Vaazhga Valamudan!',
     'LOCATION:Kalyana Mandapam\\, Sri Venkateswara Temple (Balaji Mandir)\\, 1 Balaji Temple Drive\\, Bridgewater\\, NJ 08807',
     'END:VEVENT',
     'END:VCALENDAR',
