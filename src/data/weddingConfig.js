@@ -43,8 +43,6 @@ export const WEDDING_CONFIG = {
     addressLine: '1 Balaji Temple Drive, Bridgewater, NJ 08807',
     mapsUrl:
       'https://www.google.com/maps/search/?api=1&query=Sri+Venkateswara+Temple+1+Balaji+Temple+Drive+Bridgewater+NJ+08807',
-    details:
-      'Traditional South Indian Hindu wedding ceremony followed by an authentic vegetarian lunch.',
     feastTitle: 'Kalyana Virundhu (Wedding Feast)',
     feastNote:
       'Following the auspicious Muhurtham rituals, please join us for an authentic traditional South Indian vegetarian lunch.',
