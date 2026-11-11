@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown, Sparkles } from 'lucide-react'
+import { ChevronDown, Printer, Sparkles } from 'lucide-react'
 import { WEDDING_CONFIG } from '../data/weddingConfig'
 import {
   BananaLeafMotif,
@@ -149,7 +149,7 @@ export function HeroSection() {
           Together With Our Families, We Joyfully Invite You
         </motion.p>
 
-        {/* Couple's Names */}
+        {/* Couple's Names: Vishnu Priyan weds Noviya */}
         <motion.h1
           variants={fadeUp}
           initial="hidden"
@@ -157,11 +157,11 @@ export function HeroSection() {
           custom={0.3}
           className="hero-couple-title font-normal tracking-tight text-gold-shimmer py-1"
         >
-          <span className="block sm:inline">{WEDDING_CONFIG.bride.shortName}</span>
-          <span className="mx-3 sm:mx-5 my-1 sm:my-0 inline-block font-heading italic font-normal text-[0.62em] text-turmeric-400 align-middle">
-            &amp;
-          </span>
           <span className="block sm:inline">{WEDDING_CONFIG.groom.shortName}</span>
+          <span className="mx-3 sm:mx-5 my-1 sm:my-0 inline-block font-heading italic font-normal text-[0.52em] text-turmeric-400 align-middle">
+            weds
+          </span>
+          <span className="block sm:inline">{WEDDING_CONFIG.bride.shortName}</span>
         </motion.h1>
 
         {/* Full Traditional Names */}
@@ -172,11 +172,11 @@ export function HeroSection() {
           custom={0.42}
           className="mt-2 text-sm sm:text-base md:text-lg text-turmeric-100/85 tracking-wide font-light"
         >
-          {WEDDING_CONFIG.bride.fullName}
+          {WEDDING_CONFIG.groom.fullName}
           <span className="mx-2.5 text-gold-400" aria-hidden="true">
             •
           </span>
-          {WEDDING_CONFIG.groom.fullName}
+          {WEDDING_CONFIG.bride.fullName}
         </motion.p>
 
         <motion.div
@@ -205,7 +205,7 @@ export function HeroSection() {
           </p>
         </motion.div>
 
-        {/* Subtle Countdown Pills to Subha Muhurtham */}
+        {/* Subtle Countdown Pills to Subha Muhurtham (Web only, hidden in PDF) */}
         {countdown && (
           <motion.div
             variants={fadeUp}
@@ -213,7 +213,7 @@ export function HeroSection() {
             animate="visible"
             custom={0.68}
             aria-label={`Countdown to Muhurtham: ${countdown.days} days, ${countdown.hours} hours, and ${countdown.minutes} minutes`}
-            className="mt-7 inline-flex items-center gap-3 sm:gap-5 rounded-2xl border border-gold-400/25 bg-maroon-950/50 px-5 py-3"
+            className="no-print mt-7 inline-flex items-center gap-3 sm:gap-5 rounded-2xl border border-gold-400/25 bg-maroon-950/50 px-5 py-3"
           >
             {[
               { label: 'Days', value: countdown.days },
@@ -237,13 +237,13 @@ export function HeroSection() {
           </motion.div>
         )}
 
-        {/* Quick Action Anchor Buttons */}
+        {/* Quick Action Anchor Buttons (Web only, hidden in PDF) */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={0.78}
-          className="mt-8 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4"
+          className="no-print mt-8 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4"
         >
           <a
             href="#rsvp"
@@ -258,6 +258,14 @@ export function HeroSection() {
           >
             View Muhurtham Details
           </a>
+          <button
+            type="button"
+            onClick={() => window.print()}
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-gold-400/50 bg-maroon-950/65 px-6 py-3.5 text-sm sm:text-base font-medium text-gold-200 transition-colors duration-200 hover:bg-gold-400/15 hover:border-turmeric-300 cursor-pointer"
+          >
+            <Printer className="w-4 h-4 text-turmeric-300" aria-hidden="true" />
+            <span>Save as PDF</span>
+          </button>
         </motion.div>
       </div>
 
@@ -266,7 +274,7 @@ export function HeroSection() {
         <a
           href="#introduction"
           aria-label="Scroll down to read our wedding invitation"
-          className="group inline-flex flex-col items-center gap-1.5 px-4 py-2 text-gold-200/80 hover:text-turmeric-300 transition-colors"
+          className="no-print group inline-flex flex-col items-center gap-1.5 px-4 py-2 text-gold-200/80 hover:text-turmeric-300 transition-colors"
         >
           <span className="text-[0.68rem] uppercase tracking-[0.28em] font-medium">
             Scroll to Explore

@@ -27,7 +27,7 @@ export default function App() {
       <motion.div
         aria-hidden="true"
         style={{ scaleX, transformOrigin: '0%' }}
-        className="fixed top-0 left-0 right-0 z-50 h-[3px] bg-gradient-to-r from-gold-500 via-turmeric-400 to-gold-300"
+        className="no-print fixed top-0 left-0 right-0 z-50 h-[3px] bg-gradient-to-r from-gold-500 via-turmeric-400 to-gold-300"
       />
 
       <div className="min-h-dvh flex flex-col bg-maroon-950">

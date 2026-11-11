@@ -18,7 +18,7 @@ export const WEDDING_CONFIG = {
     },
   },
   groom: {
-    shortName: 'Vishnu',
+    shortName: 'Vishnu Priyan',
     fullName: 'Vishnu Priyan',
     natchatram: 'Uthiram Natchatram',
     rasi: 'Simmam Rasi',

@@ -37,7 +37,9 @@ export function FooterSection() {
         </p>
 
         <p className="mt-5 font-heading text-xl sm:text-2xl text-gold-shimmer">
-          {WEDDING_CONFIG.bride.shortName} &amp; {WEDDING_CONFIG.groom.shortName}
+          {WEDDING_CONFIG.groom.shortName}{' '}
+          <span className="italic font-normal text-[0.82em] text-turmeric-300">weds</span>{' '}
+          {WEDDING_CONFIG.bride.shortName}
         </p>
         <p className="mt-1 text-xs uppercase tracking-[0.26em] text-gold-300/75">
           {WEDDING_CONFIG.event.shortDate} • Bridgewater, New Jersey
@@ -46,7 +48,7 @@ export function FooterSection() {
         <a
           href="#"
           aria-label="Back to top of invitation"
-          className="mt-8 inline-flex items-center gap-1.5 rounded-full border border-gold-400/35 bg-maroon-900/60 px-4 py-2 text-xs uppercase tracking-[0.2em] text-gold-200/85 hover:text-turmeric-300 hover:border-turmeric-300/60 transition-colors"
+          className="no-print mt-8 inline-flex items-center gap-1.5 rounded-full border border-gold-400/35 bg-maroon-900/60 px-4 py-2 text-xs uppercase tracking-[0.2em] text-gold-200/85 hover:text-turmeric-300 hover:border-turmeric-300/60 transition-colors"
         >
           <ArrowUp className="w-3.5 h-3.5" aria-hidden="true" />
           <span>Back to Top</span>

@@ -215,3 +215,64 @@ a:focus-visible {
   padding-inline-start: max(1rem, env(safe-area-inset-left, 0px));
   padding-inline-end: max(1rem, env(safe-area-inset-right, 0px));
 }
+
+/* ==========================================================================
+   FULL-COLOR PRINT / SAVE-AS-PDF STYLESHEET
+   Preserves exact Deep Maroon, Turmeric & Antique Gold palette in exported PDFs
+   ========================================================================== */
+@page {
+  margin: 0;
+}
+
+@media print {
+  :root,
+  html,
+  body,
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html,
+  body {
+    background-color: #26050B !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Ensure Framer Motion elements that haven't scrolled into view yet render at 100% opacity in PDF */
+  [style*="opacity"] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Keep gold gradient headings crisp vector text in PDF viewers */
+  .text-gold-shimmer {
+    background: none !important;
+    -webkit-text-fill-color: #F4B829 !important;
+    color: #F4B829 !important;
+  }
+
+  /* Hide web-only interactive buttons, countdown timer, and RSVP form when saving as PDF */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Prevent cards and sections from splitting awkwardly across PDF pages */
+  .print-avoid-break,
+  article {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Replace backdrop-filter blur in print so PDF text stays razor-sharp vector text */
+  .print-solid-glass {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: rgba(58, 8, 17, 0.92) !important;
+  }
+}

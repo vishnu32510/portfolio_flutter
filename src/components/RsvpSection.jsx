@@ -270,7 +270,7 @@ export function RsvpSection() {
     <section
       id="rsvp"
       aria-labelledby="rsvp-heading"
-      className="relative overflow-hidden bg-gradient-to-b from-turmeric-50 via-turmeric-100/75 to-turmeric-50 text-maroon-900 py-20 sm:py-28 2xl:py-36"
+      className="no-print relative overflow-hidden bg-gradient-to-b from-turmeric-50 via-turmeric-100/75 to-turmeric-50 text-maroon-900 py-20 sm:py-28 2xl:py-36"
     >
       {/* Subtle Decorative Motifs */}
       <PulliKolamMandala className="pointer-events-none absolute -top-20 right-0 w-72 h-72 text-gold-500 opacity-[0.07]" />

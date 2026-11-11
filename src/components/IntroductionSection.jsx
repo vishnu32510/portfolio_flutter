@@ -65,8 +65,8 @@ export function IntroductionSection() {
             </strong>{' '}
             — we cordially invite our cherished family and friends to grace the sacred Tamil
             Hindu wedding ceremony of{' '}
-            <span className="font-semibold text-maroon-900">{bride.shortName}</span> and{' '}
-            <span className="font-semibold text-maroon-900">{groom.shortName}</span>, and shower
+            <span className="font-semibold text-maroon-900">{groom.shortName}</span> and{' '}
+            <span className="font-semibold text-maroon-900">{bride.shortName}</span>, and shower
             them with your prayers and{' '}
             <span lang="ta" className="font-tamil text-maroon-900 font-medium">
               ஆசீர்வாதம்
@@ -78,74 +78,12 @@ export function IntroductionSection() {
         {/* Container-Responsive Couple Lineage & Astrological Cards */}
         <div className="couple-cards-wrapper mt-14 sm:mt-16">
           <div className="couple-cards-grid">
-            {/* Bride Card */}
-            <motion.article
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.75, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="relative rounded-2xl border border-gold-400/50 bg-white/80 p-7 sm:p-9 shadow-[0_12px_36px_rgba(58,8,17,0.06)] flex flex-col justify-between text-center"
-            >
-              <CornerKolamFlourish className="absolute top-3 left-3 w-9 h-9" color="#B88F22" />
-              <CornerKolamFlourish
-                className="absolute top-3 right-3 w-9 h-9 -scale-x-100"
-                color="#B88F22"
-              />
-              <CornerKolamFlourish
-                className="absolute bottom-3 left-3 w-9 h-9 -scale-y-100"
-                color="#B88F22"
-              />
-              <CornerKolamFlourish
-                className="absolute bottom-3 right-3 w-9 h-9 scale-[-1]"
-                color="#B88F22"
-              />
-
-              <div>
-                <span className="inline-block text-xs uppercase tracking-[0.26em] text-gold-600 font-semibold">
-                  மணமகள் • The Bride
-                </span>
-                <h3 className="mt-2.5 font-heading text-2xl sm:text-3xl text-maroon-900 font-medium">
-                  {bride.fullName}
-                </h3>
-                <div className="mt-3 inline-flex flex-wrap items-center justify-center gap-2 rounded-full bg-turmeric-100/90 border border-gold-400/35 px-4 py-1 text-xs sm:text-sm text-maroon-800 font-medium">
-                  <span>{bride.natchatram}</span>
-                  <span className="text-gold-600" aria-hidden="true">
-                    •
-                  </span>
-                  <span>{bride.rasi}</span>
-                </div>
-              </div>
-
-              <div className="mt-6 pt-5 border-t border-gold-400/30">
-                <p className="text-xs uppercase tracking-[0.2em] text-maroon-700/75 mb-1">
-                  With the Blessings of
-                </p>
-                <p className="font-heading text-base sm:text-lg text-maroon-900">
-                  {brideParentsCard}
-                </p>
-              </div>
-            </motion.article>
-
-            {/* Sacred Center Emblem */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.65, delay: 0.16 }}
-              className="flex flex-col items-center justify-center py-1"
-              aria-hidden="true"
-            >
-              <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-gold-400/60 bg-maroon-900 text-turmeric-300 shadow-[0_8px_24px_rgba(58,8,17,0.18)]">
-                <KuthuvilakkuIcon className="w-7 h-9" />
-              </div>
-            </motion.div>
-
             {/* Groom Card */}
             <motion.article
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.75, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.75, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
               className="relative rounded-2xl border border-gold-400/50 bg-white/80 p-7 sm:p-9 shadow-[0_12px_36px_rgba(58,8,17,0.06)] flex flex-col justify-between text-center"
             >
               <CornerKolamFlourish className="absolute top-3 left-3 w-9 h-9" color="#B88F22" />
@@ -184,6 +122,68 @@ export function IntroductionSection() {
                 </p>
                 <p className="font-heading text-base sm:text-lg text-maroon-900">
                   {groom.parents.father} &amp; {groom.parents.mother}
+                </p>
+              </div>
+            </motion.article>
+
+            {/* Sacred Center Emblem */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.65, delay: 0.16 }}
+              className="flex flex-col items-center justify-center py-1"
+              aria-hidden="true"
+            >
+              <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-gold-400/60 bg-maroon-900 text-turmeric-300 shadow-[0_8px_24px_rgba(58,8,17,0.18)]">
+                <KuthuvilakkuIcon className="w-7 h-9" />
+              </div>
+            </motion.div>
+
+            {/* Bride Card */}
+            <motion.article
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.75, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              className="relative rounded-2xl border border-gold-400/50 bg-white/80 p-7 sm:p-9 shadow-[0_12px_36px_rgba(58,8,17,0.06)] flex flex-col justify-between text-center"
+            >
+              <CornerKolamFlourish className="absolute top-3 left-3 w-9 h-9" color="#B88F22" />
+              <CornerKolamFlourish
+                className="absolute top-3 right-3 w-9 h-9 -scale-x-100"
+                color="#B88F22"
+              />
+              <CornerKolamFlourish
+                className="absolute bottom-3 left-3 w-9 h-9 -scale-y-100"
+                color="#B88F22"
+              />
+              <CornerKolamFlourish
+                className="absolute bottom-3 right-3 w-9 h-9 scale-[-1]"
+                color="#B88F22"
+              />
+
+              <div>
+                <span className="inline-block text-xs uppercase tracking-[0.26em] text-gold-600 font-semibold">
+                  மணமகள் • The Bride
+                </span>
+                <h3 className="mt-2.5 font-heading text-2xl sm:text-3xl text-maroon-900 font-medium">
+                  {bride.fullName}
+                </h3>
+                <div className="mt-3 inline-flex flex-wrap items-center justify-center gap-2 rounded-full bg-turmeric-100/90 border border-gold-400/35 px-4 py-1 text-xs sm:text-sm text-maroon-800 font-medium">
+                  <span>{bride.natchatram}</span>
+                  <span className="text-gold-600" aria-hidden="true">
+                    •
+                  </span>
+                  <span>{bride.rasi}</span>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-5 border-t border-gold-400/30">
+                <p className="text-xs uppercase tracking-[0.2em] text-maroon-700/75 mb-1">
+                  Daughter of
+                </p>
+                <p className="font-heading text-base sm:text-lg text-maroon-900">
+                  {brideParentsCard}
                 </p>
               </div>
             </motion.article>

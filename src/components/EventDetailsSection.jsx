@@ -74,7 +74,7 @@ export function EventDetailsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-            className="relative rounded-3xl border border-gold-300/35 bg-white/[0.075] backdrop-blur-md p-6 sm:p-10 md:p-12 shadow-[0_24px_64px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,253,246,0.18)]"
+            className="print-avoid-break print-solid-glass relative rounded-3xl border border-gold-300/35 bg-white/[0.075] backdrop-blur-md p-6 sm:p-10 md:p-12 shadow-[0_24px_64px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,253,246,0.18)]"
           >
             {/* Ornamental Gold Corner Flourishes */}
             <CornerKolamFlourish className="absolute top-4 left-4 w-10 h-10" color="#EAD18F" />
@@ -170,8 +170,8 @@ export function EventDetailsSection() {
               </div>
             </div>
 
-            {/* Action Buttons: Directions & Add to Calendar */}
-            <div className="mt-8 pt-6 border-t border-gold-300/25 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4">
+            {/* Action Buttons: Directions & Add to Calendar (Web only, hidden in PDF) */}
+            <div className="no-print mt-8 pt-6 border-t border-gold-300/25 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4">
               <a
                 href={event.mapsUrl}
                 target="_blank"
