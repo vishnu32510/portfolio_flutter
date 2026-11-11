@@ -354,6 +354,10 @@ a:focus-visible {
     page-break-after: always;
   }
 
+  .print-page-event > div {
+    width: 100% !important;
+  }
+
   .print-page-event .mb-12 {
     margin-bottom: 1.25rem !important;
   }
