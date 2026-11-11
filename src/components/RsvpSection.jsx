@@ -55,6 +55,7 @@ export function RsvpSection() {
     email: savedRsvp?.email || '',
     attending: savedRsvp?.attending || 'yes',
     attendees: savedRsvp?.attendees || '2',
+    dietaryPreference: savedRsvp?.dietaryPreference || 'Vegetarian',
     notes: savedRsvp?.notes || '',
     honeypot: '',
   }))
@@ -216,6 +217,8 @@ export function RsvpSection() {
       email: formValues.email.trim(),
       attending: formValues.attending,
       attendees: formValues.attending === 'yes' ? Number(formValues.attendees) : 0,
+      dietaryPreference:
+        formValues.attending === 'yes' ? formValues.dietaryPreference : 'N/A',
       notes: formValues.notes.trim(),
       submittedAt: new Date().toISOString(),
     }
@@ -230,6 +233,7 @@ export function RsvpSection() {
             email: { stringValue: payload.email },
             attending: { stringValue: payload.attending },
             attendees: { integerValue: String(payload.attendees) },
+            dietaryPreference: { stringValue: payload.dietaryPreference },
             notes: { stringValue: payload.notes },
             submittedAt: { stringValue: payload.submittedAt },
           },
@@ -240,13 +244,15 @@ export function RsvpSection() {
       }
 
       if (WEDDING_CONFIG.rsvpWebhookUrl) {
-        const res = await fetch(WEDDING_CONFIG.rsvpWebhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        })
-        if (!res.ok) {
-          throw new Error('Unable to reach RSVP server. Please try again in a moment.')
+        try {
+          await fetch(WEDDING_CONFIG.rsvpWebhookUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          })
+        } catch (webhookErr) {
+          console.warn('Webhook sync warning:', webhookErr)
         }
       }
 
@@ -276,6 +282,7 @@ export function RsvpSection() {
         email: savedRsvp.email || '',
         attending: savedRsvp.attending || 'yes',
         attendees: String(savedRsvp.attendees > 0 ? savedRsvp.attendees : 2),
+        dietaryPreference: savedRsvp.dietaryPreference || 'Vegetarian',
         notes: savedRsvp.notes || '',
         honeypot: '',
       })
@@ -401,6 +408,16 @@ export function RsvpSection() {
                         : 'Sending Blessings From Afar'}
                     </dd>
                   </div>
+                  {savedRsvp.attending === 'yes' && savedRsvp.dietaryPreference && (
+                    <div className="flex justify-between gap-4">
+                      <dt className="text-maroon-700/75 font-medium">Dietary Preference</dt>
+                      <dd className="text-maroon-900 font-semibold text-right">
+                        {savedRsvp.dietaryPreference === 'Non-Vegetarian'
+                          ? '🍗 Non-Vegetarian'
+                          : '🌱 Vegetarian (சைவம்)'}
+                      </dd>
+                    </div>
+                  )}
                   {savedRsvp.notes && (
                     <div className="pt-2 border-t border-gold-400/25">
                       <dt className="text-maroon-700/75 font-medium mb-1">
@@ -631,18 +648,68 @@ export function RsvpSection() {
                   </div>
                 )}
 
-                {/* 5. Messages, Blessings, or Dietary Restrictions */}
+                {/* 5. Dietary Preference (Vegetarian vs Non-Vegetarian) */}
+                {formValues.attending === 'yes' && (
+                  <fieldset className="border-0 p-0 m-0">
+                    <legend className="text-sm font-semibold text-maroon-900 mb-1.5">
+                      Dietary Preference <span className="text-red-700" aria-hidden="true">*</span>
+                    </legend>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <label
+                        htmlFor="dietary-veg"
+                        className={`flex items-center gap-3 rounded-xl border px-4 py-3 cursor-pointer transition-colors ${
+                          formValues.dietaryPreference === 'Vegetarian'
+                            ? 'border-maroon-800 bg-turmeric-100/80 text-maroon-950 font-semibold'
+                            : 'border-[#8A7968]/80 bg-turmeric-50/40 text-maroon-900 hover:bg-turmeric-100/40'
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          id="dietary-veg"
+                          name="dietaryPreference"
+                          value="Vegetarian"
+                          checked={formValues.dietaryPreference === 'Vegetarian'}
+                          onChange={handleFieldChange}
+                          className="h-4 w-4 accent-maroon-900 shrink-0"
+                        />
+                        <span>🌱 Vegetarian (சைவம்)</span>
+                      </label>
+
+                      <label
+                        htmlFor="dietary-non-veg"
+                        className={`flex items-center gap-3 rounded-xl border px-4 py-3 cursor-pointer transition-colors ${
+                          formValues.dietaryPreference === 'Non-Vegetarian'
+                            ? 'border-maroon-800 bg-turmeric-100/80 text-maroon-950 font-semibold'
+                            : 'border-[#8A7968]/80 bg-turmeric-50/40 text-maroon-900 hover:bg-turmeric-100/40'
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          id="dietary-non-veg"
+                          name="dietaryPreference"
+                          value="Non-Vegetarian"
+                          checked={formValues.dietaryPreference === 'Non-Vegetarian'}
+                          onChange={handleFieldChange}
+                          className="h-4 w-4 accent-maroon-900 shrink-0"
+                        />
+                        <span>🍗 Non-Vegetarian</span>
+                      </label>
+                    </div>
+                  </fieldset>
+                )}
+
+                {/* 6. Messages, Blessings, or Food Allergies */}
                 <div className="flex flex-col">
                   <label
                     htmlFor="guest-notes"
                     className="text-sm font-semibold text-maroon-900 mb-0.5"
                   >
-                    Messages, Blessings, or Dietary Restrictions{' '}
+                    Messages, Blessings, or Food Allergies{' '}
                     <span className="text-xs font-normal text-maroon-700/75">(Optional)</span>
                   </label>
                   <span id="notes-hint" className="text-xs text-maroon-700/75 mb-1.5">
-                    The wedding lunch is 100% vegetarian; let us know of any allergies (e.g., nut
-                    or dairy) or leave a note for Noviya &amp; Vishnu.
+                    Let us know of any specific food allergies (e.g., nut, dairy, gluten) or
+                    leave a personal note or blessing for Noviya &amp; Vishnu.
                   </span>
                   <textarea
                     id="guest-notes"

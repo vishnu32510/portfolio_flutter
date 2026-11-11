@@ -13,6 +13,7 @@ rules_version = '2';
 //   - email: string (required, 3..160 chars, immutable) - Contact email address for wedding updates (PII)
 //   - attending: string (required, enum ['yes', 'no'], immutable) - Whether the guest will attend
 //   - attendees: int (required, 0..8, immutable) - Total number of guests attending
+//   - dietaryPreference: string (required, enum ['Vegetarian', 'Non-Vegetarian', 'N/A'], <= 20 chars, immutable) - Dietary preference when attending ('Vegetarian', 'Non-Vegetarian') or 'N/A' when not attending
 //   - notes: string (required, 0..600 chars, immutable) - Optional blessings or dietary notes (empty string if none)
 //   - submittedAt: string (required, 10..40 chars, immutable) - ISO 8601 submission timestamp string
 //
@@ -74,6 +75,7 @@ service cloud.firestore {
         'email',
         'attending',
         'attendees',
+        'dietaryPreference',
         'notes',
         'submittedAt'
       ];
@@ -89,6 +91,9 @@ service cloud.firestore {
         data.attendees is int &&
         data.attendees >= 0 &&
         data.attendees <= 8 &&
+        data.dietaryPreference is string &&
+        data.dietaryPreference.size() <= 20 &&
+        data.dietaryPreference in ['Vegetarian', 'Non-Vegetarian', 'N/A'] &&
         data.notes is string &&
         data.notes.size() <= 600 &&
         data.submittedAt is string &&
