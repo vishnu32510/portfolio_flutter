@@ -52,7 +52,6 @@ export function RsvpSection() {
 
   const [formValues, setFormValues] = useState(() => ({
     guestName: savedRsvp?.guestName || '',
-    email: savedRsvp?.email || '',
     attending: savedRsvp?.attending || 'yes',
     attendees: savedRsvp?.attendees || '2',
     dietaryPreference: savedRsvp?.dietaryPreference || 'Vegetarian',
@@ -214,7 +213,6 @@ export function RsvpSection() {
 
     const payload = {
       guestName: formValues.guestName.trim(),
-      email: formValues.email.trim(),
       attending: formValues.attending,
       attendees: formValues.attending === 'yes' ? Number(formValues.attendees) : 0,
       dietaryPreference:
@@ -230,7 +228,6 @@ export function RsvpSection() {
         body: JSON.stringify({
           fields: {
             guestName: { stringValue: payload.guestName },
-            email: { stringValue: payload.email },
             attending: { stringValue: payload.attending },
             attendees: { integerValue: String(payload.attendees) },
             dietaryPreference: { stringValue: payload.dietaryPreference },
@@ -279,7 +276,6 @@ export function RsvpSection() {
     if (savedRsvp) {
       setFormValues({
         guestName: savedRsvp.guestName || '',
-        email: savedRsvp.email || '',
         attending: savedRsvp.attending || 'yes',
         attendees: String(savedRsvp.attendees > 0 ? savedRsvp.attendees : 2),
         dietaryPreference: savedRsvp.dietaryPreference || 'Vegetarian',
@@ -395,10 +391,6 @@ export function RsvpSection() {
                 {/* Summary Box */}
                 <dl className="mt-6 rounded-2xl border border-gold-400/35 bg-turmeric-50/85 p-5 text-left text-sm space-y-2.5 max-w-md mx-auto">
                   <div className="flex justify-between gap-4">
-                    <dt className="text-maroon-700/75 font-medium">Email</dt>
-                    <dd className="text-maroon-900 font-medium text-right">{savedRsvp.email}</dd>
-                  </div>
-                  <div className="flex justify-between gap-4">
                     <dt className="text-maroon-700/75 font-medium">Status</dt>
                     <dd className="text-maroon-900 font-semibold text-right">
                       {savedRsvp.attending === 'yes'
@@ -413,8 +405,8 @@ export function RsvpSection() {
                       <dt className="text-maroon-700/75 font-medium">Dietary Preference</dt>
                       <dd className="text-maroon-900 font-semibold text-right">
                         {savedRsvp.dietaryPreference === 'Non-Vegetarian'
-                          ? '🍗 Non-Vegetarian'
-                          : '🌱 Vegetarian (சைவம்)'}
+                          ? 'Non-Vegetarian'
+                          : 'Vegetarian (சைவம்)'}
                       </dd>
                     </div>
                   )}
@@ -511,47 +503,7 @@ export function RsvpSection() {
                   </div>
                 </div>
 
-                {/* 2. Guest Email Address (format hint above input per modern-web-guidance) */}
-                <div className="flex flex-col">
-                  <label
-                    htmlFor="guest-email"
-                    className="text-sm font-semibold text-maroon-900 mb-0.5"
-                  >
-                    Email Address <span className="text-red-700" aria-hidden="true">*</span>
-                  </label>
-                  <span id="email-hint" className="text-xs text-maroon-700/75 mb-1.5">
-                    We will use this solely for wedding updates (format: name@example.com).
-                  </span>
-                  <input
-                    type="email"
-                    id="guest-email"
-                    name="email"
-                    required
-                    maxLength={160}
-                    autoComplete="email"
-                    autoCorrect="off"
-                    autoCapitalize="none"
-                    spellCheck={false}
-                    enterKeyHint="next"
-                    aria-describedby="email-hint"
-                    data-error="guest-email-error"
-                    value={formValues.email}
-                    onChange={handleFieldChange}
-                    placeholder="you@example.com"
-                    className="rsvp-control w-full rounded-xl border border-[#8A7968] bg-turmeric-50/50 px-4 py-3 text-maroon-950 placeholder:text-maroon-800/40"
-                  />
-                  <div
-                    id="guest-email-error"
-                    className="rsvp-error-msg items-center gap-1.5 mt-1.5 text-sm text-red-700 font-medium"
-                  >
-                    <span role="img" aria-label="Error">
-                      ⚠️
-                    </span>
-                    <span>Enter a valid email address in the format name@example.com.</span>
-                  </div>
-                </div>
-
-                {/* 3. Attendance Choice (2 options -> visible radios inside fieldset + legend) */}
+                {/* 2. Attendance Choice (2 options -> visible radios inside fieldset + legend) */}
                 <fieldset className="border-0 p-0 m-0">
                   <legend className="text-sm font-semibold text-maroon-900 mb-2">
                     Will You Be Attending? <span className="text-red-700" aria-hidden="true">*</span>
@@ -599,7 +551,7 @@ export function RsvpSection() {
                   </div>
                 </fieldset>
 
-                {/* 4. Number of Attendees (shown when attending; 8 choices -> native <select>) */}
+                {/* 3. Number of Attendees (shown when attending; 8 choices -> native <select>) */}
                 {formValues.attending === 'yes' && (
                   <div className="flex flex-col">
                     <label
@@ -648,7 +600,7 @@ export function RsvpSection() {
                   </div>
                 )}
 
-                {/* 5. Dietary Preference (Vegetarian vs Non-Vegetarian) */}
+                {/* 4. Dietary Preference (Vegetarian vs Non-Vegetarian) */}
                 {formValues.attending === 'yes' && (
                   <fieldset className="border-0 p-0 m-0">
                     <legend className="text-sm font-semibold text-maroon-900 mb-1.5">
@@ -672,7 +624,7 @@ export function RsvpSection() {
                           onChange={handleFieldChange}
                           className="h-4 w-4 accent-maroon-900 shrink-0"
                         />
-                        <span>🌱 Vegetarian (சைவம்)</span>
+                        <span>Vegetarian (சைவம்)</span>
                       </label>
 
                       <label
@@ -692,13 +644,13 @@ export function RsvpSection() {
                           onChange={handleFieldChange}
                           className="h-4 w-4 accent-maroon-900 shrink-0"
                         />
-                        <span>🍗 Non-Vegetarian</span>
+                        <span>Non-Vegetarian</span>
                       </label>
                     </div>
                   </fieldset>
                 )}
 
-                {/* 6. Messages, Blessings, or Food Allergies */}
+                {/* 5. Messages, Blessings, or Food Allergies */}
                 <div className="flex flex-col">
                   <label
                     htmlFor="guest-notes"

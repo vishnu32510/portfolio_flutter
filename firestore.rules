@@ -10,7 +10,7 @@ rules_version = '2';
 // Document ID: {rsvpId} (auto-generated)
 // Fields:
 //   - guestName: string (required, 1..120 chars, immutable) - Full name of the guest submitting the RSVP
-//   - email: string (required, 3..160 chars, immutable) - Contact email address for wedding updates (PII)
+//   - email: string (optional, 0..160 chars, immutable) - Optional contact email address for wedding updates (PII)
 //   - attending: string (required, enum ['yes', 'no'], immutable) - Whether the guest will attend
 //   - attendees: int (required, 0..8, immutable) - Total number of guests attending
 //   - dietaryPreference: string (required, enum ['Vegetarian', 'Non-Vegetarian', 'N/A'], <= 20 chars, immutable) - Dietary preference when attending ('Vegetarian', 'Non-Vegetarian') or 'N/A' when not attending
@@ -38,13 +38,13 @@ service cloud.firestore {
 
     // Verify UID hasn't been tampered with on create
     function uidUnchanged() {
-      return !('uid' in request.resource.data) ||
+      return !request.resource.data.keys().hasAny(['uid']) ||
         request.resource.data.uid == request.auth.uid;
     }
 
     // Ensure uid field is not modified on update
     function uidNotModified() {
-      return !('uid' in request.resource.data) ||
+      return !request.resource.data.keys().hasAny(['uid']) ||
         request.resource.data.uid == resource.data.uid;
     }
 
@@ -65,11 +65,27 @@ service cloud.firestore {
         request.resource.data[field].size() <= maxLen;
     }
 
+    // Validate optional string (if present, must be string and within length bounds)
+    function isValidOptionalString(field, minLen, maxLen) {
+      return !request.resource.data.keys().hasAny([field]) ||
+        (request.resource.data[field] is string &&
+          request.resource.data[field].size() >= minLen &&
+          request.resource.data[field].size() <= maxLen);
+    }
+
     // ===============================================================
     // Domain Validators
     // ===============================================================
 
     function isValidWeddingRsvp(data) {
+      let requiredFields = [
+        'guestName',
+        'attending',
+        'attendees',
+        'dietaryPreference',
+        'notes',
+        'submittedAt'
+      ];
       let allowedFields = [
         'guestName',
         'email',
@@ -79,14 +95,12 @@ service cloud.firestore {
         'notes',
         'submittedAt'
       ];
-      return hasRequiredFields(allowedFields) &&
+      return hasRequiredFields(requiredFields) &&
         hasOnlyAllowedFields(allowedFields) &&
         data.guestName is string &&
         data.guestName.size() >= 1 &&
         data.guestName.size() <= 120 &&
-        data.email is string &&
-        data.email.size() >= 3 &&
-        data.email.size() <= 160 &&
+        (!data.keys().hasAny(['email']) || (data.email is string && data.email.size() <= 160)) &&
         data.attending in ['yes', 'no'] &&
         data.attendees is int &&
         data.attendees >= 0 &&

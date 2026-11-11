@@ -65,10 +65,12 @@ async function main() {
     return str
   }
 
+  const hasAnyEmail = rows.some((r) => r.email && r.email.trim().length > 0)
+
   const headers = [
     'Submitted At',
     'Guest Name',
-    'Email Address',
+    ...(hasAnyEmail ? ['Email Address'] : []),
     'Attending',
     'Guests Count',
     'Dietary Preference',
@@ -81,7 +83,7 @@ async function main() {
       [
         r.submittedAt ? new Date(r.submittedAt).toLocaleString() : '',
         r.guestName,
-        r.email,
+        ...(hasAnyEmail ? [r.email] : []),
         r.attending === 'yes' ? 'Joyfully Attending' : 'Sending Wishes From Afar',
         r.attending === 'yes' ? r.attendees : 0,
         r.dietaryPreference,
@@ -123,3 +125,4 @@ main().catch((err) => {
   console.error('Unexpected error:', err)
   process.exit(1)
 })
+
