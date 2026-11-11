@@ -23,12 +23,6 @@ const ARCH_ILLUSTRATION_MODES = [
     alt: 'Watercolor illustration of Vishnu Priyan and Noviya looking into each other’s eyes inside a floral gold temple arch',
   },
   {
-    id: 'front',
-    label: 'Front Portrait',
-    src: '/images/page2-arch-front-portrait.jpg',
-    alt: 'Watercolor illustration of Vishnu Priyan and Noviya smiling together toward the camera inside a floral gold temple arch',
-  },
-  {
     id: 'kneeling',
     label: 'Kneeling Proposal',
     src: '/images/page2-arch-kneeling-proposal.jpg',
