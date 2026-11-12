@@ -6,6 +6,7 @@ import {
   SikkuBrahmaMudiKolam,
   ZariLotusDivider,
 } from './TraditionalMotifs'
+import { NAMASTE_HANDS_BASE64 } from './namasteHandsBase64'
 
 export function EditorialPrintableInvite() {
   const { groom, bride, event } = WEDDING_CONFIG
@@ -77,25 +78,23 @@ export function EditorialPrintableInvite() {
               src="/images/mandapam-top-garland.jpg"
               alt="Traditional floral garland with jasmine and hanging brass lamps"
               className="w-full h-full object-cover object-top"
-              style={{
-                maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
-              }}
             />
+            {/* Natural soft fade without CSS mask-image (avoids PDF SMask tile clipping bug) */}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#EBE2DB] to-transparent" />
           </div>
         </div>
 
         {/* Bottom Mandapam Decor (Brass Elephant, Lotus Uruli, Marble Floor) */}
         <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-0 flex justify-center overflow-hidden">
-          <img
-            src="/images/mandapam-bottom-decor.jpg"
-            alt="Traditional brass elephant, pink lotus flowers and marble floor"
-            className="w-full h-[240px] object-cover object-bottom"
-            style={{
-              maskImage: 'linear-gradient(to top, black 80%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to top, black 80%, transparent 100%)',
-            }}
-          />
+          <div className="relative w-full h-[240px]">
+            <img
+              src="/images/mandapam-bottom-decor.jpg"
+              alt="Traditional brass elephant, pink lotus flowers and marble floor"
+              className="w-full h-full object-cover object-bottom"
+            />
+            {/* Natural soft fade without CSS mask-image (avoids PDF SMask tile clipping bug) */}
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#EBE2DB] to-transparent" />
+          </div>
         </div>
 
         {/* Decorative Gold Inset Border */}
@@ -106,10 +105,10 @@ export function EditorialPrintableInvite() {
         <div className="relative z-20 mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center px-10 text-center pt-8 pb-4">
           {/* Top: Sacred Namaste Hands, then வாழ்க வளமுடன் • Vaazhga Valamudan */}
           <div className="flex flex-col items-center">
-            {/* Sacred Namaste / Vanakkam Hands with Bangles & Roses */}
+            {/* Sacred Namaste / Vanakkam Hands with Bangles & Roses (inlined data URI guarantees 100% instant render) */}
             <div className="mb-2.5 flex justify-center">
               <img
-                src="/images/namaste-hands.png"
+                src={NAMASTE_HANDS_BASE64}
                 alt="Sacred Vanakkam / Namaste hands adorned with wedding bangles and rose garland"
                 className="w-18 h-auto object-contain drop-shadow-[0_2px_8px_rgba(139,30,45,0.18)]"
               />
@@ -189,25 +188,21 @@ export function EditorialPrintableInvite() {
               src="/images/mandapam-top-garland.jpg"
               alt="Traditional floral garland with jasmine and hanging brass lamps"
               className="w-full h-full object-cover object-top"
-              style={{
-                maskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
-              }}
             />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#EBE2DB] to-transparent" />
           </div>
         </div>
 
         {/* Bottom Mandapam Decor */}
         <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-0 flex justify-center overflow-hidden">
-          <img
-            src="/images/mandapam-bottom-decor.jpg"
-            alt="Traditional brass elephant, pink lotus flowers and marble floor"
-            className="w-full h-[160px] object-cover object-bottom"
-            style={{
-              maskImage: 'linear-gradient(to top, black 70%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to top, black 70%, transparent 100%)',
-            }}
-          />
+          <div className="relative w-full h-[160px]">
+            <img
+              src="/images/mandapam-bottom-decor.jpg"
+              alt="Traditional brass elephant, pink lotus flowers and marble floor"
+              className="w-full h-full object-cover object-bottom"
+            />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-[#EBE2DB] to-transparent" />
+          </div>
         </div>
 
         {/* Decorative Gold Inset Border */}
@@ -346,11 +341,8 @@ export function EditorialPrintableInvite() {
               src="/images/mandapam-top-garland.jpg"
               alt="Traditional floral garland with jasmine and hanging brass lamps"
               className="w-full h-full object-cover object-top"
-              style={{
-                maskImage: 'linear-gradient(to bottom, black 65%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to bottom, black 65%, transparent 100%)',
-              }}
             />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#EBE2DB] to-transparent" />
           </div>
         </div>
 
