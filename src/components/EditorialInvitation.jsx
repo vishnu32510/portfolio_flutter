@@ -22,6 +22,10 @@ export function EditorialInvitation() {
   const garlandY = useTransform(scrollYProgress, [0.58, 0.85], [0, -140])
   const garlandOpacity = useTransform(scrollYProgress, [0.58, 0.85], [1, 0])
 
+  // Bottom Mandapam decor stays grounded, gently fades when scrolling down
+  const bottomDecorOpacity = useTransform(scrollYProgress, [0.58, 0.82], [1, 0])
+  const bottomDecorY = useTransform(scrollYProgress, [0.58, 0.85], [0, 60])
+
   // Content is solid when entering, gently fades out and lifts when scrolling down
   const contentOpacity = useTransform(scrollYProgress, [0.55, 0.78], [1, 0])
   const contentY = useTransform(scrollYProgress, [0.55, 0.78], [0, -45])
@@ -39,7 +43,7 @@ export function EditorialInvitation() {
         className="pointer-events-none absolute top-0 left-0 right-0 z-10 flex justify-center overflow-hidden"
         aria-hidden="true"
       >
-        <div className="relative w-full h-[28vh] sm:h-[32vh] max-h-[300px] md:max-h-[290px]">
+        <div className="relative w-full h-[26vh] sm:h-[30vh] max-h-[280px] md:max-h-[270px]">
           <img
             src="/images/mandapam-garland-overlay.png"
             alt="Traditional floral garland with jasmine and hanging brass lamps"
@@ -48,6 +52,21 @@ export function EditorialInvitation() {
 
           {/* Small shiny lights / glittering sparkles on the hanging brass lamps */}
           <LampGlitters />
+        </div>
+      </motion.div>
+
+      {/* 2. Bottom Mandapam Decor Overlay (Elephant, Lotus Uruli, Marble Floor - Transparent PNG Overlay) */}
+      <motion.div
+        style={{ y: bottomDecorY, opacity: bottomDecorOpacity }}
+        className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 flex justify-center overflow-hidden"
+        aria-hidden="true"
+      >
+        <div className="relative w-full h-[18vh] sm:h-[20vh] md:h-[19vh] lg:h-[20vh] max-h-[175px] md:max-h-[190px]">
+          <img
+            src="/images/mandapam-bottom-decor-overlay.png"
+            alt="Traditional brass elephant, pink lotus flowers and marble floor"
+            className="w-full h-full object-cover object-bottom select-none"
+          />
         </div>
       </motion.div>
 
