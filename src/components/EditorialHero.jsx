@@ -13,62 +13,130 @@ export function EditorialHero() {
   const titleOpacity = useTransform(scrollY, [0, 280], [0.85, 0])
   const promptOpacity = useTransform(scrollY, [0, 120], [1, 0])
 
-  // Single-scroll gesture: On one scroll down from the first page, glide and land squarely on the invitation page
+  // Single-scroll gesture: On one scroll down from the first page, glide and land squarely on the invitation page.
+  //
+  // The glide is driven by our own requestAnimationFrame loop (instead of
+  // scrollIntoView({ behavior: 'smooth' })) and all wheel / touch input is
+  // swallowed while it runs. Previously the native trackpad/touch momentum kept
+  // scrolling on top of the browser's smooth scroll, so the two fought each
+  // other frame-by-frame, which showed up as jitter / flicker / overshoot.
+  const glideRef = useRef({ active: false, rafId: 0, lastWheelAt: 0, justGlided: false })
+
+  const glideToInvitation = () => {
+    const target = document.getElementById('invitation')
+    const state = glideRef.current
+    if (!target || state.active) return
+
+    const startY = window.scrollY
+    const endY = startY + target.getBoundingClientRect().top
+    const distance = endY - startY
+
+    const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion || Math.abs(distance) < 2) {
+      window.scrollTo({ top: endY, behavior: 'instant' })
+      return
+    }
+
+    state.active = true
+    const duration = 900
+    const startTime = performance.now()
+    // easeInOutCubic: gentle start, gentle landing
+    const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
+
+    const step = (now) => {
+      const t = Math.min(1, (now - startTime) / duration)
+      // behavior: 'instant' overrides the global `html { scroll-behavior: smooth }`,
+      // otherwise every per-frame scrollTo would itself be smoothed and lag behind.
+      window.scrollTo({ top: startY + distance * ease(t), behavior: 'instant' })
+      if (t < 1) {
+        state.rafId = requestAnimationFrame(step)
+      } else {
+        state.active = false
+        state.rafId = 0
+      }
+    }
+    state.rafId = requestAnimationFrame(step)
+  }
+
   useEffect(() => {
-    let isTransitioning = false
+    const state = glideRef.current
+    const inHeroZone = () => window.scrollY < window.innerHeight * 0.45
+    // Trackpads keep emitting momentum wheel events for a while after the
+    // gesture; keep swallowing them until they stop so they don't carry the
+    // page past the invitation once the glide lands.
+    const MOMENTUM_QUIET_MS = 250
+
     const handleWheel = (e) => {
-      // If user is anywhere in the hero section and scrolls down, trigger full slide transition to invitation
-      if (window.scrollY < window.innerHeight * 0.45 && e.deltaY > 3 && !isTransitioning) {
-        isTransitioning = true
+      const now = performance.now()
+      const sinceLastWheel = now - state.lastWheelAt
+      state.lastWheelAt = now
+
+      if (state.active || (state.justGlided && sinceLastWheel < MOMENTUM_QUIET_MS)) {
         e.preventDefault()
-        document.getElementById('invitation')?.scrollIntoView({ behavior: 'smooth' })
-        setTimeout(() => {
-          isTransitioning = false
-        }, 850)
+        return
+      }
+      state.justGlided = false
+
+      // If user is anywhere in the hero section and scrolls down, trigger full slide transition to invitation
+      if (inHeroZone() && e.deltaY > 3) {
+        e.preventDefault()
+        state.justGlided = true
+        glideToInvitation()
       }
     }
 
     let touchStartY = 0
+    let touchStartX = 0
     const handleTouchStart = (e) => {
-      touchStartY = e.touches[0].clientY
+      if (e.touches.length === 1) {
+        touchStartY = e.touches[0].clientY
+        touchStartX = e.touches[0].clientX
+      }
     }
-    const handleTouchMove = (e) => {
-      if (window.scrollY < window.innerHeight * 0.45 && !isTransitioning) {
-        const deltaY = touchStartY - e.touches[0].clientY
-        if (deltaY > 10) {
-          isTransitioning = true
-          document.getElementById('invitation')?.scrollIntoView({ behavior: 'smooth' })
-          setTimeout(() => {
-            isTransitioning = false
-          }, 850)
+
+    const handleTouchEnd = (e) => {
+      if (state.active) return
+      if (inHeroZone() && e.changedTouches.length === 1) {
+        const touchEndY = e.changedTouches[0].clientY
+        const touchEndX = e.changedTouches[0].clientX
+        const deltaY = touchStartY - touchEndY
+        const deltaX = Math.abs(touchStartX - touchEndX)
+
+        // When user swipes up (scrolling down) predominantly vertically
+        if (deltaY > 25 && deltaY > deltaX) {
+          state.justGlided = true
+          glideToInvitation()
         }
       }
     }
 
     window.addEventListener('wheel', handleWheel, { passive: false })
     window.addEventListener('touchstart', handleTouchStart, { passive: true })
-    window.addEventListener('touchmove', handleTouchMove, { passive: true })
+    window.addEventListener('touchend', handleTouchEnd, { passive: true })
     return () => {
       window.removeEventListener('wheel', handleWheel)
       window.removeEventListener('touchstart', handleTouchStart)
-      window.removeEventListener('touchmove', handleTouchMove)
+      window.removeEventListener('touchend', handleTouchEnd)
+      if (state.rafId) cancelAnimationFrame(state.rafId)
+      state.active = false
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const scrollToInvitation = (e) => {
     e.preventDefault()
-    document.getElementById('invitation')?.scrollIntoView({ behavior: 'smooth' })
+    glideToInvitation()
   }
 
   return (
     <header
       ref={containerRef}
-      className="relative min-h-dvh w-full flex flex-col justify-between overflow-hidden bg-[#0A0705] text-[#FAF8F5] snap-start snap-always"
+      className="relative min-h-dvh w-full flex flex-col justify-between overflow-hidden bg-[#0A0705] text-[#FAF8F5]"
     >
       {/* Background Candid Black & White Photograph */}
       <motion.div
         style={{ y: photoY, scale: photoScale }}
-        className="absolute inset-0 z-0 overflow-hidden"
+        className="absolute inset-0 z-0 overflow-hidden will-change-transform"
         aria-hidden="true"
       >
         <img

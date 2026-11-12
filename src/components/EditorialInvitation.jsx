@@ -18,19 +18,17 @@ export function EditorialInvitation() {
     offset: ['start end', 'end start'],
   })
 
-  // Garlands appear on after scrolling the first page, and remove when scrolled down
-  // [0.05, 0.28]: enters from first page -> slides down into place (0 to 1)
-  // [0.28, 0.58]: fully visible on invitation page
-  // [0.58, 0.85]: scrolled down to photo stack -> slides up and removes (1 to 0)
-  const garlandY = useTransform(scrollYProgress, [0.05, 0.28, 0.58, 0.85], [-120, 0, 0, -140])
-  const garlandOpacity = useTransform(scrollYProgress, [0.05, 0.28, 0.58, 0.85], [0, 1, 1, 0])
+  // Garlands are solid and stable when scrolling in from first page;
+  // gently slide up and exit when scrolling down to the photo stack
+  const garlandY = useTransform(scrollYProgress, [0.58, 0.85], [0, -140])
+  const garlandOpacity = useTransform(scrollYProgress, [0.58, 0.85], [1, 0])
 
   // Bottom Mandapam decor stays grounded, gently fades when scrolling down
-  const bottomDecorOpacity = useTransform(scrollYProgress, [0.05, 0.25, 0.58, 0.82], [0, 1, 1, 0])
+  const bottomDecorOpacity = useTransform(scrollYProgress, [0.58, 0.82], [1, 0])
   const bottomDecorY = useTransform(scrollYProgress, [0.58, 0.85], [0, 60])
 
-  // Content fades out and lifts as you scroll down towards the story stack
-  const contentOpacity = useTransform(scrollYProgress, [0.15, 0.28, 0.55, 0.78], [0, 1, 1, 0])
+  // Content is solid when entering, gently fades out and lifts when scrolling down to story stack
+  const contentOpacity = useTransform(scrollYProgress, [0.55, 0.78], [1, 0])
   const contentY = useTransform(scrollYProgress, [0.55, 0.78], [0, -45])
 
   return (
@@ -38,7 +36,7 @@ export function EditorialInvitation() {
       ref={sectionRef}
       id="invitation"
       aria-label="Wedding Invitation"
-      className="relative min-h-dvh w-full flex flex-col justify-between overflow-hidden bg-[#EBE2DB] text-[#143D27] py-5 sm:py-7 border-t border-[#C5A059]/40 shadow-inner snap-start snap-always"
+      className="relative min-h-dvh w-full flex flex-col justify-between overflow-hidden bg-[#EBE2DB] text-[#143D27] py-5 sm:py-7 border-t border-[#C5A059]/40 shadow-inner"
     >
       {/* 1. Top Garland & Toranam with Hanging Jasmine, Lotus Buds & Brass Lamps */}
       {/* Appears after scrolling the first page, and removes when scrolled down */}
@@ -94,7 +92,7 @@ export function EditorialInvitation() {
           <source src="/videos/mandapam-jasmine-lotus.mp4" type="video/mp4" />
         </video>
         {/* Soft alabaster wash for high contrast & perfect text readability */}
-        <div className="absolute inset-0 bg-[#EBE2DB]/80 backdrop-blur-[0.5px]" />
+        <div className="absolute inset-0 bg-[#EBE2DB]/80" />
       </div>
 
       {/* Gentle Falling Rose Petals Shower (sparse, slow snowfall drift) */}
@@ -102,16 +100,16 @@ export function EditorialInvitation() {
         <FallingRosePetals count={6} />
       </motion.div>
 
-      {/* Top spacer below hanging garland - brings namaste hands & blessing down on mobile */}
-      <div className="relative z-10 w-full h-[13vh] sm:h-[11vh] md:h-[11vh] shrink-0" aria-hidden="true" />
+      {/* Top spacer below hanging garland */}
+      <div className="relative z-10 w-full h-[6vh] sm:h-[8vh] shrink-0" aria-hidden="true" />
 
-      {/* 3. Main Centerpiece Invitation Content Canvas */}
+      {/* 3. Main Centerpiece Invitation Content Canvas - unified and centered */}
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="relative z-20 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-between px-4 sm:px-8 text-center"
+        className="relative z-20 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center px-4 sm:px-8 text-center pt-2 sm:pt-4"
       >
-        {/* Top: Sacred Namaste Hands between leaves, then Auspicious Tamil Blessing */}
-        <div className="pt-0 sm:pt-1 flex flex-col items-center">
+        {/* Top: Sacred Namaste Hands, then Auspicious Tamil Blessing */}
+        <div className="flex flex-col items-center">
           {/* Sacred Namaste / Vanakkam Hands with Bangles & Roses */}
           <div className="mb-2 sm:mb-2.5 flex justify-center">
             <img
@@ -138,8 +136,8 @@ export function EditorialInvitation() {
           </div>
         </div>
 
-        {/* Center: Overline and Noviya weds Vishnu Priyan in the center */}
-        <div className="my-auto -translate-y-3.5 sm:translate-y-0 py-1 sm:py-2 flex flex-col items-center">
+        {/* Center: Overline and Noviya weds Vishnu Priyan */}
+        <div className="mt-5 sm:mt-7 mb-2 py-1 flex flex-col items-center">
           {/* Overline */}
           <p className="font-editorial text-xs sm:text-sm md:text-base uppercase tracking-[0.20em] text-[#7A5A18] font-bold mb-3 sm:mb-4 max-w-2xl mx-auto whitespace-normal sm:whitespace-nowrap px-2">
             Together with our families, we invite you to celebrate as
@@ -167,9 +165,6 @@ export function EditorialInvitation() {
             </div>
           </div>
         </div>
-
-        {/* Empty bottom balancer anchor */}
-        <div className="h-2" aria-hidden="true" />
       </motion.div>
 
       {/* Bottom spacer for vertical balance */}

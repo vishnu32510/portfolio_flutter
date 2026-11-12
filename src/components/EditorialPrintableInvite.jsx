@@ -102,15 +102,12 @@ export function EditorialPrintableInvite() {
         <div className="absolute inset-5 pointer-events-none border border-[#C5A059]/45 rounded-2xl z-20" />
         <div className="absolute inset-6 pointer-events-none border border-[#C5A059]/25 rounded-xl z-20" />
 
-        {/* Top Spacer below garland - places Namaste hands right between the banana leaves */}
-        <div className="relative z-10 w-full h-[105px]" aria-hidden="true" />
-
-        {/* Centerpiece Formal Invitation Content Canvas */}
-        <div className="relative z-20 mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-between px-10 text-center">
-          {/* Top: Sacred Namaste Hands between leaves, then வாழ்க வளமுடன் • Vaazhga Valamudan */}
-          <div className="pt-1 flex flex-col items-center">
+        {/* Centerpiece Formal Invitation Content Canvas - unified and vertically centered */}
+        <div className="relative z-20 mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center px-10 text-center pt-8 pb-4">
+          {/* Top: Sacred Namaste Hands, then வாழ்க வளமுடன் • Vaazhga Valamudan */}
+          <div className="flex flex-col items-center">
             {/* Sacred Namaste / Vanakkam Hands with Bangles & Roses */}
-            <div className="mb-2 flex justify-center">
+            <div className="mb-2.5 flex justify-center">
               <img
                 src="/images/namaste-hands.png"
                 alt="Sacred Vanakkam / Namaste hands adorned with wedding bangles and rose garland"
@@ -135,10 +132,10 @@ export function EditorialPrintableInvite() {
             </div>
           </div>
 
-          {/* Center: Overline and Couple's Names in the Center */}
-          <div className="my-auto py-2 flex flex-col items-center justify-center">
+          {/* Overline & Couple's Names with balanced, natural spacing */}
+          <div className="mt-7 mb-2 flex flex-col items-center justify-center">
             {/* Overline */}
-            <p className="font-editorial text-base uppercase tracking-[0.22em] text-[#7A5A18] font-bold mb-6 max-w-xl mx-auto">
+            <p className="font-editorial text-base uppercase tracking-[0.22em] text-[#7A5A18] font-bold mb-5 max-w-xl mx-auto">
               Together with our families, we invite you to celebrate as
             </p>
 
@@ -178,13 +175,7 @@ export function EditorialPrintableInvite() {
               </div>
             </div>
           </div>
-
-          {/* Empty bottom balancer anchor */}
-          <div className="h-2" aria-hidden="true" />
         </div>
-
-        {/* Bottom Spacer */}
-        <div className="relative z-10 w-full h-[120px]" aria-hidden="true" />
       </div>
 
       {/* =========================================================================
