@@ -70,16 +70,16 @@ export function EditorialPrintableInvite() {
           PAGE 2: FORMAL WEDDING INVITATION
           ========================================================================= */}
       <div className="print-page relative w-[210mm] h-[297mm] overflow-hidden bg-[#EBE2DB] text-[#143D27] shadow-2xl print:shadow-none mx-auto mb-8 print:mb-0 flex flex-col justify-between border-t border-[#C5A059]/40">
-        {/* Mandapam Floral Garland at Top - Full width banner */}
+        {/* Mandapam Floral Garland at Top - Full rich height showing leaves, lamps & hanging jasmine */}
         <div className="pointer-events-none absolute top-0 left-0 right-0 z-10 flex justify-center overflow-hidden">
-          <div className="relative w-full max-w-4xl h-[190px]">
+          <div className="relative w-full max-w-4xl h-[280px]">
             <img
               src="/images/mandapam-top-garland.jpg"
               alt="Traditional floral garland with jasmine and hanging brass lamps"
               className="w-full h-full object-cover object-top"
               style={{
-                maskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
+                maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
               }}
             />
           </div>
@@ -90,10 +90,10 @@ export function EditorialPrintableInvite() {
           <img
             src="/images/mandapam-bottom-decor.jpg"
             alt="Traditional brass elephant, pink lotus flowers and marble floor"
-            className="w-full h-[215px] object-cover object-bottom"
+            className="w-full h-[240px] object-cover object-bottom"
             style={{
-              maskImage: 'linear-gradient(to top, black 78%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to top, black 78%, transparent 100%)',
+              maskImage: 'linear-gradient(to top, black 80%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to top, black 80%, transparent 100%)',
             }}
           />
         </div>
@@ -102,15 +102,15 @@ export function EditorialPrintableInvite() {
         <div className="absolute inset-5 pointer-events-none border border-[#C5A059]/45 rounded-2xl z-20" />
         <div className="absolute inset-6 pointer-events-none border border-[#C5A059]/25 rounded-xl z-20" />
 
-        {/* Top Spacer below garland - brings namaste hands & blessing down into open arch */}
-        <div className="relative z-10 w-full h-[125px]" aria-hidden="true" />
+        {/* Top Spacer below garland - places Namaste hands right between the banana leaves */}
+        <div className="relative z-10 w-full h-[105px]" aria-hidden="true" />
 
         {/* Centerpiece Formal Invitation Content Canvas */}
         <div className="relative z-20 mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-between px-10 text-center">
           {/* Top: Sacred Namaste Hands between leaves, then வாழ்க வளமுடன் • Vaazhga Valamudan */}
-          <div className="pt-2 flex flex-col items-center">
+          <div className="pt-1 flex flex-col items-center">
             {/* Sacred Namaste / Vanakkam Hands with Bangles & Roses */}
-            <div className="mb-3.5 flex justify-center">
+            <div className="mb-2 flex justify-center">
               <img
                 src="/images/namaste-hands.png"
                 alt="Sacred Vanakkam / Namaste hands adorned with wedding bangles and rose garland"
