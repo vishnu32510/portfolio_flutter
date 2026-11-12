@@ -33,7 +33,7 @@ export function EditorialJoinUs() {
       ref={sectionRef}
       id="join-us"
       aria-label="Save the Date and Countdown"
-      className="relative min-h-dvh w-full flex flex-col justify-center py-12 sm:py-16 px-4 bg-[#EBE2DB] text-[#143D27] overflow-hidden border-t border-[#C5A059]/30 snap-start snap-always"
+      className="relative min-h-dvh w-full flex flex-col justify-center py-12 sm:py-16 px-4 bg-[#EBE2DB] text-[#143D27] overflow-hidden border-t border-[#C5A059]/30"
     >
       {/* Central Subtly Glowing Brahma Mudi Kolam in the Background */}
       <div
