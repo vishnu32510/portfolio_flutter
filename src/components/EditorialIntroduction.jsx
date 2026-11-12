@@ -31,7 +31,7 @@ export function EditorialIntroduction() {
       ref={sectionRef}
       id="introduction"
       aria-labelledby="intro-heading"
-      className="relative min-h-dvh flex flex-col justify-center overflow-hidden bg-[#EBE2DB] text-[#143D27] py-12 sm:py-16 md:py-20 border-t border-[#C5A059]/30"
+      className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden bg-[#EBE2DB] text-[#143D27] py-12 sm:py-16 md:py-20 border-t border-[#C5A059]/30"
     >
       {/* 1. Top Garland & Toranam with Hanging Jasmine, Lotus Buds & Brass Lamps */}
       {/* Appears after scrolling from story stack, and removes when scrolled down to event details */}

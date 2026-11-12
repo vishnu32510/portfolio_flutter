@@ -13,125 +13,54 @@ export function EditorialHero() {
   const titleOpacity = useTransform(scrollY, [0, 280], [0.85, 0])
   const promptOpacity = useTransform(scrollY, [0, 120], [1, 0])
 
-  // Single-scroll gesture: On one scroll down from the first page, glide and land squarely on the invitation page.
+  // Single-scroll gesture: On one scroll down from the first page, glide cleanly to the invitation page.
   //
-  // The glide is driven by our own requestAnimationFrame loop (instead of
-  // scrollIntoView({ behavior: 'smooth' })) and all wheel / touch input is
-  // swallowed while it runs. Previously the native trackpad/touch momentum kept
-  // scrolling on top of the browser's smooth scroll, so the two fought each
-  // other frame-by-frame, which showed up as jitter / flicker / overshoot.
-  const glideRef = useRef({ active: false, rafId: 0, lastWheelAt: 0, justGlided: false })
-
-  const glideToInvitation = () => {
-    const target = document.getElementById('invitation')
-    const state = glideRef.current
-    if (!target || state.active) return
-
-    const startY = window.scrollY
-    const endY = startY + target.getBoundingClientRect().top
-    const distance = endY - startY
-
-    const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion || Math.abs(distance) < 2) {
-      window.scrollTo({ top: endY, behavior: 'instant' })
+  // On mobile touch devices, native CSS scroll snapping (`scroll-snap-type: y proximity` + `snap-start`)
+  // handles the glide with 120Hz ProMotion smoothness on the GPU compositor thread, with ZERO JavaScript
+  // fighting the finger. On desktop mice/trackpads, the wheel listener detects the downward scroll
+  // and triggers a clean, debounced smooth glide.
+  useEffect(() => {
+    // Leave touch devices to native compositor scroll snap (avoids jitter/flicker)
+    if (window.matchMedia?.('(pointer: coarse)').matches) {
       return
     }
 
-    state.active = true
-    const duration = 900
-    const startTime = performance.now()
-    // easeInOutCubic: gentle start, gentle landing
-    const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
-
-    const step = (now) => {
-      const t = Math.min(1, (now - startTime) / duration)
-      // behavior: 'instant' overrides the global `html { scroll-behavior: smooth }`,
-      // otherwise every per-frame scrollTo would itself be smoothed and lag behind.
-      window.scrollTo({ top: startY + distance * ease(t), behavior: 'instant' })
-      if (t < 1) {
-        state.rafId = requestAnimationFrame(step)
-      } else {
-        state.active = false
-        state.rafId = 0
-      }
-    }
-    state.rafId = requestAnimationFrame(step)
-  }
-
-  useEffect(() => {
-    const state = glideRef.current
-    const inHeroZone = () => window.scrollY < window.innerHeight * 0.45
-    // Trackpads keep emitting momentum wheel events for a while after the
-    // gesture; keep swallowing them until they stop so they don't carry the
-    // page past the invitation once the glide lands.
-    const MOMENTUM_QUIET_MS = 250
+    let isGliding = false
+    let glideTimer = null
 
     const handleWheel = (e) => {
-      const now = performance.now()
-      const sinceLastWheel = now - state.lastWheelAt
-      state.lastWheelAt = now
-
-      if (state.active || (state.justGlided && sinceLastWheel < MOMENTUM_QUIET_MS)) {
-        e.preventDefault()
-        return
-      }
-      state.justGlided = false
-
-      // If user is anywhere in the hero section and scrolls down, trigger full slide transition to invitation
-      if (inHeroZone() && e.deltaY > 3) {
-        e.preventDefault()
-        state.justGlided = true
-        glideToInvitation()
-      }
-    }
-
-    let touchStartY = 0
-    let touchStartX = 0
-    const handleTouchStart = (e) => {
-      if (e.touches.length === 1) {
-        touchStartY = e.touches[0].clientY
-        touchStartX = e.touches[0].clientX
-      }
-    }
-
-    const handleTouchEnd = (e) => {
-      if (state.active) return
-      if (inHeroZone() && e.changedTouches.length === 1) {
-        const touchEndY = e.changedTouches[0].clientY
-        const touchEndX = e.changedTouches[0].clientX
-        const deltaY = touchStartY - touchEndY
-        const deltaX = Math.abs(touchStartX - touchEndX)
-
-        // When user swipes up (scrolling down) predominantly vertically
-        if (deltaY > 25 && deltaY > deltaX) {
-          state.justGlided = true
-          glideToInvitation()
+      // If user scrolls down while in the hero section, glide down squarely to the invitation
+      if (window.scrollY < window.innerHeight * 0.45 && e.deltaY > 4) {
+        if (isGliding) {
+          e.preventDefault()
+          return
         }
+        isGliding = true
+        e.preventDefault()
+        document.getElementById('invitation')?.scrollIntoView({ behavior: 'smooth' })
+        clearTimeout(glideTimer)
+        glideTimer = setTimeout(() => {
+          isGliding = false
+        }, 950)
       }
     }
 
     window.addEventListener('wheel', handleWheel, { passive: false })
-    window.addEventListener('touchstart', handleTouchStart, { passive: true })
-    window.addEventListener('touchend', handleTouchEnd, { passive: true })
     return () => {
       window.removeEventListener('wheel', handleWheel)
-      window.removeEventListener('touchstart', handleTouchStart)
-      window.removeEventListener('touchend', handleTouchEnd)
-      if (state.rafId) cancelAnimationFrame(state.rafId)
-      state.active = false
+      clearTimeout(glideTimer)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const scrollToInvitation = (e) => {
     e.preventDefault()
-    glideToInvitation()
+    document.getElementById('invitation')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
     <header
       ref={containerRef}
-      className="relative min-h-dvh w-full flex flex-col justify-between overflow-hidden bg-[#0A0705] text-[#FAF8F5]"
+      className="relative min-h-[100svh] h-[100svh] w-full flex flex-col justify-between overflow-hidden bg-[#0A0705] text-[#FAF8F5] snap-start"
     >
       {/* Background Candid Black & White Photograph */}
       <motion.div
@@ -142,8 +71,11 @@ export function EditorialHero() {
         <img
           src="/images/noviya-vishnu-candid-bw.jpg"
           alt="Noviya and Vishnu running hand in hand in sunlight along a tree-lined path"
-          className="h-full w-full object-cover object-[center_30%] filter contrast-[1.05] brightness-[0.88]"
+          className="h-full w-full object-cover object-[center_30%]"
         />
+
+        {/* Soft Contrast & Tonal Wash (replaces expensive CSS filter for 120fps hardware acceleration) */}
+        <div className="absolute inset-0 bg-black/15 pointer-events-none" />
 
         {/* Ambient Top Vignette for Lettering Contrast */}
         <div className="absolute inset-0 bg-gradient-to-t from-transparent via-[#0A0705]/20 to-[#0A0705]/55" />

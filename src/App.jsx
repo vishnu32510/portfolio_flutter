@@ -35,7 +35,7 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <div className="min-h-dvh flex flex-col bg-[#EBE2DB] text-[#143D27]">
+      <div className="min-h-[100svh] flex flex-col bg-[#EBE2DB] text-[#143D27]">
         {/* Page 1: Candid B&W Cover with Alex Brush "Noviya & Vishnu" in beige at top, and "Scroll to enter" at bottom */}
         <EditorialHero />
 

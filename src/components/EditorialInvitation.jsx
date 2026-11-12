@@ -36,7 +36,7 @@ export function EditorialInvitation() {
       ref={sectionRef}
       id="invitation"
       aria-label="Wedding Invitation"
-      className="relative min-h-dvh w-full flex flex-col justify-between overflow-hidden bg-[#EBE2DB] text-[#143D27] py-5 sm:py-7 border-t border-[#C5A059]/40 shadow-inner"
+      className="relative min-h-[100svh] w-full flex flex-col justify-between overflow-hidden bg-[#EBE2DB] text-[#143D27] py-5 sm:py-7 border-t border-[#C5A059]/40 shadow-inner snap-start"
     >
       {/* 1. Top Garland & Toranam with Hanging Jasmine, Lotus Buds & Brass Lamps */}
       {/* Appears after scrolling the first page, and removes when scrolled down */}
@@ -50,11 +50,9 @@ export function EditorialInvitation() {
             src="/images/mandapam-top-garland.jpg"
             alt="Traditional floral garland with jasmine and hanging brass lamps"
             className="w-full h-full object-cover object-top select-none"
-            style={{
-              maskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
-            }}
           />
+          {/* Natural soft fade at bottom of garland without expensive CSS mask shader */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#EBE2DB] to-transparent" />
 
           {/* Small shiny lights / glittering sparkles on the hanging brass lamps */}
           <LampGlitters />
@@ -72,21 +70,21 @@ export function EditorialInvitation() {
             src="/images/mandapam-bottom-decor.jpg"
             alt="Traditional brass elephant, pink lotus flowers and marble floor"
             className="w-full h-full object-cover object-bottom select-none"
-            style={{
-              maskImage: 'linear-gradient(to top, black 72%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to top, black 72%, transparent 100%)',
-            }}
           />
+          {/* Natural soft fade at top of bottom decor without expensive CSS mask shader */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#EBE2DB] to-transparent" />
         </div>
       </motion.div>
 
-      {/* Background Video: Traditional Mandapam with Hanging Jasmine & Lotus Buds (replaces Kolam) */}
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+      {/* Background Video: Traditional Mandapam with Hanging Jasmine & Lotus Buds */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden transform-gpu">
         <video
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
+          poster="/images/mandapam-top-garland.jpg"
           className="w-full h-full object-cover"
         >
           <source src="/videos/mandapam-jasmine-lotus.mp4" type="video/mp4" />
