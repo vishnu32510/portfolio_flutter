@@ -152,10 +152,10 @@ export function HeroSection() {
           custom={0.18}
           className="mb-3 text-xs sm:text-sm uppercase tracking-[0.32em] text-gold-300/90 font-medium"
         >
-          Together With Our Families, We Joyfully Invite You
+          Together with our families, we invite you to celebrate as
         </motion.p>
 
-        {/* Couple's Names: Vishnu Priyan / weds / Noviya (stacked vertically) */}
+        {/* Couple's Names: Noviya / weds / Vishnu Priyan (stacked vertically) */}
         <motion.h1
           variants={fadeUp}
           initial="hidden"
@@ -163,7 +163,7 @@ export function HeroSection() {
           custom={0.3}
           className="hero-couple-title flex flex-col items-center font-normal tracking-tight py-1"
         >
-          <span className="block text-gold-shimmer">{WEDDING_CONFIG.groom.shortName}</span>
+          <span className="block text-gold-shimmer">{WEDDING_CONFIG.bride.shortName}</span>
           <span className="my-1.5 sm:my-2.5 inline-flex items-center gap-3 font-heading italic font-normal text-[0.44em] tracking-[0.1em] text-turmeric-400">
             <span
               aria-hidden="true"
@@ -175,7 +175,7 @@ export function HeroSection() {
               className="h-px w-7 sm:w-10 bg-gradient-to-l from-transparent to-gold-400/75"
             />
           </span>
-          <span className="block text-gold-shimmer">{WEDDING_CONFIG.bride.shortName}</span>
+          <span className="block text-gold-shimmer">{WEDDING_CONFIG.groom.shortName}</span>
         </motion.h1>
 
         <motion.div

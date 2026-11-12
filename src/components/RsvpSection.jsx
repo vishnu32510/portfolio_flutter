@@ -54,7 +54,7 @@ export function RsvpSection() {
     guestName: savedRsvp?.guestName || '',
     attending: savedRsvp?.attending || 'yes',
     attendees: savedRsvp?.attendees || '2',
-    dietaryPreference: savedRsvp?.dietaryPreference || 'Vegetarian',
+    dietaryPreference: savedRsvp?.dietaryPreference || 'Non-Vegetarian',
     notes: savedRsvp?.notes || '',
     honeypot: '',
   }))
@@ -278,7 +278,7 @@ export function RsvpSection() {
         guestName: savedRsvp.guestName || '',
         attending: savedRsvp.attending || 'yes',
         attendees: String(savedRsvp.attendees > 0 ? savedRsvp.attendees : 2),
-        dietaryPreference: savedRsvp.dietaryPreference || 'Vegetarian',
+        dietaryPreference: savedRsvp.dietaryPreference || 'Non-Vegetarian',
         notes: savedRsvp.notes || '',
         honeypot: '',
       })
@@ -327,8 +327,7 @@ export function RsvpSection() {
             <ZariLotusDivider />
           </div>
           <p className="text-sm sm:text-base text-maroon-800/85 max-w-xl mx-auto">
-            Your presence at our Muhurtham and wedding lunch will mean the world to both of our
-            families. Kindly share your response below.
+            Your presence at our wedding will mean the world to us and both of our families. Kindly share your response below.
           </p>
         </motion.div>
 
@@ -375,7 +374,7 @@ export function RsvpSection() {
                 </div>
 
                 <p lang="ta" className="font-tamil text-lg sm:text-xl text-gold-600 font-semibold">
-                  மிக்க நன்றி • வாழ்க வளமுடன்
+                  மிக்க நன்றி
                 </p>
                 <h3 className="mt-1 font-heading text-2xl sm:text-3xl text-maroon-900">
                   Thank You, {savedRsvp.guestName}!
@@ -511,7 +510,7 @@ export function RsvpSection() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <label
                       htmlFor="attending-yes"
-                      className={`flex items-center gap-3 rounded-xl border px-4 py-3 cursor-pointer transition-colors ${
+                      className={`group flex items-center gap-3 rounded-xl border px-4 py-3 cursor-pointer transition-colors ${
                         formValues.attending === 'yes'
                           ? 'border-maroon-800 bg-turmeric-100/80 text-maroon-950 font-semibold'
                           : 'border-[#8A7968]/80 bg-turmeric-50/40 text-maroon-900 hover:bg-turmeric-100/40'
@@ -524,14 +523,26 @@ export function RsvpSection() {
                         value="yes"
                         checked={formValues.attending === 'yes'}
                         onChange={handleFieldChange}
-                        className="h-4 w-4 accent-maroon-900 shrink-0"
+                        className="sr-only peer"
                       />
+                      <span
+                        aria-hidden="true"
+                        className={`h-4.5 w-4.5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all peer-focus-visible:ring-2 peer-focus-visible:ring-maroon-800 ${
+                          formValues.attending === 'yes'
+                            ? 'border-maroon-800 bg-white ring-1 ring-maroon-800/30'
+                            : 'border-[#8A7968]/60 bg-white group-hover:border-maroon-800/70'
+                        }`}
+                      >
+                        {formValues.attending === 'yes' && (
+                          <span className="h-2 w-2 rounded-full bg-maroon-800" />
+                        )}
+                      </span>
                       <span>Joyfully Attending</span>
                     </label>
 
                     <label
                       htmlFor="attending-no"
-                      className={`flex items-center gap-3 rounded-xl border px-4 py-3 cursor-pointer transition-colors ${
+                      className={`group flex items-center gap-3 rounded-xl border px-4 py-3 cursor-pointer transition-colors ${
                         formValues.attending === 'no'
                           ? 'border-maroon-800 bg-turmeric-100/80 text-maroon-950 font-semibold'
                           : 'border-[#8A7968]/80 bg-turmeric-50/40 text-maroon-900 hover:bg-turmeric-100/40'
@@ -544,8 +555,20 @@ export function RsvpSection() {
                         value="no"
                         checked={formValues.attending === 'no'}
                         onChange={handleFieldChange}
-                        className="h-4 w-4 accent-maroon-900 shrink-0"
+                        className="sr-only peer"
                       />
+                      <span
+                        aria-hidden="true"
+                        className={`h-4.5 w-4.5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all peer-focus-visible:ring-2 peer-focus-visible:ring-maroon-800 ${
+                          formValues.attending === 'no'
+                            ? 'border-maroon-800 bg-white ring-1 ring-maroon-800/30'
+                            : 'border-[#8A7968]/60 bg-white group-hover:border-maroon-800/70'
+                        }`}
+                      >
+                        {formValues.attending === 'no' && (
+                          <span className="h-2 w-2 rounded-full bg-maroon-800" />
+                        )}
+                      </span>
                       <span>Sending Wishes From Afar</span>
                     </label>
                   </div>
@@ -609,7 +632,7 @@ export function RsvpSection() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <label
                         htmlFor="dietary-veg"
-                        className={`flex items-center gap-3 rounded-xl border px-4 py-3 cursor-pointer transition-colors ${
+                        className={`group flex items-center gap-3 rounded-xl border px-4 py-3 cursor-pointer transition-colors ${
                           formValues.dietaryPreference === 'Vegetarian'
                             ? 'border-maroon-800 bg-turmeric-100/80 text-maroon-950 font-semibold'
                             : 'border-[#8A7968]/80 bg-turmeric-50/40 text-maroon-900 hover:bg-turmeric-100/40'
@@ -622,14 +645,26 @@ export function RsvpSection() {
                           value="Vegetarian"
                           checked={formValues.dietaryPreference === 'Vegetarian'}
                           onChange={handleFieldChange}
-                          className="h-4 w-4 accent-maroon-900 shrink-0"
+                          className="sr-only peer"
                         />
+                        <span
+                          aria-hidden="true"
+                          className={`h-4.5 w-4.5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all peer-focus-visible:ring-2 peer-focus-visible:ring-maroon-800 ${
+                            formValues.dietaryPreference === 'Vegetarian'
+                              ? 'border-maroon-800 bg-white ring-1 ring-maroon-800/30'
+                              : 'border-[#8A7968]/60 bg-white group-hover:border-maroon-800/70'
+                          }`}
+                        >
+                          {formValues.dietaryPreference === 'Vegetarian' && (
+                            <span className="h-2 w-2 rounded-full bg-maroon-800" />
+                          )}
+                        </span>
                         <span>Vegetarian (சைவம்)</span>
                       </label>
 
                       <label
                         htmlFor="dietary-non-veg"
-                        className={`flex items-center gap-3 rounded-xl border px-4 py-3 cursor-pointer transition-colors ${
+                        className={`group flex items-center gap-3 rounded-xl border px-4 py-3 cursor-pointer transition-colors ${
                           formValues.dietaryPreference === 'Non-Vegetarian'
                             ? 'border-maroon-800 bg-turmeric-100/80 text-maroon-950 font-semibold'
                             : 'border-[#8A7968]/80 bg-turmeric-50/40 text-maroon-900 hover:bg-turmeric-100/40'
@@ -642,8 +677,20 @@ export function RsvpSection() {
                           value="Non-Vegetarian"
                           checked={formValues.dietaryPreference === 'Non-Vegetarian'}
                           onChange={handleFieldChange}
-                          className="h-4 w-4 accent-maroon-900 shrink-0"
+                          className="sr-only peer"
                         />
+                        <span
+                          aria-hidden="true"
+                          className={`h-4.5 w-4.5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all peer-focus-visible:ring-2 peer-focus-visible:ring-maroon-800 ${
+                            formValues.dietaryPreference === 'Non-Vegetarian'
+                              ? 'border-maroon-800 bg-white ring-1 ring-maroon-800/30'
+                              : 'border-[#8A7968]/60 bg-white group-hover:border-maroon-800/70'
+                          }`}
+                        >
+                          {formValues.dietaryPreference === 'Non-Vegetarian' && (
+                            <span className="h-2 w-2 rounded-full bg-maroon-800" />
+                          )}
+                        </span>
                         <span>Non-Vegetarian</span>
                       </label>
                     </div>

@@ -119,29 +119,12 @@ export function IntroductionSection() {
               <ZariLotusDivider />
             </div>
 
-            <p className="text-[0.62rem] sm:text-[0.82rem] leading-[1.34] sm:leading-relaxed text-maroon-800/95 font-normal">
-              With hearts full of gratitude and joy, and with the warm blessings of our beloved
-              parents —{' '}
-              <strong className="font-semibold text-maroon-900">
-                {groom.parents.father}
-              </strong>
-              ,{' '}
-              <strong className="font-semibold text-maroon-900">
-                {groom.parents.mother}
-              </strong>
-              , and{' '}
-              <strong className="font-semibold text-maroon-900">
-                {brideParentsProse}
-              </strong>{' '}
-              — we cordially invite our cherished family and friends to grace the sacred Tamil
-              Hindu wedding ceremony of{' '}
-              <span className="font-semibold text-maroon-900">{groom.shortName}</span> and{' '}
-              <span className="font-semibold text-maroon-900">{bride.shortName}</span>, and shower
-              them with your prayers and{' '}
+            <p className="text-[0.62rem] sm:text-[0.82rem] leading-[1.34] sm:leading-relaxed text-maroon-800/95 font-normal max-w-2xl mx-auto text-center">
+              Moments become memories because of the people we share them with. With the warm blessings of our loving parents, we cordially invite you to grace our wedding ceremony, and shower us with your prayers and{' '}
               <span lang="ta" className="font-tamil text-maroon-900 font-medium">
                 ஆசீர்வாதம்
               </span>{' '}
-              (blessings) as they step into a lifetime of togetherness.
+              (Blessings) as we step into a lifetime of togetherness.
             </p>
           </motion.div>
 
@@ -183,9 +166,11 @@ export function IntroductionSection() {
                   <p className="text-[0.44rem] sm:text-[0.55rem] uppercase tracking-[0.14em] sm:tracking-[0.16em] text-maroon-700/75 mb-0.5">
                     Son of
                   </p>
-                  <p className="font-heading text-[0.56rem] sm:text-[0.8rem] text-maroon-900 leading-tight sm:leading-snug">
-                    {groom.parents.father} &amp; {groom.parents.mother}
-                  </p>
+                  <div className="font-heading text-[0.56rem] sm:text-[0.8rem] text-maroon-900 leading-tight sm:leading-snug">
+                    <span className="block whitespace-nowrap">{groom.parents.father}</span>
+                    <span className="block text-[0.5rem] sm:text-xs text-gold-600 my-0.5">&amp;</span>
+                    <span className="block whitespace-nowrap">{groom.parents.mother}</span>
+                  </div>
                 </div>
               </motion.article>
 
@@ -239,9 +224,11 @@ export function IntroductionSection() {
                     <p className="text-[0.44rem] sm:text-[0.55rem] uppercase tracking-[0.14em] sm:tracking-[0.16em] text-maroon-700/75">
                       Daughter of
                     </p>
-                    <p className="font-heading text-[0.56rem] sm:text-[0.8rem] text-maroon-900 leading-tight sm:leading-snug">
-                      {brideParentsCard}
-                    </p>
+                    <div className="font-heading text-[0.56rem] sm:text-[0.8rem] text-maroon-900 leading-tight sm:leading-snug">
+                      <span className="block whitespace-nowrap">{bride.parents.father}</span>
+                      <span className="block text-[0.5rem] sm:text-xs text-gold-600 my-0.5">&amp;</span>
+                      <span className="block whitespace-nowrap">{bride.parents.mother}</span>
+                    </div>
                   </div>
                   {bride.sister && (
                     <div className="pt-0.5 sm:pt-1 border-t border-gold-400/20">

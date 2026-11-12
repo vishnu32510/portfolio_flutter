@@ -1,6 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
+export { SikkuBrahmaMudiKolam } from './SikkuBrahmaMudiKolam'
+export { LampGlitters } from './LampGlitters'
+
 /**
  * Authentic South Indian Pulli / Sikku Kolam Mandala
  * Features 8-fold lotus symmetry, interlaced kambi loops, and sacred pulli dots.
@@ -162,6 +165,100 @@ export function MarigoldThoranam({ className = '' }) {
           </pattern>
         </defs>
         <rect width="1200" height="92" fill="url(#thoranam-swag)" />
+      </svg>
+    </div>
+  )
+}
+
+/**
+ * Vibrant South Indian Floral Garland (Bright Yellow Marigolds & Auspicious Red Roses + Maavilai)
+ */
+export function BrightFloralThoranam({ className = '' }) {
+  return (
+    <div
+      className={`pointer-events-none select-none w-full overflow-hidden ${className}`}
+      aria-hidden="true"
+    >
+      <svg
+        viewBox="0 0 1200 96"
+        preserveAspectRatio="none"
+        className="w-full h-16 sm:h-20 md:h-24 block drop-shadow-[0_6px_14px_rgba(70,20,10,0.15)]"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern
+            id="bright-floral-swag-motif"
+            x="0"
+            y="0"
+            width="200"
+            height="96"
+            patternUnits="userSpaceOnUse"
+          >
+            {/* Top Braided Gold Zari Cord */}
+            <line x1="0" y1="6" x2="200" y2="6" stroke="#C5A059" strokeWidth="3.5" />
+            <line x1="0" y1="7.5" x2="200" y2="7.5" stroke="#FFF0C2" strokeWidth="1" strokeDasharray="3 3" />
+
+            {/* Sacred Mango Leaves (Maavilai) */}
+            {[20, 60, 100, 140, 180].map((lx) => (
+              <g key={lx} transform={`translate(${lx}, 6)`}>
+                <path
+                  d="M0 0 C-8 12, -7 24, 0 32 C7 24, 8 12, 0 0 Z"
+                  fill="#236829"
+                  stroke="#C5A059"
+                  strokeWidth="0.8"
+                />
+                <line x1="0" y1="2" x2="0" y2="29" stroke="#9AD372" strokeWidth="0.8" opacity="0.85" />
+              </g>
+            ))}
+
+            {/* Scalloped Garland Arch: Alternating Bright Yellow Marigolds & Rich Festive Red Roses */}
+            {[
+              { cx: 14, cy: 16, c: '#FFB800', r: '#B8860B', type: 'yellow' },
+              { cx: 30, cy: 30, c: '#E02438', r: '#8B0000', type: 'red' },
+              { cx: 50, cy: 42, c: '#FFC700', r: '#B8860B', type: 'yellow' },
+              { cx: 74, cy: 50, c: '#D31B2F', r: '#7B0014', type: 'red' },
+              { cx: 100, cy: 53, c: '#FFB800', r: '#B8860B', type: 'yellow' },
+              { cx: 126, cy: 50, c: '#D31B2F', r: '#7B0014', type: 'red' },
+              { cx: 150, cy: 42, c: '#FFC700', r: '#B8860B', type: 'yellow' },
+              { cx: 170, cy: 30, c: '#E02438', r: '#8B0000', type: 'red' },
+              { cx: 186, cy: 16, c: '#FFB800', r: '#B8860B', type: 'yellow' },
+            ].map((flower, idx) => (
+              <g key={idx}>
+                <circle cx={flower.cx} cy={flower.cy} r="10" fill={flower.c} />
+                <circle
+                  cx={flower.cx}
+                  cy={flower.cy}
+                  r="7"
+                  fill="none"
+                  stroke={flower.type === 'yellow' ? '#FFF6D1' : '#FFAEC0'}
+                  strokeWidth="1.2"
+                  strokeDasharray="2.5 2.5"
+                  opacity="0.85"
+                />
+                <circle cx={flower.cx} cy={flower.cy} r="3" fill={flower.r} opacity="0.8" />
+              </g>
+            ))}
+
+            {/* Vertical Jasmine, Yellow Marigold & Crimson Rose Tassel */}
+            <g transform="translate(0, 8)">
+              <circle cx="0" cy="8" r="8.5" fill="#D31B2F" />
+              <circle cx="0" cy="22" r="5" fill="#FFFDF8" stroke="#E6D7B8" strokeWidth="0.5" />
+              <circle cx="0" cy="32" r="5" fill="#FFFDF8" stroke="#E6D7B8" strokeWidth="0.5" />
+              <circle cx="0" cy="45" r="8" fill="#FFB800" />
+              <circle cx="0" cy="59" r="6.5" fill="#C61A2B" />
+              <path d="M0 66 L-4 78 L0 84 L4 78 Z" fill="#C5A059" />
+            </g>
+            <g transform="translate(200, 8)">
+              <circle cx="0" cy="8" r="8.5" fill="#D31B2F" />
+              <circle cx="0" cy="22" r="5" fill="#FFFDF8" stroke="#E6D7B8" strokeWidth="0.5" />
+              <circle cx="0" cy="32" r="5" fill="#FFFDF8" stroke="#E6D7B8" strokeWidth="0.5" />
+              <circle cx="0" cy="45" r="8" fill="#FFB800" />
+              <circle cx="0" cy="59" r="6.5" fill="#C61A2B" />
+              <path d="M0 66 L-4 78 L0 84 L4 78 Z" fill="#C5A059" />
+            </g>
+          </pattern>
+        </defs>
+        <rect width="1200" height="96" fill="url(#bright-floral-swag-motif)" />
       </svg>
     </div>
   )

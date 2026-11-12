@@ -37,46 +37,69 @@ export const WEDDING_CONFIG = {
     isoEnd: '2026-12-13T14:30:00-05:00',
     muhurthamIsoStart: '2026-12-13T10:00:00-05:00',
     ceremonyTime: '8:00 AM to 2:00 PM EST',
-    muhurthamWindow: '10:00 AM – 11:00 AM',
+    muhurthamWindow: '10:00 AM – 11:30 AM',
     venueName: 'Serene Springs Farm',
     cityState: 'Hillsborough Township, NJ',
     addressLine: '121 S Branch Rd, Hillsborough Township, NJ 08844',
     mapsUrl: 'https://maps.app.goo.gl/d6DG2rNsGL6nSmCr5',
     feastTitle: 'Kalyana Virundhu (Wedding Feast)',
     templeNote:
-      'Following the auspicious Muhurtham rituals, we will visit the temple for blessings, which is 20 mins away from the venue.',
+      'Following the Muhurtham rituals, a visit to the Balaji temple (20 mins away from the venue) and return to Serene Springs Farm for lunch at 1:00 PM.',
     feastNote:
-      'Following the auspicious Muhurtham rituals, we will visit the temple for blessings (20 mins away from the venue) and return to Serene Springs Farm for lunch at 1:00 PM.',
+      'Following the Muhurtham rituals, a visit to the Balaji temple (20 mins away from the venue) and return to Serene Springs Farm for lunch at 1:00 PM.',
     agenda: [
       {
         time: '8:00 AM',
-        title: 'Morning Breakfast',
+        title: 'Breakfast',
         tamilTitle: 'காலை உணவு',
         location: 'Serene Springs Farm',
-        description: 'Begin the celebratory day with morning breakfast at the farm.',
+        description: 'Beginning the celebratory day with morning breakfast.',
       },
       {
-        time: '10:00 AM – 11:00 AM',
-        title: 'Subha Muhurtham',
+        time: '10:00 AM – 11:30 AM',
+        title: 'Wedding Ceremony',
         tamilTitle: 'சுப முகூர்த்தம்',
         location: 'Serene Springs Farm',
-        description: 'Sacred wedding ceremony and auspicious vows uniting Vishnu Priyan & Noviya.',
+        description: 'Sacred wedding ceremony and auspicious vows uniting Noviya & Vishnu Priyan.',
         highlight: true,
       },
       {
-        time: 'After Muhurtham',
-        title: 'Temple Visit for Blessings',
-        tamilTitle: 'கோவில் தரிசனம்',
-        location: 'Temple (20 mins away)',
-        description: 'Following the auspicious Muhurtham rituals, we will visit the temple for blessings (20 mins away from the venue).',
-      },
-      {
         time: '1:00 PM',
-        title: 'Kalyana Virundhu (Wedding Feast)',
+        title: 'Wedding Lunch',
         tamilTitle: 'கல்யாண விருந்து',
         location: 'Serene Springs Farm',
-        description: 'Traditional wedding feast and celebrations upon returning from the temple.',
+        description: 'Traditional wedding feast and celebrations at Serene Springs Farm.',
       },
+    ],
+  },
+  coupleStory: {
+    caption: '2 people who found each other',
+    subcaption: 'From candid smiles to lifelong promises — everyday moments that brought us here.',
+    row1: [
+      { src: '/images/gallery/noviya-vishnu-chicago-lights.jpg', caption: 'From Chennai to Chicago..', alt: 'Noviya and Vishnu in Chicago' },
+      { src: '/images/gallery/noviya-vishnu-new-york.jpg', caption: '..to New York', alt: 'Noviya and Vishnu in New York' },
+      { src: '/images/gallery/noviya-vishnu-alpine-lake.jpg', caption: 'Holding on to each other', alt: 'Noviya and Vishnu at alpine lake' },
+      { src: '/images/gallery/noviya-vishnu-graduation.jpg', caption: 'Two Degrees Later', alt: 'Noviya and Vishnu graduation day' },
+    ],
+    row2: [
+      { src: '/images/gallery/vishnu-final-2.jpg', caption: 'The proposal', alt: 'Vishnu proposing to Noviya' },
+      { src: '/images/gallery/noviya-vishnu-proposal-box.jpg', caption: 'The proposal', alt: 'Vishnu presenting the ring box' },
+      { src: '/images/gallery/noviya-vishnu-proposal-hug.jpg', caption: 'The proposal', alt: 'Noviya and Vishnu embracing' },
+      { src: '/images/gallery/noviya-vishnu-ring-chicago.jpg', caption: 'The easiest yes ever', alt: 'Noviya and Vishnu engagement ring' },
+      { src: '/images/gallery/noviya-vishnu-family-chicago.jpg', caption: "Stepping into what's next..", alt: 'Both families together in Chicago' },
+    ],
+  },
+  proposal: {
+    headline: 'The Proposal',
+    dateDisplay: 'May 16th',
+    caption: 'On May 16th, Vishnu proposed to Noviya.',
+    story: 'Beneath the open sky, a simple question turned a beautiful journey into forever.',
+    photos: [
+      { src: '/images/gallery/vishnu-final-2.jpg', title: 'The proposal', date: 'May 16', location: 'Chicago' },
+      { src: '/images/gallery/noviya-vishnu-proposal-box.jpg', title: 'The proposal', date: 'May 16', location: 'Chicago' },
+      { src: '/images/gallery/noviya-vishnu-proposal-hug.jpg', title: 'The proposal', date: 'May 16', location: 'Chicago' },
+      { src: '/images/gallery/noviya-vishnu-ring-chicago.jpg', title: 'The easiest yes ever', date: 'May 16', location: 'Chicago' },
+      { src: '/images/gallery/noviya-vishnu-family-chicago.jpg', title: "Stepping into what's next..", date: 'May 16', location: 'Chicago' },
     ],
   },
   // Google Apps Script Web App connected to user's Google Sheet
@@ -111,8 +134,8 @@ export function downloadWeddingIcs() {
     'DTSTAMP:20261110T000000Z',
     'DTSTART:20261213T130000Z',
     'DTEND:20261213T193000Z',
-    'SUMMARY:Wedding of Vishnu Priyan & Noviya (Subha Muhurtham & Kalyana Virundhu)',
-    'DESCRIPTION:Wedding Celebration of Vishnu Priyan & Noviya:\\n• 8:00 AM: Morning Breakfast at Serene Springs Farm\\n• 10:00 AM - 11:00 AM: Auspicious Subha Muhurtham\\n• Following Muhurtham: Temple visit for blessings (20 mins away)\\n• 1:00 PM: Kalyana Virundhu (Wedding Feast / Lunch)\\nVaazhga Valamudan!',
+    'SUMMARY:Wedding of Noviya & Vishnu Priyan (Subha Muhurtham & Kalyana Virundhu)',
+    'DESCRIPTION:Wedding Celebration of Noviya & Vishnu Priyan:\\n• 8:00 AM: Morning Breakfast at Serene Springs Farm\\n• 10:00 AM - 11:30 AM: Auspicious Subha Muhurtham\\n• Following Muhurtham: Temple visit for blessings (20 mins away)\\n• 1:00 PM: Kalyana Virundhu (Wedding Feast / Lunch)\\nVaazhga Valamudan!',
     'LOCATION:Serene Springs Farm\\, 121 S Branch Rd\\, Hillsborough Township\\, NJ 08844',
     'END:VEVENT',
     'END:VCALENDAR',
@@ -128,4 +151,3 @@ export function downloadWeddingIcs() {
   document.body.removeChild(link)
   URL.revokeObjectURL(url)
 }
-

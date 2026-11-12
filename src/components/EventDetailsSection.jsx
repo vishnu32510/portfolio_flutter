@@ -102,16 +102,6 @@ export function EventDetailsSection() {
               </h3>
             </div>
 
-            {/* Highlighted Auspicious Muhurtham Callout */}
-            <div className="my-7 print:my-2.5 rounded-2xl border border-turmeric-300/40 bg-gradient-to-r from-turmeric-400/15 via-gold-400/20 to-turmeric-400/15 px-5 py-4 sm:px-7 sm:py-5 print:py-2.5 print:px-4 text-center">
-              <p className="text-xs uppercase tracking-[0.26em] text-turmeric-200 font-semibold print:text-[0.65rem]">
-                Auspicious Muhurtham Window
-              </p>
-              <p className="mt-1 font-heading text-xl sm:text-2xl md:text-3xl print:text-xl text-turmeric-300 font-medium">
-                Between {event.muhurthamWindow} EST
-              </p>
-            </div>
-
             {/* Structured Ceremony Details Grid (Container-Query Responsive) */}
             <div className="event-card-details-grid print:gap-2.5">
               {/* Date & Full Time */}
@@ -152,54 +142,69 @@ export function EventDetailsSection() {
               </div>
             </div>
 
-            {/* Wedding Day Agenda Timeline */}
+            {/* Wedding Day Agenda Timeline: Single Unified Card */}
             {event.agenda && (
               <div className="my-6 print:my-2.5">
                 <div className="flex items-center justify-between gap-3 mb-4 print:mb-2">
                   <div className="h-px flex-1 bg-gold-400/25" />
                   <h4 className="font-sans text-xs sm:text-sm uppercase tracking-[0.24em] text-turmeric-300 font-semibold text-center print:text-[0.65rem]">
-                    Auspicious Day's Agenda • திருமண நிகழ்வுகள்
+                    Order of Events • திருமண நிகழ்வுகள்
                   </h4>
                   <div className="h-px flex-1 bg-gold-400/25" />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 print:gap-2 text-left">
+                {/* Single Unified Card */}
+                <div className="rounded-2xl border border-gold-300/30 bg-maroon-950/50 backdrop-blur-md overflow-hidden divide-y divide-gold-300/20">
                   {event.agenda.map((item, idx) => {
                     const isMuhurtham = item.highlight
                     return (
                       <div
                         key={idx}
-                        className={`relative rounded-2xl p-4 sm:p-5 print:p-2.5 border transition-colors ${
+                        className={`relative p-3.5 sm:p-4.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-6 transition-all duration-300 ${
                           isMuhurtham
-                            ? 'border-turmeric-300/60 bg-gradient-to-br from-turmeric-400/20 via-maroon-900/60 to-maroon-950/70 shadow-[0_0_24px_rgba(244,184,41,0.12)] print:shadow-none'
-                            : 'border-gold-300/25 bg-maroon-950/50'
+                            ? 'bg-gradient-to-r from-turmeric-400/20 via-maroon-900/60 to-turmeric-400/20 ring-1 ring-inset ring-turmeric-300/40'
+                            : 'hover:bg-maroon-900/30'
                         }`}
                       >
-                        <div className="flex items-center justify-between gap-2 mb-1.5 print:mb-1">
+                        {/* Time Badge */}
+                        <div className="flex items-center justify-between sm:justify-start gap-2 sm:w-56 shrink-0">
                           <span
-                            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-0.5 print:px-2 print:py-0 text-xs print:text-[0.65rem] font-semibold tracking-wider ${
+                            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs sm:text-sm font-semibold tracking-wider ${
                               isMuhurtham
-                                ? 'bg-turmeric-300/20 border border-turmeric-300/50 text-turmeric-200'
+                                ? 'bg-turmeric-400/25 border border-turmeric-300/60 text-turmeric-200'
                                 : 'bg-gold-400/15 border border-gold-400/30 text-gold-300'
                             }`}
                           >
-                            <Clock className="w-3.5 h-3.5 print:w-3 print:h-3 shrink-0" aria-hidden="true" />
+                            <Clock className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                             <span>{item.time}</span>
                           </span>
-                          <span lang="ta" className="font-tamil text-xs print:text-[0.65rem] text-turmeric-300/80">
+
+                          <span lang="ta" className="font-tamil text-xs sm:hidden font-medium text-turmeric-200/90">
                             {item.tamilTitle}
                           </span>
                         </div>
 
-                        <h5 className="font-heading text-base sm:text-lg print:text-sm text-turmeric-50 font-normal mt-1.5 print:mt-0.5">
-                          {item.title}
-                        </h5>
-                        <p className="text-xs sm:text-sm print:text-[0.7rem] text-turmeric-100/80 mt-1 print:mt-0.5 leading-relaxed">
-                          {item.description}
-                        </p>
+                        {/* Tamil Word on Desktop */}
+                        <div className="hidden sm:flex flex-1 items-center justify-center">
+                          <span lang="ta" className="font-tamil text-xs md:text-sm font-medium tracking-wide text-turmeric-200/90">
+                            {item.tamilTitle}
+                          </span>
+                        </div>
+
+                        {/* Function Name */}
+                        <div className="sm:w-72 shrink-0 sm:text-right">
+                          <h5 className="font-heading text-base sm:text-lg text-turmeric-50 font-medium">
+                            {item.title}
+                          </h5>
+                        </div>
                       </div>
                     )
                   })}
+                </div>
+
+                {/* Balaji Temple Blessing Note below Agenda */}
+                <div className="mt-4 rounded-xl border border-gold-300/35 bg-white/[0.06] p-3 text-center text-xs sm:text-sm text-turmeric-200/90 italic">
+                  Following the Muhurtham rituals, a visit to the Balaji temple (20 mins away from the venue) and return to Serene Springs Farm for lunch at 1:00 PM.
                 </div>
               </div>
             )}

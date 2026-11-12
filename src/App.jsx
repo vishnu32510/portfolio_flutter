@@ -1,51 +1,63 @@
-import { MotionConfig, motion, useScroll, useSpring } from 'framer-motion'
-import { EventDetailsSection } from './components/EventDetailsSection'
-import { FooterSection } from './components/FooterSection'
-import { HeroSection } from './components/HeroSection'
-import { IntroductionSection } from './components/IntroductionSection'
-import { RsvpSection } from './components/RsvpSection'
-import { MandapamSidePillars, PrintZariBorderFrame } from './components/TraditionalMotifs'
+import { useState, useEffect } from 'react'
+import { MotionConfig } from 'framer-motion'
+import { EditorialHero } from './components/EditorialHero'
+import { EditorialInvitation } from './components/EditorialInvitation'
+import { EditorialJoinUs } from './components/EditorialJoinUs'
+import { EditorialIntroduction } from './components/EditorialIntroduction'
+import { EditorialEventDetails } from './components/EditorialEventDetails'
+import { EditorialRsvp } from './components/EditorialRsvp'
+import { EditorialFooter } from './components/EditorialFooter'
+import { EditorialPrintableInvite } from './components/EditorialPrintableInvite'
 
 export default function App() {
-  const { scrollYProgress } = useScroll()
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 28,
-    restDelta: 0.001,
+  const [isPrintMode, setIsPrintMode] = useState(() => {
+    if (typeof window === 'undefined') return false
+    const params = new URLSearchParams(window.location.search)
+    return params.get('print') === 'true' || window.location.hash === '#print'
   })
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const params = new URLSearchParams(window.location.search)
+      setIsPrintMode(params.get('print') === 'true' || window.location.hash === '#print')
+    }
+    window.addEventListener('popstate', handlePopState)
+    window.addEventListener('hashchange', handlePopState)
+    return () => {
+      window.removeEventListener('popstate', handlePopState)
+      window.removeEventListener('hashchange', handlePopState)
+    }
+  }, [])
+
+  if (isPrintMode) {
+    return <EditorialPrintableInvite />
+  }
 
   return (
     <MotionConfig reducedMotion="user">
-      {/* Accessible Skip Link */}
-      <a
-        href="#introduction"
-        className="visually-hidden focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-turmeric-400 focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-maroon-950 focus:shadow-lg"
-      >
-        Skip to invitation details
-      </a>
+      <div className="min-h-dvh flex flex-col bg-[#EBE2DB] text-[#143D27]">
+        {/* Page 1: Candid B&W Cover with Alex Brush "Noviya & Vishnu" in beige at top, and "Scroll to enter" at bottom */}
+        <EditorialHero />
 
-      {/* Subtle Antique Gold Zari Scroll Progress Hairline */}
-      <motion.div
-        aria-hidden="true"
-        style={{ scaleX, transformOrigin: '0%' }}
-        className="no-print fixed top-0 left-0 right-0 z-50 h-[3px] bg-gradient-to-r from-gold-500 via-turmeric-400 to-gold-300"
-      />
+        {/* Page 2: Kalyana Mandapam with New Background & Dynamic Garlands on scroll */}
+        <EditorialInvitation />
 
-      {/* Carved Dravidian Kalyana Mandapam Stone Side Pillars (Web only) */}
-      <MandapamSidePillars />
+        {/* Page 3: "Join us for our Big Day on" / "December 13, 2026" / Countdown Timer */}
+        <EditorialJoinUs />
 
-      {/* Option 3: Delicate Antique-Gold Zari Vertical Border (PDF / Print only) */}
-      <PrintZariBorderFrame />
+        {/* Page 4: Auspicious Beginning - Mandapam background, Garland & parent blessings */}
+        <EditorialIntroduction />
 
-      <div className="min-h-dvh flex flex-col bg-maroon-950">
-        <HeroSection />
-        <main className="flex-1">
-          <IntroductionSection />
-          <EventDetailsSection />
-          <RsvpSection />
-        </main>
-        <FooterSection />
+        {/* Page 5: Wedding Ceremony Details & Agenda (Breakfast, Subha Muhurtham, Kalyana Virundhu) */}
+        <EditorialEventDetails />
+
+        {/* Page 6: RSVP Form matching the warm beige Mandapam theme */}
+        <EditorialRsvp />
+
+        {/* Page 7: Editorial Footer & Family Blessings */}
+        <EditorialFooter />
       </div>
     </MotionConfig>
   )
 }
+

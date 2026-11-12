@@ -37,9 +37,9 @@ export function FooterSection() {
         </p>
 
         <p className="mt-5 font-heading text-xl sm:text-2xl text-gold-shimmer">
-          {WEDDING_CONFIG.groom.shortName}{' '}
+          {WEDDING_CONFIG.bride.shortName}{' '}
           <span className="italic font-normal text-[0.82em] text-turmeric-300">weds</span>{' '}
-          {WEDDING_CONFIG.bride.shortName}
+          {WEDDING_CONFIG.groom.shortName}
         </p>
         <p className="mt-1 text-xs uppercase tracking-[0.26em] text-gold-300/75">
           {WEDDING_CONFIG.event.shortDate} • Hillsborough Township, New Jersey
