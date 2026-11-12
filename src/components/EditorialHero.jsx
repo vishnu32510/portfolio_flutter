@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 
@@ -13,45 +13,6 @@ export function EditorialHero() {
   const titleOpacity = useTransform(scrollY, [0, 280], [0.85, 0])
   const promptOpacity = useTransform(scrollY, [0, 120], [1, 0])
 
-  // Single-scroll gesture: On one scroll down from the first page, glide cleanly to the invitation page.
-  //
-  // On mobile touch devices, native CSS scroll snapping (`scroll-snap-type: y proximity` + `snap-start`)
-  // handles the glide with 120Hz ProMotion smoothness on the GPU compositor thread, with ZERO JavaScript
-  // fighting the finger. On desktop mice/trackpads, the wheel listener detects the downward scroll
-  // and triggers a clean, debounced smooth glide.
-  useEffect(() => {
-    // Leave touch devices to native compositor scroll snap (avoids jitter/flicker)
-    if (window.matchMedia?.('(pointer: coarse)').matches) {
-      return
-    }
-
-    let isGliding = false
-    let glideTimer = null
-
-    const handleWheel = (e) => {
-      // If user scrolls down while in the hero section, glide down squarely to the invitation
-      if (window.scrollY < window.innerHeight * 0.45 && e.deltaY > 4) {
-        if (isGliding) {
-          e.preventDefault()
-          return
-        }
-        isGliding = true
-        e.preventDefault()
-        document.getElementById('invitation')?.scrollIntoView({ behavior: 'smooth' })
-        clearTimeout(glideTimer)
-        glideTimer = setTimeout(() => {
-          isGliding = false
-        }, 950)
-      }
-    }
-
-    window.addEventListener('wheel', handleWheel, { passive: false })
-    return () => {
-      window.removeEventListener('wheel', handleWheel)
-      clearTimeout(glideTimer)
-    }
-  }, [])
-
   const scrollToInvitation = (e) => {
     e.preventDefault()
     document.getElementById('invitation')?.scrollIntoView({ behavior: 'smooth' })
@@ -60,7 +21,7 @@ export function EditorialHero() {
   return (
     <header
       ref={containerRef}
-      className="relative min-h-[100svh] h-[100svh] w-full flex flex-col justify-between overflow-hidden bg-[#0A0705] text-[#FAF8F5] snap-start"
+      className="relative min-h-[100svh] h-[100svh] w-full flex flex-col justify-between overflow-hidden bg-[#0A0705] text-[#FAF8F5]"
     >
       {/* Background Candid Black & White Photograph */}
       <motion.div

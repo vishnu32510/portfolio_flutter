@@ -36,7 +36,7 @@ export function EditorialInvitation() {
       ref={sectionRef}
       id="invitation"
       aria-label="Wedding Invitation"
-      className="relative min-h-[100svh] w-full flex flex-col justify-between overflow-hidden bg-[#EBE2DB] text-[#143D27] py-5 sm:py-7 border-t border-[#C5A059]/40 shadow-inner snap-start"
+      className="relative min-h-[100svh] w-full flex flex-col justify-between overflow-hidden bg-[#EBE2DB] text-[#143D27] py-5 sm:py-7 border-t border-[#C5A059]/40 shadow-inner"
     >
       {/* 1. Top Garland & Toranam with Hanging Jasmine, Lotus Buds & Brass Lamps */}
       {/* Appears after scrolling the first page, and removes when scrolled down */}
