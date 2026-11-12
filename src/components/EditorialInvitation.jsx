@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { FallingRosePetals } from './FallingRosePetals'
 import {
   KuthuvilakkuIcon,
-  LampGlitters,
   ZariLotusDivider,
 } from './TraditionalMotifs'
 
@@ -11,21 +10,11 @@ export function EditorialInvitation() {
   const sectionRef = useRef(null)
 
   // Track scroll through the invitation section:
-  // - Entering from the first page: 'start end' to 'start start'
   // - Exiting to the photo stack: 'start start' to 'end start'
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start'],
   })
-
-  // Garlands are solid and stable when scrolling in from first page;
-  // gently slide up and exit when scrolling down to the photo stack
-  const garlandY = useTransform(scrollYProgress, [0.58, 0.85], [0, -140])
-  const garlandOpacity = useTransform(scrollYProgress, [0.58, 0.85], [1, 0])
-
-  // Bottom Mandapam decor stays grounded, gently fades when scrolling down
-  const bottomDecorOpacity = useTransform(scrollYProgress, [0.58, 0.82], [1, 0])
-  const bottomDecorY = useTransform(scrollYProgress, [0.58, 0.85], [0, 60])
 
   // Content is solid when entering, gently fades out and lifts when scrolling down to story stack
   const contentOpacity = useTransform(scrollYProgress, [0.55, 0.78], [1, 0])
@@ -36,48 +25,10 @@ export function EditorialInvitation() {
       ref={sectionRef}
       id="invitation"
       aria-label="Wedding Invitation"
-      className="relative min-h-[100svh] w-full flex flex-col justify-between overflow-hidden bg-[#EBE2DB] text-[#143D27] py-5 sm:py-7 border-t border-[#C5A059]/40 shadow-inner"
+      className="relative h-screen min-h-screen min-h-dvh w-full flex flex-col justify-center items-center overflow-hidden bg-[#EBE2DB] text-[#143D27] border-t border-[#C5A059]/40 shadow-inner"
     >
-      {/* 1. Top Garland & Toranam with Hanging Jasmine, Lotus Buds & Brass Lamps */}
-      {/* Appears after scrolling the first page, and removes when scrolled down */}
-      <motion.div
-        style={{ y: garlandY, opacity: garlandOpacity }}
-        className="pointer-events-none absolute top-0 left-0 right-0 z-10 flex justify-center overflow-hidden"
-        aria-hidden="true"
-      >
-        <div className="relative w-full max-w-5xl h-[32vh] sm:h-[36vh] max-h-[340px] md:max-h-[270px] lg:max-h-[290px]">
-          <img
-            src="/images/mandapam-top-garland.jpg"
-            alt="Traditional floral garland with jasmine and hanging brass lamps"
-            className="w-full h-full object-cover object-top select-none"
-          />
-          {/* Natural soft fade at bottom of garland without expensive CSS mask shader */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#EBE2DB] to-transparent" />
-
-          {/* Small shiny lights / glittering sparkles on the hanging brass lamps */}
-          <LampGlitters />
-        </div>
-      </motion.div>
-
-      {/* 2. Bottom Mandapam Decor (Brass Elephant on Stool, Lotus Bowls, Marble Floor) */}
-      <motion.div
-        style={{ y: bottomDecorY, opacity: bottomDecorOpacity }}
-        className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 flex justify-center overflow-hidden"
-        aria-hidden="true"
-      >
-        <div className="relative w-full max-w-5xl h-[20vh] sm:h-[22vh] md:h-[20vh] lg:h-[22vh] max-h-[195px] md:max-h-[210px]">
-          <img
-            src="/images/mandapam-bottom-decor.jpg"
-            alt="Traditional brass elephant, pink lotus flowers and marble floor"
-            className="w-full h-full object-cover object-bottom select-none"
-          />
-          {/* Natural soft fade at top of bottom decor without expensive CSS mask shader */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#EBE2DB] to-transparent" />
-        </div>
-      </motion.div>
-
-      {/* Background Video: Traditional Mandapam with Hanging Jasmine & Lotus Buds */}
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden transform-gpu">
+      {/* Background Video: Traditional Mandapam with Hanging Jasmine & Lotus Buds (Full Page Bleed) */}
+      <div className="pointer-events-none absolute inset-0 w-full h-full z-0 overflow-hidden transform-gpu">
         <video
           autoPlay
           loop
@@ -98,13 +49,10 @@ export function EditorialInvitation() {
         <FallingRosePetals count={6} />
       </motion.div>
 
-      {/* Top spacer below hanging garland */}
-      <div className="relative z-10 w-full h-[6vh] sm:h-[8vh] shrink-0" aria-hidden="true" />
-
-      {/* 3. Main Centerpiece Invitation Content Canvas - unified and centered */}
+      {/* Main Centerpiece Invitation Content Canvas - perfectly centered inside fullpage video */}
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="relative z-20 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center px-4 sm:px-8 text-center pt-2 sm:pt-4"
+        className="relative z-20 mx-auto flex w-full max-w-4xl flex-col items-center justify-center px-4 sm:px-8 text-center"
       >
         {/* Top: Sacred Namaste Hands, then Auspicious Tamil Blessing */}
         <div className="flex flex-col items-center">
@@ -164,9 +112,6 @@ export function EditorialInvitation() {
           </div>
         </div>
       </motion.div>
-
-      {/* Bottom spacer for vertical balance */}
-      <div className="relative z-10 w-full pb-3 sm:pb-5" aria-hidden="true" />
     </section>
   )
 }
