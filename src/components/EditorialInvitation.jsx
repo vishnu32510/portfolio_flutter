@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { Sparkles } from 'lucide-react'
 import { FallingRosePetals } from './FallingRosePetals'
 import {
   KuthuvilakkuIcon,
@@ -9,6 +10,15 @@ import {
 
 export function EditorialInvitation() {
   const sectionRef = useRef(null)
+
+  const scrollToRsvp = (e) => {
+    e.preventDefault()
+    const el = document.getElementById('rsvp')
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+      window.history.pushState(null, '', '#rsvp')
+    }
+  }
 
   // Track scroll through the invitation section:
   // - Exiting to the next section: 'start start' to 'end start'
@@ -149,8 +159,20 @@ export function EditorialInvitation() {
             </h2>
 
             {/* Grounding Antique Gold Zari Lotus Divider */}
-            <div className="mt-5 sm:mt-7 w-full max-w-xs opacity-85">
+            <div className="mt-4 sm:mt-5 w-full max-w-xs opacity-85">
               <ZariLotusDivider />
+            </div>
+
+            {/* Direct RSVP Action Button */}
+            <div className="mt-5 sm:mt-6">
+              <a
+                href="#rsvp"
+                onClick={scrollToRsvp}
+                className="group inline-flex items-center gap-2.5 rounded-full border border-[#C5A059]/70 bg-[#163E26] hover:bg-[#1E5233] px-6 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#FAF6EE] shadow-[0_6px_22px_rgba(22,62,38,0.28)] hover:shadow-[0_8px_28px_rgba(22,62,38,0.38)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] cursor-pointer select-none"
+              >
+                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C5A059] group-hover:rotate-12 transition-transform duration-300 shrink-0" aria-hidden="true" />
+                <span>RSVP</span>
+              </a>
             </div>
           </div>
         </div>
