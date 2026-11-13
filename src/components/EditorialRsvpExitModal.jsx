@@ -1,17 +1,19 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Sparkles } from 'lucide-react'
 import { ZariLotusDivider, KuthuvilakkuIcon } from './TraditionalMotifs'
 
-const STORAGE_KEY = 'noviya_vishnu_rsvp_v1'
-const SESSION_DISMISSED_KEY = 'noviya_rsvp_exit_dismissed_v1'
+const RSVP_STORAGE_KEY = 'noviya_vishnu_rsvp_v1'
+const EXIT_CHOICE_CACHE_KEY = 'noviya_rsvp_exit_choice_v1'
 
 export function EditorialRsvpExitModal() {
   const [isOpen, setIsOpen] = useState(false)
+  const hasInteractedWithFormRef = useRef(false)
 
-  const hasAlreadyRsvpd = useCallback(() => {
+  // 1. Check if user already submitted an RSVP
+  const hasAlreadySubmittedRsvp = useCallback(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY)
+      const saved = localStorage.getItem(RSVP_STORAGE_KEY)
       if (!saved) return false
       const parsed = JSON.parse(saved)
       return Boolean(parsed?.guestName && parsed?.attending)
@@ -20,74 +22,118 @@ export function EditorialRsvpExitModal() {
     }
   }, [])
 
-  const handleDismiss = useCallback(() => {
-    setIsOpen(false)
+  // 2. Check if user previously saw the popup and made any choice (cached in localStorage)
+  const hasPreviousChoiceCached = useCallback(() => {
     try {
-      sessionStorage.setItem(SESSION_DISMISSED_KEY, 'true')
+      return Boolean(localStorage.getItem(EXIT_CHOICE_CACHE_KEY))
     } catch {
-      // sessionStorage unavailable
+      return false
     }
   }, [])
 
-  const handleRsvpClick = useCallback((e) => {
-    e.preventDefault()
-    handleDismiss()
-    const el = document.getElementById('rsvp')
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' })
-      window.history.pushState(null, '', '#rsvp')
-    }
-  }, [handleDismiss])
+  // 3. Check if user has entered any input in the RSVP form
+  const hasGivenAnyInput = useCallback(() => {
+    // Already submitted
+    if (hasAlreadySubmittedRsvp()) return true
 
-  useEffect(() => {
-    // If already RSVP'd or already dismissed in this session, do not attach triggers
-    if (hasAlreadyRsvpd()) return
+    // Actively interacted with or typed in any input/radio in #rsvp
+    if (hasInteractedWithFormRef.current) return true
+
+    // Check if name or notes field has any text in the DOM
+    const nameEl = document.getElementById('guest-name')
+    if (nameEl && nameEl.value && nameEl.value.trim().length > 0) {
+      return true
+    }
+
+    const notesEl = document.getElementById('guest-notes')
+    if (notesEl && notesEl.value && notesEl.value.trim().length > 0) {
+      return true
+    }
+
+    return false
+  }, [hasAlreadySubmittedRsvp])
+
+  // Record whatever choice the user pressed and cache it permanently in localStorage
+  const recordChoiceAndClose = useCallback((action) => {
+    setIsOpen(false)
     try {
-      if (sessionStorage.getItem(SESSION_DISMISSED_KEY)) return
+      const choiceRecord = {
+        action, // 'rsvp_clicked' | 'respond_later' | 'closed_x' | 'dismissed_backdrop' | 'dismissed_escape'
+        timestamp: new Date().toISOString(),
+      }
+      localStorage.setItem(EXIT_CHOICE_CACHE_KEY, JSON.stringify(choiceRecord))
     } catch {
-      // sessionStorage access error, proceed safely
+      // localStorage write error fallback
     }
+  }, [])
 
-    // 1. Desktop Exit-Intent: Detect mouse leaving through top of viewport towards browser tabs
-    const handleMouseLeave = (e) => {
-      if (e.clientY <= 15) {
-        if (!hasAlreadyRsvpd()) {
-          try {
-            if (!sessionStorage.getItem(SESSION_DISMISSED_KEY)) {
-              setIsOpen(true)
-            }
-          } catch {
-            setIsOpen(true)
-          }
-        }
+  const handleRsvpClick = useCallback(
+    (e) => {
+      e.preventDefault()
+      recordChoiceAndClose('rsvp_clicked')
+      const el = document.getElementById('rsvp')
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+        window.history.pushState(null, '', '#rsvp')
+      }
+    },
+    [recordChoiceAndClose]
+  )
+
+  // Listen to input and change events inside the RSVP form to mark user interaction
+  useEffect(() => {
+    if (hasPreviousChoiceCached() || hasAlreadySubmittedRsvp()) return
+
+    const handleFormActivity = (e) => {
+      if (e.target?.closest?.('#rsvp')) {
+        hasInteractedWithFormRef.current = true
       }
     }
 
-    // 2. Mobile Exit-Intent: Intercept browser back gesture
-    try {
-      window.history.pushState({ rsvpExitTrap: true }, '')
-    } catch {
-      // pushState may fail in some iframe environments
-    }
+    document.addEventListener('input', handleFormActivity, { passive: true })
+    document.addEventListener('change', handleFormActivity, { passive: true })
 
-    const handlePopState = () => {
-      if (!hasAlreadyRsvpd()) {
-        try {
-          if (!sessionStorage.getItem(SESSION_DISMISSED_KEY)) {
-            setIsOpen(true)
-            // Push state again so subsequent user back action can proceed if they dismiss
-            window.history.pushState({ rsvpExitTrap: true }, '')
-          }
-        } catch {
+    return () => {
+      document.removeEventListener('input', handleFormActivity)
+      document.removeEventListener('change', handleFormActivity)
+    }
+  }, [hasPreviousChoiceCached, hasAlreadySubmittedRsvp])
+
+  // Setup Exit-Intent triggers (only if no previous choice cached and no input given)
+  useEffect(() => {
+    if (hasPreviousChoiceCached() || hasGivenAnyInput()) return
+
+    // 1. Desktop: Detect mouse leaving top of browser window
+    const handleMouseLeave = (e) => {
+      if (e.clientY <= 15) {
+        if (!hasPreviousChoiceCached() && !hasGivenAnyInput()) {
           setIsOpen(true)
         }
       }
     }
 
-    // 3. Escape key to close modal
+    // 2. Mobile: Intercept back button gesture
+    try {
+      window.history.pushState({ rsvpExitTrap: true }, '')
+    } catch {
+      // pushState may fail in restricted contexts
+    }
+
+    const handlePopState = () => {
+      if (!hasPreviousChoiceCached() && !hasGivenAnyInput()) {
+        setIsOpen(true)
+        try {
+          window.history.pushState({ rsvpExitTrap: true }, '')
+        } catch {
+          // ignore
+        }
+      }
+    }
+
+    // 3. Escape key dismisses modal
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        handleDismiss()
+        recordChoiceAndClose('dismissed_escape')
       }
     }
 
@@ -100,7 +146,7 @@ export function EditorialRsvpExitModal() {
       window.removeEventListener('popstate', handlePopState)
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [hasAlreadyRsvpd, handleDismiss])
+  }, [hasPreviousChoiceCached, hasGivenAnyInput, recordChoiceAndClose])
 
   return (
     <AnimatePresence>
@@ -117,7 +163,7 @@ export function EditorialRsvpExitModal() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            onClick={handleDismiss}
+            onClick={() => recordChoiceAndClose('dismissed_backdrop')}
             aria-hidden="true"
             className="fixed inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"
           />
@@ -143,14 +189,14 @@ export function EditorialRsvpExitModal() {
             {/* Close Button */}
             <button
               type="button"
-              onClick={handleDismiss}
+              onClick={() => recordChoiceAndClose('closed_x')}
               aria-label="Close dialog"
               className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 p-2 text-[#7A5A18]/70 hover:text-[#163E26] hover:bg-[#C5A059]/15 rounded-full transition-colors cursor-pointer select-none z-20"
             >
               <X className="w-5 h-5" />
             </button>
 
-            {/* Top Lamps & Auspicious Motif */}
+            {/* Top Lamp & Auspicious Motif */}
             <div className="flex flex-col items-center justify-center mb-1.5 pt-1 px-8">
               <KuthuvilakkuIcon className="w-4.5 h-6 text-[#8C6A14] drop-shadow-[0_1px_6px_rgba(197,160,89,0.3)] mb-1.5" />
               <span className="font-editorial text-[0.62rem] sm:text-xs uppercase tracking-[0.24em] text-[#8C6A14] font-bold">
@@ -191,7 +237,7 @@ export function EditorialRsvpExitModal() {
 
               <button
                 type="button"
-                onClick={handleDismiss}
+                onClick={() => recordChoiceAndClose('respond_later')}
                 className="text-[0.68rem] sm:text-xs uppercase tracking-[0.20em] text-[#7A5A18] hover:text-[#163E26] font-medium py-1.5 transition-colors cursor-pointer select-none"
               >
                 I&apos;ll respond later
