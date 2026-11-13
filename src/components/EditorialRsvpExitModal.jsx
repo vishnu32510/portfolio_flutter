@@ -112,7 +112,48 @@ export function EditorialRsvpExitModal() {
       }
     }
 
-    // 2. Escape key dismisses modal
+    // 2. Mobile Back-Button Trap:
+    // Armed ONLY after user has scrolled down (after initial video has safely loaded and autoplayed)
+    // NEVER call pushState on initial mount to protect iOS Safari video autoplay!
+    let isMobileTrapArmed = false
+    const handleScrollForMobileTrap = () => {
+      if (isMobileTrapArmed || hasPreviousChoiceCached() || hasGivenAnyInput()) return
+      if (window.scrollY > 300) {
+        isMobileTrapArmed = true
+        try {
+          window.history.pushState({ rsvpExitTrap: true }, '')
+        } catch {
+          // ignore
+        }
+      }
+    }
+
+    const handlePopState = () => {
+      if (isMobileTrapArmed && !hasPreviousChoiceCached() && !hasGivenAnyInput()) {
+        setIsOpen(true)
+        isMobileTrapArmed = false
+      }
+    }
+
+    // 3. Mobile Scroll-Exit: User scrolls deep into page (>55%), then scrolls back to top to leave
+    let maxScrollDepth = 0
+    const handleScrollDepth = () => {
+      if (hasPreviousChoiceCached() || hasGivenAnyInput()) return
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight
+      if (totalHeight <= 0) return
+      const currentScrollRatio = window.scrollY / totalHeight
+      if (currentScrollRatio > maxScrollDepth) {
+        maxScrollDepth = currentScrollRatio
+      }
+      // If user read down past 55% of the page and then scrolls back near top (< 70px) to leave
+      if (maxScrollDepth > 0.55 && window.scrollY < 70) {
+        if (!hasPreviousChoiceCached() && !hasGivenAnyInput()) {
+          setIsOpen(true)
+        }
+      }
+    }
+
+    // 4. Escape key dismisses modal
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         recordChoiceAndClose('dismissed_escape')
@@ -121,10 +162,16 @@ export function EditorialRsvpExitModal() {
 
     document.addEventListener('mouseleave', handleMouseLeave)
     window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('scroll', handleScrollForMobileTrap, { passive: true })
+    window.addEventListener('scroll', handleScrollDepth, { passive: true })
+    window.addEventListener('popstate', handlePopState)
 
     return () => {
       document.removeEventListener('mouseleave', handleMouseLeave)
       window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('scroll', handleScrollForMobileTrap)
+      window.removeEventListener('scroll', handleScrollDepth)
+      window.removeEventListener('popstate', handlePopState)
     }
   }, [hasPreviousChoiceCached, hasGivenAnyInput, recordChoiceAndClose])
 
