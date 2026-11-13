@@ -8,6 +8,7 @@ import { EditorialEventDetails } from './components/EditorialEventDetails'
 import { EditorialRsvp } from './components/EditorialRsvp'
 import { EditorialFooter } from './components/EditorialFooter'
 import { EditorialPrintableInvite } from './components/EditorialPrintableInvite'
+import { EditorialRsvpExitModal } from './components/EditorialRsvpExitModal'
 
 export default function App() {
   const [isPrintMode, setIsPrintMode] = useState(() => {
@@ -56,6 +57,9 @@ export default function App() {
 
         {/* Page 7: Editorial Footer & Family Blessings */}
         <EditorialFooter />
+
+        {/* Exit-Intent RSVP Prompt (Desktop Mouseleave & Mobile Back Navigation) */}
+        <EditorialRsvpExitModal />
       </div>
     </MotionConfig>
   )
