@@ -404,7 +404,7 @@ export function EditorialRsvp() {
                       <dt className="text-[#6D5537] font-medium">Dietary Preference</dt>
                       <dd className="text-[#163E26] font-semibold text-right">
                         {savedRsvp.dietaryPreference === 'Non-Vegetarian'
-                          ? 'Non-Vegetarian'
+                          ? 'Non-Vegetarian (அசைவம்)'
                           : 'Vegetarian (சைவம்)'}
                       </dd>
                     </div>
@@ -659,7 +659,7 @@ export function EditorialRsvp() {
                             <span className="h-2 w-2 rounded-full bg-[#8C6A14]" />
                           )}
                         </span>
-                        <span>Non-Vegetarian</span>
+                        <span>Non-Vegetarian (அசைவம்)</span>
                       </label>
 
                       <label

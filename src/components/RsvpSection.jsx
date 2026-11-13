@@ -404,7 +404,7 @@ export function RsvpSection() {
                       <dt className="text-maroon-700/75 font-medium">Dietary Preference</dt>
                       <dd className="text-maroon-900 font-semibold text-right">
                         {savedRsvp.dietaryPreference === 'Non-Vegetarian'
-                          ? 'Non-Vegetarian'
+                          ? 'Non-Vegetarian (அசைவம்)'
                           : 'Vegetarian (சைவம்)'}
                       </dd>
                     </div>
@@ -691,7 +691,7 @@ export function RsvpSection() {
                             <span className="h-2 w-2 rounded-full bg-maroon-800" />
                           )}
                         </span>
-                        <span>Non-Vegetarian</span>
+                        <span>Non-Vegetarian (அசைவம்)</span>
                       </label>
                     </div>
                   </fieldset>
