@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { Sparkles } from 'lucide-react'
 import { WEDDING_CONFIG } from '../data/weddingConfig'
 import { SikkuBrahmaMudiKolam, ZariLotusDivider } from './TraditionalMotifs'
 
@@ -20,6 +21,15 @@ export function EditorialJoinUs() {
   const [countdown, setCountdown] = useState(() =>
     computeCountdown(WEDDING_CONFIG.event.muhurthamIsoStart)
   )
+
+  const scrollToRsvp = (e) => {
+    e.preventDefault()
+    const el = document.getElementById('rsvp')
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+      window.history.pushState(null, '', '#rsvp')
+    }
+  }
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -108,6 +118,25 @@ export function EditorialJoinUs() {
               )}
             </div>
           ))}
+        </motion.div>
+
+        {/* Direct RSVP Action Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.45 }}
+          className="mt-7 sm:mt-9"
+        >
+          <a
+            href="#rsvp"
+            onClick={scrollToRsvp}
+            aria-label="RSVP for Noviya and Vishnu Priyan wedding"
+            className="group inline-flex items-center gap-2.5 rounded-full border border-[#C5A059]/75 bg-[#163E26] hover:bg-[#1E5233] px-7 sm:px-9 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#FAF6EE] shadow-[0_6px_22px_rgba(22,62,38,0.22)] hover:shadow-[0_10px_28px_rgba(22,62,38,0.32)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] cursor-pointer select-none"
+          >
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C5A059] group-hover:rotate-12 transition-transform duration-300 shrink-0" aria-hidden="true" />
+            <span>RSVP</span>
+          </a>
         </motion.div>
       </div>
     </section>
