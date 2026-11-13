@@ -112,25 +112,7 @@ export function EditorialRsvpExitModal() {
       }
     }
 
-    // 2. Mobile: Intercept back button gesture
-    try {
-      window.history.pushState({ rsvpExitTrap: true }, '')
-    } catch {
-      // pushState may fail in restricted contexts
-    }
-
-    const handlePopState = () => {
-      if (!hasPreviousChoiceCached() && !hasGivenAnyInput()) {
-        setIsOpen(true)
-        try {
-          window.history.pushState({ rsvpExitTrap: true }, '')
-        } catch {
-          // ignore
-        }
-      }
-    }
-
-    // 3. Escape key dismisses modal
+    // 2. Escape key dismisses modal
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         recordChoiceAndClose('dismissed_escape')
@@ -138,12 +120,10 @@ export function EditorialRsvpExitModal() {
     }
 
     document.addEventListener('mouseleave', handleMouseLeave)
-    window.addEventListener('popstate', handlePopState)
     window.addEventListener('keydown', handleKeyDown)
 
     return () => {
       document.removeEventListener('mouseleave', handleMouseLeave)
-      window.removeEventListener('popstate', handlePopState)
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [hasPreviousChoiceCached, hasGivenAnyInput, recordChoiceAndClose])
