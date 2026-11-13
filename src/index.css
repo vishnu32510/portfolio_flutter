@@ -135,6 +135,21 @@ body {
 }
 
 /* =========================================================================
+   Hide iOS Safari & Mobile Native Video Playback Controls & Start Button
+   ========================================================================= */
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls,
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-panel,
+video::-webkit-media-controls-enclosure {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* =========================================================================
    Print & PDF Export Styling for Wedding Invitation Booklet
    ========================================================================= */
 @media print {

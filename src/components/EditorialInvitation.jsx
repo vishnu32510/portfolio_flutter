@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { FallingRosePetals } from './FallingRosePetals'
 import {
@@ -9,6 +9,55 @@ import {
 
 export function EditorialInvitation() {
   const sectionRef = useRef(null)
+  const videoRef = useRef(null)
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
+
+  // Track video playback state to prevent iOS Safari from showing the native play button overlay
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    video.muted = true
+    video.defaultMuted = true
+
+    const markPlaying = () => setIsVideoPlaying(true)
+    const markPaused = () => setIsVideoPlaying(false)
+
+    video.addEventListener('playing', markPlaying)
+    video.addEventListener('pause', markPaused)
+
+    // Attempt silent autoplay
+    const playPromise = video.play()
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => setIsVideoPlaying(true))
+        .catch(() => {
+          // Blocked by iOS Low Power Mode or browser autoplay policy
+          setIsVideoPlaying(false)
+        })
+    }
+
+    // Unlock playback on first user touch, scroll, or click
+    const handleUserInteraction = () => {
+      if (video.paused) {
+        video.play()
+          .then(() => setIsVideoPlaying(true))
+          .catch(() => {})
+      }
+    }
+
+    window.addEventListener('touchstart', handleUserInteraction, { passive: true })
+    window.addEventListener('scroll', handleUserInteraction, { passive: true })
+    document.addEventListener('click', handleUserInteraction, { passive: true })
+
+    return () => {
+      video.removeEventListener('playing', markPlaying)
+      video.removeEventListener('pause', markPaused)
+      window.removeEventListener('touchstart', handleUserInteraction)
+      window.removeEventListener('scroll', handleUserInteraction)
+      document.removeEventListener('click', handleUserInteraction)
+    }
+  }, [])
 
   // Track scroll through the invitation section:
   // - Exiting to the next section: 'start start' to 'end start'
@@ -70,21 +119,39 @@ export function EditorialInvitation() {
         </div>
       </motion.div>
 
-      {/* Background Video: Traditional Mandapam with Hanging Jasmine & Lotus Buds (100% Full-Bleed Screen) */}
+      {/* Background Video / Static Fallback Poster: Traditional Mandapam with Hanging Jasmine & Lotus Buds */}
       <div className="pointer-events-none absolute inset-0 w-full h-full z-0 overflow-hidden transform-gpu">
+        {/* Crisp static fallback poster always rendered underneath so there's never a blank flash or play icon */}
+        <img
+          src="/images/mandapam-video-poster.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover select-none"
+        />
+
+        {/* Background Video: only visible when actively playing; when paused (e.g. iOS Low Power Mode), invisibility suppresses native play overlay */}
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
+          defaultMuted
           playsInline
+          webkit-playsinline="true"
+          x5-playsinline="true"
+          controls={false}
+          disablePictureInPicture
+          disableRemotePlayback
           preload="auto"
-          poster="/images/mandapam-top-garland.jpg"
-          className="w-full h-full object-cover"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+            isVideoPlaying ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+          }`}
         >
           <source src="/videos/mandapam-jasmine-lotus.mp4" type="video/mp4" />
         </video>
+
         {/* Soft alabaster wash for high contrast & perfect text readability */}
-        <div className="absolute inset-0 bg-[#EBE2DB]/80" />
+        <div className="absolute inset-0 bg-[#EBE2DB]/80 pointer-events-none" />
       </div>
 
       {/* Gentle Falling Rose Petals Shower (sparse, slow snowfall drift) */}
