@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Calendar, Clock, ExternalLink, Sparkles } from 'lucide-react'
 import { WEDDING_CONFIG } from '../data/weddingConfig'
+import { logInteraction } from '../services/analytics'
 
 function GoogleMapsPinIcon({ className = 'w-4 h-4' }) {
   return (
@@ -91,6 +92,7 @@ export function EditorialEventDetails() {
             href={event.mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => logInteraction('click_google_maps')}
             title="Open Serene Springs Farm in Google Maps"
             className="group rounded-xl border border-[#C5A059]/40 bg-[#FAF6EE]/95 backdrop-blur-md p-3 sm:p-3.5 flex items-start gap-2.5 sm:gap-3 shadow-sm hover:border-[#8C6A14] hover:bg-[#FDF8EE] hover:shadow-md transition-all duration-200 cursor-pointer"
           >

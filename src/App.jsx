@@ -9,6 +9,7 @@ import { EditorialRsvp } from './components/EditorialRsvp'
 import { EditorialFooter } from './components/EditorialFooter'
 import { EditorialPrintableInvite } from './components/EditorialPrintableInvite'
 import { EditorialRsvpExitModal } from './components/EditorialRsvpExitModal'
+import { trackVisitorSession } from './services/analytics'
 
 export default function App() {
   const [isPrintMode, setIsPrintMode] = useState(() => {
@@ -28,6 +29,10 @@ export default function App() {
       window.removeEventListener('popstate', handlePopState)
       window.removeEventListener('hashchange', handlePopState)
     }
+  }, [])
+
+  useEffect(() => {
+    trackVisitorSession()
   }, [])
 
   if (isPrintMode) {

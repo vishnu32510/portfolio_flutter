@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Sparkles } from 'lucide-react'
 import { WEDDING_CONFIG } from '../data/weddingConfig'
 import { SikkuBrahmaMudiKolam, ZariLotusDivider } from './TraditionalMotifs'
+import { logInteraction } from '../services/analytics'
 
 function computeCountdown(targetIso) {
   const diff = new Date(targetIso).getTime() - Date.now()
@@ -24,6 +25,7 @@ export function EditorialJoinUs() {
 
   const scrollToRsvp = (e) => {
     e.preventDefault()
+    logInteraction('click_rsvp', { source: 'page3_countdown_button' })
     const el = document.getElementById('rsvp')
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' })

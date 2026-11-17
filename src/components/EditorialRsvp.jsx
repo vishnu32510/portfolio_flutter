@@ -7,6 +7,7 @@ import {
   PulliKolamMandala,
   ZariLotusDivider,
 } from './TraditionalMotifs'
+import { logInteraction } from '../services/analytics'
 
 const STORAGE_KEY = 'noviya_vishnu_rsvp_v1'
 const FIRESTORE_RSVP_ENDPOINT =
@@ -261,6 +262,12 @@ export function EditorialRsvp() {
 
       setSavedRsvp(payload)
       setIsEditing(false)
+
+      logInteraction('submit_rsvp', {
+        attending: payload.attending,
+        attendees: payload.attendees,
+        dietaryPreference: payload.dietaryPreference,
+      })
     } catch (err) {
       setSubmitError(
         err instanceof Error
@@ -423,7 +430,10 @@ export function EditorialRsvp() {
                   {savedRsvp.attending === 'yes' && (
                     <button
                       type="button"
-                      onClick={downloadWeddingIcs}
+                      onClick={() => {
+                        logInteraction('download_calendar_ics')
+                        downloadWeddingIcs()
+                      }}
                       className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#143D27] via-[#1B4D31] to-[#143D27] px-6 py-3 text-sm font-semibold text-[#FAF6EE] shadow-sm transition-opacity hover:opacity-95 cursor-pointer"
                     >
                       <Calendar className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />

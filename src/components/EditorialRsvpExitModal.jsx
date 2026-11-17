@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Sparkles } from 'lucide-react'
 import { ZariLotusDivider, KuthuvilakkuIcon } from './TraditionalMotifs'
+import { logInteraction } from '../services/analytics'
 
 const RSVP_STORAGE_KEY = 'noviya_vishnu_rsvp_v1'
 const EXIT_CHOICE_CACHE_KEY = 'noviya_rsvp_exit_choice_v1'
@@ -62,6 +63,10 @@ export function EditorialRsvpExitModal() {
         timestamp: new Date().toISOString(),
       }
       localStorage.setItem(EXIT_CHOICE_CACHE_KEY, JSON.stringify(choiceRecord))
+      logInteraction(action === 'rsvp_clicked' ? 'click_rsvp' : 'dismiss_exit_modal', {
+        action,
+        source: 'exit_modal',
+      })
     } catch {
       // localStorage write error fallback
     }
