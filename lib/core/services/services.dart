@@ -18,8 +18,11 @@ abstract class Services {}
 
 class OpenLinkService extends Services {
   void openUrl({required String link}) async {
-    if (!await launchUrl(Uri.parse(link))) {
-      throw Exception('Could not launch $link');
+    final uri = Uri.parse(link);
+    if (await canLaunchUrl(uri)) {
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+        throw Exception('Could not launch $link');
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../core/services/services.dart';
 import '../../../../core/utils/app_extensions.dart';
 import '../../../../core/utils/app_sizes.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -46,14 +46,10 @@ class _ExperienceItemState extends State<ExperienceItem> {
     return null;
   }
 
-  Future<void> _openCompanySite() async {
+  void _openCompanySite() {
     final raw = widget.experience.companyUrl?.trim();
     if (raw == null || raw.isEmpty) return;
-    final uri = Uri.tryParse(raw);
-    if (uri == null) return;
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
+    OpenLinkService().openUrl(link: raw);
   }
 
   IconData _getIconForAchievement(String achievement) {
@@ -289,8 +285,11 @@ class _ExperienceItemState extends State<ExperienceItem> {
     );
     final typeColor = _getTypeColor(experienceType);
 
-    return MouseRegion(
-      cursor: _collapsed ? SystemMouseCursors.click : SystemMouseCursors.basic,
+    Widget mainContent = Semantics(
+      button: _collapsed,
+      label: _collapsed
+          ? 'Expand details for ${widget.experience.title} at ${widget.experience.company}'
+          : null,
       child: GestureDetector(
         onTap: _collapsed ? () => setState(() => _collapsed = false) : null,
         child: TimelineContainer(
@@ -368,28 +367,38 @@ class _ExperienceItemState extends State<ExperienceItem> {
                   alignment: Alignment.center,
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
-                    child: GestureDetector(
-                      onTap: () => setState(() => _collapsed = true),
-                      child: BounceAnimator(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.keyboard_arrow_up_rounded,
-                              size: AppSizes.iconSmall,
-                              color: colors.onSurface.withValues(alpha: 0.5),
-                            ),
-                            Text(
-                              'Collapse',
-                              style: AppStyles.smallText(
-                                textColor: colors.onSurface.withValues(
-                                  alpha: 0.5,
+                    child: Tooltip(
+                      message: 'Collapse details',
+                      child: Semantics(
+                        button: true,
+                        label:
+                            'Collapse details for ${widget.experience.title} at ${widget.experience.company}',
+                        child: GestureDetector(
+                          onTap: () => setState(() => _collapsed = true),
+                          child: BounceAnimator(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.keyboard_arrow_up_rounded,
+                                  size: AppSizes.iconSmall,
+                                  color: colors.onSurface.withValues(
+                                    alpha: 0.5,
+                                  ),
                                 ),
-                              ),
+                                Text(
+                                  'Collapse',
+                                  style: AppStyles.smallText(
+                                    textColor: colors.onSurface.withValues(
+                                      alpha: 0.5,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
                     ),
@@ -400,6 +409,15 @@ class _ExperienceItemState extends State<ExperienceItem> {
           ),
         ),
       ),
+    );
+
+    if (_collapsed) {
+      mainContent = Tooltip(message: 'Expand details', child: mainContent);
+    }
+
+    return MouseRegion(
+      cursor: _collapsed ? SystemMouseCursors.click : SystemMouseCursors.basic,
+      child: mainContent,
     );
   }
 }
