@@ -78,6 +78,47 @@ class ProjectsData {
         demoLink: 'https://floxi.co',
       ),
       Project(
+        name: 'Nungu TV',
+        tags: [ProjectTag.featured, ProjectTag.mobile, ProjectTag.web],
+        imageUrl:
+            'https://raw.githubusercontent.com/vishnu32510/nungu_tv/main/assets/icon/app_icon.png',
+        description:
+            'Native Smart TV & Web media client for South Asian cinema, optimized for 10-foot TV remote controls, virtual mouse pointer navigation, ad-free streaming, and 4K playback.',
+        techStack: [
+          'Flutter',
+          'Dart',
+          'Android TV',
+          'Web',
+          'Firebase Hosting',
+          'GitHub Actions',
+          'CI/CD',
+        ],
+        status: 'Live (TV & Web)',
+        githubRepoLink: 'https://github.com/vishnu32510/nungu_tv',
+        demoLink: 'https://nungu-tv.web.app',
+      ),
+      Project(
+        name: 'Flutter Code Store (Open-Source Template)',
+        tags: [ProjectTag.featured, ProjectTag.mobile, ProjectTag.backend],
+        imageUrl:
+            'https://raw.githubusercontent.com/vishnu32510/code_store/main/assets/icon/app_icon.png',
+        description:
+            'Open-source modular Flutter starter template & multi-package architecture featuring reusable core/DI/theme packages, Firebase Auth, Analytics, FCM push notifications, card scanner, and native iOS (WidgetKit / Dynamic Island) & Android (Jetpack Glance) Home Screen Widgets.',
+        techStack: [
+          'Flutter',
+          'Dart',
+          'Bloc',
+          'GetIt',
+          'SwiftUI (WidgetKit)',
+          'Kotlin (Glance)',
+          'Firebase Auth',
+          'FCM',
+          'Open-Source Template',
+        ],
+        status: 'Open-Source Template',
+        githubRepoLink: 'https://github.com/vishnu32510/code_store',
+      ),
+      Project(
         name: 'Flashlight Control',
         tags: [ProjectTag.featured, ProjectTag.mobile],
         imageUrl:
