@@ -35,16 +35,21 @@ class SkillChip extends StatelessWidget {
     if (s.contains('nginx')) return 'assets/logo/nginx.svg';
 
     // Cloud / DevOps
-    if (s.contains('firebase')) return 'assets/logo/firebase.svg';
+    if (s.contains('firebase') || s.contains('fcm')) {
+      return 'assets/logo/firebase.svg';
+    }
     if (s.contains('gcp') || s.contains('google cloud')) {
       return 'assets/logo/gcp.svg';
     }
     if (s.contains('aws')) return 'assets/logo/aws.svg';
     if (s.contains('docker')) return 'assets/logo/docker.svg';
-    if (s.contains('kubernetes')) return 'assets/logo/kubernetes.svg';
+    if (s.contains('kubernetes') || s.contains('gke')) {
+      return 'assets/logo/kubernetes.svg';
+    }
     if (s.contains('jenkins')) return 'assets/logo/jenkins.svg';
     if (s == 'git') return 'assets/logo/git.svg';
     if (s.contains('github actions')) return 'assets/logo/github_actions.svg';
+    if (s.contains('jira')) return 'assets/logo/jira.svg';
 
     // Data
     if (s.contains('postgres')) return 'assets/logo/postgresql.svg';
