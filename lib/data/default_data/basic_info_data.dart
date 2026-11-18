@@ -14,6 +14,6 @@ class BasicInfoData {
     'stackOverflow':
         'https://stackoverflow.com/users/15953982/vishnu-priyan-s-s?tab=profile',
     'instagram': 'https://www.instagram.com/vishnu32510/',
-    'portfolio': 'https://floxi.co',
+    'portfolio': 'https://devpost.com/software/floxi',
   };
 }

@@ -75,7 +75,7 @@ class ProjectsData {
         ],
         status: 'Completed',
         githubRepoLink: 'https://github.com/floxi-co',
-        demoLink: 'https://floxi.co',
+        demoLink: 'https://devpost.com/software/floxi',
       ),
       Project(
         name: 'Nungu TV',

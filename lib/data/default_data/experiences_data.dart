@@ -53,7 +53,8 @@ class ExperiencesData {
         title: 'Software Engineer / Co-Founder',
         company: 'Floxi, Chicago, IL',
         period: 'APR 2025 - DEC 2025',
-        companyUrl: 'https://floxi.co',
+        companyUrl: 'https://devpost.com/software/floxi',
+        logoUrl: 'assets/logo/floxi_icon.png',
         achievements: [
           'Built and deployed a cross-platform B2B+B2C sustainability and eco-rewards Flutter app to the Apple App Store and Google Play, featuring barcode scanning, receipt-based carbon tracking, and AI-powered product recommendations.',
           'Designed scalable TypeScript/Node.js, Flask (Python), and Scala backend microservices on GCP for data processing and service orchestration with automated Docker CI/CD pipelines.',

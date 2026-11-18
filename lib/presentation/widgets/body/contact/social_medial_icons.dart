@@ -21,7 +21,7 @@ class SocialMediaIcons extends StatelessWidget {
     if (link.contains('linkedin.com')) return FontAwesomeIcons.linkedinIn;
     if (link.contains('twitter.com')) return FontAwesomeIcons.twitter;
     if (link.contains('mailto:')) return FontAwesomeIcons.envelope;
-    if (link.contains('floxi.co') || link.contains('portfolio')) {
+    if (link.contains('portfolio')) {
       return FontAwesomeIcons.globe;
     }
     return FontAwesomeIcons.link;
@@ -62,7 +62,7 @@ class SocialMediaIconBtn extends StatelessWidget {
     if (link.contains('linkedin.com')) return 'LinkedIn';
     if (link.contains('twitter.com')) return 'Twitter';
     if (link.contains('mailto:')) return 'Email';
-    if (link.contains('floxi.co') || link.contains('portfolio')) {
+    if (link.contains('portfolio')) {
       return 'Website';
     }
     return 'Link';

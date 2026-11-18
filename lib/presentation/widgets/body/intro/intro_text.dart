@@ -178,7 +178,6 @@ class _IntroTextState extends State<IntroText>
                   icon: FontAwesomeIcons.trophy,
                   label: 'Floxi · Scarlet Hacks 2025 Winner',
                   urls: [
-                    'https://floxi.co',
                     'https://devpost.com/software/floxi',
                     "https://apps.apple.com/us/app/floxi/id6749322113",
                   ],
