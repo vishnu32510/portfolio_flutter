@@ -101,7 +101,7 @@ class ProjectsData {
         name: 'Flutter Code Store (Open-Source Template)',
         tags: [ProjectTag.featured, ProjectTag.mobile, ProjectTag.backend],
         imageUrl:
-            'https://raw.githubusercontent.com/vishnu32510/code_store/main/assets/icon/app_icon.png',
+            'https://raw.githubusercontent.com/vishnu32510/code_store/main/assets/icon/app_icon.jpeg',
         description:
             'Open-source modular Flutter starter template & multi-package architecture featuring reusable core/DI/theme packages, Firebase Auth, Analytics, FCM push notifications, card scanner, and native iOS (WidgetKit / Dynamic Island) & Android (Jetpack Glance) Home Screen Widgets.',
         techStack: [
