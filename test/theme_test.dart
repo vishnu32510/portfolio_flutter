@@ -33,7 +33,13 @@ void main() {
     });
 
     test('ThemeBloc switches dynamically to Spider-Man theme by ID', () async {
-      final bloc = ThemeBloc(availableThemes: AppThemes.allThemes);
+      final bloc = ThemeBloc(
+        availableThemes: [
+          AppThemes.dark,
+          AppThemes.spiderMan,
+          AppThemes.light,
+        ],
+      );
       expect(bloc.state.currentTheme.id, 'dark');
 
       bloc.add(const ThemeEventChangeById('spider_man'));
@@ -64,20 +70,7 @@ void main() {
       final bloc = ThemeBloc(availableThemes: AppThemes.allThemes);
       expect(bloc.state.currentTheme.id, 'dark');
 
-      // 1. Cycle to spider_man
-      bloc.add(const ThemeEventCycleNext());
-      await expectLater(
-        bloc.stream,
-        emits(
-          isA<ThemeState>().having(
-            (s) => s.currentTheme.id,
-            'id',
-            'spider_man',
-          ),
-        ),
-      );
-
-      // 2. Cycle to light
+      // 1. Cycle to light
       bloc.add(const ThemeEventCycleNext());
       await expectLater(
         bloc.stream,
@@ -86,7 +79,7 @@ void main() {
         ),
       );
 
-      // 3. Cycle back to dark
+      // 2. Cycle back to dark
       bloc.add(const ThemeEventCycleNext());
       await expectLater(
         bloc.stream,

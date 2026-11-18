@@ -88,5 +88,5 @@ class AppThemes {
   }
 
   /// All registered themes for the portfolio
-  static List<AppThemeConfig> get allThemes => [dark, spiderMan, light];
+  static List<AppThemeConfig> get allThemes => [dark, light];
 }
